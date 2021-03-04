@@ -14,6 +14,7 @@ public class SingleWordSpellchecker {
 
 
     public SingleWordSpellchecker() {
+        System.out.println("Provide an english word to check if it is correctly spelled:");
         String wordToCheckSpelling = scanner.nextLine();
         String[] wordList = singleNoteProcessor.createWordList(wordToCheckSpelling);
         spellCheckerRaw = new SpellCheckerRaw(wordList);
