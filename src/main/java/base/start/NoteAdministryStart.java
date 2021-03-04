@@ -10,7 +10,7 @@ import base.notes.find.OverviewWordFinder;
 import base.notes.find.SingleNoteWordFinder;
 import base.notes.spellcheck.custom.OverviewSpellChecker;
 import base.notes.spellcheck.custom.SingleNoteSpellChecker;
-import base.notes.spellcheck.custom.SingleWordSpellchecker;
+import base.singleWord.SingleWordSpellchecker;
 import base.notes.wordcount.custom.OverviewCounter;
 import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;

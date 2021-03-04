@@ -1,4 +1,4 @@
-package base.notes.spellcheck.custom;
+package base.singleWord;
 
 import base.notes.processors.SingleNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
@@ -11,7 +11,6 @@ import java.util.*;
 public class SingleWordSpellchecker {
     private SpellCheckerRaw spellCheckerRaw;
     private SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
-
 
     public SingleWordSpellchecker() {
         System.out.println("Provide an english word to check if it is correctly spelled:");
