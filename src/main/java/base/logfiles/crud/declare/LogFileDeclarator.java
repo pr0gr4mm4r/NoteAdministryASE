@@ -10,9 +10,9 @@ public class LogFileDeclarator {
     }
 
     private String generateDefaultLogFileName() {
-        String bla = "Logfile_" + Instant.now().plus(1, ChronoUnit.HOURS).toString();
-        bla = bla.replace("T", "_").replace(":", "-").substring(0, bla.length() - 11);
-        return bla;
+        String logfileName = "Logfile_" + Instant.now().plus(1, ChronoUnit.HOURS).toString();
+        logfileName = logfileName.replace("T", "_").replace(":", "-").substring(0, logfileName.length() - 11);
+        return logfileName;
     }
 
     public String getLogFileContent() {
