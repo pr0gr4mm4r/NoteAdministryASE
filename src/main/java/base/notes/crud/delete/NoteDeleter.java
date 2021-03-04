@@ -12,7 +12,7 @@ import static base.config.Globals.scanner;
 import static base.start.NoteAdministryStart.programIsRunning;
 
 public class NoteDeleter {
-    protected String confirmation;
+    private final String confirmation;
 
     public NoteDeleter() {
         if (programIsRunning()) {
@@ -24,7 +24,6 @@ public class NoteDeleter {
             deleteWholeDirectory();
         }
     }
-
 
     private void deleteWholeDirectory() {
         try (Stream<Path> pathStream = Files.walk(Paths.get(path))) {

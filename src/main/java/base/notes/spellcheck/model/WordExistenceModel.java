@@ -20,6 +20,11 @@ public class WordExistenceModel {
         return wordExistenceOverview;
     }
 
+    public String formatWordExistenceOverview() {
+        System.out.println(wordExistenceOverview);
+        return wordExistenceOverview.toString();
+    }
+
     public Map<String, Boolean> getWordExistenceOverview() {
         return wordExistenceOverview;
     }
