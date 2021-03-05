@@ -2,14 +2,14 @@ package base.notes.spellcheck.custom;
 
 import base.notes.processors.SingleNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.notes.spellcheck.model.WordExistenceModel;
+import base.notes.spellcheck.model.WordExistenceMap;
 
 import static base.config.Globals.scanner;
 
 import java.util.*;
 
 public class SingleNoteSpellChecker {
-    private final WordExistenceModel wordExistenceModel = new WordExistenceModel();
+    private final WordExistenceMap wordExistenceMap = new WordExistenceMap();
     private final SpellCheckerRaw spellCheckerRaw;
     private SingleNoteProcessor singleNoteProcessor;
 
@@ -21,11 +21,11 @@ public class SingleNoteSpellChecker {
         spellCheckerRaw.checkSpelling(wordList);
         List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
         List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
-        System.out.println(wordExistenceModel.getWordExistenceOverview());
+        wordExistenceMap.fill(wordsInLexicon, wordsNotInLexicon);
+        System.out.println(wordExistenceMap);
 //auslagern
         double wordCountOfNote = wordList.length;
-        double wordsInLexikon = spellCheckerRaw.countWordsWhichAreInLexicon(wordList);
+        double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
         double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
         System.out.println(percentageValue + " % sind Wörter aus dem Lexikon");
     }

@@ -2,7 +2,7 @@ package base.notes.spellcheck.custom;
 
 import base.notes.processors.MultiNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.notes.spellcheck.model.WordExistenceModel;
+import base.notes.spellcheck.model.WordExistenceMap;
 
 import java.util.*;
 
@@ -18,9 +18,9 @@ public class OverviewSpellChecker {
             spellCheckerRaw.checkSpelling(wordList);
             List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
             List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-            WordExistenceModel wordExistenceModel = new WordExistenceModel();
-            Map<String, Boolean>  spellcheckOverview = wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
-            wordExistenceOverview.add(spellcheckOverview);
+            WordExistenceMap wordExistenceModel = new WordExistenceMap();
+            wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
+            wordExistenceOverview.add(wordExistenceModel);
         }
         System.out.println(wordExistenceOverview);
     }

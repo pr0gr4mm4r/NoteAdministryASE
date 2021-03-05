@@ -31,7 +31,7 @@ public class SpellCheckerRaw {
                 word -> RiTa._lexicon().hasWord(word)).distinct().collect(Collectors.toList());
     }
 
-    public long countWordsWhichAreInLexicon(String[] words) {
+    public long countWordsPresentInLexicon(String[] words) {
         return Arrays.stream(words).filter(word -> RiTa._lexicon().hasWord(word)).count();
     }
 
