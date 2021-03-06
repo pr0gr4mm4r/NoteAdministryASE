@@ -1,6 +1,7 @@
 package base.notes.spellcheck.custom;
 
 import base.notes.processors.SingleNoteProcessor;
+import base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
 import base.notes.spellcheck.model.WordExistenceMap;
 
@@ -12,6 +13,7 @@ public class SingleNoteSpellChecker {
     private final WordExistenceMap wordExistenceMap = new WordExistenceMap();
     private final SpellCheckerRaw spellCheckerRaw;
     private SingleNoteProcessor singleNoteProcessor;
+    private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
     public SingleNoteSpellChecker() { //test one file, test all / write stats and which are wrong
         String noteName = scanner.nextLine();
@@ -22,12 +24,13 @@ public class SingleNoteSpellChecker {
         List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
         List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
         wordExistenceMap.fill(wordsInLexicon, wordsNotInLexicon);
-        System.out.println(wordExistenceMap);
+
 //auslagern
         double wordCountOfNote = wordList.length;
         double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
         double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
-        System.out.println(percentageValue + " % sind Wörter aus dem Lexikon");
+        String result = singleNoteSpellCheckerResultFormatter.format(wordExistenceMap, percentageValue);
+        System.out.println(result);
     }
 
     public static double calculatePercentageWiseOccurrence(double wordCount, double wordsInLexikon) {

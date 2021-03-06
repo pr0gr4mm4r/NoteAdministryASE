@@ -2,11 +2,41 @@ package base.notes.spellcheck.formatter;
 
 import base.notes.spellcheck.model.WordExistenceMap;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class SingleNoteSpellCheckerResultFormatter {
     public SingleNoteSpellCheckerResultFormatter() {
 
     }
-    public String format(WordExistenceMap wordExistenceMap){
-        return "";
+
+    public String format(WordExistenceMap wordExistenceMap, double percentageValue) {
+        List<String> positives = wordExistenceMap.entrySet().stream().filter(Map.Entry::getValue).map(Map.Entry::getKey).collect(Collectors.toList());
+        List<String> negatives = wordExistenceMap.entrySet().stream().filter(word -> !word.getValue()).map(Map.Entry::getKey).collect(Collectors.toList());
+        String result = "CORRECT SPELLING:";
+        result = insertLineBreak(result);
+        for (String positive : positives) {
+            result += positive;
+            result = insertSpace(result);
+        }
+        result = insertLineBreak(insertLineBreak(result));
+        result += "POTENTIALLY WRONG SPELLING:";
+        result = insertLineBreak(result);
+        for (String negative : negatives) {
+            result += negative;
+            result = insertSpace(result);
+        }
+        result = insertLineBreak(insertLineBreak(result));
+        result += percentageValue + " % sind Wörter aus dem Lexikon";
+        return result;
+    }
+
+    private String insertLineBreak(String string){
+        return string += "\n";
+    }
+
+    private String insertSpace(String string){
+        return string += " ";
     }
 }
