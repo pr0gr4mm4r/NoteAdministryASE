@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 import static base.start.NoteAdministryStart.programIsRunning;
 
@@ -28,7 +28,7 @@ public class NoteDeleter implements Deleter {
     }
 
     private void deleteWholeDirectory() {
-        try (Stream<Path> pathStream = Files.walk(Paths.get(path))) {
+        try (Stream<Path> pathStream = Files.walk(Paths.get(path_for_notes))) {
             pathStream.map(Path::toFile).forEach(File::delete);
             System.out.println("delete successful!");
         } catch (IOException e) {

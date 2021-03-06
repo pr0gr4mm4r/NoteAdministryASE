@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
 import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
 
@@ -25,7 +25,7 @@ public class MultiNoteProcessor {
 
     public MultiNoteProcessor() {
         try {
-            noteNames = listNoteNames(path, 1);
+            noteNames = listNoteNames(path_for_notes, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,7 +77,7 @@ public class MultiNoteProcessor {
     }
 
     public static String getPath() {
-        return path;
+        return path_for_notes;
     }
 
     public List<Path> getPathList() {

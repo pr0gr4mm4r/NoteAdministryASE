@@ -18,9 +18,8 @@ import base.start.model.CommandList;
 import base.start.model.HelpMode;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 
 public class NoteAdministryStart {
@@ -53,8 +52,8 @@ public class NoteAdministryStart {
     private static void fillCommands() {
         commandList = new CommandList();
         commandList.add(new Command("declare", "create a new note with a header containing creating date and time"));
-        commandList.add(new Command("delete", "delete a single note in directory" + path));
-        commandList.add(new Command("delete all", "delete all notes in directory" + path));
+        commandList.add(new Command("delete", "delete a single note in directory" + path_for_notes));
+        commandList.add(new Command("delete all", "delete all notes in directory" + path_for_notes));
         commandList.add(new Command("edit", "replace a single line of a note"));
         commandList.add(new Command("help", "display a list of commands"));
         commandList.add(new Command("help+", "display a list of commands with a short description"));
@@ -64,9 +63,9 @@ public class NoteAdministryStart {
         commandList.add(new Command("send", "send a note via email"));
         commandList.add(new Command("sc sn", "check single word/s for spelling"));
         commandList.add(new Command("sc sw", "check the spelling for a specific note"));
-        commandList.add(new Command("sc all", "check the spelling for all files in directory" + path));
-        commandList.add(new Command("word count", "count words of all notes in directory"  + path));
-        commandList.add(new Command("word count all", "count words of a specific note in directory" + path));
+        commandList.add(new Command("sc all", "check the spelling for all files in directory" + path_for_notes));
+        commandList.add(new Command("word count", "count words of all notes in directory"  + path_for_notes));
+        commandList.add(new Command("word count all", "count words of a specific note in directory" + path_for_notes));
         commandList.add(new Command("exit", "exit program"));
     }
 

@@ -9,28 +9,31 @@ import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
-import static base.config.Globals.path;
-import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
+import static base.config.Globals.path_for_logfiles;
 import static base.notes.crud.declare.NoteDeclarator.createCurrentTimeString;
 import static base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class LogFileDeclarator {
     private final String action;
-    private final String logFileName;
+    private String logFileName;
     public LogFileDeclarator(String content, String action){
         this.action = action;
         logFileName = generateDefaultLogFileName();
-        Path completePath = createCompletePath(path + logFileName);
+        Path completePath = createCompletePath(logFileName);
+        System.out.println(completePath);
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
             addHeader(completePath, action);
             addContent(content, completePath);
             printSuccessMessage();
         }
-
     }
 
-    private void addContent(String content, Path completePath) {
+    public static Path createCompletePath(String logfileName) {
+        return Paths.get(path_for_logfiles + logfileName);
+    }
+
+    public void addContent(String content, Path completePath) {
         try {
             Files.write(
                     Paths.get(String.valueOf(completePath)),

@@ -3,7 +3,7 @@ package base.notes.processors;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
 import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
 
@@ -40,7 +40,7 @@ public class SingleNoteProcessor {
     }
 
     public static String getPath() {
-        return path;
+        return path_for_notes;
     }
 
     public String getNoteName() {

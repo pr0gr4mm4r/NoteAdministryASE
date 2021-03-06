@@ -32,7 +32,7 @@ public class NoteDeclaratorTest {
 
     @Test
     public void path() {
-        String path = Globals.path;
+        String path = Globals.path_for_notes;
         assertEquals(path, "src/main/java/base/files/");
     }
 }

@@ -28,16 +28,16 @@ public class SingleNoteSpellCheckerResultFormatter {
             result = insertSpace(result);
         }
         result = insertLineBreak(insertLineBreak(result));
-        result += percentageValue + " % sind Wörter aus dem Lexikon";
+        result += percentageValue + "% of words can be found in RiTa Dictionary";
         result = insertLineBreak(result);
         return result;
     }
 
     public static String insertLineBreak(String string){
-        return string += "\n";
+        return string + "\n";
     }
 
     private String insertSpace(String string){
-        return string += " ";
+        return string + " ";
     }
 }

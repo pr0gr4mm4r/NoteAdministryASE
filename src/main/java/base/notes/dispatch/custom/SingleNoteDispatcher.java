@@ -16,7 +16,7 @@ import static base.config.Globals.scanner;
 
 import java.util.Properties;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 
 public class SingleNoteDispatcher {
     //Zum Funktionieren die Option "Zugriff durch weniger sichere Apps" im Googlekonto aktivieren
@@ -28,9 +28,9 @@ public class SingleNoteDispatcher {
         String password = scanner.nextLine();
         System.out.println("Provide the email address of the recipient");
         String recipient = scanner.nextLine();
-        System.out.println("Which file from " + path + " do you want to attach? (Hint: filename is sufficent, no path spec needed)");
+        System.out.println("Which file from " + path_for_notes + " do you want to attach? (Hint: filename is sufficent, no path spec needed)");
         String fileName = scanner.nextLine();
-        String completePath = path + fileName;
+        String completePath = path_for_notes + fileName;
         SendingInformation sendingInformation = new SendingInformation.Builder()
                 .password(password)
                 .path(completePath)

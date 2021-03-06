@@ -31,8 +31,8 @@ public class OverviewSpellChecker {
             percentageValueList.add(percentageValue);
         }
         String result = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
-        LogFileDeclarator logFileDeclarator = new LogFileDeclarator(result, "Spellcheck All Notes");
-        System.out.println(result);
+        new LogFileDeclarator(result, "Spellcheck All Notes");
+        //System.out.println(result);
     }
 
     public WordExistenceMapList getWordExistenceMapList() {

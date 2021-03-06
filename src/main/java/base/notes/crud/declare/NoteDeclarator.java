@@ -9,7 +9,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
-import static base.config.Globals.path;
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 import static base.start.NoteAdministryStart.programRun;
 
@@ -77,7 +77,7 @@ public class NoteDeclarator {
     }
 
     public static Path createCompletePath(String noteName) {
-        return Paths.get(path + noteName);
+        return Paths.get(path_for_notes + noteName);
     }
 
     public Scanner getScanner() {
