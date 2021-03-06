@@ -1,8 +1,11 @@
 package base.logfiles.crud.declare;
 
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
@@ -18,7 +21,34 @@ public class LogFileDeclarator {
         this.action = action;
         logFileName = generateDefaultLogFileName();
         Path completePath = createCompletePath(path + logFileName);
-        addHeader(completePath);
+        final boolean noteDoesNotExist = tryToCreateFile(completePath);
+        if (noteDoesNotExist) {
+            addHeader(completePath, action);
+            addContent(content, completePath);
+            printSuccessMessage();
+        }
+
+    }
+
+    private void addContent(String content, Path completePath) {
+        try {
+            Files.write(
+                    Paths.get(String.valueOf(completePath)),
+                    content.getBytes(),
+                    StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean tryToCreateFile(Path completePath) {
+        try {
+            Files.createFile(completePath);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private String generateDefaultLogFileName() {
@@ -28,7 +58,7 @@ public class LogFileDeclarator {
     }
 
 
-    public void addHeader(Path completePath) {
+    public void addHeader(Path completePath, String action) {
         String time = createCurrentTimeString();
         String header = this.logFileName + " " + time;
         header = insertLineBreak(header);
@@ -36,9 +66,13 @@ public class LogFileDeclarator {
         byte[] bytes = header.getBytes();
         try {
             Files.write(completePath, bytes);
-            System.out.println("success");
+            printSuccessMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void printSuccessMessage() {
+        System.out.println("Creation of logfile was successful");
     }
 }

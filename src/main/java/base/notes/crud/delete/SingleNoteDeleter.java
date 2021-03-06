@@ -1,5 +1,7 @@
 package base.notes.crud.delete;
 
+import base.interfaces.Deleter;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +13,7 @@ import java.util.stream.Stream;
 
 import static base.start.NoteAdministryStart.programIsRunning;
 
-public class SingleNoteDeleter {
+public class SingleNoteDeleter implements Deleter {
     final protected static String path = "src/main/java/base/files/";
     protected Scanner scanner;
     protected String fileToDelete;

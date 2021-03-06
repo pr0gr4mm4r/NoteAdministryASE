@@ -26,11 +26,16 @@ public class NoteDeclarator {
     }
 
     public void declareNote(Path completePath) {
-        final boolean noteDoesExist = tryToCreateFile(completePath);
-        if (noteDoesExist) {
+        final boolean noteDoesNotExist = tryToCreateFile(completePath);
+        if (noteDoesNotExist) {
             addHeader(completePath);
             addDummyLines(completePath);
+            printSuccessMessage();
         }
+    }
+
+    private void printSuccessMessage() {
+        System.out.println("Creation of note was successful");
     }
 
     public boolean tryToCreateFile(Path completePath) {
@@ -49,7 +54,6 @@ public class NoteDeclarator {
         byte[] bytes = header.getBytes();
         try {
             Files.write(completePath, bytes);
-            System.out.println("success");
         } catch (IOException e) {
             e.printStackTrace();
         }

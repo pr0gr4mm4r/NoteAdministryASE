@@ -1,5 +1,7 @@
 package base.notes.crud.delete;
 
+import base.interfaces.Deleter;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +13,7 @@ import static base.config.Globals.path;
 import static base.config.Globals.scanner;
 import static base.start.NoteAdministryStart.programIsRunning;
 
-public class NoteDeleter {
+public class NoteDeleter implements Deleter {
     private final String confirmation;
 
     public NoteDeleter() {
