@@ -1,12 +1,24 @@
 package base.logfiles.crud.declare;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+import static base.config.Globals.path;
+import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
+import static base.notes.crud.declare.NoteDeclarator.createCurrentTimeString;
+import static base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
+
 public class LogFileDeclarator {
-    private String logFileContent;
-    public LogFileDeclarator(String logFileContent){
-        this.logFileContent = logFileContent;
+    private final String action;
+    private final String logFileName;
+    public LogFileDeclarator(String content, String action){
+        this.action = action;
+        logFileName = generateDefaultLogFileName();
+        Path completePath = createCompletePath(path + logFileName);
+        addHeader(completePath);
     }
 
     private String generateDefaultLogFileName() {
@@ -15,12 +27,18 @@ public class LogFileDeclarator {
         return logfileName;
     }
 
-    public String getLogFileContent() {
-        return logFileContent;
-    }
 
-    public void setLogFileContent(String logFileContent) {
-        this.logFileContent = logFileContent;
+    public void addHeader(Path completePath) {
+        String time = createCurrentTimeString();
+        String header = this.logFileName + " " + time;
+        header = insertLineBreak(header);
+        header += action;
+        byte[] bytes = header.getBytes();
+        try {
+            Files.write(completePath, bytes);
+            System.out.println("success");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }

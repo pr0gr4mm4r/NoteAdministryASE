@@ -14,6 +14,7 @@ import base.singleWord.SingleWordSpellchecker;
 import base.notes.wordcount.custom.OverviewCounter;
 import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;
+import base.start.model.CommandList;
 import base.start.model.HelpMode;
 
 import java.util.*;
@@ -23,23 +24,10 @@ import static base.config.Globals.path;
 import static base.config.Globals.scanner;
 
 public class NoteAdministryStart {
-    private static List<Command> commandList;
+    private static CommandList commandList;
     public static boolean programRun = false;
 
-    private static void listCommands(HelpMode helpMode) {
-        System.out.println();
-        if(helpMode.equals(HelpMode.EXTENDED)) {
-            System.out.println(commandList.stream().map(
-                    command -> command.getComandName() + "   |   " +
-                            command.getDescription() + "\n").collect(Collectors.joining())
-            );
-            return;
-        }
-        System.out.println(commandList.stream().map(
-                command -> command.getComandName() + "    ").collect(Collectors.joining())
-        );
-        System.out.println();
-    }
+
 
     private static void mapCommandExecution(Command activeCommand) {
         switch (activeCommand.getComandName()) {
@@ -47,8 +35,8 @@ public class NoteAdministryStart {
             case "delete" -> new SingleNoteDeleter();
             case "delete all" -> new NoteDeleter();
             case "edit" -> new NoteLineEditor();
-            case "help" -> listCommands(HelpMode.BASIC);
-            case "help+" -> listCommands(HelpMode.EXTENDED);
+            case "help" -> commandList.listCommands(HelpMode.BASIC);
+            case "help+" -> commandList.listCommands(HelpMode.EXTENDED);
             case "read" -> new NoteReader();
             case "search" -> new SingleNoteWordFinder();
             case "search all" -> new OverviewWordFinder();
@@ -63,7 +51,7 @@ public class NoteAdministryStart {
     }
 
     private static void fillCommands() {
-        commandList = new ArrayList<>();
+        commandList = new CommandList();
         commandList.add(new Command("declare", "create a new note with a header containing creating date and time"));
         commandList.add(new Command("delete", "delete a single note in directory" + path));
         commandList.add(new Command("delete all", "delete all notes in directory" + path));

@@ -67,7 +67,7 @@ public class NoteDeclarator {
         }
     }
 
-    public String createCurrentTimeString() {
+    public static String createCurrentTimeString() {
         String rawDateString = Instant.now().plus(2, ChronoUnit.HOURS).toString();
         return rawDateString.replace("T", " ").substring(0, rawDateString.length() - 11);
     }
