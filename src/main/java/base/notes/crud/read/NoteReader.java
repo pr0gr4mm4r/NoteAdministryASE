@@ -6,15 +6,14 @@ import java.nio.file.Path;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static base.config.Globals.scanner;
-import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
 public class NoteReader {
 
-    public NoteReader() {
-        System.out.println("Please provide a name for the note to read:");
-        String noteName = scanner.nextLine();
-        Path path = createCompletePath(noteName);
+    public NoteReader(Path path) {
         String note = readNote(path);
+        displayNote(note);
+    }
+
+    private void displayNote(String note) {
         System.out.println(note);
     }
 
