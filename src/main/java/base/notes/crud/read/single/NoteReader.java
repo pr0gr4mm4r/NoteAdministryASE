@@ -1,4 +1,4 @@
-package base.notes.crud.read;
+package base.notes.crud.read.single;
 
 import java.io.IOException;
 import java.nio.file.Files;

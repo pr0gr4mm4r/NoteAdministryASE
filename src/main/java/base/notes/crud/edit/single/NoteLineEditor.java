@@ -1,4 +1,4 @@
-package base.notes.crud.edit;
+package base.notes.crud.edit.single;
 
 import base.notes.wordcount.raw.NoteCounterRaw;
 

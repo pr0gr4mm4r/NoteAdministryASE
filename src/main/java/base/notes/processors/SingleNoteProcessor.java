@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
-import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
+import static base.notes.crud.read.single.NoteReader.readNoteForFurtherProcessing;
 
 public class SingleNoteProcessor implements Processor {
     private Path completePath;

@@ -1,4 +1,4 @@
-package base.notes.crud.delete.all;
+package base.notes.crud.delete.multi;
 
 import java.io.IOException;
 

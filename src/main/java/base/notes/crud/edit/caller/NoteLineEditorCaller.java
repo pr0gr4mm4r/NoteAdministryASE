@@ -1,5 +1,7 @@
-package base.notes.crud.edit;
+package base.notes.crud.edit.caller;
 
+
+import base.notes.crud.edit.single.NoteLineEditor;
 
 import java.nio.file.Path;
 

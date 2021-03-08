@@ -1,4 +1,4 @@
-package base.notes.spellcheck.custom;
+package base.notes.spellcheck.single;
 
 import base.notes.processors.SingleNoteProcessor;
 import base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;

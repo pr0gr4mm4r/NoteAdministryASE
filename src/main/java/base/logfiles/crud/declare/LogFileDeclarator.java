@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
 import static base.config.Globals.path_for_logfiles;
-import static base.notes.crud.declare.NoteDeclarator.createCurrentTimeString;
+import static base.notes.crud.declare.single.NoteDeclarator.createCurrentTimeString;
 import static base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class LogFileDeclarator {

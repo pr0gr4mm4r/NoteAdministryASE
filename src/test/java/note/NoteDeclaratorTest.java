@@ -1,11 +1,6 @@
 package note;
 
-import base.config.Globals;
-import base.notes.crud.declare.NoteDeclarator;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.Scanner;
+import base.notes.crud.declare.single.NoteDeclarator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

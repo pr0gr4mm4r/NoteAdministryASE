@@ -1,15 +1,14 @@
-package base.notes.spellcheck.custom;
+package base.notes.spellcheck.multi;
 
 import base.logfiles.crud.declare.LogFileDeclarator;
 import base.notes.processors.MultiNoteProcessor;
 import base.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
 import base.notes.spellcheck.model.WordExistenceMapList;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.notes.spellcheck.model.WordExistenceMap;
 
 import java.util.*;
 
-import static base.notes.spellcheck.custom.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
+import static base.notes.spellcheck.single.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
 
 
 public class OverviewSpellChecker {

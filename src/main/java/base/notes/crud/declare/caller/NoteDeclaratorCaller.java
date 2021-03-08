@@ -1,6 +1,6 @@
 package base.notes.crud.declare.caller;
 
-import base.notes.crud.declare.NoteDeclarator;
+import base.notes.crud.declare.single.NoteDeclarator;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
