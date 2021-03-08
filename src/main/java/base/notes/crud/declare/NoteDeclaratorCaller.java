@@ -9,7 +9,7 @@ import static base.config.Globals.scanner;
 import static base.start.NoteAdministryStart.programRun;
 
 public class NoteDeclaratorCaller {
-    private String noteName;
+    private final String noteName;
     public NoteDeclaratorCaller() {
         if (programRun) {
             System.out.println("Please provide a name for the note:");

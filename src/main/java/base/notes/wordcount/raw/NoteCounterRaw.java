@@ -51,6 +51,7 @@ public class NoteCounterRaw {
         }
     }
 
+
     public int countWordsOfNote(SingleNoteProcessor singleNoteProcessor) {
         wordCount = singleNoteProcessor.getWordList().length;
         return wordCount;

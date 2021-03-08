@@ -1,4 +1,4 @@
-package base.notes.dispatch.custom;
+package base.notes.dispatch.action;
 
 import base.notes.dispatch.model.SendingInformation;
 import base.notes.dispatch.raw.DispatcherRaw;

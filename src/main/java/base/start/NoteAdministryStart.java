@@ -1,12 +1,13 @@
 package base.start;
 
-import base.notes.crud.declare.NoteDeclarator;
 import base.notes.crud.declare.NoteDeclaratorCaller;
-import base.notes.crud.delete.NoteDeleter;
-import base.notes.crud.delete.SingleNoteDeleter;
+import base.notes.crud.delete.all.NoteDeleterCaller;
+import base.notes.crud.delete.single.SingleNoteDeleter;
+import base.notes.crud.delete.single.SingleNoteDeleterCaller;
+import base.notes.crud.edit.NoteLineEditorCaller;
 import base.notes.crud.read.NoteReader;
 import base.notes.crud.edit.NoteLineEditor;
-import base.notes.dispatch.custom.SingleNoteDispatcher;
+import base.notes.dispatch.action.SingleNoteDispatcher;
 import base.notes.find.OverviewWordFinder;
 import base.notes.find.SingleNoteWordFinder;
 import base.notes.spellcheck.custom.OverviewSpellChecker;
@@ -32,9 +33,9 @@ public class NoteAdministryStart {
     private static void mapCommandExecution(Command activeCommand) {
         switch (activeCommand.getComandName()) {
             case "declare" -> new NoteDeclaratorCaller();
-            case "delete" -> new SingleNoteDeleter();
-            case "delete all" -> new NoteDeleter();
-            case "edit" -> new NoteLineEditor();
+            case "delete" -> new SingleNoteDeleterCaller();
+            case "delete all" -> new NoteDeleterCaller();
+            case "edit" -> new NoteLineEditorCaller();
             case "help" -> commandList.listCommands(HelpMode.BASIC);
             case "help+" -> commandList.listCommands(HelpMode.EXTENDED);
             case "read" -> new NoteReader();

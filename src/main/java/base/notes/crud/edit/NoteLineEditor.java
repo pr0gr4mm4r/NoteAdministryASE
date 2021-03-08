@@ -1,47 +1,38 @@
 package base.notes.crud.edit;
 
+import base.notes.wordcount.raw.NoteCounterRaw;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
-import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
+import static base.config.Globals.scanner;
 
 public class NoteLineEditor {
-    final private Scanner scanner = new Scanner(System.in);
     private long lineLength = 0;
 
-    public NoteLineEditor() {
-        System.out.println("Which note do you want to change?");
-        final String fileName = scanner.nextLine();
-        final Path completePath = createCompletePath(fileName);
-        if (displayFileWithLineNumbers(completePath)) {
+    public NoteLineEditor(Path path, String fileName) {
+        boolean noteSuccessfullyDisplayed = displayFileWithLineNumbers(path);
+        if (!noteSuccessfullyDisplayed) {
+            openErrorDialogue(path);
             return;
         }
-        lineLength = getLineLength(completePath);
-        if (lineLength != 0) {
+        NoteCounterRaw noteCounterRaw = new NoteCounterRaw(fileName);
+        lineLength = noteCounterRaw.getLineCount();
+        if (lineLength > 1) {
             System.out.println("Which line do you want to overwrite? The manipulation range is: 2 - " + lineLength);
             int lineNumber = scanner.nextInt();
             scanner.nextLine();
-            if (noteHasEnoughLines(completePath, lineNumber)) {
-                openChangeDialogue(completePath, lineNumber);
+            if (noteHasEnoughLines(path, lineNumber)) {
+                openChangeDialogue(path, lineNumber);
             } else {
-                openErrorDialogue(completePath);
+                openErrorDialogue(path);
             }
         }
-    }
-
-    private long getLineLength(Path completePath) {
-        try (Stream<String> lineStream = Files.lines(completePath)) {
-            lineLength = lineStream.count();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return lineLength;
     }
 
     private void openErrorDialogue(Path completePath) {
@@ -97,10 +88,10 @@ public class NoteLineEditor {
             while ((str = lineNumberReader.readLine()) != null) {
                 System.out.println(lineNumberReader.getLineNumber() + ": " + str);
             }
-            return false;
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
-            return true;
+            return false;
         }
     }
 }

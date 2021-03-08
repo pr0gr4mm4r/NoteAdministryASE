@@ -16,6 +16,7 @@ public class NoteDeclarator {
     public NoteDeclarator(Path pathToNote, String noteName) {
        this.noteName = noteName;
        this.pathToNote = pathToNote;
+       declareNote(pathToNote);
     }
 
     public void declareNote(Path completePath) {
