@@ -5,8 +5,9 @@ import base.notes.processors.MultiNoteProcessor;
 import base.notes.sort.model.WordCountMap;
 import base.notes.wordcount.raw.NoteCounterRaw;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 
 public class WordCountNoteSorter implements Sorter {
@@ -17,15 +18,17 @@ public class WordCountNoteSorter implements Sorter {
         List<String> noteList = multiNoteProcessor.getNoteList();
         List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
         List<Integer> wordCountList = noteCounterRaw.getWordCountList();
-        System.out.println(noteList);
-        WordCountMap<String, Integer> wordCountMap = new WordCountMap();
+        WordCountMap wordCountMap = new WordCountMap();
         for (int i = 0; i < noteList.size(); i++) {
             String nameOfNote = nameList.get(i);
             Integer wordCount = wordCountList.get(i);
             wordCountMap.put(nameOfNote, wordCount);
         }
-
-        System.out.println(wordCountMap);
+        Set wordCountSet = wordCountMap.entrySet();
+        List wordCountList2 = new ArrayList(wordCountSet);
+        Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
+        wordCountList2.sort(valueComparator);
+        System.out.println(wordCountList2);
         return noteList.toString();
     }
 }
