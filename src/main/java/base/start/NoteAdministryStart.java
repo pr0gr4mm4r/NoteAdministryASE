@@ -30,8 +30,6 @@ public class NoteAdministryStart {
     private static CommandList commandList;
     public static boolean programRun = false;
 
-
-
     private static void mapCommandExecution(Command activeCommand) {
         switch (activeCommand.getComandName()) {
             case "declare" -> new NoteDeclaratorCaller();
@@ -68,7 +66,7 @@ public class NoteAdministryStart {
         commandList.add(new Command("sc sn", "check single word/s for spelling"));
         commandList.add(new Command("sc sw", "check the spelling for a specific note"));
         commandList.add(new Command("sc all", "check the spelling for all files in directory" + path_for_notes));
-        commandList.add(new Command("word count", "count words of all notes in directory"  + path_for_notes));
+        commandList.add(new Command("word count", "count words of all notes in directory" + path_for_notes));
         commandList.add(new Command("word count all", "count words of a specific note in directory" + path_for_notes));
         commandList.add(new Command("exit", "exit program"));
     }
