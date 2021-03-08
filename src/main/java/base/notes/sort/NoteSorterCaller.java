@@ -5,8 +5,8 @@ import base.notes.sort.model.CriteriaMap;
 
 import static base.config.Globals.scanner;
 
-public class NoteSorter {
-    public NoteSorter() {
+public class NoteSorterCaller {
+    public NoteSorterCaller() {
         System.out.println("After which criteria do you want to sort notes?");
         System.out.println("You can choose between ");
         String criteria = scanner.nextLine();

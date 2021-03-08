@@ -2,16 +2,13 @@ package base.start;
 
 import base.notes.crud.declare.NoteDeclaratorCaller;
 import base.notes.crud.delete.all.NoteDeleterCaller;
-import base.notes.crud.delete.single.SingleNoteDeleter;
 import base.notes.crud.delete.single.SingleNoteDeleterCaller;
 import base.notes.crud.edit.NoteLineEditorCaller;
-import base.notes.crud.read.NoteReader;
-import base.notes.crud.edit.NoteLineEditor;
 import base.notes.crud.read.NoteReaderCaller;
-import base.notes.dispatch.action.SingleNoteDispatcher;
 import base.notes.dispatch.action.SingleNoteDispatcherCaller;
 import base.notes.find.OverviewWordFinder;
 import base.notes.find.SingleNoteWordFinder;
+import base.notes.sort.NoteSorterCaller;
 import base.notes.spellcheck.custom.OverviewSpellChecker;
 import base.notes.spellcheck.custom.SingleNoteSpellChecker;
 import base.singleWord.SingleWordSpellchecker;
@@ -45,6 +42,7 @@ public class NoteAdministryStart {
             case "sc sn" -> new SingleNoteSpellChecker();
             case "sc sw" -> new SingleWordSpellchecker();
             case "sc all" -> new OverviewSpellChecker();
+            case "sort" -> new NoteSorterCaller();
             case "word count" -> new SingleNoteCounter();
             case "word count all" -> new OverviewCounter();
             case "exit" -> programExit();
@@ -66,6 +64,7 @@ public class NoteAdministryStart {
         commandList.add(new Command("sc sn", "check single word/s for spelling"));
         commandList.add(new Command("sc sw", "check the spelling for a specific note"));
         commandList.add(new Command("sc all", "check the spelling for all files in directory" + path_for_notes));
+        commandList.add(new Command("sort", "output sorted overview of files in directory" + path_for_notes));
         commandList.add(new Command("word count", "count words of all notes in directory" + path_for_notes));
         commandList.add(new Command("word count all", "count words of a specific note in directory" + path_for_notes));
         commandList.add(new Command("exit", "exit program"));
