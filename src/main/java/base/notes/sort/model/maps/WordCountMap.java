@@ -1,4 +1,4 @@
-package base.notes.sort.model;
+package base.notes.sort.model.maps;
 
 import java.util.HashMap;
 

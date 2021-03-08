@@ -1,13 +1,12 @@
-package base.notes.sort;
+package base.notes.sort.sorter;
 
 import base.interfaces.Sorter;
 import base.notes.processors.MultiNoteProcessor;
-import base.notes.sort.model.WordCountMap;
+import base.notes.sort.model.maps.WordCountMap;
 import base.notes.wordcount.raw.NoteCounterRaw;
 
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 
 public class WordCountNoteSorter implements Sorter {

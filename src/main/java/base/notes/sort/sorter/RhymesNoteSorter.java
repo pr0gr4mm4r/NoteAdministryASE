@@ -1,4 +1,4 @@
-package base.notes.sort;
+package base.notes.sort.sorter;
 
 import base.interfaces.Sorter;
 

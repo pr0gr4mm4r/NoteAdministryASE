@@ -1,6 +1,6 @@
 package base.start;
 
-import base.notes.crud.declare.NoteDeclaratorCaller;
+import base.notes.crud.declare.caller.NoteDeclaratorCaller;
 import base.notes.crud.delete.all.NoteDeleterCaller;
 import base.notes.crud.delete.single.SingleNoteDeleterCaller;
 import base.notes.crud.edit.NoteLineEditorCaller;
@@ -8,7 +8,7 @@ import base.notes.crud.read.NoteReaderCaller;
 import base.notes.dispatch.action.SingleNoteDispatcherCaller;
 import base.notes.find.OverviewWordFinder;
 import base.notes.find.SingleNoteWordFinder;
-import base.notes.sort.NoteSorterCaller;
+import base.notes.sort.caller.NoteSorterCaller;
 import base.notes.spellcheck.custom.OverviewSpellChecker;
 import base.notes.spellcheck.custom.SingleNoteSpellChecker;
 import base.singleWord.SingleWordSpellchecker;

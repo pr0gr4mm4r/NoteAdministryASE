@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static base.config.Globals.path_for_notes;
-import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
+import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
 
 public class MultiNoteProcessor implements Processor {

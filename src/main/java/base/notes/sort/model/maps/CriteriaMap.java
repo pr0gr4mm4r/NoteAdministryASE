@@ -1,8 +1,8 @@
-package base.notes.sort.model;
+package base.notes.sort.model.maps;
 
 import base.interfaces.Sorter;
-import base.notes.sort.RhymesNoteSorter;
-import base.notes.sort.WordCountNoteSorter;
+import base.notes.sort.sorter.RhymesNoteSorter;
+import base.notes.sort.sorter.WordCountNoteSorter;
 
 import java.util.HashMap;
 

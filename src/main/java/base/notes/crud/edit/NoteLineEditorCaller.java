@@ -4,7 +4,7 @@ package base.notes.crud.edit;
 import java.nio.file.Path;
 
 import static base.config.Globals.*;
-import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
+import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 
 public class NoteLineEditorCaller {
     public NoteLineEditorCaller(){

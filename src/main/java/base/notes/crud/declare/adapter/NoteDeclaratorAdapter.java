@@ -1,4 +1,4 @@
-package base.notes.crud.declare;
+package base.notes.crud.declare.adapter;
 
 import base.interfaces.Declarator;
 

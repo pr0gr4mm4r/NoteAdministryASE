@@ -1,7 +1,7 @@
-package base.notes.sort;
+package base.notes.sort.caller;
 
 import base.interfaces.Sorter;
-import base.notes.sort.model.CriteriaMap;
+import base.notes.sort.model.maps.CriteriaMap;
 
 import java.util.stream.Collectors;
 
