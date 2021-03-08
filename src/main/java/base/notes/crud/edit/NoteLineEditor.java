@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
+import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
 
 public class NoteLineEditor {
     final private Scanner scanner = new Scanner(System.in);

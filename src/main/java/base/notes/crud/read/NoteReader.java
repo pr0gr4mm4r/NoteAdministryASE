@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static base.config.Globals.scanner;
-import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
-
+import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
 public class NoteReader {
 
     public NoteReader() {

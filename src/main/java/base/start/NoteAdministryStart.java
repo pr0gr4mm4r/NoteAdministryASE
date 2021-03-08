@@ -1,6 +1,7 @@
 package base.start;
 
 import base.notes.crud.declare.NoteDeclarator;
+import base.notes.crud.declare.NoteDeclaratorCaller;
 import base.notes.crud.delete.NoteDeleter;
 import base.notes.crud.delete.SingleNoteDeleter;
 import base.notes.crud.read.NoteReader;
@@ -30,7 +31,7 @@ public class NoteAdministryStart {
 
     private static void mapCommandExecution(Command activeCommand) {
         switch (activeCommand.getComandName()) {
-            case "declare" -> new NoteDeclarator();
+            case "declare" -> new NoteDeclaratorCaller();
             case "delete" -> new SingleNoteDeleter();
             case "delete all" -> new NoteDeleter();
             case "edit" -> new NoteLineEditor();

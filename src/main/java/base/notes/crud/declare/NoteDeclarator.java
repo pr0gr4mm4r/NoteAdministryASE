@@ -7,22 +7,15 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Scanner;
 
-import static base.config.Globals.path_for_notes;
-import static base.config.Globals.scanner;
-import static base.start.NoteAdministryStart.programRun;
 
 public class NoteDeclarator {
-    private String noteName;
+    String noteName;
+    Path pathToNote;
 
-    public NoteDeclarator() {
-        if (programRun) {
-            System.out.println("Please provide a name for the note:");
-        }
-        this.noteName = scanner.nextLine();
-        final Path newFilePath = createCompletePath(noteName);
-        declareNote(newFilePath);
+    public NoteDeclarator(Path pathToNote, String noteName) {
+       this.noteName = noteName;
+       this.pathToNote = pathToNote;
     }
 
     public void declareNote(Path completePath) {
@@ -76,19 +69,20 @@ public class NoteDeclarator {
         return rawDateString.replace("T", " ").substring(0, rawDateString.length() - 11);
     }
 
-    public static Path createCompletePath(String noteName) {
-        return Paths.get(path_for_notes + noteName);
-    }
-
-    public Scanner getScanner() {
-        return scanner;
-    }
-
     public String getNoteName() {
         return noteName;
     }
 
     public void setNoteName(String noteName) {
         this.noteName = noteName;
-    }}
+    }
+
+    public Path getPathToNote() {
+        return pathToNote;
+    }
+
+    public void setPathToNote(Path pathToNote) {
+        this.pathToNote = pathToNote;
+    }
+}
 

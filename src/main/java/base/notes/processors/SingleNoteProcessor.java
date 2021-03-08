@@ -1,13 +1,15 @@
 package base.notes.processors;
 
+import base.interfaces.Processor;
+
 import java.nio.file.Path;
 import java.util.Arrays;
 
 import static base.config.Globals.path_for_notes;
-import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
+import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
 import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
 
-public class SingleNoteProcessor {
+public class SingleNoteProcessor implements Processor {
     private Path completePath;
     private String noteName;
     private String[] wordList;

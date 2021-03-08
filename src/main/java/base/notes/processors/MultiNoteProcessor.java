@@ -1,5 +1,7 @@
 package base.notes.processors;
 
+import base.interfaces.Processor;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,10 +14,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static base.config.Globals.path_for_notes;
-import static base.notes.crud.declare.NoteDeclarator.createCompletePath;
+import static base.notes.crud.declare.NoteDeclaratorCaller.createCompletePath;
 import static base.notes.crud.read.NoteReader.readNoteForFurtherProcessing;
 
-public class MultiNoteProcessor {
+public class MultiNoteProcessor implements Processor {
     private List<Path> pathList = new ArrayList<>();
     private List<String> noteList = new ArrayList<>();
     private List<String[]> separatedWordListList = new ArrayList<>();
