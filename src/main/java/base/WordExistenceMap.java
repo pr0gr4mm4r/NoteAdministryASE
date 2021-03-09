@@ -1,4 +1,4 @@
-package base.notes.spellcheck.model;
+package base;
 
 import java.util.HashMap;
 import java.util.List;

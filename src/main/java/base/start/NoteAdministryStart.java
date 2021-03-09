@@ -1,11 +1,11 @@
 package base.start;
 
 import base.notes.crud.declare.caller.NoteDeclaratorCaller;
-import base.notes.crud.delete.multi.NoteDeleterCaller;
-import base.notes.crud.delete.single.SingleNoteDeleterCaller;
+import base.notes.crud.delete.caller.NoteDeleterCaller;
+import base.notes.crud.delete.caller.SingleNoteDeleterCaller;
 import base.notes.crud.edit.caller.NoteLineEditorCaller;
 import base.notes.crud.read.caller.NoteReaderCaller;
-import base.notes.dispatch.action.SingleNoteDispatcherCaller;
+import base.notes.dispatch.caller.SingleNoteDispatcherCaller;
 import base.notes.find.OverviewWordFinder;
 import base.notes.find.SingleNoteWordFinder;
 import base.notes.sort.caller.NoteSorterCaller;

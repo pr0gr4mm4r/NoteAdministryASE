@@ -2,7 +2,7 @@ package base.singleWord;
 
 import base.notes.processors.SingleNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.notes.spellcheck.model.WordExistenceMap;
+import base.WordExistenceMap;
 
 import static base.config.Globals.scanner;
 

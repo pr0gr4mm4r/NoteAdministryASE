@@ -1,4 +1,6 @@
-package base.notes.crud.delete.single;
+package base.notes.crud.delete.caller;
+
+import base.notes.crud.delete.single.SingleNoteDeleter;
 
 import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;

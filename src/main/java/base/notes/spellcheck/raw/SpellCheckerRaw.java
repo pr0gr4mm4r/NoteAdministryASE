@@ -21,12 +21,12 @@ public class SpellCheckerRaw {
         wordsNotInLexicon = filterNegatives(wordList);
     }
 
-    public List<String> filterNegatives(String[] words) {
+    public static List<String> filterNegatives(String[] words) {
         return Arrays.stream(words).filter(
                 word -> !RiTa._lexicon().hasWord(word)).distinct().collect(Collectors.toList());
     }
 
-    public List<String> filterPositives(String[] words) {
+    public static List<String> filterPositives(String[] words) {
         return Arrays.stream(words).filter(
                 word -> RiTa._lexicon().hasWord(word)).distinct().collect(Collectors.toList());
     }

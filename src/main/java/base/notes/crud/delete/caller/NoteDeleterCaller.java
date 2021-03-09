@@ -1,4 +1,6 @@
-package base.notes.crud.delete.multi;
+package base.notes.crud.delete.caller;
+
+import base.notes.crud.delete.multi.NoteDeleter;
 
 import java.io.IOException;
 

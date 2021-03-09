@@ -1,6 +1,7 @@
-package base.notes.dispatch.action;
+package base.notes.dispatch.caller;
 
 import base.notes.dispatch.model.SendingInformation;
+import base.notes.dispatch.single.SingleNoteDispatcher;
 
 import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
