@@ -1,8 +1,10 @@
 package base.notes.sort.sorter;
 
 import base.interfaces.Sorter;
+import base.logfiles.crud.declare.LogFileDeclarator;
 import base.notes.processors.MultiNoteProcessor;
 import base.WordExistenceMap;
+import base.notes.sort.formatter.RhymesNoteSorterResultFormatter;
 import base.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
 
@@ -10,6 +12,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import static base.config.Globals.scanner;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
@@ -45,6 +48,15 @@ public class RhymesNoteSorter implements Sorter {
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalRhymeOverview.sort(valueComparator);
         System.out.println(finalRhymeOverview);
-        return finalRhymeOverview.toString();
+        RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
+        String result = rhymesNoteSorterResultFormatter.formatList(finalRhymeOverview);
+        System.out.println();
+        System.out.println("Do you want to save the Output as a Logfile?");
+        System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
+        String confirmation = scanner.nextLine();
+        if(confirmation.equals("yes")){
+            new LogFileDeclarator(result, "Sort Notes by quantity of Rhymes");
+        }
+        return result;
     }
 }
