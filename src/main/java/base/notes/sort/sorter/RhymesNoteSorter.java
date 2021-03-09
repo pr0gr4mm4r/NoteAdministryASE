@@ -40,7 +40,6 @@ public class RhymesNoteSorter implements Sorter {
             }
             rhymeOverview.put(noteNames.get(i), counter);
         }
-
         Set rhymeOverviewSet = rhymeOverview.entrySet();
         List finalRhymeOverview = new ArrayList(rhymeOverviewSet);
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);

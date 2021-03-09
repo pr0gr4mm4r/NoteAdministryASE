@@ -12,7 +12,7 @@ public class NoteDeleterCaller {
     public NoteDeleterCaller(){
         if (programIsRunning()) {
             System.out.println("Are you sure to permanently delete all files within 'src/base/files'? ");
-            System.out.println("type 'yes' without '' to confirm or type anything else to abort:");
+            System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         }
         confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {

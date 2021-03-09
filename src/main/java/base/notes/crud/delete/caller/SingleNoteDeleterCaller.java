@@ -14,7 +14,7 @@ public SingleNoteDeleterCaller(){
     System.out.println("Provide the name of the file including ending if present (i.e. .txt)");
     fileToDelete = scanner.nextLine();
     System.out.println("Are you sure to permanently delete this file within 'src/base/files'? ");
-    System.out.println("type 'yes' without '' to confirm or type anything else to abort:");
+    System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
     confirmation = scanner.nextLine();
     if (confirmation.equals("yes")) {
       new SingleNoteDeleter(fileToDelete);

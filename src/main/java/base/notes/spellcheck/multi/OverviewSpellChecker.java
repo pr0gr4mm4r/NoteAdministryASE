@@ -1,5 +1,6 @@
 package base.notes.spellcheck.multi;
 
+import base.config.Globals;
 import base.logfiles.crud.declare.LogFileDeclarator;
 import base.notes.processors.MultiNoteProcessor;
 import base.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
@@ -8,6 +9,7 @@ import base.notes.spellcheck.raw.SpellCheckerRaw;
 
 import java.util.*;
 
+import static base.config.Globals.scanner;
 import static base.notes.spellcheck.single.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
 
 
@@ -30,8 +32,14 @@ public class OverviewSpellChecker {
             percentageValueList.add(percentageValue);
         }
         String result = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
-        new LogFileDeclarator(result, "Spellcheck All Notes");
-        //System.out.println(result);
+        System.out.println(result);
+        System.out.println();
+        System.out.println("Do you want to save the output as a logfile?");
+        System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
+        String confirmation = scanner.nextLine();
+        if(confirmation.equals("yes")){
+            new LogFileDeclarator(result, "Spellcheck All Notes");
+        }
     }
 
     public WordExistenceMapList getWordExistenceMapList() {
