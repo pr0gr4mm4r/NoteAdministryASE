@@ -45,4 +45,8 @@ public class OverviewSpellChecker {
     public WordExistenceMapList getWordExistenceMapList() {
         return wordExistenceMapList;
     }
+
+    public OverviewSpellCheckerResultFormatter getOverviewSpellCheckerResultFormatter() {
+        return overviewSpellCheckerResultFormatter;
+    }
 }

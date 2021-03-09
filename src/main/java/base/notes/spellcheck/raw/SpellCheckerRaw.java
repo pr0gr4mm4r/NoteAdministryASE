@@ -58,4 +58,12 @@ public class SpellCheckerRaw {
     public void setWordListToCheckSpelling(String[] wordListToCheckSpelling) {
         this.wordList = wordListToCheckSpelling;
     }
+
+    public String[] getWordList() {
+        return wordList;
+    }
+
+    public void setWordList(String[] wordList) {
+        this.wordList = wordList;
+    }
 }
