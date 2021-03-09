@@ -3,12 +3,10 @@ package base.notes.sort.sorter;
 import base.interfaces.Sorter;
 import base.notes.processors.MultiNoteProcessor;
 import base.WordExistenceMap;
+import base.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
@@ -20,7 +18,7 @@ public class RhymesNoteSorter implements Sorter {
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
         List<String[]> noteList = multiNoteProcessor.getWordListList();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        Map<String, Integer> rhymeOverview = new HashMap<>();
+        Map<String, Integer> rhymeOverview = new StringIntegerMap<>();
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
             counter = 0;
@@ -42,7 +40,12 @@ public class RhymesNoteSorter implements Sorter {
             }
             rhymeOverview.put(noteNames.get(i), counter);
         }
-        System.out.println(rhymeOverview);
-        return "";
+
+        Set rhymeOverviewSet = rhymeOverview.entrySet();
+        List finalRhymeOverview = new ArrayList(rhymeOverviewSet);
+        Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
+        finalRhymeOverview.sort(valueComparator);
+        System.out.println(finalRhymeOverview);
+        return finalRhymeOverview.toString();
     }
 }
