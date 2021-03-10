@@ -5,17 +5,16 @@ import java.util.Map.Entry;
 
 import static base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
-public class RhymesNoteSorterResultFormatter {
-    public RhymesNoteSorterResultFormatter() {
+public class VerbCountSorterResultFormatter {
+    public VerbCountSorterResultFormatter() {
     }
-
-    public String formatList(List<Entry<String, Integer>> finalRhymeOverview){
+    public String formatList(List<Entry<String, Integer>> verbCountOverview) {
         String result = "";
         result = insertLineBreak(result);
-        for (Entry<String, Integer> stringIntegerEntry : finalRhymeOverview) {
+        for (Entry<String, Integer> stringIntegerEntry : verbCountOverview) {
             String noteName = stringIntegerEntry.getKey();
-            Integer wordCount = stringIntegerEntry.getValue();
-            result += noteName + " " + "contains " + wordCount + " rhymes.";
+            Integer verbCount = stringIntegerEntry.getValue();
+            result += noteName + " " + "contains " + verbCount + " verbs.";
             result = insertLineBreak(result);
         }
         return result;

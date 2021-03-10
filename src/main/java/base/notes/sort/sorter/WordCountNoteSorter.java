@@ -27,20 +27,19 @@ public class WordCountNoteSorter implements Sorter {
             Integer wordCount = wordCountList.get(i);
             wordCountMap.put(nameOfNote, wordCount);
         }
-        Set wordCountSet = wordCountMap.entrySet();
-        List finalWordCountList = new ArrayList(wordCountSet);
+        Set<Entry<String, Integer>> wordCountSet = wordCountMap.entrySet();
+        List<Entry<String, Integer>> finalWordCountList = new ArrayList<>(wordCountSet);
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalWordCountList.sort(valueComparator);
-        System.out.println(finalWordCountList);
         WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
         String result = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
-        System.out.println();
+        System.out.println(result);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if(confirmation.equals("yes")){
-            new LogFileDeclarator(result, "Sort Notes by quantity of Rhymes");
+            new LogFileDeclarator(result, "Sorting Notes by Quantity of Rhymes");
         }
-        return noteList.toString();
+        return result;
     }
 }

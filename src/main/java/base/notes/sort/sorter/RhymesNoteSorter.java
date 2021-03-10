@@ -43,19 +43,18 @@ public class RhymesNoteSorter implements Sorter {
             }
             rhymeOverview.put(noteNames.get(i), counter);
         }
-        Set rhymeOverviewSet = rhymeOverview.entrySet();
-        List finalRhymeOverview = new ArrayList(rhymeOverviewSet);
+        Set<Entry<String, Integer>> rhymeOverviewSet = rhymeOverview.entrySet();
+        List<Entry<String, Integer>> finalRhymeOverview = new ArrayList<>(rhymeOverviewSet);
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalRhymeOverview.sort(valueComparator);
-        System.out.println(finalRhymeOverview);
         RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
         String result = rhymesNoteSorterResultFormatter.formatList(finalRhymeOverview);
-        System.out.println();
+        System.out.println(result);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if(confirmation.equals("yes")){
-            new LogFileDeclarator(result, "Sort Notes by quantity of Rhymes");
+            new LogFileDeclarator(result, "Sorting Notes by Quantity of Rhymes");
         }
         return result;
     }
