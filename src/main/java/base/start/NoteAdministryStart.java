@@ -17,6 +17,7 @@ import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;
 import base.start.model.CommandList;
 import base.start.model.HelpMode;
+import base.ui.DisplayNotes;
 
 import java.util.*;
 
@@ -32,6 +33,7 @@ public class NoteAdministryStart {
             case "declare" -> new NoteDeclaratorCaller();
             case "delete" -> new SingleNoteDeleterCaller();
             case "delete all" -> new NoteDeleterCaller();
+            case "display" -> new DisplayNotes();
             case "edit" -> new NoteLineEditorCaller();
             case "help" -> commandList.listCommands(HelpMode.BASIC);
             case "help+" -> commandList.listCommands(HelpMode.EXTENDED);
@@ -54,6 +56,7 @@ public class NoteAdministryStart {
         commandList.add(new Command("declare", "create a new note with a header containing creating date and time"));
         commandList.add(new Command("delete", "delete a single note in directory" + path_for_notes));
         commandList.add(new Command("delete all", "delete all notes in directory" + path_for_notes));
+        commandList.add(new Command("display", "display an overview of all notes in directory" + path_for_notes));
         commandList.add(new Command("edit", "replace a single line of a note"));
         commandList.add(new Command("help", "display a list of commands"));
         commandList.add(new Command("help+", "display a list of commands with a short description"));
