@@ -15,12 +15,15 @@ public class DisplayNotes extends JFrame {
     private GridLayout gridLayout = new GridLayout(5, 1);
     private JPanel masterPanel = new JPanel();
     private JPanel capturePanel = new JPanel();
+    private JPanel noteButtonPanel = new JPanel();
+    private JPanel noteTextPanel = new JPanel();
+    private JTextArea noteText = new JTextArea();
     public DisplayNotes() {
         masterPanel.setLayout(gridLayout);
-        JPanel notePanel = new JPanel();
-        capturePanel.setLayout(new FlowLayout());
         JLabel label = new JLabel("Overview of all notes in directory" + path_for_notes);
         capturePanel.add(label);
+        noteText.setEditable(false);
+        noteTextPanel.add(noteText);
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());;
         for(int i = 0; i < noteNames.size(); i++){
@@ -30,11 +33,11 @@ public class DisplayNotes extends JFrame {
             CustomButtonActionListener actionListener = new CustomButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             jButtonList.add(jButton);
-            notePanel.add(jButtonList.get(i));
-
+            noteButtonPanel.add(jButtonList.get(i));
         }
         masterPanel.add(capturePanel);
-        masterPanel.add(notePanel);
+        masterPanel.add(noteButtonPanel);
+        masterPanel.add(noteTextPanel);
         this.add(masterPanel);
         this.setSize(800, 500);
         this.setLocationRelativeTo(null);
@@ -80,5 +83,13 @@ public class DisplayNotes extends JFrame {
 
     public void setMasterPanel(JPanel masterPanel) {
         this.masterPanel = masterPanel;
+    }
+
+    public JTextArea getNoteText() {
+        return noteText;
+    }
+
+    public void setNoteText(JTextArea noteText) {
+        this.noteText = noteText;
     }
 }

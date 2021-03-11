@@ -2,7 +2,6 @@ package base.ui;
 
 import base.notes.processors.SingleNoteProcessor;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,9 +17,8 @@ public class CustomButtonActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor(this.noteName);
-        String[] wordList = singleNoteProcessor.getWordList();
-        JOptionPane jOptionPane = new JOptionPane();
-        JOptionPane.showMessageDialog(displayNotes, wordList[0], "title", JOptionPane.INFORMATION_MESSAGE);
+        String note = singleNoteProcessor.getNoteForGraphicalProcessing();
+        displayNotes.getNoteText().setText(note);
     }
 
     private void getData(String noteName) {

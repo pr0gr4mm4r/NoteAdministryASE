@@ -36,4 +36,14 @@ public class NoteReader {
             return "fail to read";
         }
     }
+
+    public static String readNoteForGraphicalProcessing(Path completePath) {
+        try(Stream<String> stringStream = Files.lines(completePath)) {
+            return stringStream.collect(
+                    Collectors.joining("\n"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "fail to read";
+        }
+    }
 }

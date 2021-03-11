@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 import static base.notes.crud.read.single.NoteReader.readNoteForFurtherProcessing;
+import static base.notes.crud.read.single.NoteReader.readNoteForGraphicalProcessing;
 
 public class SingleNoteProcessor implements Processor {
     private Path completePath;
@@ -15,11 +16,13 @@ public class SingleNoteProcessor implements Processor {
     private String[] wordList;
     private String[] lineList;
     private String note;
+    private String noteForGraphicalProcessing;
 
     public SingleNoteProcessor(String noteName) {
         this.noteName = noteName;
         completePath = createCompletePath(noteName);
         note = readNoteForFurtherProcessing(completePath);
+        noteForGraphicalProcessing = readNoteForGraphicalProcessing(completePath);
         lineList = createLineList(note);
         wordList = createWordList(note);
         wordList = removeEmptyLines(wordList);
@@ -83,5 +86,13 @@ public class SingleNoteProcessor implements Processor {
 
     public void setLineList(String[] lineList) {
         this.lineList = lineList;
+    }
+
+    public String getNoteForGraphicalProcessing() {
+        return noteForGraphicalProcessing;
+    }
+
+    public void setNoteForGraphicalProcessing(String noteForGraphicalProcessing) {
+        this.noteForGraphicalProcessing = noteForGraphicalProcessing;
     }
 }
