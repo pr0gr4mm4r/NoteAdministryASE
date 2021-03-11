@@ -20,8 +20,4 @@ public class CustomButtonActionListener implements ActionListener {
         String note = singleNoteProcessor.getNoteForGraphicalProcessing();
         displayNotes.getNoteText().setText(note);
     }
-
-    private void getData(String noteName) {
-
-    }
 }
