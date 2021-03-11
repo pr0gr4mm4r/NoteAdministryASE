@@ -12,32 +12,41 @@ import static base.config.Globals.path_for_notes;
 public class DisplayNotes extends JFrame {
     private List<JLabel> noteNameLabels = new ArrayList<>();
     private List<JButton> jButtonList = new ArrayList<>();
-    private GridLayout gridLayout = new GridLayout(5, 1);
+    private GridLayout masterGrid = new GridLayout(3, 1);
+    private GridLayout contentGrid = new GridLayout(1, 2);
     private JPanel masterPanel = new JPanel();
     private JPanel capturePanel = new JPanel();
     private JPanel noteButtonPanel = new JPanel();
     private JPanel noteTextPanel = new JPanel();
-    private JTextArea noteText = new JTextArea();
+    private JPanel contentPanel = new JPanel();
+    private JTextPane noteText = new JTextPane();
+    private JScrollPane jScrollPane;
     public DisplayNotes() {
-        masterPanel.setLayout(gridLayout);
-        JLabel label = new JLabel("Overview of all notes in directory" + path_for_notes);
-        capturePanel.add(label);
+        this.setTitle("Display of Notes");
+        masterPanel.setLayout(masterGrid);
+        JLabel capture = new JLabel("Overview of all notes in directory" + path_for_notes);
+        Font font = new Font("Arial", Font.BOLD, 18);
+        capture.setFont(font);
+        capturePanel.add(capture);
         noteText.setEditable(false);
         noteTextPanel.add(noteText);
+        jScrollPane = new JScrollPane(noteTextPanel);
+        contentPanel.setLayout(contentGrid);
+        contentPanel.add(jScrollPane);
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());;
         for(int i = 0; i < noteNames.size(); i++){
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
-            CustomButtonActionListener actionListener = new CustomButtonActionListener(this, jButton.getText());
+            NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             jButtonList.add(jButton);
             noteButtonPanel.add(jButtonList.get(i));
         }
         masterPanel.add(capturePanel);
         masterPanel.add(noteButtonPanel);
-        masterPanel.add(noteTextPanel);
+        masterPanel.add(contentPanel);
         this.add(masterPanel);
         this.setSize(800, 500);
         this.setLocationRelativeTo(null);
@@ -61,12 +70,12 @@ public class DisplayNotes extends JFrame {
         this.noteNameLabels = noteNameLabels;
     }
 
-    public GridLayout getGridLayout() {
-        return gridLayout;
+    public GridLayout getMasterGrid() {
+        return masterGrid;
     }
 
-    public void setGridLayout(GridLayout gridLayout) {
-        this.gridLayout = gridLayout;
+    public void setMasterGrid(GridLayout masterGrid) {
+        this.masterGrid = masterGrid;
     }
 
     public JPanel getCapturePanel() {
@@ -85,11 +94,19 @@ public class DisplayNotes extends JFrame {
         this.masterPanel = masterPanel;
     }
 
-    public JTextArea getNoteText() {
+    public JTextPane getNoteText() {
         return noteText;
     }
 
-    public void setNoteText(JTextArea noteText) {
+    public void setNoteText(JTextPane noteText) {
         this.noteText = noteText;
+    }
+
+    public JScrollPane getjScrollPane() {
+        return jScrollPane;
+    }
+
+    public void setjScrollPane(JScrollPane jScrollPane) {
+        this.jScrollPane = jScrollPane;
     }
 }
