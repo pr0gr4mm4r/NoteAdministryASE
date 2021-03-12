@@ -1,24 +1,25 @@
 package base.ui.model;
 
-import base.interfaces.Highlighter;
+import base.ui.DisplayNotes;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class VerbDisplayButton extends JButton implements Highlighter, ActionListener {
+public class VerbDisplayButton extends JButton {
+    DisplayNotes displayNotes;
 
-    public VerbDisplayButton(String buttonText){
+    public VerbDisplayButton(String buttonText, DisplayNotes displayNotes) {
         super(buttonText);
-    }
-
-    @Override
-    public void hightlight() {
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        hightlight();
+        this.displayNotes = displayNotes;
+        this.addActionListener(e -> {
+            System.out.println("test");
+            int verbCount = 0;
+            JLabel jLabel = new JLabel();
+            jLabel.setText("" + verbCount);
+            JPanel jPanel = new JPanel();
+            jPanel.add(jLabel);
+            displayNotes.getManipulatingButtonsContentPanel().add(jPanel);
+            displayNotes.invalidate();
+            displayNotes.validate();
+        });
     }
 }
