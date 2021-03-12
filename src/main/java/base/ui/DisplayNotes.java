@@ -1,6 +1,8 @@
 package base.ui;
 
 import base.notes.processors.MultiNoteProcessor;
+import base.ui.model.RhymeDisplayButton;
+import base.ui.model.VerbDisplayButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,8 @@ public class DisplayNotes extends JFrame {
     private List<JButton> noteDisplayButtons = new ArrayList<>();
     private List<JButton> textManipulationButtons = new ArrayList<>();
     private GridLayout masterGrid = new GridLayout(3, 1);
-    private final GridLayout contentGrid = new GridLayout(1, 2);
+    private final GridLayout textContentGrid = new GridLayout(1, 2);
+    private GridLayout manipulatingButtonsGrid;
     private JPanel masterPanel = new JPanel();
     private JPanel capturePanel = new JPanel();
     private JPanel noteButtonPanel = new JPanel();
@@ -33,12 +36,11 @@ public class DisplayNotes extends JFrame {
         noteText.setEditable(false);
         noteTextPanel.add(noteText);
         jScrollPane = new JScrollPane(noteTextPanel);
-        contentPanel.setLayout(contentGrid);
+        contentPanel.setLayout(textContentGrid);
         contentPanel.add(jScrollPane);
-        contentPanel.add(new JPanel());
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        for(int i = 0; i < noteNames.size(); i++){
+        for (int i = 0; i < noteNames.size(); i++) {
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
@@ -47,9 +49,16 @@ public class DisplayNotes extends JFrame {
             noteDisplayButtons.add(jButton);
             noteButtonPanel.add(noteDisplayButtons.get(i));
         }
-        textManipulationButtons.add(new JButton("verbs"));
-        textManipulationButtons.add(new JButton("rhymes"));
+        textManipulationButtons.add(new VerbDisplayButton("Verbs"));
+        textManipulationButtons.add(new RhymeDisplayButton("Rhymes"));
         textManipulationButtons.add(new JButton("wordCount"));
+        manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
+        JPanel manipulatingButtonsPanel = new JPanel();
+        for(int i = 0; i < textManipulationButtons.size(); i++){
+            textManipulationButtons.get(i).setEnabled(false);
+            manipulatingButtonsPanel.add(textManipulationButtons.get(i));
+        }
+        contentPanel.add(manipulatingButtonsPanel);
         masterPanel.add(capturePanel);
         masterPanel.add(noteButtonPanel);
         masterPanel.add(contentPanel);
@@ -114,5 +123,13 @@ public class DisplayNotes extends JFrame {
 
     public void setjScrollPane(JScrollPane jScrollPane) {
         this.jScrollPane = jScrollPane;
+    }
+
+    public List<JButton> getTextManipulationButtons() {
+        return textManipulationButtons;
+    }
+
+    public void setTextManipulationButtons(List<JButton> textManipulationButtons) {
+        this.textManipulationButtons = textManipulationButtons;
     }
 }

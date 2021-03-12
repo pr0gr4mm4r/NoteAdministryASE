@@ -25,5 +25,6 @@ public class NoteButtonActionListener implements ActionListener {
         jEditorPane.setText(note);
         Font font = new Font("Arial", Font.PLAIN, 16);
         jEditorPane.setFont(font);
+        displayNotes.getTextManipulationButtons().forEach(button -> button.setEnabled(true));
     }
 }
