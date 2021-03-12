@@ -53,7 +53,7 @@ public class RhymesNoteSorter implements Sorter {
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
-        if(confirmation.equals("yes")){
+        if (confirmation.equals("yes")) {
             new LogFileDeclarator(result, "Sorting Notes by Quantity of Rhymes");
         }
         return result;

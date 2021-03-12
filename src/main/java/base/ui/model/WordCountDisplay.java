@@ -1,20 +1,22 @@
 package base.ui.model;
 
+import base.notes.wordcount.raw.NoteCounterRaw;
 import base.ui.DisplayNotes;
 
 import javax.swing.*;
 
-public class VerbDisplayButton extends JButton {
+public class WordCountDisplay extends JButton {
     DisplayNotes displayNotes;
 
-    public VerbDisplayButton(String buttonText, DisplayNotes displayNotes) {
+    public WordCountDisplay(String buttonText, DisplayNotes displayNotes) {
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {
-            System.out.println("test");
+            NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
+            int wordCount = noteCounterRaw.getWordCount();
             int verbCount = 0;
             JLabel jLabel = new JLabel();
-            jLabel.setText("" + verbCount);
+            jLabel.setText("" + wordCount);
             JPanel jPanel = new JPanel();
             jPanel.add(jLabel);
             displayNotes.getManipulatingButtonsContentPanel().add(jPanel);
