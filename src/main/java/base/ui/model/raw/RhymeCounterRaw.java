@@ -37,7 +37,6 @@ public class RhymeCounterRaw {
                 }
             }
         }
-        System.out.println(counter);
         return counter;
     }
 

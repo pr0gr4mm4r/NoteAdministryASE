@@ -57,7 +57,6 @@ public class DisplayNotes extends JFrame {
         }
         textManipulationButtons.add(new VerbCounterDisplay("Verbs", this));
         textManipulationButtons.add(new RhymeCounterDisplay("Rhymes", this));
-        textManipulationButtons.add(new JButton("wordCount"));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
         manipulatingButtonsPanel.setLayout(new GridLayout(2,1));
         for (JButton textManipulationButton : textManipulationButtons) {
