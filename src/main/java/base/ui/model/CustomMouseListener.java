@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class CustomMouseLiatener implements MouseListener {
+public class CustomMouseListener implements MouseListener {
     private JButton jButton;
 
-    public CustomMouseLiatener(JButton jButton) {
+    public CustomMouseListener(JButton jButton) {
         this.jButton = jButton;
     }
 

@@ -1,9 +1,10 @@
 package base.ui;
 
 import base.notes.processors.MultiNoteProcessor;
-import base.ui.model.CustomMouseLiatener;
+import base.ui.model.CustomMouseListener;
 import base.ui.model.RhymeCounterDisplay;
 import base.ui.model.VerbCounterDisplay;
+import base.ui.model.raw.VerbCounterRaw;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +52,13 @@ public class DisplayNotes extends JFrame {
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
-            jButton.addMouseListener(new CustomMouseLiatener(jButton));
+            jButton.addMouseListener(new CustomMouseListener(jButton));
+            jButton.addActionListener(e -> {
+                this.rhymeCounterLabel = new JLabel();
+                this.verbCounterLabel = new JLabel(); //reset counter
+                this.invalidate();
+                this.validate();
+            });
             NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             noteDisplayButtons.add(jButton);
@@ -60,7 +67,7 @@ public class DisplayNotes extends JFrame {
         textManipulationButtons.add(new VerbCounterDisplay("Verbs", this));
         textManipulationButtons.add(new RhymeCounterDisplay("Rhymes", this));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
-        manipulatingButtonsPanel.setLayout(new GridLayout(2,1));
+        manipulatingButtonsPanel.setLayout(new GridLayout(2, 1));
         for (JButton textManipulationButton : textManipulationButtons) {
             textManipulationButton.setEnabled(false);
             manipulatingButtonsButtonsPanel.add(textManipulationButton);

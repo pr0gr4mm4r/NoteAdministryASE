@@ -4,8 +4,6 @@ import base.ui.DisplayNotes;
 import base.ui.model.raw.RhymeCounterRaw;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class RhymeCounterDisplay extends JButton {
     DisplayNotes displayNotes;
@@ -25,6 +23,6 @@ public class RhymeCounterDisplay extends JButton {
             displayNotes.invalidate();
             displayNotes.validate();
         });
-        this.addMouseListener(new CustomMouseLiatener(this));
+        this.addMouseListener(new CustomMouseListener(this));
     }
 }
