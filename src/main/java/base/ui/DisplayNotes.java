@@ -2,7 +2,7 @@ package base.ui;
 
 import base.notes.processors.MultiNoteProcessor;
 import base.ui.model.RhymeDisplayButton;
-import base.ui.model.WordCountDisplay;
+import base.ui.model.VerbCounterDisplay;
 
 import javax.swing.*;
 import java.awt.*;
@@ -53,7 +53,7 @@ public class DisplayNotes extends JFrame {
             noteDisplayButtons.add(jButton);
             noteButtonPanel.add(noteDisplayButtons.get(i));
         }
-        textManipulationButtons.add(new WordCountDisplay("Verbs", this));
+        textManipulationButtons.add(new VerbCounterDisplay("Verbs", this));
         textManipulationButtons.add(new RhymeDisplayButton("Rhymes", this));
         textManipulationButtons.add(new JButton("wordCount"));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
