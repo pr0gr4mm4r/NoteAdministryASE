@@ -17,7 +17,7 @@ public class RhymeCounterRaw {
         this.content = content;
     }
 
-    public Integer calcRhymes(){
+    public Integer calcRhymes() {
         int counter = 0;
         String[] splittedContent = content.split("\\s+");
         List<String> wordsInLexicon = filterPositives(splittedContent);
@@ -38,8 +38,7 @@ public class RhymeCounterRaw {
         }
         return counter;
     }
-
-    }
+}
 
 
 
