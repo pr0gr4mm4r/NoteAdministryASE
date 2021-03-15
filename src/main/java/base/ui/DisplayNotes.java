@@ -1,7 +1,7 @@
 package base.ui;
 
 import base.notes.processors.MultiNoteProcessor;
-import base.ui.model.RhymeDisplayButton;
+import base.ui.model.RhymeCounterDisplay;
 import base.ui.model.VerbCounterDisplay;
 
 import javax.swing.*;
@@ -18,6 +18,9 @@ public class DisplayNotes extends JFrame {
     private GridLayout masterGrid = new GridLayout(3, 1);
     private final GridLayout textContentGrid = new GridLayout(1, 2);
     private GridLayout manipulatingButtonsGrid;
+
+    private JLabel verbCounterLabel = new JLabel();
+    private JLabel rhymeCounterLabel = new JLabel();
     private JPanel masterPanel = new JPanel();
     private JPanel capturePanel = new JPanel();
     private JPanel noteButtonPanel = new JPanel();
@@ -25,7 +28,6 @@ public class DisplayNotes extends JFrame {
     private JPanel contentPanel = new JPanel();
     private JPanel manipulatingButtonsPanel = new JPanel();
     private JPanel manipulatingButtonsButtonsPanel = new JPanel();
-
     private JPanel manipulatingButtonsContentPanel = new JPanel();
     private JTextPane noteText = new JTextPane();
     private JScrollPane jScrollPane;
@@ -54,7 +56,7 @@ public class DisplayNotes extends JFrame {
             noteButtonPanel.add(noteDisplayButtons.get(i));
         }
         textManipulationButtons.add(new VerbCounterDisplay("Verbs", this));
-        textManipulationButtons.add(new RhymeDisplayButton("Rhymes", this));
+        textManipulationButtons.add(new RhymeCounterDisplay("Rhymes", this));
         textManipulationButtons.add(new JButton("wordCount"));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
         manipulatingButtonsPanel.setLayout(new GridLayout(2,1));
@@ -197,5 +199,21 @@ public class DisplayNotes extends JFrame {
 
     public void setManipulatingButtonsContentPanel(JPanel manipulatingButtonsContentPanel) {
         this.manipulatingButtonsContentPanel = manipulatingButtonsContentPanel;
+    }
+
+    public JLabel getVerbCounterLabel() {
+        return verbCounterLabel;
+    }
+
+    public void setVerbCounterLabel(JLabel verbCounterLabel) {
+        this.verbCounterLabel = verbCounterLabel;
+    }
+
+    public JLabel getRhymeCounterLabel() {
+        return rhymeCounterLabel;
+    }
+
+    public void setRhymeCounterLabel(JLabel rhymeCounterLabel) {
+        this.rhymeCounterLabel = rhymeCounterLabel;
     }
 }

@@ -3,7 +3,7 @@ package base.ui.model.raw;
 import rita.RiTa;
 
 public class VerbCounterRaw {
-    private final String content;
+    private String content;
     private int counter = 0;
 
     public VerbCounterRaw(String content) {

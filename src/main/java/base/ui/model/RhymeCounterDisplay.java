@@ -1,24 +1,23 @@
 package base.ui.model;
 
 import base.ui.DisplayNotes;
-import base.ui.model.raw.VerbCounterRaw;
+import base.ui.model.raw.RhymeCounterRaw;
 
 import javax.swing.*;
 
-public class VerbCounterDisplay extends JButton {
+public class RhymeCounterDisplay extends JButton {
     DisplayNotes displayNotes;
-
-    public VerbCounterDisplay(String buttonText, DisplayNotes displayNotes) {
+    public RhymeCounterDisplay(String buttonText, DisplayNotes displayNotes){
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {
             String text = displayNotes.getNoteText().getText();
-            VerbCounterRaw verbCounterRaw = new VerbCounterRaw(text);
-            int verbCount = verbCounterRaw.countWords();
-            JLabel verbCounterLabel = displayNotes.getVerbCounterLabel();
-            verbCounterLabel.setText("" + verbCount);
+            RhymeCounterRaw rhymeCounterRaw = new RhymeCounterRaw(text);
+            int rhymeCount = rhymeCounterRaw.calcRhymes();
+            JLabel rhymeCounterLabel = displayNotes.getRhymeCounterLabel();
+            rhymeCounterLabel.setText("" + rhymeCount);
             JPanel jPanel = new JPanel();
-            jPanel.add(verbCounterLabel);
+            jPanel.add(rhymeCounterLabel);
             displayNotes.getManipulatingButtonsContentPanel().removeAll();
             displayNotes.getManipulatingButtonsContentPanel().add(jPanel);
             displayNotes.invalidate();
