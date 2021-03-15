@@ -24,5 +24,6 @@ public class VerbCounterDisplay extends JButton {
             displayNotes.invalidate();
             displayNotes.validate();
         });
+        this.addMouseListener(new CustomMouseLiatener(this));
     }
 }

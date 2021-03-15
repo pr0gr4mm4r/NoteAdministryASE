@@ -14,7 +14,6 @@ public class RhymeCounterRaw {
     private String content;
 
     public RhymeCounterRaw(String content) {
-        System.out.println("test");
         this.content = content;
     }
 

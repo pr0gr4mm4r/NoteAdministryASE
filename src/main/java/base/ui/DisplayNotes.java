@@ -1,6 +1,7 @@
 package base.ui;
 
 import base.notes.processors.MultiNoteProcessor;
+import base.ui.model.CustomMouseLiatener;
 import base.ui.model.RhymeCounterDisplay;
 import base.ui.model.VerbCounterDisplay;
 
@@ -50,6 +51,7 @@ public class DisplayNotes extends JFrame {
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
+            jButton.addMouseListener(new CustomMouseLiatener(jButton));
             NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             noteDisplayButtons.add(jButton);
