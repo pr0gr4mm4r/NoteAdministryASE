@@ -7,7 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Scanner;
 
@@ -23,7 +22,7 @@ public class NoteDeclaratorTest {
 
     @BeforeEach
     public void createNoteDeclarator() {
-        generatedString =  RandomStringUtils.randomAlphabetic(6);
+        generatedString = RandomStringUtils.randomAlphabetic(6);
         Path path = createCompletePath(generatedString);
         noteDeclarator = new NoteDeclarator(path, generatedString);
     }
@@ -46,10 +45,6 @@ public class NoteDeclaratorTest {
 
     @AfterEach
     public void deleteDeclaratedNote() {
-        try {
-            SingleNoteDeleter noteDeleter = new SingleNoteDeleter();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        new SingleNoteDeleter(generatedString);
     }
 }
