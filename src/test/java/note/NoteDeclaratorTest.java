@@ -1,33 +1,55 @@
 package note;
 
 import base.notes.crud.declare.single.NoteDeclarator;
+import base.notes.crud.delete.single.SingleNoteDeleter;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Scanner;
+
+import static base.config.Globals.*;
+import static base.config.Globals.scanner;
+import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class NoteDeclaratorTest {
     private NoteDeclarator noteDeclarator;
+    private String generatedString;
 
-   /* @BeforeEach
+    @BeforeEach
     public void createNoteDeclarator() {
-        noteDeclarator = new NoteDeclarator();
+        generatedString =  RandomStringUtils.randomAlphabetic(6);
+        Path path = createCompletePath(generatedString);
+        noteDeclarator = new NoteDeclarator(path, generatedString);
     }
 
     @Test
     public void scanner() {
-        Scanner scanner = noteDeclarator.getScanner();
         assertEquals(scanner.getClass(), Scanner.class);
     }
 
     @Test
     public void noteName() {
         String noteName = noteDeclarator.getNoteName();
-        assertEquals(noteName, "testString");
+        assertEquals(noteName, generatedString);
     }
 
     @Test
     public void path() {
-        String path = Globals.path_for_notes;
-        assertEquals(path, "src/main/java/base/files/");
-    }*/
+        assertEquals(path_for_notes, "src/main/java/base/files/notes/");
+    }
+
+    @AfterEach
+    public void deleteDeclaratedNote() {
+        try {
+            SingleNoteDeleter noteDeleter = new SingleNoteDeleter();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
