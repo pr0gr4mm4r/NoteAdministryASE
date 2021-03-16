@@ -1,8 +1,9 @@
 package base.ui.display;
 
 import base.ui.frame.DisplayNotes;
+import base.ui.listener.mouse.ContentButtonsSelectedMouseListener;
 import base.ui.listener.mouse.HoverPointerMouseListener;
-import base.ui.listener.mouse.SelectedmouseListener;
+import base.ui.listener.mouse.NoteButtonsSelectedMouseListener;
 import base.ui.raw.RhymeCounterRaw;
 
 import javax.swing.*;
@@ -26,6 +27,6 @@ public class RhymeCounterDisplay extends JButton {
             displayNotes.validate();
         });
         this.addMouseListener(new HoverPointerMouseListener(this));
-        this.addMouseListener(new SelectedmouseListener(displayNotes,this));
+        this.addMouseListener(new ContentButtonsSelectedMouseListener(displayNotes,this));
     }
 }

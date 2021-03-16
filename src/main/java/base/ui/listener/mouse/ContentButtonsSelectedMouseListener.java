@@ -8,24 +8,19 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 
-public class SelectedmouseListener implements MouseListener {
-
+public class ContentButtonsSelectedMouseListener implements MouseListener {
     private DisplayNotes displayNotes;
     private JButton jButton;
 
-    public SelectedmouseListener(DisplayNotes displayNotes, JButton jButton) {
-        this.jButton = jButton;
+    public ContentButtonsSelectedMouseListener(DisplayNotes displayNotes, JButton jButton) {
         this.displayNotes = displayNotes;
+        this.jButton = jButton;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        List<JButton> noteDisplayButtons = displayNotes.getNoteDisplayButtons();
         List<JButton> textManipulationButtons = displayNotes.getTextManipulationButtons();
         Color defaultBackgroundColor = new JButton().getBackground();
-        for (JButton button : noteDisplayButtons) {
-            button.setBackground(defaultBackgroundColor);
-        }
         for (JButton button : textManipulationButtons) {
             button.setBackground(defaultBackgroundColor);
         }

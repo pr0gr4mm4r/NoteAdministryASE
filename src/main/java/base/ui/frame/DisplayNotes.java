@@ -5,7 +5,7 @@ import base.ui.listener.action.NoteButtonActionListener;
 import base.ui.listener.mouse.HoverPointerMouseListener;
 import base.ui.display.RhymeCounterDisplay;
 import base.ui.display.VerbCounterDisplay;
-import base.ui.listener.mouse.SelectedmouseListener;
+import base.ui.listener.mouse.NoteButtonsSelectedMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +54,7 @@ public class DisplayNotes extends JFrame {
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
             jButton.addMouseListener(new HoverPointerMouseListener(jButton));
-            jButton.addMouseListener(new SelectedmouseListener(this, jButton));
+            jButton.addMouseListener(new NoteButtonsSelectedMouseListener(this, jButton));
             jButton.addActionListener(e -> {
                 this.getManipulatingButtonsContentPanel().removeAll();
                 this.verbCounterLabel = new JLabel(" "); //reset counter
