@@ -1,20 +1,21 @@
-package base.ui.model;
+package base.ui.listener.mouse;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class CustomMouseListener implements MouseListener {
+public class SelectedmouseListener implements MouseListener {
+
     private JButton jButton;
 
-    public CustomMouseListener(JButton jButton) {
+    public SelectedmouseListener(JButton jButton) {
         this.jButton = jButton;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+jButton.setForeground(Color.yellow);
     }
 
     @Override
@@ -29,8 +30,7 @@ public class CustomMouseListener implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-        this.jButton.setCursor(cursor);
+
     }
 
     @Override

@@ -1,7 +1,8 @@
-package base.ui.model;
+package base.ui.display;
 
-import base.ui.DisplayNotes;
-import base.ui.model.raw.RhymeCounterRaw;
+import base.ui.frame.DisplayNotes;
+import base.ui.listener.mouse.HoverPointerMouseListener;
+import base.ui.raw.RhymeCounterRaw;
 
 import javax.swing.*;
 
@@ -23,6 +24,6 @@ public class RhymeCounterDisplay extends JButton {
             displayNotes.invalidate();
             displayNotes.validate();
         });
-        this.addMouseListener(new CustomMouseListener(this));
+        this.addMouseListener(new HoverPointerMouseListener(this));
     }
 }

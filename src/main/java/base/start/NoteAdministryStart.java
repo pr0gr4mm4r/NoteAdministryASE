@@ -17,7 +17,7 @@ import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;
 import base.start.model.CommandList;
 import base.start.model.HelpMode;
-import base.ui.DisplayNotes;
+import base.ui.frame.DisplayNotes;
 
 import java.util.*;
 

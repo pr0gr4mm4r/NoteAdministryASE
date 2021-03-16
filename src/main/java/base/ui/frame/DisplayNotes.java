@@ -1,10 +1,11 @@
-package base.ui;
+package base.ui.frame;
 
 import base.notes.processors.MultiNoteProcessor;
-import base.ui.model.CustomMouseListener;
-import base.ui.model.RhymeCounterDisplay;
-import base.ui.model.VerbCounterDisplay;
-import base.ui.model.raw.VerbCounterRaw;
+import base.ui.listener.action.NoteButtonActionListener;
+import base.ui.listener.mouse.HoverPointerMouseListener;
+import base.ui.display.RhymeCounterDisplay;
+import base.ui.display.VerbCounterDisplay;
+import base.ui.listener.mouse.SelectedmouseListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,9 +36,9 @@ public class DisplayNotes extends JFrame {
     private JScrollPane jScrollPane;
 
     public DisplayNotes() {
-        this.setTitle("Display of Notes");
+        this.setTitle("Overview of Notes");
         masterPanel.setLayout(masterGrid);
-        JLabel capture = new JLabel("Overview of all notes in directory " + path_for_notes);
+        JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);
         Font font = new Font("Arial", Font.BOLD, 18);
         capture.setFont(font);
         capturePanel.add(capture);
@@ -52,10 +53,14 @@ public class DisplayNotes extends JFrame {
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
-            jButton.addMouseListener(new CustomMouseListener(jButton));
+            jButton.addMouseListener(new HoverPointerMouseListener(jButton));
+            jButton.addMouseListener(new SelectedmouseListener(jButton));
             jButton.addActionListener(e -> {
-                this.rhymeCounterLabel = new JLabel();
-                this.verbCounterLabel = new JLabel(); //reset counter
+                this.getManipulatingButtonsContentPanel().removeAll();
+                this.verbCounterLabel = new JLabel(" "); //reset counter
+                JPanel jPanel = new JPanel();
+                jPanel.add(verbCounterLabel);
+                this.getManipulatingButtonsContentPanel().add(jPanel);
                 this.invalidate();
                 this.validate();
             });

@@ -1,4 +1,4 @@
-package base.ui.model.raw;
+package base.ui.raw;
 
 import rita.RiTa;
 
