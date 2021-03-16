@@ -1,4 +1,4 @@
-package base.logfiles.crud.declare;
+package base.logfiles.crud.declare.single;
 
 
 import java.io.IOException;
@@ -20,7 +20,6 @@ public class LogFileDeclarator {
         this.action = action;
         logFileName = generateDefaultLogFileName();
         Path completePath = createCompletePath(logFileName);
-        System.out.println(completePath);
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
             addHeader(completePath, action);
