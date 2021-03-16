@@ -54,7 +54,7 @@ public class DisplayNotes extends JFrame {
             noteNameLabels.add(jLabel);
             JButton jButton = new JButton(noteNames.get(i));
             jButton.addMouseListener(new HoverPointerMouseListener(jButton));
-            jButton.addMouseListener(new SelectedmouseListener(jButton));
+            jButton.addMouseListener(new SelectedmouseListener(this, jButton));
             jButton.addActionListener(e -> {
                 this.getManipulatingButtonsContentPanel().removeAll();
                 this.verbCounterLabel = new JLabel(" "); //reset counter

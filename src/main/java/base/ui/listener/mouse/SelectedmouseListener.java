@@ -1,21 +1,40 @@
 package base.ui.listener.mouse;
 
+import base.ui.frame.DisplayNotes;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 public class SelectedmouseListener implements MouseListener {
 
+    private DisplayNotes displayNotes;
     private JButton jButton;
 
-    public SelectedmouseListener(JButton jButton) {
+    public SelectedmouseListener(DisplayNotes displayNotes, JButton jButton) {
         this.jButton = jButton;
+        this.displayNotes = displayNotes;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-jButton.setForeground(Color.yellow);
+        List<JButton> noteDisplayButtons = displayNotes.getNoteDisplayButtons();
+        List<JButton> textManipulationButtons = displayNotes.getTextManipulationButtons();
+        Color defaultBackgroundColor = new JButton().getBackground();
+        for (JButton button : noteDisplayButtons) {
+            button.setBackground(defaultBackgroundColor);
+        }
+        for (JButton button : textManipulationButtons) {
+            button.setBackground(defaultBackgroundColor);
+        }
+        Color color = Color.orange;
+        if(jButton.getBackground() == color){
+            jButton.setBackground(defaultBackgroundColor);
+            return;
+        }
+        jButton.setBackground(color);
     }
 
     @Override

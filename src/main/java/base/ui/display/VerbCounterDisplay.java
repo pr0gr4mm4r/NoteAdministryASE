@@ -2,6 +2,7 @@ package base.ui.display;
 
 import base.ui.frame.DisplayNotes;
 import base.ui.listener.mouse.HoverPointerMouseListener;
+import base.ui.listener.mouse.SelectedmouseListener;
 import base.ui.raw.VerbCounterRaw;
 
 import javax.swing.*;
@@ -26,5 +27,6 @@ public class VerbCounterDisplay extends JButton {
             displayNotes.validate();
         });
         this.addMouseListener(new HoverPointerMouseListener(this));
+        this.addMouseListener(new SelectedmouseListener(displayNotes,this));
     }
 }
