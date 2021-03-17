@@ -1,4 +1,4 @@
-package note;
+package note.crud;
 
 import base.notes.crud.declare.single.NoteDeclarator;
 import base.notes.crud.delete.single.SingleNoteDeleter;
