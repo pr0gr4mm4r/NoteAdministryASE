@@ -21,8 +21,7 @@ public class NoteLineEditor {
             openErrorDialogue(path);
             return;
         }
-        NoteCounterRaw noteCounterRaw = new NoteCounterRaw(fileName);
-        lineLength = noteCounterRaw.getLineCount();
+        lineLength = new NoteCounterRaw(fileName).getLineCount();
         if (lineLength > 1) {
             System.out.println("Which line do you want to overwrite? The manipulation range is: 2 - " + lineLength);
             int lineNumber = scanner.nextInt();
