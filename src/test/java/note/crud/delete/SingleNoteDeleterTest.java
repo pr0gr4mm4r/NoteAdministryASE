@@ -1,4 +1,4 @@
-package note.crud;
+package note.crud.delete;
 
 import base.notes.crud.delete.single.SingleNoteDeleter;
 import org.junit.Rule;
@@ -13,14 +13,14 @@ import static org.junit.Assert.assertTrue;
 
 public class SingleNoteDeleterTest {
     @Rule
-    public TemporaryFolder folder = new TemporaryFolder();
+    public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void testUsingTempFolder() throws IOException {
-        File createdFile = folder.newFile("myfile.txt");
+    public void addAndDeleteFileFromTemporaryFolder() throws IOException {
+        File createdFile = temporaryFolder.newFile("myfile.txt");
         assertTrue(createdFile.exists());
         SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
-        singleNoteDeleter.deleteSingleNote("myfile.txt", folder.getRoot().getPath());
+        singleNoteDeleter.deleteSingleNote("myfile.txt", temporaryFolder.getRoot().getPath());
         assertFalse(createdFile.exists());
     }
 }
