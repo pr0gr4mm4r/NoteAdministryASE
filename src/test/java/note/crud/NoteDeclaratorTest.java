@@ -3,9 +3,9 @@ package note.crud;
 import base.notes.crud.declare.single.NoteDeclarator;
 import base.notes.crud.delete.single.SingleNoteDeleter;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -13,14 +13,13 @@ import java.util.Scanner;
 import static base.config.Globals.*;
 import static base.config.Globals.scanner;
 import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.Assert.assertEquals;
 
 public class NoteDeclaratorTest {
     private NoteDeclarator noteDeclarator;
     private String generatedString;
 
-    @BeforeEach
+    @Before
     public void createNoteDeclarator() {
         generatedString = RandomStringUtils.randomAlphabetic(6);
         Path path = createCompletePath(generatedString);
@@ -43,7 +42,7 @@ public class NoteDeclaratorTest {
         assertEquals(path_for_notes, "src/main/java/base/files/notes/");
     }
 
-    @AfterEach
+    @After
     public void deleteDeclaratedNote() {
         new SingleNoteDeleter(generatedString);
     }

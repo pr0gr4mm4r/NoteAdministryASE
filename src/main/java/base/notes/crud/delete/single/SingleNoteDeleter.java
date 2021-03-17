@@ -16,15 +16,19 @@ public class SingleNoteDeleter implements Deleter {
 
     public SingleNoteDeleter(String fileToDelete) {
         try {
-            deleteSingleNote(fileToDelete);
+            deleteSingleNote(fileToDelete, path_for_notes);
             System.out.println("successful delete!");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void deleteSingleNote(String fileToDelete) throws IOException {
-        try (Stream<Path> pathStream = Files.walk(Paths.get(path_for_notes))) {
+    public SingleNoteDeleter() {
+
+    }
+
+    public void deleteSingleNote(String fileToDelete, String pathToNote) throws IOException {
+        try (Stream<Path> pathStream = Files.walk(Paths.get(pathToNote))) {
             pathStream.map(Path::toFile).filter(
                     file -> file.getName().equals(fileToDelete)).forEach(File::delete);
         }
