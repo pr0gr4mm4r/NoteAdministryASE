@@ -12,15 +12,16 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SingleNoteDeleterTest {
+
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void addAndDeleteFileFromTemporaryFolder() throws IOException {
-        File createdFile = temporaryFolder.newFile("myfile.txt");
-        assertTrue(createdFile.exists());
+    public void testSingleFileDeletion() throws IOException {
+        File artificialFile = temporaryFolder.newFile("myfile.txt");
+        assertTrue(artificialFile.exists());
         SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
         singleNoteDeleter.deleteSingleNote("myfile.txt", temporaryFolder.getRoot().getPath());
-        assertFalse(createdFile.exists());
+        assertFalse(artificialFile.exists());
     }
 }
