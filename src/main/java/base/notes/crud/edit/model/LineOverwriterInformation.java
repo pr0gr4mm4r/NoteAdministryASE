@@ -3,9 +3,9 @@ package base.notes.crud.edit.model;
 import java.nio.file.Path;
 
 public class LineOverwriterInformation {
-    private Path completePath;
-    private int indexLineNumber;
-    private String replacementLine;
+    private final Path completePath;
+    private final int indexLineNumber;
+    private final String replacementLine;
 
     public LineOverwriterInformation(Builder builder) {
         this.completePath = builder.path;
