@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static base.config.Globals.scanner;
-import static base.notes.crud.edit.single.DisplayState.Failure;
-import static base.notes.crud.edit.single.DisplayState.Successful;
+import static base.notes.crud.edit.single.DisplayState.ERROR;
+import static base.notes.crud.edit.single.DisplayState.SUCCESS;
 
 public class NoteLineEditor {
 
     public NoteLineEditor(Path path, String fileName) {
         DisplayState displayState = displayFileWithLineNumbers(path);
-        if (displayState.equals(Failure)) {
+        if (displayState.equals(ERROR)) {
             openErrorDialogue(path);
             return;
         }
-        long lineLength = countLineLength(fileName);
+        final long upperManipulationRangeCap = countLineLength(fileName);
         final int lowerManipulationRangeCap = 1;
-        if (lineLength > lowerManipulationRangeCap) {
+        if (upperManipulationRangeCap > lowerManipulationRangeCap) {
             System.out.println("Which line do you want to overwrite? The manipulation range is: "
-                    + lowerManipulationRangeCap + 1 + " - " + lineLength);
+                    + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
             int lineNumber = scanner.nextInt();
             if (noteHasEnoughLines(path, lineNumber)) {
                 openChangeDialogue(path, lineNumber);
@@ -86,7 +86,7 @@ public class NoteLineEditor {
     private static boolean noteHasEnoughLines(Path completePath, int lineNumber) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             long lineCount = stringStream.count();
-            if (lineCount < lineNumber || lineNumber < 2) {
+            if (lineCount < lineNumber || lineNumber < 1) {
                 return false;
             }
         } catch (IOException e) {
@@ -102,10 +102,10 @@ public class NoteLineEditor {
             while ((str = lineNumberReader.readLine()) != null) {
                 System.out.println(lineNumberReader.getLineNumber() + ": " + str);
             }
-            return Successful;
+            return SUCCESS;
         } catch (IOException e) {
             e.printStackTrace();
-            return Failure;
+            return ERROR;
         }
     }
 }
