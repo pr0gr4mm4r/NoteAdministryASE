@@ -38,7 +38,7 @@ public class NoteDeclaratorTest {
     }
 
     @Test
-    public void path() {
+    public void testPath() {
         assertEquals(path_for_notes, "src/main/java/base/files/notes/");
     }
 

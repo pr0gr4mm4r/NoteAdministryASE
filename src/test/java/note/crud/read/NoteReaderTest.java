@@ -23,8 +23,8 @@ public class NoteReaderTest {
         writingTestContentToFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
         String fileContent = NoteReader.readNote(completePath);
-        System.out.println(fileContent);
-        assertEquals(fileContent, "testContent\ntest\ntest");
+        assertEquals("fileContent does not match the actual content of file",
+                fileContent, "testContent\ntest\ntest");
     }
 
     @Test
@@ -34,8 +34,8 @@ public class NoteReaderTest {
         writingTestContentToFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
         String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
-        System.out.println(fileContent);
-        assertEquals(fileContent, "testContent test test");
+        assertEquals("fileContent does not match the actual content of file",
+                fileContent, "testContent test test");
     }
 
     private void writingTestContentToFile(File createdFile, String testContent) {
