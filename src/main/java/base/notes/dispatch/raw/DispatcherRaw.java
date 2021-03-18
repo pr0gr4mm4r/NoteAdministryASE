@@ -5,7 +5,8 @@ import base.notes.dispatch.model.SendingInformation;
 import java.util.Properties;
 
 public class DispatcherRaw {
-   private SendingInformation sendingInformation;
+    private SendingInformation sendingInformation;
+
     public DispatcherRaw(SendingInformation sendingInformation) {
         this.sendingInformation = sendingInformation;
     }
@@ -22,5 +23,13 @@ public class DispatcherRaw {
         properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         properties.put("mail.smtp.socketFactory.fallback", "false");
         return properties;
+    }
+
+    public SendingInformation getSendingInformation() {
+        return sendingInformation;
+    }
+
+    public void setSendingInformation(SendingInformation sendingInformation) {
+        this.sendingInformation = sendingInformation;
     }
 }

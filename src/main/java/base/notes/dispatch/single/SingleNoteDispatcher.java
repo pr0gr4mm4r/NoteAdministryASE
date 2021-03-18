@@ -36,11 +36,14 @@ public class SingleNoteDispatcher {
         }
     }
 
-    private void displaySuccessMessage() {
+    public SingleNoteDispatcher() {
+    }
+
+    public void displaySuccessMessage() {
         System.out.println("Sent message successfully!");
     }
 
-    private MimeMessage createMessage(Session session, SendingInformation sendingInfo) throws MessagingException {
+    public MimeMessage createMessage(Session session, SendingInformation sendingInfo) throws MessagingException {
         Multipart multipart = createAttachment(sendingInfo);
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sendingInfo.getSender()));
@@ -51,7 +54,7 @@ public class SingleNoteDispatcher {
         return message;
     }
 
-    private Multipart createAttachment(SendingInformation sendingInfo) throws MessagingException {
+    public Multipart createAttachment(SendingInformation sendingInfo) throws MessagingException {
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         DataSource source = new FileDataSource(sendingInfo.getPath());
         messageBodyPart.setDataHandler(new DataHandler(source));

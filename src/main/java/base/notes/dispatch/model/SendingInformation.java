@@ -6,6 +6,7 @@ public class SendingInformation {
     private final String password;
     private final String path;
 
+
     public SendingInformation(Builder builder) {
         this.password = builder.password;
         this.path = builder.path;

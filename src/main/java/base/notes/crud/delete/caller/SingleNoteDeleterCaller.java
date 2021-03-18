@@ -10,7 +10,6 @@ public class SingleNoteDeleterCaller {
     protected String confirmation;
 
     public SingleNoteDeleterCaller() {
-
         System.out.println("Which file do you want to delete within '" + path_for_notes + "'?");
         System.out.println("Provide the name of the file including ending if present (i.e. .txt)");
         fileToDelete = scanner.nextLine();
