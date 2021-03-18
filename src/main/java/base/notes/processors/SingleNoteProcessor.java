@@ -7,8 +7,9 @@ import java.util.Arrays;
 
 import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
-import static base.notes.crud.read.single.NoteReader.readNoteForFurtherProcessing;
-import static base.notes.crud.read.single.NoteReader.readNoteForGraphicalProcessing;
+import static base.notes.crud.read.single.NoteReader.readNote;
+import static base.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
+
 
 public class SingleNoteProcessor implements Processor {
     private Path completePath;
@@ -21,8 +22,8 @@ public class SingleNoteProcessor implements Processor {
     public SingleNoteProcessor(String noteName) {
         this.noteName = noteName;
         completePath = createCompletePath(noteName);
-        note = readNoteForFurtherProcessing(completePath);
-        noteForGraphicalProcessing = readNoteForGraphicalProcessing(completePath);
+        note = readNoteForNoteProcessing(completePath);
+        noteForGraphicalProcessing = readNote(completePath);
         lineList = createLineList(note);
         wordList = createWordList(note);
         wordList = removeEmptyLines(wordList);

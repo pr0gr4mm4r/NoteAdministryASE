@@ -1,8 +1,6 @@
 package note.crud.read;
 
 import base.notes.crud.read.single.NoteReader;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -20,12 +18,24 @@ public class NoteReaderTest {
 
     @Test
     public void testReadNoteMethod() throws IOException {
-        final String testContent = "testContent";
+        final String testContent = "testContent\ntest\ntest";
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
         String fileContent = NoteReader.readNote(completePath);
-        assertEquals(fileContent, "testContent");
+        System.out.println(fileContent);
+        assertEquals(fileContent, "testContent\ntest\ntest");
+    }
+
+    @Test
+    public void testReadNoteForFurtherProcessingMethod() throws IOException {
+        final String testContent = "testContent\ntest\ntest";
+        final File createdFile = temporaryFolder.newFile("myfile.txt");
+        writingTestContentToFile(createdFile, testContent);
+        Path completePath = createdFile.toPath();
+        String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
+        System.out.println(fileContent);
+        assertEquals(fileContent, "testContent test test");
     }
 
     private void writingTestContentToFile(File createdFile, String testContent) {

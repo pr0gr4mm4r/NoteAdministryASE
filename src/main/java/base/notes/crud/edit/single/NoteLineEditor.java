@@ -11,27 +11,34 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static base.config.Globals.scanner;
+import static base.notes.crud.edit.single.DisplayState.Failure;
+import static base.notes.crud.edit.single.DisplayState.Successful;
 
 public class NoteLineEditor {
-    private long lineLength = 0;
 
     public NoteLineEditor(Path path, String fileName) {
-        boolean noteSuccessfullyDisplayed = displayFileWithLineNumbers(path);
-        if (!noteSuccessfullyDisplayed) {
+        DisplayState displayState = displayFileWithLineNumbers(path);
+        if (displayState.equals(Failure)) {
             openErrorDialogue(path);
             return;
         }
-        lineLength = new NoteCounterRaw(fileName).getLineCount();
-        if (lineLength > 1) {
-            System.out.println("Which line do you want to overwrite? The manipulation range is: 2 - " + lineLength);
+        long lineLength = countLineLength(fileName);
+        final int lowerManipulationRangeCap = 1;
+        if (lineLength > lowerManipulationRangeCap) {
+            System.out.println("Which line do you want to overwrite? The manipulation range is: "
+                    + lowerManipulationRangeCap + 1 + " - " + lineLength);
             int lineNumber = scanner.nextInt();
-            scanner.nextLine();
+
             if (noteHasEnoughLines(path, lineNumber)) {
                 openChangeDialogue(path, lineNumber);
             } else {
                 openErrorDialogue(path);
             }
         }
+    }
+
+    private long countLineLength(String fileName) {
+        return new NoteCounterRaw(fileName).getLineCount();
     }
 
     private void openErrorDialogue(Path completePath) {
@@ -80,17 +87,17 @@ public class NoteLineEditor {
         return true;
     }
 
-    private boolean displayFileWithLineNumbers(Path completePath) {
+    private DisplayState displayFileWithLineNumbers(Path completePath) {
         try (LineNumberReader lineNumberReader = new LineNumberReader(
                 new InputStreamReader(Files.newInputStream(completePath)))) {
             String str;
             while ((str = lineNumberReader.readLine()) != null) {
                 System.out.println(lineNumberReader.getLineNumber() + ": " + str);
             }
-            return true;
+            return Successful;
         } catch (IOException e) {
             e.printStackTrace();
-            return false;
+            return Failure;
         }
     }
 }

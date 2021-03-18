@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import static base.config.Globals.path_for_notes;
 import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
-import static base.notes.crud.read.single.NoteReader.readNoteForFurtherProcessing;
+import static base.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
 public class MultiNoteProcessor implements Processor {
     private List<Path> pathList = new ArrayList<>();
@@ -55,7 +55,7 @@ public class MultiNoteProcessor implements Processor {
 
     private List<String> createNoteList(List<Path> pathList, List<String> noteList) {
         for (Path path : pathList) {
-            String note = readNoteForFurtherProcessing(path);
+            String note = readNoteForNoteProcessing(path);
             noteList.add(note);
         }
         return noteList;
