@@ -18,9 +18,8 @@ import static base.notes.crud.edit.single.DisplayState.SUCCESS;
 public class NoteLineEditor {
 
     public NoteLineEditor(Path path, String fileName) {
-        DisplayState displayState = displayFileWithLineNumbers(path);
+        DisplayState displayState = displayLineByLinesOfNote(path);
         if (displayState.equals(ERROR)) {
-            openErrorDialogue(path);
             return;
         }
         final long upperManipulationRangeCap = countLineLength(fileName);
@@ -29,12 +28,16 @@ public class NoteLineEditor {
             System.out.println("Which line do you want to overwrite? The manipulation range is: "
                     + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
             int lineNumber = scanner.nextInt();
+            scanner.nextLine();
             if (noteHasEnoughLines(path, lineNumber)) {
                 openChangeDialogue(path, lineNumber);
             } else {
                 openErrorDialogue(path);
             }
         }
+    }
+
+    public NoteLineEditor() {
     }
 
     private long countLineLength(String fileName) {
@@ -58,21 +61,24 @@ public class NoteLineEditor {
             System.out.println(lineToChange);
             System.out.println("Type in a line to replace above line. If you don't want to change anything, type '_' without '' and hit enter");
             String overwriteLine = scanner.nextLine();
+            System.out.println(overwriteLine);
             if (overwriteLine.equals("_")) {
                 return;
             }
             LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
+                    .replacementLine(overwriteLine)
                     .path(completePath)
                     .indexLineNumber(indexLineNumber)
-                    .replacementLine(overwriteLine)
                     .build();
+            System.out.println(lineOverwriterInformation);
             overwriteLine(lineOverwriterInformation);
+            System.out.println("Edit was successfull!");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void overwriteLine(LineOverwriterInformation lineOverwriterInformation) throws IOException {
+    public void overwriteLine(LineOverwriterInformation lineOverwriterInformation) throws IOException {
         List<String> lines;
         Path path = lineOverwriterInformation.getCompletePath();
         int indexLineNumber = lineOverwriterInformation.getIndexLineNumber();
@@ -80,10 +86,9 @@ public class NoteLineEditor {
         lines = Files.readAllLines(Paths.get(String.valueOf(path)));
         lines.set(indexLineNumber, replacementLine);
         Files.write(Paths.get(String.valueOf(path)), Collections.singleton(String.join("\n", lines)));
-        System.out.println("Edit was successfull!");
     }
 
-    private static boolean noteHasEnoughLines(Path completePath, int lineNumber) {
+    public boolean noteHasEnoughLines(Path completePath, int lineNumber) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             long lineCount = stringStream.count();
             if (lineCount < lineNumber || lineNumber < 1) {
@@ -95,7 +100,7 @@ public class NoteLineEditor {
         return true;
     }
 
-    private DisplayState displayFileWithLineNumbers(Path completePath) {
+    private DisplayState displayLineByLinesOfNote(Path completePath) {
         try (LineNumberReader lineNumberReader = new LineNumberReader(
                 new InputStreamReader(Files.newInputStream(completePath)))) {
             String str;

@@ -29,7 +29,7 @@ public class LineOverwriterInformation {
         }
 
         public Builder replacementLine(final String replacementLine){
-            this.replacementline = replacementline;
+            this.replacementline = replacementLine;
             return this;
         }
 

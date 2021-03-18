@@ -38,7 +38,7 @@ public class NoteReaderTest {
                 fileContent, "testContent test test");
     }
 
-    private void writingTestContentToFile(File createdFile, String testContent) {
+    public static void writingTestContentToFile(File createdFile, String testContent) {
         try (FileWriter fileWriter = new FileWriter(createdFile)) {
             fileWriter.write(testContent);
         } catch (IOException e) {
