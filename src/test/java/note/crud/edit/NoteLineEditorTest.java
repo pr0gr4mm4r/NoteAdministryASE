@@ -1,4 +1,4 @@
-package note.edit;
+package note.crud.edit;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -11,7 +11,13 @@ public class NoteLineEditorTest {
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void testEditNoteMethod() throws IOException {
+    public void overwriteLineMethod() throws IOException {
 
     }
+    @Test
+    public void noteHasEnoughLinesMethod() throws IOException {
+
+    }
+
+
 }
