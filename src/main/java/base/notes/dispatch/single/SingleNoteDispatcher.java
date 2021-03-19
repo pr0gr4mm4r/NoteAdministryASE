@@ -18,7 +18,7 @@ public class SingleNoteDispatcher {
     //Zum Funktionieren die Option "Zugriff durch weniger sichere Apps" im Googlekonto aktivieren
 
     public SingleNoteDispatcher(SendingInformation sendingInformation) {
-        DispatcherRaw dispatcherRaw = new DispatcherRaw(sendingInformation);
+        DispatcherRaw dispatcherRaw = new DispatcherRaw();
         Properties properties = dispatcherRaw.defineProperties();
         Authenticator auth = new Authenticator() {
             @Override
