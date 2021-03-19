@@ -7,6 +7,7 @@ import base.notes.dispatch.single.SingleNoteDispatcher;
 import org.junit.Test;
 
 import javax.mail.*;
+import javax.mail.internet.ContentType;
 import javax.mail.internet.MimeMessage;
 
 import java.util.Arrays;
@@ -30,8 +31,8 @@ public class SingelNoteDispatcherTest {
         SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
         SendingInformation sendingInformation = new FakeSendingInformation().getSendingInformation();
         MimeMessage mimeMessage = singleNoteDispatcher.createMessage(session, sendingInformation);
+        assertEquals("text/plain", mimeMessage.getContentType());
         assertEquals("[fakeRecipient]", Arrays.toString(mimeMessage.getAllRecipients()));
-        assertEquals("[fakeRecipient]", Arrays.toString(new Address[]{mimeMessage.getSender()}));
     }
 
     @Test

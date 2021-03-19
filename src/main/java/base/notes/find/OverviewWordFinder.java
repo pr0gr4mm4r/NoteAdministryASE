@@ -12,43 +12,49 @@ import static base.config.Globals.scanner;
 import static base.notes.find.SingleNoteWordFinder.countOccurrenceOfWord;
 
 public class OverviewWordFinder {
+    private final String keyword;
+    private final MultiNoteProcessor multiNoteProcessor;
 
     public OverviewWordFinder() {
         System.out.println("type in a keyword to search:");
-        final String keyword = scanner.nextLine();
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        keyword = scanner.nextLine();
+        multiNoteProcessor = new MultiNoteProcessor();
         try {
-            composeOverview(keyword, multiNoteProcessor);
+            composeOverview();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void composeOverview(final String keyword, MultiNoteProcessor multiNoteProcessor) throws IOException {
+    private void composeOverview() throws IOException {
             List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
             List<String> noteList = createNoteList(pathsToNotesList);
             List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
-            for (Path value : pathsToNotesList) {
-                Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
-                List<List<String>> fileContent = new ArrayList<>();
-                long lineLength = Files.lines(value).count();
-                for (int j = 0; j < lineLength; j++) {
-                    fileContent.add(new ArrayList<>());
-                    String singleFileLine = Files.readAllLines(value).get(j);
-                    fileContent.get(j).add(singleFileLine);
-                    int occurenceOfWord = countOccurrenceOfWord(keyword, singleFileLine);
-                    wordOccurenceSingleNote.put(j + 1, occurenceOfWord);
-                }
-                wordOccurenceOverview.add(wordOccurenceSingleNote);
+            composeWordOccurrenceOverview(pathsToNotesList, wordOccurenceOverview);
+            printResults(noteList, wordOccurenceOverview);
+    }
+
+    private void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException{
+        for (Path value : pathsToNotesList) {
+            Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
+            List<List<String>> fileContent = new ArrayList<>();
+            long lineLength = Files.lines(value).count();
+            for (int j = 0; j < lineLength; j++) {
+                fileContent.add(new ArrayList<>());
+                String singleFileLine = Files.readAllLines(value).get(j);
+                fileContent.get(j).add(singleFileLine);
+                int occurenceOfWord = countOccurrenceOfWord(keyword, singleFileLine);
+                wordOccurenceSingleNote.put(j + 1, occurenceOfWord);
             }
-            printResults(noteList, wordOccurenceOverview, keyword);
+            wordOccurenceOverview.add(wordOccurenceSingleNote);
+        }
     }
 
     private List<String> createNoteList(List<Path> pathsToNotesList) {
         return pathsToNotesList.stream().map(Path::toString).collect(Collectors.toList());
     }
 
-    private void printResults(List<String> noteList, List<Map<Integer, Integer>> keyWordOccurenceOverview, final String keyword) {
+    private void printResults(List<String> noteList, List<Map<Integer, Integer>> keyWordOccurenceOverview) {
         final boolean keywordPresent = checkIfKeyWordIsPresent(keyWordOccurenceOverview);
         if (!keywordPresent) {
             System.out.println("The keyword '" + keyword + "' is not present in any of your notes!");
@@ -64,8 +70,8 @@ public class OverviewWordFinder {
                 keyWordOccurenceSingleNote.remove(i);
             }
         }
-        for (int i = 0; i < rememberRemoved.size(); i++) {
-            noteList.remove(rememberRemoved.get(i));
+        for (Integer integer : rememberRemoved) {
+            noteList.remove(integer);
         }
         for (int j = 0; j < keyWordOccurenceOverview.size(); j++) {
             int summedOccurrenceInNote = keyWordOccurenceOverview.get(j).values().stream().reduce(0, Integer::sum);
