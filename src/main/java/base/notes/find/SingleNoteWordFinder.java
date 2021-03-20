@@ -23,7 +23,7 @@ public class SingleNoteWordFinder {
     private Map<Integer, Integer> composeOccurrenceMap(String[] lineList, String keyword) {
         Map<Integer, Integer> wordOccurence = new HashMap<>();
         List<List<String>> fileContent = new ArrayList<>();
-        long lineLength = lineList.length;
+        final long lineLength = lineList.length;
         for (int j = 0; j < lineLength; j++) {
             fileContent.add(new ArrayList<>());
             String line = lineList[j];
