@@ -1,4 +1,4 @@
-package base.notes.processors;
+package base.notes.processors.single;
 
 import base.interfaces.Processor;
 

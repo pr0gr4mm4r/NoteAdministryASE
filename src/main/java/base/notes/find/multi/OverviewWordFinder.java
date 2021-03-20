@@ -1,6 +1,7 @@
-package base.notes.find;
+package base.notes.find.multi;
 
-import base.notes.processors.MultiNoteProcessor;
+import base.notes.processors.multi.MultiNoteProcessor;
+import base.start.NoteAdministryStart;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,17 +9,16 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static base.config.Globals.scanner;
-import static base.notes.find.SingleNoteWordFinder.countOccurrenceOfWord;
+import static base.notes.find.single.SingleNoteWordFinder.countOccurrenceOfWord;
 
 public class OverviewWordFinder {
+
     private final String keyword;
     private final MultiNoteProcessor multiNoteProcessor;
 
-    public OverviewWordFinder() {
-        System.out.println("type in a keyword to search:");
-        keyword = scanner.nextLine();
-        multiNoteProcessor = new MultiNoteProcessor();
+    public OverviewWordFinder(String keyword, MultiNoteProcessor multiNoteProcessor) {
+        this.keyword = keyword;
+        this.multiNoteProcessor = multiNoteProcessor;
         try {
             composeOverview();
         } catch (IOException e) {
@@ -26,22 +26,25 @@ public class OverviewWordFinder {
         }
     }
 
+
     public void composeOverview() throws IOException {
-            List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
-            List<String> noteList = createNoteList(pathsToNotesList);
-            List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
-            composeWordOccurrenceOverview(pathsToNotesList, wordOccurenceOverview);
+        List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
+        List<String> noteList = createNoteList(pathsToNotesList);
+        List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
+        composeWordOccurrenceOverview(pathsToNotesList, wordOccurenceOverview);
+        if (NoteAdministryStart.programRun) {
             printResults(noteList, wordOccurenceOverview);
+        }
     }
 
-    public void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException{
+    public void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
         for (Path value : pathsToNotesList) {
-            Map<Integer, Integer> wordOccurenceSingleNote = secondFunction(value);
+            Map<Integer, Integer> wordOccurenceSingleNote = composeWordOccurenceSingleNote(value);
             wordOccurenceOverview.add(wordOccurenceSingleNote);
         }
     }
 
-    public Map<Integer, Integer> secondFunction(Path value) throws IOException {
+    public Map<Integer, Integer> composeWordOccurenceSingleNote(Path value) throws IOException {
         Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
         long lineLength = Files.lines(value).count();
         List<List<String>> fileContent = new ArrayList<>();
@@ -100,5 +103,13 @@ public class OverviewWordFinder {
             }
         }
         return keywordPresent;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public MultiNoteProcessor getMultiNoteProcessor() {
+        return multiNoteProcessor;
     }
 }

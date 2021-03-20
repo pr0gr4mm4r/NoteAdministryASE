@@ -1,6 +1,6 @@
-package base.notes.find;
+package base.notes.find.single;
 
-import base.notes.processors.SingleNoteProcessor;
+import base.notes.processors.single.SingleNoteProcessor;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,6 +1,7 @@
-package base.notes.processors;
+package base.notes.processors.multi;
 
 import base.interfaces.Processor;
+import base.notes.processors.single.SingleNoteProcessor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,7 +22,7 @@ public class MultiNoteProcessor implements Processor {
     private List<Path> pathList = new ArrayList<>();
     private List<String> noteList = new ArrayList<>();
     private List<String[]> separatedWordListList = new ArrayList<>();
-    private List<String[]> finalWordListList = new ArrayList<>();
+    private List<String[]> finalWordListList;
     private Set<String> noteNames = new HashSet<>();
     private final SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
 

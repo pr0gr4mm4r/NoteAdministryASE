@@ -1,6 +1,6 @@
 package base.ui.frame;
 
-import base.notes.processors.MultiNoteProcessor;
+import base.notes.processors.multi.MultiNoteProcessor;
 import base.ui.listener.action.NoteButtonActionListener;
 import base.ui.listener.mouse.HoverPointerMouseListener;
 import base.ui.display.RhymeCounterDisplay;

@@ -1,6 +1,6 @@
 package note.find;
 
-import base.notes.find.SingleNoteWordFinder;
+import base.notes.find.single.SingleNoteWordFinder;
 import org.junit.Rule;
 import org.junit.Test;
 

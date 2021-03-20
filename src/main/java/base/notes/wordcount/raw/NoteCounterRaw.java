@@ -1,7 +1,7 @@
 package base.notes.wordcount.raw;
 
-import base.notes.processors.MultiNoteProcessor;
-import base.notes.processors.SingleNoteProcessor;
+import base.notes.processors.multi.MultiNoteProcessor;
+import base.notes.processors.single.SingleNoteProcessor;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,7 +1,7 @@
 package base.notes.spellcheck.multi;
 
 import base.logfiles.crud.declare.single.LogFileDeclarator;
-import base.notes.processors.MultiNoteProcessor;
+import base.notes.processors.multi.MultiNoteProcessor;
 import base.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
 import base.notes.spellcheck.model.WordExistenceMapList;
 import base.notes.spellcheck.raw.SpellCheckerRaw;

@@ -1,6 +1,6 @@
 package base.singleWord;
 
-import base.notes.processors.SingleNoteProcessor;
+import base.notes.processors.single.SingleNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
 import base.WordExistenceMap;
 

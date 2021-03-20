@@ -1,6 +1,6 @@
 package base.notes.wordcount.custom;
 
-import base.notes.processors.MultiNoteProcessor;
+import base.notes.processors.multi.MultiNoteProcessor;
 import base.notes.wordcount.raw.NoteCounterRaw;
 
 import java.util.ArrayList;
