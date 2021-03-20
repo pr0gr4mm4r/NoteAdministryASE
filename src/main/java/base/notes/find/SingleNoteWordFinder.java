@@ -20,7 +20,7 @@ public class SingleNoteWordFinder {
         System.out.println(wordOccurrence);
     }
 
-    private Map<Integer, Integer> composeOccurrenceMap(String[] lineList, String keyword) {
+    public Map<Integer, Integer> composeOccurrenceMap(String[] lineList, String keyword) {
         Map<Integer, Integer> wordOccurence = new HashMap<>();
         List<List<String>> fileContent = new ArrayList<>();
         final long lineLength = lineList.length;
