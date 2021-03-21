@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static note.crud.read.NoteReaderTest.writingTestContentToFile;
+import static note.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
 
 
 public class OverviewWordFinderTest {
     private OverviewWordFinder overviewWordFinder;
     private File artificialFile;
+    private final String testWord = "test";
 
     @Rule
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
@@ -29,7 +30,7 @@ public class OverviewWordFinderTest {
     @Before
     public void setup() throws IOException {
         artificialFile = temporaryFolder.newFile("myfile.txt");
-        overviewWordFinder = new OverviewWordFinder("test", new MultiNoteProcessor(temporaryFolder.getRoot().getPath() + "\\"));
+        overviewWordFinder = new OverviewWordFinder(testWord, new MultiNoteProcessor(temporaryFolder.getRoot().getPath() + "\\"));
     }
 
     @Test
@@ -41,18 +42,20 @@ public class OverviewWordFinderTest {
     }
 
     @Test
-    public void test() {
+    public void countOccurrenceSingleNoteTest() {
 
     }
 
     @Test
     public void composeWordOccurenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
-        writingTestContentToFile(artificialFile, "test\ntest\ntest");
+        writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
         Map<Integer,Integer> wordOccurrence = overviewWordFinder.composeWordOccurenceSingleNote(artificialFilePath);
-        assertEquals(1, (int) wordOccurrence.get(1));
-        assertEquals(1, (int) wordOccurrence.get(2));
-        assertEquals(1, (int) wordOccurrence.get(3));
-        assertNull(wordOccurrence.get(4));
+        int occurrenceInFirstLine = wordOccurrence.get(1);
+        int occurrenceInSecondLine = wordOccurrence.get(2);
+        Object nullExpectation = wordOccurrence.get(3);
+        assertEquals( 2, occurrenceInFirstLine);
+        assertEquals(1, occurrenceInSecondLine);
+        assertNull(nullExpectation);
     }
 }

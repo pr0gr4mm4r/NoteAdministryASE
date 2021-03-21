@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static note.crud.read.NoteReaderTest.writingTestContentToFile;
+import static note.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
 
 public class NoteLineEditorTest {
@@ -26,7 +26,7 @@ public class NoteLineEditorTest {
         File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
-        writingTestContentToFile(artificialFile, "test\ntest\ntest");
+        writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
         NoteLineEditor noteLineEditor = new NoteLineEditor();
         LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
                 .path(artificialFilePath)
@@ -48,7 +48,7 @@ public class NoteLineEditorTest {
         File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
-        writingTestContentToFile(artificialFile, "test\ntest\ntest");
+        writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
         NoteLineEditor noteLineEditor = new NoteLineEditor();
         boolean positive1 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 2);
         boolean positive2 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 1);
@@ -63,7 +63,7 @@ public class NoteLineEditorTest {
         File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
-        writingTestContentToFile(artificialFile, "test\ntest\ntest");
+        writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
         NoteLineEditor noteLineEditor = new NoteLineEditor();
         List<Boolean> negativeExpected = new ArrayList<>();
         negativeExpected.add(noteLineEditor.noteHasEnoughLines(artificialFilePath, -10));

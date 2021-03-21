@@ -20,7 +20,7 @@ public class NoteReaderTest {
     public void testReadNoteMethod() throws IOException {
         final String testContent = "testContent\ntest\ntest";
         final File createdFile = temporaryFolder.newFile("myfile.txt");
-        writingTestContentToFile(createdFile, testContent);
+        writingTestContentToArtificialFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
         String fileContent = NoteReader.readNote(completePath);
         assertEquals("fileContent does not match the actual content of file",
@@ -31,14 +31,14 @@ public class NoteReaderTest {
     public void testReadNoteForFurtherProcessingMethod() throws IOException {
         final String testContent = "testContent\ntest\ntest";
         final File createdFile = temporaryFolder.newFile("myfile.txt");
-        writingTestContentToFile(createdFile, testContent);
+        writingTestContentToArtificialFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
         String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent test test");
     }
 
-    public static void writingTestContentToFile(File createdFile, String testContent) {
+    public static void writingTestContentToArtificialFile(File createdFile, String testContent) {
         try (FileWriter fileWriter = new FileWriter(createdFile)) {
             fileWriter.write(testContent);
         } catch (IOException e) {
