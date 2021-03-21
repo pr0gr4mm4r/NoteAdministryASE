@@ -5,15 +5,9 @@ import base.notes.processors.single.SingleNoteProcessor;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static base.config.Globals.scanner;
-
 public class SingleNoteWordFinder {
 
-    public SingleNoteWordFinder() {
-        System.out.println("type in a keyword to search:");
-        final String keyword = scanner.nextLine();
-        System.out.println("type in the name of the note to search:");
-        final String nameOfNote = scanner.nextLine();
+    public SingleNoteWordFinder(String keyword, String nameOfNote) {
         SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor(nameOfNote);
         String[] lineList = singleNoteProcessor.getLineList();
         Map<Integer, Integer> wordOccurrence = composeOccurrenceMap(lineList, keyword);

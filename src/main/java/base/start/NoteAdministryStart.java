@@ -6,6 +6,7 @@ import base.notes.crud.delete.caller.SingleNoteDeleterCaller;
 import base.notes.crud.edit.caller.NoteLineEditorCaller;
 import base.notes.crud.read.caller.NoteReaderCaller;
 import base.notes.dispatch.caller.SingleNoteDispatcherCaller;
+import base.notes.find.caller.SingleNoteWordFinderCaller;
 import base.notes.find.single.SingleNoteWordFinder;
 import base.notes.find.caller.OverviewWordFinderCaller;
 import base.notes.sort.caller.NoteSorterCaller;
@@ -38,7 +39,7 @@ public class NoteAdministryStart {
             case "help" -> commandList.listCommands(HelpMode.BASIC);
             case "help+" -> commandList.listCommands(HelpMode.EXTENDED);
             case "read" -> new NoteReaderCaller();
-            case "search" -> new SingleNoteWordFinder();
+            case "search" -> new SingleNoteWordFinderCaller();
             case "search all" -> new OverviewWordFinderCaller();
             case "send" -> new SingleNoteDispatcherCaller();
             case "sc sn" -> new SingleNoteSpellChecker();
