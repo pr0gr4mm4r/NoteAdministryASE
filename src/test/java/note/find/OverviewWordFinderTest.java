@@ -47,7 +47,7 @@ public class OverviewWordFinderTest {
     }
 
     @Test
-    public void composeWordOccurenceSingleNoteTest() throws IOException {
+    public void composeWordOccurrenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
         writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
         Map<Integer,Integer> wordOccurrence = overviewWordFinder.composeWordOccurenceSingleNote(artificialFilePath);
