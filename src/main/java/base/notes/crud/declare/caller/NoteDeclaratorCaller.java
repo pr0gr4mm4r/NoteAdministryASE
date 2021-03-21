@@ -17,12 +17,12 @@ public class NoteDeclaratorCaller {
             System.out.println("Please provide a name for the note:");
         }
         this.noteName = scanner.nextLine();
-        final Path pathToNote = createCompletePath(noteName);
+        final Path pathToNote = createCompletePath(noteName, path_for_notes);
         new NoteDeclarator(pathToNote, noteName);
     }
 
-    public static Path createCompletePath(String noteName) {
-        return Paths.get(path_for_notes + noteName);
+    public static Path createCompletePath(String noteName, String path) {
+        return Paths.get(path + noteName);
     }
 
 }

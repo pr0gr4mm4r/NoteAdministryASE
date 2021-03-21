@@ -37,20 +37,20 @@ public class OverviewWordFinder {
         }
     }
 
-    public void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
+    private void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
         for (Path value : pathsToNotesList) {
             Map<Integer, Integer> wordOccurenceSingleNote = composeWordOccurenceSingleNote(value);
             wordOccurenceOverview.add(wordOccurenceSingleNote);
         }
     }
 
-    public Map<Integer, Integer> composeWordOccurenceSingleNote(Path value) throws IOException {
+    public Map<Integer, Integer> composeWordOccurenceSingleNote(Path path) throws IOException {
         Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
-        long lineLength = Files.lines(value).count();
+        long lineLength = Files.lines(path).count();
         List<List<String>> fileContent = new ArrayList<>();
         for (int j = 0; j < lineLength; j++) {
             fileContent.add(new ArrayList<>());
-            String singleFileLine = Files.readAllLines(value).get(j);
+            String singleFileLine = Files.readAllLines(path).get(j);
             fileContent.get(j).add(singleFileLine);
             int occurenceOfWord = countOccurrenceOfWord(keyword, singleFileLine);
             wordOccurenceSingleNote.put(j + 1, occurenceOfWord);

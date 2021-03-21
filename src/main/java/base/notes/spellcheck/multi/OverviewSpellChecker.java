@@ -8,6 +8,7 @@ import base.notes.spellcheck.raw.SpellCheckerRaw;
 
 import java.util.*;
 
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 import static base.notes.spellcheck.single.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
 
@@ -18,7 +19,7 @@ public class OverviewSpellChecker {
 
 
     public OverviewSpellChecker() {
-        final MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        final MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         final List<String[]> wordListList = multiNoteProcessor.getWordListList();
         wordExistenceMapList.fill(wordListList);
 

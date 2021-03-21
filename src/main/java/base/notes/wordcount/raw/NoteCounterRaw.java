@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static base.config.Globals.path_for_notes;
+
 public class NoteCounterRaw {
     private long lineCount;
     private int wordCount;
@@ -27,7 +29,7 @@ public class NoteCounterRaw {
     }
 
     public NoteCounterRaw() {
-        multiNoteProcessor = new MultiNoteProcessor();
+        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<Path> pathList = multiNoteProcessor.getPathList();
         lineCountList = countLinesOfNotes(pathList, lineCountList);
         List<String[]> wordListList = multiNoteProcessor.getWordListList();

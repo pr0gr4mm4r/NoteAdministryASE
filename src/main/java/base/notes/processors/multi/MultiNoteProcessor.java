@@ -26,14 +26,14 @@ public class MultiNoteProcessor implements Processor {
     private Set<String> noteNames = new HashSet<>();
     private final SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
 
-    public MultiNoteProcessor() {
+    public MultiNoteProcessor(String path) {
         try {
-            noteNames = listNoteNames(path_for_notes, 1);
+            noteNames = listNoteNames(path, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        pathList = createPathList(noteNames, pathList);
-        noteList = createNoteList(pathList, noteList);
+        pathList = createPathList(noteNames, path);
+        noteList = createNoteList(pathList);
         separatedWordListList = separateWordsForEachNote(noteList, separatedWordListList);
         finalWordListList = removeEmptyLinesForEachNote(separatedWordListList);
     }
@@ -42,7 +42,7 @@ public class MultiNoteProcessor implements Processor {
         for (int i = 0; i < wordListLists.size(); i++) {
             String[] filteredWordList = singleNoteProcessor.removeEmptyLines(wordListLists.get(i));
             wordListLists.set(i, filteredWordList);
-        };
+        }
         return wordListLists;
     }
 
@@ -54,7 +54,8 @@ public class MultiNoteProcessor implements Processor {
         return separatedWordListList;
     }
 
-    private List<String> createNoteList(List<Path> pathList, List<String> noteList) {
+    private List<String> createNoteList(List<Path> pathList) {
+        List<String> noteList = new ArrayList<>();
         for (Path path : pathList) {
             String note = readNoteForNoteProcessing(path);
             noteList.add(note);
@@ -62,9 +63,10 @@ public class MultiNoteProcessor implements Processor {
         return noteList;
     }
 
-    private List<Path> createPathList(Set<String> strings, List<Path> pathList) {
+    private List<Path> createPathList(Set<String> strings, String path) {
+        List<Path> pathList = new ArrayList<>();
         for (String string : strings) {
-            pathList.add(createCompletePath(string));
+            pathList.add(createCompletePath(string, path));
         }
         return pathList;
     }

@@ -6,13 +6,15 @@ import base.notes.wordcount.raw.NoteCounterRaw;
 import java.util.ArrayList;
 import java.util.List;
 
+import static base.config.Globals.path_for_notes;
+
 public class OverviewCounter {
     NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
 
     public OverviewCounter() {
         List<Long> lineCountList = noteCounterRaw.getLineCountList();
         List<Integer> wordCountList = noteCounterRaw.getWordCountList();
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         System.out.println(multiNoteProcessor.getNoteList());
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {

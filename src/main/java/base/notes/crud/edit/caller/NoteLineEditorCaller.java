@@ -12,7 +12,7 @@ public class NoteLineEditorCaller {
     public NoteLineEditorCaller(){
         System.out.println("Which note do you want to change?");
         String fileName = scanner.nextLine();
-        final Path completePath = createCompletePath(fileName);
+        final Path completePath = createCompletePath(fileName, path_for_notes);
         new NoteLineEditor(completePath, fileName);
     }
 }

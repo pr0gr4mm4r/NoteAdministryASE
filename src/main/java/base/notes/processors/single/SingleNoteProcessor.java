@@ -21,7 +21,7 @@ public class SingleNoteProcessor implements Processor {
 
     public SingleNoteProcessor(String noteName) {
         this.noteName = noteName;
-        completePath = createCompletePath(noteName);
+        completePath = createCompletePath(noteName, path_for_notes);
         note = readNoteForNoteProcessing(completePath);
         noteForGraphicalProcessing = readNote(completePath);
         lineList = createLineList(note);

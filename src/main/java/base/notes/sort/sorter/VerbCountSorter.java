@@ -10,12 +10,13 @@ import rita.RiTa;
 import java.util.*;
 import java.util.Map.Entry;
 
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
     @Override
     public String sort() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<String[]> noteList = multiNoteProcessor.getWordListList();
         List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
         StringIntegerMap<String, Integer> verbCountMap = new StringIntegerMap<>();

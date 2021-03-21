@@ -10,13 +10,14 @@ import base.notes.wordcount.raw.NoteCounterRaw;
 import java.util.*;
 import java.util.Map.Entry;
 
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 
 
 public class WordCountNoteSorter implements Sorter {
     @Override
     public String sort() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
         List<String> noteList = multiNoteProcessor.getNoteList();
         List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());

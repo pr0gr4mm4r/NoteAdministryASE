@@ -12,13 +12,14 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
+import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
     public String sort() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<String[]> noteList = multiNoteProcessor.getWordListList();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
         Map<String, Integer> rhymeOverview = new StringIntegerMap<>();

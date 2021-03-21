@@ -47,7 +47,7 @@ public class DisplayNotes extends JFrame {
         jScrollPane = new JScrollPane(noteTextPanel);
         contentPanel.setLayout(textContentGrid);
         contentPanel.add(jScrollPane);
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
             JLabel jLabel = new JLabel(noteNames.get(i));

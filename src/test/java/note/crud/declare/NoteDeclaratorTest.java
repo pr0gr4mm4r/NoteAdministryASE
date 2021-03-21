@@ -22,7 +22,7 @@ public class NoteDeclaratorTest {
     @Before
     public void createNoteDeclarator() {
         generatedString = RandomStringUtils.randomAlphabetic(6);
-        Path path = createCompletePath(generatedString);
+        Path path = createCompletePath(generatedString, path_for_notes);
         noteDeclarator = new NoteDeclarator(path, generatedString);
     }
 
