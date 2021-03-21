@@ -38,6 +38,10 @@ public class MultiNoteProcessor implements Processor {
         finalWordListList = removeEmptyLinesForEachNote(separatedWordListList);
     }
 
+    public MultiNoteProcessor() {
+
+    }
+
     public List<String[]> removeEmptyLinesForEachNote(List<String[]> wordListLists) {
         for (int i = 0; i < wordListLists.size(); i++) {
             String[] filteredWordList = singleNoteProcessor.removeEmptyLines(wordListLists.get(i));
