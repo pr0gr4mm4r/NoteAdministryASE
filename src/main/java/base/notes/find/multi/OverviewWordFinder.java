@@ -96,13 +96,12 @@ public class OverviewWordFinder {
     }
 
     public boolean checkIfKeyWordIsPresent(final List<Map<Integer, Integer>> keyWordOccurenceOverview) {
-        boolean keywordPresent = false;
-        for (int i = 0; i < keyWordOccurenceOverview.size(); i++) {
-            if (!keyWordOccurenceOverview.get(i).values().stream().allMatch(v -> v == 0)) {
-                keywordPresent = true;
+        for (Map<Integer, Integer> integerIntegerMap : keyWordOccurenceOverview) {
+            if (!integerIntegerMap.values().stream().allMatch(v -> v == 0)) {
+                return true;
             }
         }
-        return keywordPresent;
+        return false;
     }
 
     public String getKeyword() {

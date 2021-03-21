@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,11 +39,22 @@ public class OverviewWordFinderTest {
         List<Path> pathList = new ArrayList<>();
         pathList.add(Paths.get("testPath"));
         List<String> noteList = overviewWordFinder.createNoteList(pathList);
-        assertTrue("NoteList not initialized successfully",noteList.size() > 0);
+        assertTrue("NoteList not initialized successfully", noteList.size() > 0);
     }
 
     @Test
-    public void countOccurrenceSingleNoteTest() {
+    public void checkIfKeyWordIsPresent() {
+        List<Map<Integer, Integer>> testList = new ArrayList<>();
+        Map<Integer, Integer> testMap = new HashMap<>();
+        testMap.put(1, 0);
+        testMap.put(2, 0);
+        testMap.put(3, 0);
+        testList.add(testMap);
+        assertFalse(overviewWordFinder.checkIfKeyWordIsPresent(testList));
+        testMap.put(1, 1);
+        testMap.put(2, 5);
+        testMap.put(3, 0);
+        assertTrue(overviewWordFinder.checkIfKeyWordIsPresent(testList));
 
     }
 
@@ -50,11 +62,11 @@ public class OverviewWordFinderTest {
     public void composeWordOccurrenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
         writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
-        Map<Integer,Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
+        Map<Integer, Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
         int occurrenceInFirstLine = wordOccurrence.get(1);
         int occurrenceInSecondLine = wordOccurrence.get(2);
         Object nullExpectation = wordOccurrence.get(3);
-        assertEquals( 2, occurrenceInFirstLine);
+        assertEquals(2, occurrenceInFirstLine);
         assertEquals(1, occurrenceInSecondLine);
         assertNull(nullExpectation);
     }
