@@ -1,5 +1,6 @@
 package base.notes.find.multi;
 
+import base.notes.find.single.SingleNoteWordFinder;
 import base.notes.processors.multi.MultiNoteProcessor;
 import base.start.NoteAdministryStart;
 
@@ -9,16 +10,16 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static base.notes.find.single.SingleNoteWordFinder.countOccurrenceOfWord;
-
 public class OverviewWordFinder {
 
     private final String keyword;
     private final MultiNoteProcessor multiNoteProcessor;
+    private final SingleNoteWordFinder singleNoteWordFinder;
 
     public OverviewWordFinder(String keyword, MultiNoteProcessor multiNoteProcessor) {
         this.keyword = keyword;
         this.multiNoteProcessor = multiNoteProcessor;
+        this.singleNoteWordFinder = new SingleNoteWordFinder();
         try {
             composeOverview();
         } catch (IOException e) {
@@ -52,7 +53,7 @@ public class OverviewWordFinder {
             fileContent.add(new ArrayList<>());
             String singleFileLine = Files.readAllLines(path).get(j);
             fileContent.get(j).add(singleFileLine);
-            int occurenceOfWord = countOccurrenceOfWord(keyword, singleFileLine);
+            int occurenceOfWord = singleNoteWordFinder.countOccurrenceOfWord(keyword, singleFileLine);
             wordOccurenceSingleNote.put(j + 1, occurenceOfWord);
         }
         return wordOccurenceSingleNote;
