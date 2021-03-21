@@ -50,7 +50,7 @@ public class OverviewWordFinderTest {
     public void composeWordOccurrenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
         writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
-        Map<Integer,Integer> wordOccurrence = overviewWordFinder.composeWordOccurenceSingleNote(artificialFilePath);
+        Map<Integer,Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
         int occurrenceInFirstLine = wordOccurrence.get(1);
         int occurrenceInSecondLine = wordOccurrence.get(2);
         Object nullExpectation = wordOccurrence.get(3);

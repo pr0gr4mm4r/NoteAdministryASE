@@ -39,12 +39,12 @@ public class OverviewWordFinder {
 
     private void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
         for (Path value : pathsToNotesList) {
-            Map<Integer, Integer> wordOccurenceSingleNote = composeWordOccurenceSingleNote(value);
+            Map<Integer, Integer> wordOccurenceSingleNote = composeWordOccurrenceSingleNote(value);
             wordOccurenceOverview.add(wordOccurenceSingleNote);
         }
     }
 
-    public Map<Integer, Integer> composeWordOccurenceSingleNote(Path path) throws IOException {
+    public Map<Integer, Integer> composeWordOccurrenceSingleNote(Path path) throws IOException {
         Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
         long lineLength = Files.lines(path).count();
         List<List<String>> fileContent = new ArrayList<>();
