@@ -1,6 +1,6 @@
 package base.ui.raw;
 
-import base.WordExistenceMap;
+import base.ui.WordExistenceMap;
 import rita.RiTa;
 
 import java.util.List;

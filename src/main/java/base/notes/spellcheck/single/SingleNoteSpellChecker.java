@@ -3,7 +3,7 @@ package base.notes.spellcheck.single;
 import base.notes.processors.single.SingleNoteProcessor;
 import base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.WordExistenceMap;
+import base.ui.WordExistenceMap;
 
 import static base.config.Globals.scanner;
 

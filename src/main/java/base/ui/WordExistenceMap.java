@@ -1,4 +1,4 @@
-package base;
+package base.ui;
 
 import java.util.HashMap;
 import java.util.List;

@@ -71,8 +71,8 @@ public class MultiNoteProcessor implements Processor {
         return pathList;
     }
 
-    public Set<String> listNoteNames(String dir, int depth) throws IOException {
-        try (Stream<Path> stream = Files.walk(Paths.get(dir), depth)) {
+    public Set<String> listNoteNames(String path, int depth) throws IOException {
+        try (Stream<Path> stream = Files.walk(Paths.get(path), depth)) {
             return stream
                     .filter(file -> !Files.isDirectory(file))
                     .map(Path::getFileName)

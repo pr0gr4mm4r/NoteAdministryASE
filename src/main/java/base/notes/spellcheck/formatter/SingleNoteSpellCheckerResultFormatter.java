@@ -1,6 +1,6 @@
 package base.notes.spellcheck.formatter;
 
-import base.WordExistenceMap;
+import base.ui.WordExistenceMap;
 
 import java.util.List;
 import java.util.Map;

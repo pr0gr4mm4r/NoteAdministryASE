@@ -2,15 +2,12 @@ package note.find;
 
 import base.notes.find.single.SingleNoteWordFinder;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 
-import javax.mail.MessagingException;
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class SingleNoteWordFinderTest {
     private SingleNoteWordFinder singelNoteWordFinder;
@@ -33,8 +30,11 @@ public class SingleNoteWordFinderTest {
     }
 
     @Test
-    public void bla() {
-
+    public void countOccurrenceOfWordTest() {
+        int occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "test test test test");
+        assertEquals(4, occurrence);
+        occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "testtestrgergergerregerr");
+        assertEquals(2, occurrence);
     }
 }
 
