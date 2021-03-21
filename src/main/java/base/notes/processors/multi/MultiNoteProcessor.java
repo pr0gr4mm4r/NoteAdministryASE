@@ -19,8 +19,8 @@ import static base.notes.crud.declare.caller.NoteDeclaratorCaller.createComplete
 import static base.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
 public class MultiNoteProcessor implements Processor {
-    private List<Path> pathList = new ArrayList<>();
-    private List<String> noteList = new ArrayList<>();
+    private List<Path> pathList;
+    private List<String> noteList;
     private List<String[]> separatedWordListList = new ArrayList<>();
     private List<String[]> finalWordListList;
     private Set<String> noteNames = new HashSet<>();

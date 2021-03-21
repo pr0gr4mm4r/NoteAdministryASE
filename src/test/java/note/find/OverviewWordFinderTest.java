@@ -55,8 +55,25 @@ public class OverviewWordFinderTest {
         testMap.put(2, 5);
         testMap.put(3, 0);
         assertTrue(overviewWordFinder.checkIfKeyWordIsPresent(testList));
-
     }
+
+    @Test
+    public void createRememberRemovedList() {
+        List<Map<Integer, Integer>> testList = new ArrayList<>();
+        Map<Integer, Integer> testMap1 = new HashMap<>();
+        Map<Integer, Integer> testMap2 = new HashMap<>();
+        testMap1.put(1, 0);
+        testMap1.put(2, 0);
+        testMap1.put(3, 0);
+        testMap2.put(1,1);
+        testMap2.put(2,0);
+        testMap2.put(3,4);
+        testList.add(testMap1);
+        testList.add(testMap2);
+        List<Integer> testRememberRemovedList = overviewWordFinder.createRememberRemovedList(testList);
+        assertEquals(1, testRememberRemovedList.size());
+    }
+
 
     @Test
     public void composeWordOccurrenceSingleNoteTest() throws IOException {
