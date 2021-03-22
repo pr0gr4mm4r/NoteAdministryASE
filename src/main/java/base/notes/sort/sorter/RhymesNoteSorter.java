@@ -18,12 +18,14 @@ import static base.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
+    MultiNoteProcessor multiNoteProcessor;
+    List<String[]> noteList;
+    List<String> noteNames;
+    Map<String, Integer> rhymeOverview;
+
     @Override
     public Map initialize() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        List<String[]> noteList = multiNoteProcessor.getWordListList();
-        List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        Map<String, Integer> rhymeOverview = new StringIntegerMap<>();
+        initializeVariables();
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
             counter = 0;
@@ -33,19 +35,31 @@ public class RhymesNoteSorter implements Sorter {
             wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
             List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistenceModel.entrySet().stream().
                     filter(Entry::getValue).collect(Collectors.toList());
-            final int size = wordsInLexiconEntries.size();
-            for (int j = 0; j < size - 1; j++) {
-                for (int k = j + 1; k < size; k++) {
-                    String firstWord = wordsInLexiconEntries.get(j).getKey();
-                    String secondWord = wordsInLexiconEntries.get(k).getKey();
-                    if (RiTa.isRhyme(firstWord, secondWord)) {
-                        counter++;
-                    }
-                }
-            }
+            increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
             rhymeOverview.put(noteNames.get(i), counter);
         }
         return rhymeOverview;
+    }
+
+    private Integer increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
+        final int size = wordsInLexiconEntries.size();
+        for (int j = 0; j < size - 1; j++) {
+            for (int k = j + 1; k < size; k++) {
+                String firstWord = wordsInLexiconEntries.get(j).getKey();
+                String secondWord = wordsInLexiconEntries.get(k).getKey();
+                if (RiTa.isRhyme(firstWord, secondWord)) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
+    }
+
+    private void initializeVariables() {
+        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
+        noteList = multiNoteProcessor.getWordListList();
+        noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        rhymeOverview = new StringIntegerMap<>();
     }
 
     @Override
