@@ -6,7 +6,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +16,6 @@ import static org.junit.Assert.assertEquals;
 public class MultiNoteProcessorTest {
     @Rule
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
-
-    @Test
-    public void removeEmptyLinesTest() {
-        SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
-        String[] lines = {"test", "test", "", "test", "", "", "test"};
-        lines = singleNoteProcessor.removeEmptyLines(lines);
-        assertEquals(4, lines.length);
-    }
 
     @Test
     public void listNoteNamesTest() throws IOException {

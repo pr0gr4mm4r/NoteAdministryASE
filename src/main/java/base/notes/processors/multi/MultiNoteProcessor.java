@@ -50,7 +50,7 @@ public class MultiNoteProcessor implements Processor {
         return wordListLists;
     }
 
-    private List<String[]> separateWordsForEachNote(List<String> noteList, List<String[]> separatedWordListList) {
+    public List<String[]> separateWordsForEachNote(List<String> noteList, List<String[]> separatedWordListList) {
         for (String note : noteList) {
             String[] separatedWords = singleNoteProcessor.createWordList(note);
             separatedWordListList.add(separatedWords);
@@ -58,7 +58,7 @@ public class MultiNoteProcessor implements Processor {
         return separatedWordListList;
     }
 
-    private List<String> createNoteList(List<Path> pathList) {
+    public List<String> createNoteList(List<Path> pathList) {
         List<String> noteList = new ArrayList<>();
         for (Path path : pathList) {
             String note = readNoteForNoteProcessing(path);
@@ -67,7 +67,7 @@ public class MultiNoteProcessor implements Processor {
         return noteList;
     }
 
-    private List<Path> createPathList(Set<String> strings, String path) {
+    public List<Path> createPathList(Set<String> strings, String path) {
         List<Path> pathList = new ArrayList<>();
         for (String string : strings) {
             pathList.add(createCompletePath(string, path));
