@@ -1,7 +1,6 @@
 package note.processors.multi;
 
 import base.notes.processors.multi.MultiNoteProcessor;
-import base.notes.processors.single.SingleNoteProcessor;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;

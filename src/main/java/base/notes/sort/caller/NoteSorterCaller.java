@@ -10,8 +10,10 @@ import static base.config.Globals.scanner;
 public class NoteSorterCaller {
     public NoteSorterCaller() {
         CriteriaMap criteriaMap = new CriteriaMap();
+        String criteriaListCommaSeparated = criteriaMap.keySet().stream().collect(Collectors.joining(", "));
         System.out.print("After which criteria do you want to sort notes?");
-        System.out.println(" (You can choose between " + criteriaMap.keySet().stream().collect(Collectors.joining(", ")) + ")");
+        System.out.println(" (You can choose between " +
+                criteriaListCommaSeparated + ")");
         String criteria = scanner.nextLine();
         boolean criteriaExists = criteriaMap.containsKey(criteria);
         if(criteriaExists){
