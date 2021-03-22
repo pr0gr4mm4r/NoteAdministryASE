@@ -3,6 +3,7 @@ package base.notes.sort.sorter;
 import base.interfaces.Sorter;
 import base.logfiles.crud.declare.single.LogFileDeclarator;
 import base.notes.processors.multi.MultiNoteProcessor;
+import base.notes.sort.formatter.VerbCountSorterResultFormatter;
 import base.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import base.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
@@ -18,6 +19,7 @@ public class VerbCountSorter implements Sorter {
     List<String[]> noteList;
     List<String> nameList;
     StringIntegerMap<String, Integer> verbCountMap;
+
     @Override
     public Map initialize() {
         initializeVariables();
@@ -52,8 +54,8 @@ public class VerbCountSorter implements Sorter {
 
     @Override
     public String format(List finalVerbCountList) {
-        WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
-        String result = wordCountNoteSorterResultFormatter.formatList(finalVerbCountList);
+        VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
+        String result = verbCountSorterResultFormatter.formatList(finalVerbCountList);
         return result;
     }
 

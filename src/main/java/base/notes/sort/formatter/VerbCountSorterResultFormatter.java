@@ -8,6 +8,7 @@ import static base.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormat
 public class VerbCountSorterResultFormatter {
     public VerbCountSorterResultFormatter() {
     }
+
     public String formatList(List<Entry<String, Integer>> verbCountOverview) {
         String result = "";
         result = insertLineBreak(result);

@@ -18,6 +18,8 @@ public class WordCountNoteSorter implements Sorter {
     List<String> noteList;
     List<String> nameList;
     List<Integer> wordCountList;
+    MultiNoteProcessor multiNoteProcessor;
+    NoteCounterRaw noteCounterRaw;
 
     public WordCountNoteSorter() {
 
@@ -25,11 +27,7 @@ public class WordCountNoteSorter implements Sorter {
 
     @Override
     public Map initialize() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
-        noteList = multiNoteProcessor.getNoteList();
-        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        wordCountList = noteCounterRaw.getWordCountList();
+        initializeVariables();
         StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
         for (int i = 0; i < noteList.size(); i++) {
             String nameOfNote = nameList.get(i);
@@ -37,6 +35,14 @@ public class WordCountNoteSorter implements Sorter {
             wordCountMap.put(nameOfNote, wordCount);
         }
         return wordCountMap;
+    }
+
+    private void initializeVariables() {
+        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
+        noteCounterRaw = new NoteCounterRaw();
+        noteList = multiNoteProcessor.getNoteList();
+        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        wordCountList = noteCounterRaw.getWordCountList();
     }
 
     @Override
