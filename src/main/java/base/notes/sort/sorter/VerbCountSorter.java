@@ -14,12 +14,13 @@ import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
+    MultiNoteProcessor multiNoteProcessor;
+    List<String[]> noteList;
+    List<String> nameList;
+    StringIntegerMap<String, Integer> verbCountMap;
     @Override
     public Map initialize() {
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        List<String[]> noteList = multiNoteProcessor.getWordListList();
-        List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        StringIntegerMap<String, Integer> verbCountMap = new StringIntegerMap<>();
+        initializeVariables();
         for (int i = 0; i < noteList.size(); i++) {
             int verbCounter = 0;
             for (int j = 0; j < noteList.get(i).length; j++) {
@@ -31,6 +32,13 @@ public class VerbCountSorter implements Sorter {
             verbCountMap.put(nameOfNote, verbCounter);
         }
         return verbCountMap;
+    }
+
+    private void initializeVariables() {
+        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
+        noteList = multiNoteProcessor.getWordListList();
+        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        verbCountMap = new StringIntegerMap<>();
     }
 
     @Override
