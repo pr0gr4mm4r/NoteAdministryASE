@@ -1,5 +1,11 @@
 package base.interfaces;
 
+import java.util.List;
+import java.util.Map;
+
 public interface Sorter {
-    String sort();
+    Map initialize();
+    List sort(Map map);
+    String format(List result);
+    void print(String formattedResult);
 }

@@ -15,32 +15,79 @@ import static base.config.Globals.scanner;
 
 
 public class WordCountNoteSorter implements Sorter {
+    List<String> noteList;
+    List<String> nameList;
+    List<Integer> wordCountList;
+
+    public WordCountNoteSorter() {
+
+    }
+
     @Override
-    public String sort() {
+    public Map initialize() {
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
-        List<String> noteList = multiNoteProcessor.getNoteList();
-        List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
-        List<Integer> wordCountList = noteCounterRaw.getWordCountList();
+        noteList = multiNoteProcessor.getNoteList();
+        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        wordCountList = noteCounterRaw.getWordCountList();
         StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
         for (int i = 0; i < noteList.size(); i++) {
             String nameOfNote = nameList.get(i);
             Integer wordCount = wordCountList.get(i);
             wordCountMap.put(nameOfNote, wordCount);
         }
+        return wordCountMap;
+    }
+
+    @Override
+    public List sort(Map wordCountMap) {
         Set<Entry<String, Integer>> wordCountSet = wordCountMap.entrySet();
         List<Entry<String, Integer>> finalWordCountList = new ArrayList<>(wordCountSet);
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalWordCountList.sort(valueComparator);
+        return finalWordCountList;
+    }
+
+    @Override
+    public String format(List finalWordCountList) {
         WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
-        String result = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
-        System.out.println(result);
+        String formattedResult = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
+        return formattedResult;
+    }
+
+    @Override
+    public void print(String formattedResult) {
+        System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
-        if(confirmation.equals("yes")){
-            new LogFileDeclarator(result, "Sorting Notes by Quantity of Rhymes");
+        if (confirmation.equals("yes")) {
+            new LogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
         }
-        return result;
+    }
+
+
+    public List<String> getNoteList() {
+        return noteList;
+    }
+
+    public void setNoteList(List<String> noteList) {
+        this.noteList = noteList;
+    }
+
+    public List<String> getNameList() {
+        return nameList;
+    }
+
+    public void setNameList(List<String> nameList) {
+        this.nameList = nameList;
+    }
+
+    public List<Integer> getWordCountList() {
+        return wordCountList;
+    }
+
+    public void setWordCountList(List<Integer> wordCountList) {
+        this.wordCountList = wordCountList;
     }
 }

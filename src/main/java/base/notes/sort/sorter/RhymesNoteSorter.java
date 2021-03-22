@@ -18,7 +18,8 @@ import static base.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static base.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
-    public String sort() {
+    @Override
+    public Map initialize() {
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<String[]> noteList = multiNoteProcessor.getWordListList();
         List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
@@ -44,19 +45,34 @@ public class RhymesNoteSorter implements Sorter {
             }
             rhymeOverview.put(noteNames.get(i), counter);
         }
+        return rhymeOverview;
+    }
+
+    @Override
+    public List sort(Map rhymeOverview) {
         Set<Entry<String, Integer>> rhymeOverviewSet = rhymeOverview.entrySet();
         List<Entry<String, Integer>> finalRhymeOverview = new ArrayList<>(rhymeOverviewSet);
         Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalRhymeOverview.sort(valueComparator);
+        return finalRhymeOverview;
+    }
+
+    @Override
+    public String format(List finalRhymeOverview) {
         RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
-        String result = rhymesNoteSorterResultFormatter.formatList(finalRhymeOverview);
-        System.out.println(result);
+        String formattedResult = rhymesNoteSorterResultFormatter.formatList(finalRhymeOverview);
+        return formattedResult;
+
+    }
+
+    @Override
+    public void print(String formattedResult) {
+        System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            new LogFileDeclarator(result, "Sorting Notes by Quantity of Rhymes");
+            new LogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
         }
-        return result;
     }
 }

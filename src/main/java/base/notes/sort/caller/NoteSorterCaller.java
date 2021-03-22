@@ -3,6 +3,8 @@ package base.notes.sort.caller;
 import base.interfaces.Sorter;
 import base.notes.sort.model.maps.CriteriaMap;
 
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static base.config.Globals.scanner;
@@ -18,7 +20,9 @@ public class NoteSorterCaller {
         boolean criteriaExists = criteriaMap.containsKey(criteria);
         if(criteriaExists){
             Sorter sorter = criteriaMap.get(criteria);
-            sorter.sort();
+            Map map = sorter.initialize();
+            List result = sorter.sort(map);
+            sorter.format(result);
         }
     }
 }

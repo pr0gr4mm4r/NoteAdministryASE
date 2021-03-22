@@ -15,7 +15,12 @@ import static base.config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
     @Override
-    public String sort() {
+    public Map initialize() {
+        return null;
+    }
+
+    @Override
+    public List sort(Map map) {
         MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         List<String[]> noteList = multiNoteProcessor.getWordListList();
         List<String> nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
@@ -44,5 +49,15 @@ public class VerbCountSorter implements Sorter {
             new LogFileDeclarator(result, "Sorting Notes by Quantity of Verbs");
         }
         return null;
+    }
+
+    @Override
+    public String format(List result) {
+        return null;
+    }
+
+    @Override
+    public void print(String formattedResult) {
+
     }
 }
