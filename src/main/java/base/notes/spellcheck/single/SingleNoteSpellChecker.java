@@ -15,7 +15,7 @@ public class SingleNoteSpellChecker {
     private SingleNoteProcessor singleNoteProcessor;
     private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
-    public SingleNoteSpellChecker() { //test one file, test all / write stats and which are wrong
+    public SingleNoteSpellChecker() {
         String noteName = scanner.nextLine();
         singleNoteProcessor = new SingleNoteProcessor(noteName);
         String[] wordList = singleNoteProcessor.getWordList();
@@ -25,7 +25,6 @@ public class SingleNoteSpellChecker {
         List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
         wordExistenceMap.fill(wordsInLexicon, wordsNotInLexicon);
 
-//auslagern
         double wordCountOfNote = wordList.length;
         double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
         double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);

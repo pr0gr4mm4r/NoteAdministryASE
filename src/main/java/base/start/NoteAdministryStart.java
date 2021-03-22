@@ -12,6 +12,7 @@ import base.notes.find.caller.OverviewWordFinderCaller;
 import base.notes.sort.caller.NoteSorterCaller;
 import base.notes.spellcheck.multi.OverviewSpellChecker;
 import base.notes.spellcheck.single.SingleNoteSpellChecker;
+import base.singleWord.SingleWordSpellCheckerCaller;
 import base.singleWord.SingleWordSpellchecker;
 import base.notes.wordcount.custom.OverviewCounter;
 import base.notes.wordcount.custom.SingleNoteCounter;
@@ -43,7 +44,7 @@ public class NoteAdministryStart {
             case "search all" -> new OverviewWordFinderCaller();
             case "send" -> new SingleNoteDispatcherCaller();
             case "sc sn" -> new SingleNoteSpellChecker();
-            case "sc sw" -> new SingleWordSpellchecker();
+            case "sc sw" -> new SingleWordSpellCheckerCaller();
             case "sc all" -> new OverviewSpellChecker();
             case "sort" -> new NoteSorterCaller();
             case "word count" -> new SingleNoteCounter();
