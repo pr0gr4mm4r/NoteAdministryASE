@@ -10,7 +10,6 @@ import rita.RiTa;
 
 import java.util.*;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 import static base.config.Globals.path_for_notes;
 import static base.config.Globals.scanner;
@@ -29,19 +28,19 @@ public class RhymesNoteSorter implements Sorter {
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
             counter = 0;
-            List<String> wordsInLexicon = filterPositives(noteList.get(i));
-            List<String> wordsNotInLexicon = filterNegatives(noteList.get(i));
-            WordExistenceMap wordExistenceModel = new WordExistenceMap();
-            wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
-            List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistenceModel.entrySet().stream().
-                    filter(Entry::getValue).collect(Collectors.toList());
+            String[] currentNote = noteList.get(i);
+            List<String> wordsInLexicon = filterPositives(currentNote);
+            List<String> wordsNotInLexicon = filterNegatives(currentNote);
+            WordExistenceMap wordExistence = new WordExistenceMap();
+            wordExistence.fill(wordsInLexicon, wordsNotInLexicon);
+            List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.discardNegatives();;
             increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
             rhymeOverview.put(noteNames.get(i), counter);
         }
         return rhymeOverview;
     }
 
-    private Integer increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
+    private int increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
