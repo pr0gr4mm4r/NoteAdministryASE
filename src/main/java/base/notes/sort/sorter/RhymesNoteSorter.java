@@ -29,13 +29,14 @@ public class RhymesNoteSorter implements Sorter {
         for (int i = 0; i < noteList.size(); i++) {
             counter = 0;
             String[] currentNote = noteList.get(i);
+            String currentNotename = noteNames.get(i);
             List<String> wordsInLexicon = filterPositives(currentNote);
             List<String> wordsNotInLexicon = filterNegatives(currentNote);
             WordExistenceMap wordExistence = new WordExistenceMap();
             wordExistence.fill(wordsInLexicon, wordsNotInLexicon);
             List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.discardNegatives();;
             increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
-            rhymeOverview.put(noteNames.get(i), counter);
+            rhymeOverview.put(currentNotename, counter);
         }
         return rhymeOverview;
     }
