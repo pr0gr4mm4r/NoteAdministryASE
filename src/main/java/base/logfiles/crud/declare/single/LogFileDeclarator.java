@@ -67,7 +67,6 @@ public class LogFileDeclarator {
         byte[] bytes = header.getBytes();
         try {
             Files.write(completePath, bytes);
-            printSuccessMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -22,7 +22,8 @@ public class NoteSorterCaller {
             Sorter sorter = criteriaMap.get(criteria);
             Map map = sorter.initialize();
             List result = sorter.sort(map);
-            sorter.format(result);
+            String formattedResult = sorter.format(result);
+            sorter.print(formattedResult);
         }
     }
 }
