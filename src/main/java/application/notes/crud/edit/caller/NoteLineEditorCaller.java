@@ -2,17 +2,32 @@ package application.notes.crud.edit.caller;
 
 
 import application.notes.crud.edit.single.NoteLineEditor;
+import application.start.model.Caller;
+import application.start.model.Interactor;
 
 import java.nio.file.Path;
 
 import static config.Globals.*;
 import static application.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 
-public class NoteLineEditorCaller {
-    public NoteLineEditorCaller(){
+public class NoteLineEditorCaller implements Caller, Interactor {
+    private Path completePath;
+    private String fileName;
+
+    public NoteLineEditorCaller() {
+        interact();
+        completePath = createCompletePath(fileName, path_for_notes);
+        call();
+    }
+
+    @Override
+    public void interact() {
         System.out.println("Which note do you want to change?");
-        String fileName = scanner.nextLine();
-        final Path completePath = createCompletePath(fileName, path_for_notes);
+        fileName = scanner.nextLine();
+    }
+
+    @Override
+    public void call() {
         new NoteLineEditor(completePath, fileName);
     }
 }

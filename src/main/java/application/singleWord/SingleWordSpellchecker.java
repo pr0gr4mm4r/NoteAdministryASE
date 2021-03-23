@@ -16,8 +16,7 @@ public class SingleWordSpellchecker {
         spellCheckerRaw.checkSpelling(wordList);
         List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
         List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        WordExistenceMap wordExistenceModel = new WordExistenceMap();
-        wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
-        System.out.println(wordExistenceModel);
+        WordExistenceMap wordExistenceMap = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        System.out.println(wordExistenceMap);
     }
 }

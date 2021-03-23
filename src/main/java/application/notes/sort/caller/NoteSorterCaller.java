@@ -2,6 +2,8 @@ package application.notes.sort.caller;
 
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.model.maps.CriteriaMap;
+import application.start.model.Caller;
+import application.start.model.Interactor;
 
 import java.util.List;
 import java.util.Map;
@@ -9,21 +11,39 @@ import java.util.stream.Collectors;
 
 import static config.Globals.scanner;
 
-public class NoteSorterCaller {
+public class NoteSorterCaller implements Caller, Interactor {
+    private String criteriaListCommaSeparated;
+    private String criteria;
+    private CriteriaMap criteriaMap;
+
     public NoteSorterCaller() {
-        CriteriaMap criteriaMap = new CriteriaMap();
-        String criteriaListCommaSeparated = criteriaMap.keySet().stream().collect(Collectors.joining(", "));
+        initialize();
+        interact();
+        boolean criteriaExists = criteriaMap.containsKey(criteria);
+        if (criteriaExists) {
+            call();
+        }
+    }
+
+    private void initialize() {
+        criteriaMap = new CriteriaMap();
+        criteriaListCommaSeparated = criteriaMap.keySet().stream().collect(Collectors.joining(", "));
+    }
+
+    @Override
+    public void call() {
+        Sorter sorter = criteriaMap.get(criteria);
+        Map map = sorter.initialize();
+        List result = sorter.sort(map);
+        String formattedResult = sorter.format(result);
+        sorter.print(formattedResult);
+    }
+
+    @Override
+    public void interact() {
         System.out.print("After which criteria do you want to sort notes?");
         System.out.println(" (You can choose between " +
                 criteriaListCommaSeparated + ")");
-        String criteria = scanner.nextLine();
-        boolean criteriaExists = criteriaMap.containsKey(criteria);
-        if(criteriaExists){
-            Sorter sorter = criteriaMap.get(criteria);
-            Map map = sorter.initialize();
-            List result = sorter.sort(map);
-            String formattedResult = sorter.format(result);
-            sorter.print(formattedResult);
-        }
+        criteria = scanner.nextLine();
     }
 }

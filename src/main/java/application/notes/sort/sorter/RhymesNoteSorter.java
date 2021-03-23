@@ -32,8 +32,7 @@ public class RhymesNoteSorter implements Sorter {
             String currentNotename = noteNames.get(i);
             List<String> wordsInLexicon = filterPositives(currentNote);
             List<String> wordsNotInLexicon = filterNegatives(currentNote);
-            WordExistenceMap wordExistence = new WordExistenceMap();
-            wordExistence.fill(wordsInLexicon, wordsNotInLexicon);
+            WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
             List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.discardNegatives();;
             increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
             rhymeOverview.put(currentNotename, counter);

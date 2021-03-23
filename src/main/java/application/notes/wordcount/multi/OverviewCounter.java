@@ -1,4 +1,4 @@
-package application.notes.wordcount.custom;
+package application.notes.wordcount.multi;
 
 import application.notes.processors.multi.MultiNoteProcessor;
 import application.notes.wordcount.raw.NoteCounterRaw;

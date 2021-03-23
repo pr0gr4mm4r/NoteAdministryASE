@@ -9,11 +9,13 @@ import application.notes.dispatch.caller.SingleNoteDispatcherCaller;
 import application.notes.find.caller.SingleNoteWordFinderCaller;
 import application.notes.find.caller.OverviewWordFinderCaller;
 import application.notes.sort.caller.NoteSorterCaller;
+import application.notes.spellcheck.caller.OverviewSpellCheckerCaller;
 import application.notes.spellcheck.caller.SingleNoteSpellCheckerCaller;
-import application.notes.spellcheck.multi.OverviewSpellChecker;
+import application.notes.wordcount.caller.OverviewCounterCaller;
+import application.notes.wordcount.caller.SingleNoteCounterCaller;
 import application.singleWord.SingleWordSpellCheckerCaller;
-import application.notes.wordcount.custom.OverviewCounter;
-import application.notes.wordcount.custom.SingleNoteCounter;
+import application.notes.wordcount.multi.OverviewCounter;
+import application.notes.wordcount.single.SingleNoteCounter;
 import application.start.model.Command;
 import application.start.model.CommandList;
 import application.start.model.HelpMode;
@@ -43,10 +45,10 @@ public class NoteAdministryStart {
             case "send" -> new SingleNoteDispatcherCaller();
             case "sc sn" -> new SingleNoteSpellCheckerCaller();
             case "sc sw" -> new SingleWordSpellCheckerCaller();
-            case "sc all" -> new OverviewSpellChecker();
+            case "sc all" -> new OverviewSpellCheckerCaller();
             case "sort" -> new NoteSorterCaller();
-            case "word count" -> new SingleNoteCounter();
-            case "word count all" -> new OverviewCounter();
+            case "word count" -> new SingleNoteCounterCaller();
+            case "word count all" -> new OverviewCounterCaller();
             case "exit" -> programExit();
         }
     }

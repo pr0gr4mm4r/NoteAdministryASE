@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class WordExistenceMap extends HashMap<String, Boolean> { // use enum
 
-    public void fill(List<String> positives, List<String> negatives) {
+
+    public WordExistenceMap(List<String> positives, List<String> negatives) {
         for (String positive : positives) {
             this.put(positive, true);
         }

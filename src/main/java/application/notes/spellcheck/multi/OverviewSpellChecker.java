@@ -18,15 +18,14 @@ public class OverviewSpellChecker {
     private final OverviewSpellCheckerResultFormatter overviewSpellCheckerResultFormatter = new OverviewSpellCheckerResultFormatter();
     private final List<Double> percentageValueList = new ArrayList<>();
 
-
     public OverviewSpellChecker() {
         final MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         final List<String[]> wordListList = multiNoteProcessor.getWordListList();
         wordExistenceMapList.fill(wordListList);
         fillPercentageValueList(percentageValueList, wordListList);
-        String result = format(overviewSpellCheckerResultFormatter, percentageValueList);
-        print(result);
-        openLogFileDialogue(result);
+        String formattedResult = format(overviewSpellCheckerResultFormatter, percentageValueList);
+        print(formattedResult);
+        openLogFileDialogue(formattedResult);
     }
 
     private void fillPercentageValueList(List<Double> percentageValueList, List<String[]> wordListList) {

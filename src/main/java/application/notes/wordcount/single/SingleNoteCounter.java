@@ -1,4 +1,4 @@
-package application.notes.wordcount.custom;
+package application.notes.wordcount.single;
 
 import application.notes.wordcount.raw.NoteCounterRaw;
 
@@ -7,9 +7,7 @@ import static config.Globals.scanner;
 public class SingleNoteCounter {
     private NoteCounterRaw noteCounterRaw;
 
-    public SingleNoteCounter() {
-        System.out.println("Which note do you want to count the lines and words for?");
-        String noteName = scanner.nextLine();
+    public SingleNoteCounter(String noteName) {
         noteCounterRaw = new NoteCounterRaw(noteName);
         long linesCount = noteCounterRaw.getLineCount();
         long wordsCount = noteCounterRaw.getWordCount();

@@ -22,9 +22,8 @@ public class RhymeCounterRaw {
         String[] splittedContent = content.split("\\s+");
         List<String> wordsInLexicon = filterPositives(splittedContent);
         List<String> wordsNotInLexicon = filterNegatives(splittedContent);
-        WordExistenceMap wordExistenceMap = new WordExistenceMap();
-        wordExistenceMap.fill(wordsInLexicon, wordsNotInLexicon);
-        List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistenceMap.entrySet().stream().
+        WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.entrySet().stream().
                 filter(Map.Entry::getValue).collect(Collectors.toList());
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {

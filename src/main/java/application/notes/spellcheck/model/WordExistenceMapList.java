@@ -13,9 +13,8 @@ public class WordExistenceMapList extends ArrayList<WordExistenceMap> {
             spellCheckerRaw.checkSpelling(wordList);
             List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
             List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-            WordExistenceMap wordExistenceModel = new WordExistenceMap();
-            wordExistenceModel.fill(wordsInLexicon, wordsNotInLexicon);
-            this.add(wordExistenceModel);
+            WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+            this.add(wordExistence);
         }
     }
 }
