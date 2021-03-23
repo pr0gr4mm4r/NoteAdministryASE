@@ -1,4 +1,4 @@
-package base.ui.listener.mouse;
+package base.notes.ui.listener.mouse;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package base.ui;
+package base.notes.ui;
 
 import java.util.HashMap;
 import java.util.List;

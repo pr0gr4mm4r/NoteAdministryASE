@@ -1,10 +1,9 @@
-package base.ui.display;
+package base.notes.ui.display;
 
-import base.ui.frame.DisplayNotes;
-import base.ui.listener.mouse.ContentButtonsSelectedMouseListener;
-import base.ui.listener.mouse.HoverPointerMouseListener;
-import base.ui.listener.mouse.NoteButtonsSelectedMouseListener;
-import base.ui.raw.VerbCounterRaw;
+import base.notes.ui.frame.DisplayNotes;
+import base.notes.ui.listener.mouse.ContentButtonsSelectedMouseListener;
+import base.notes.ui.listener.mouse.HoverPointerMouseListener;
+import base.notes.ui.raw.VerbCounterRaw;
 
 import javax.swing.*;
 

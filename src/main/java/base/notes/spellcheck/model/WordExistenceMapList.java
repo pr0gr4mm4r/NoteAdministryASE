@@ -1,6 +1,6 @@
 package base.notes.spellcheck.model;
 
-import base.ui.WordExistenceMap;
+import base.notes.ui.WordExistenceMap;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
 
 import java.util.ArrayList;

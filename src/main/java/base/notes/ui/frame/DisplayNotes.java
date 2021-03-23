@@ -1,11 +1,11 @@
-package base.ui.frame;
+package base.notes.ui.frame;
 
 import base.notes.processors.multi.MultiNoteProcessor;
-import base.ui.listener.action.NoteButtonActionListener;
-import base.ui.listener.mouse.HoverPointerMouseListener;
-import base.ui.display.RhymeCounterDisplay;
-import base.ui.display.VerbCounterDisplay;
-import base.ui.listener.mouse.NoteButtonsSelectedMouseListener;
+import base.notes.ui.listener.action.NoteButtonActionListener;
+import base.notes.ui.listener.mouse.HoverPointerMouseListener;
+import base.notes.ui.display.RhymeCounterDisplay;
+import base.notes.ui.display.VerbCounterDisplay;
+import base.notes.ui.listener.mouse.NoteButtonsSelectedMouseListener;
 
 import javax.swing.*;
 import java.awt.*;

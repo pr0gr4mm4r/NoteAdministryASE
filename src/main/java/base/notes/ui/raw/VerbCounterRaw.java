@@ -1,4 +1,4 @@
-package base.ui.raw;
+package base.notes.ui.raw;
 
 import rita.RiTa;
 

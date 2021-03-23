@@ -2,7 +2,7 @@ package base.singleWord;
 
 import base.notes.processors.single.SingleNoteProcessor;
 import base.notes.spellcheck.raw.SpellCheckerRaw;
-import base.ui.WordExistenceMap;
+import base.notes.ui.WordExistenceMap;
 
 import java.util.*;
 

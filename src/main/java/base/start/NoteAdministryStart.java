@@ -11,14 +11,13 @@ import base.notes.find.caller.OverviewWordFinderCaller;
 import base.notes.sort.caller.NoteSorterCaller;
 import base.notes.spellcheck.caller.SingleNoteSpellCheckerCaller;
 import base.notes.spellcheck.multi.OverviewSpellChecker;
-import base.notes.spellcheck.single.SingleNoteSpellChecker;
 import base.singleWord.SingleWordSpellCheckerCaller;
 import base.notes.wordcount.custom.OverviewCounter;
 import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;
 import base.start.model.CommandList;
 import base.start.model.HelpMode;
-import base.ui.frame.DisplayNotes;
+import base.notes.ui.frame.DisplayNotes;
 
 import java.util.*;
 

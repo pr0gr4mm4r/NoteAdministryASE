@@ -1,6 +1,6 @@
-package base.ui.raw;
+package base.notes.ui.raw;
 
-import base.ui.WordExistenceMap;
+import base.notes.ui.WordExistenceMap;
 import rita.RiTa;
 
 import java.util.List;

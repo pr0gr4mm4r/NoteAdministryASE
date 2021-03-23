@@ -1,7 +1,7 @@
-package base.ui.listener.action;
+package base.notes.ui.listener.action;
 
 import base.notes.processors.single.SingleNoteProcessor;
-import base.ui.frame.DisplayNotes;
+import base.notes.ui.frame.DisplayNotes;
 
 import javax.swing.*;
 import java.awt.*;
