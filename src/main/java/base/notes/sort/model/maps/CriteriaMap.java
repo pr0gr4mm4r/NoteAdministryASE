@@ -1,6 +1,6 @@
 package base.notes.sort.model.maps;
 
-import base.interfaces.Sorter;
+import base.notes.sort.abstraction.Sorter;
 import base.notes.sort.sorter.RhymesNoteSorter;
 import base.notes.sort.sorter.VerbCountSorter;
 import base.notes.sort.sorter.WordCountNoteSorter;

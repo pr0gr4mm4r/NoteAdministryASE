@@ -1,6 +1,6 @@
 package base.notes.processors.multi;
 
-import base.interfaces.Processor;
+import base.notes.processors.abstraction.Processor;
 import base.notes.processors.single.SingleNoteProcessor;
 
 import java.io.IOException;

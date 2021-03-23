@@ -1,6 +1,6 @@
 package base.notes.sort.caller;
 
-import base.interfaces.Sorter;
+import base.notes.sort.abstraction.Sorter;
 import base.notes.sort.model.maps.CriteriaMap;
 
 import java.util.List;

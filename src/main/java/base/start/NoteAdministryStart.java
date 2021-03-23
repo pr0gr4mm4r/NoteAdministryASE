@@ -7,13 +7,12 @@ import base.notes.crud.edit.caller.NoteLineEditorCaller;
 import base.notes.crud.read.caller.NoteReaderCaller;
 import base.notes.dispatch.caller.SingleNoteDispatcherCaller;
 import base.notes.find.caller.SingleNoteWordFinderCaller;
-import base.notes.find.single.SingleNoteWordFinder;
 import base.notes.find.caller.OverviewWordFinderCaller;
 import base.notes.sort.caller.NoteSorterCaller;
+import base.notes.spellcheck.caller.SingleNoteSpellCheckerCaller;
 import base.notes.spellcheck.multi.OverviewSpellChecker;
 import base.notes.spellcheck.single.SingleNoteSpellChecker;
 import base.singleWord.SingleWordSpellCheckerCaller;
-import base.singleWord.SingleWordSpellchecker;
 import base.notes.wordcount.custom.OverviewCounter;
 import base.notes.wordcount.custom.SingleNoteCounter;
 import base.start.model.Command;
@@ -43,7 +42,7 @@ public class NoteAdministryStart {
             case "search" -> new SingleNoteWordFinderCaller();
             case "search all" -> new OverviewWordFinderCaller();
             case "send" -> new SingleNoteDispatcherCaller();
-            case "sc sn" -> new SingleNoteSpellChecker();
+            case "sc sn" -> new SingleNoteSpellCheckerCaller();
             case "sc sw" -> new SingleWordSpellCheckerCaller();
             case "sc all" -> new OverviewSpellChecker();
             case "sort" -> new NoteSorterCaller();
@@ -87,7 +86,7 @@ public class NoteAdministryStart {
         while (programRun) {
             printStartingMessage();
             String commandName = scanner.nextLine();
-            activeDecision(commandName);
+            makeActiveDecisions(commandName);
             Optional<Command> activeCommand = findActiveCommand();
             if (activeCommand.isEmpty()) {
                 printErrorMessage(commandName);
@@ -109,7 +108,7 @@ public class NoteAdministryStart {
         System.out.println();
     }
 
-    private static void activeDecision(String commandName) {
+    private static void makeActiveDecisions(String commandName) {
         commandList.forEach(command -> command.makeActiveDecision(commandName));
     }
 

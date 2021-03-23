@@ -22,7 +22,6 @@ public class OverviewSpellChecker {
         final MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         final List<String[]> wordListList = multiNoteProcessor.getWordListList();
         wordExistenceMapList.fill(wordListList);
-
         List<Double> percentageValueList = new ArrayList<>();
         for (String[] wordList : wordListList) {
             double wordCountOfNote = wordList.length;

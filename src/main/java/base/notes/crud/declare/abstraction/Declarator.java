@@ -1,4 +1,4 @@
-package base.interfaces;
+package base.notes.crud.declare.abstraction;
 
 public interface Declarator {
     void addHeader();

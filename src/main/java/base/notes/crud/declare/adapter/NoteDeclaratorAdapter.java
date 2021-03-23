@@ -1,6 +1,6 @@
 package base.notes.crud.declare.adapter;
 
-import base.interfaces.Declarator;
+import base.notes.crud.declare.abstraction.Declarator;
 
 public class NoteDeclaratorAdapter implements Declarator {
     @Override

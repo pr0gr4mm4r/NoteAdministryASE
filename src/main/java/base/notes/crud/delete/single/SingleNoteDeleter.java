@@ -1,6 +1,6 @@
 package base.notes.crud.delete.single;
 
-import base.interfaces.Deleter;
+import base.notes.crud.delete.abstraction.Deleter;
 
 import java.io.File;
 import java.io.IOException;

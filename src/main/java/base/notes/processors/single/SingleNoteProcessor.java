@@ -1,6 +1,6 @@
 package base.notes.processors.single;
 
-import base.interfaces.Processor;
+import base.notes.processors.abstraction.Processor;
 
 import java.nio.file.Path;
 import java.util.Arrays;

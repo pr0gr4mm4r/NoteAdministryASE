@@ -1,10 +1,9 @@
 package base.notes.sort.sorter;
 
-import base.interfaces.Sorter;
 import base.logfiles.crud.declare.single.LogFileDeclarator;
 import base.notes.processors.multi.MultiNoteProcessor;
+import base.notes.sort.abstraction.Sorter;
 import base.notes.sort.formatter.VerbCountSorterResultFormatter;
-import base.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import base.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
 

@@ -1,8 +1,8 @@
 package base.notes.sort.sorter;
 
-import base.interfaces.Sorter;
 import base.logfiles.crud.declare.single.LogFileDeclarator;
 import base.notes.processors.multi.MultiNoteProcessor;
+import base.notes.sort.abstraction.Sorter;
 import base.ui.WordExistenceMap;
 import base.notes.sort.formatter.RhymesNoteSorterResultFormatter;
 import base.notes.sort.model.maps.StringIntegerMap;

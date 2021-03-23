@@ -1,4 +1,4 @@
-package base.interfaces;
+package base.notes.sort.abstraction;
 
 import java.util.List;
 import java.util.Map;
