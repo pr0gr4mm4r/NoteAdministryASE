@@ -1,8 +1,8 @@
 package application.notes.find.caller;
 
 import application.notes.find.single.SingleNoteWordFinder;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import static config.Globals.scanner;
 

@@ -1,7 +1,7 @@
 package application.notes.spellcheck.caller;
 
 import application.notes.spellcheck.multi.OverviewSpellChecker;
-import application.start.model.Caller;
+import application.notes.interfaces.Caller;
 
 import static config.Globals.path_for_notes;
 

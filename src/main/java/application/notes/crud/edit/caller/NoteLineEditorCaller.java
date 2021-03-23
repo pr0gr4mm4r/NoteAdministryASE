@@ -2,8 +2,8 @@ package application.notes.crud.edit.caller;
 
 
 import application.notes.crud.edit.single.NoteLineEditor;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import java.nio.file.Path;
 

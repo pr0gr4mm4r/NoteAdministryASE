@@ -2,8 +2,8 @@ package application.notes.dispatch.caller;
 
 import application.notes.dispatch.model.SendingInformation;
 import application.notes.dispatch.single.SingleNoteDispatcher;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;

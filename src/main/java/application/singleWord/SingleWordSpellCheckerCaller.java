@@ -1,7 +1,7 @@
 package application.singleWord;
 
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import static config.Globals.scanner;
 

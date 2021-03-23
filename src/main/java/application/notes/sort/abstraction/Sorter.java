@@ -8,4 +8,5 @@ public interface Sorter {
     List sort(Map map);
     String format(List result);
     void print(String formattedResult);
+    void logFileConfirmation(String formattedResult);
 }

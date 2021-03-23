@@ -1,8 +1,8 @@
 package application.notes.crud.declare.caller;
 
 import application.notes.crud.declare.single.NoteDeclarator;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
-import static application.start.NoteAdministryStart.programRun;
 
 public class NoteDeclaratorCaller implements Interactor, Caller {
     private String noteName;

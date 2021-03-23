@@ -15,13 +15,13 @@ import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResul
 public class LogFileDeclarator {
     private final String action;
     private String logFileName;
-    public LogFileDeclarator(String content, String action){
-        this.action = action;
+    public LogFileDeclarator(String content, String capture){
+        this.action = capture;
         logFileName = generateDefaultLogFileName();
         Path completePath = createCompletePath(logFileName);
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
-            addHeader(completePath, action);
+            addHeader(completePath, capture);
             addContent(content, completePath);
             printSuccessMessage();
         }

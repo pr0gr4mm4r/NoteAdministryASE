@@ -1,7 +1,7 @@
 package application.notes.wordcount.caller;
 
 import application.notes.wordcount.multi.OverviewCounter;
-import application.start.model.Caller;
+import application.notes.interfaces.Caller;
 
 import static config.Globals.path_for_notes;
 

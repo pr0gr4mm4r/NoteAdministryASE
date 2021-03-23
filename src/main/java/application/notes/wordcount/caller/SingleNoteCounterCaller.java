@@ -1,8 +1,8 @@
 package application.notes.wordcount.caller;
 
 import application.notes.wordcount.single.SingleNoteCounter;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import static config.Globals.scanner;
 

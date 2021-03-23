@@ -2,8 +2,8 @@ package application.notes.sort.caller;
 
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.model.maps.CriteriaMap;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package application.notes.crud.read.caller;
 
 import application.notes.crud.read.single.NoteReader;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import java.nio.file.Path;
 

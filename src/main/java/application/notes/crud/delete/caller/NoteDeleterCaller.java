@@ -1,13 +1,12 @@
 package application.notes.crud.delete.caller;
 
 import application.notes.crud.delete.multi.NoteDeleter;
-import application.start.model.Caller;
-import application.start.model.Interactor;
+import application.notes.interfaces.Caller;
+import application.notes.interfaces.Interactor;
 
 import java.io.IOException;
 
 import static config.Globals.scanner;
-import static application.start.NoteAdministryStart.programIsRunning;
 
 public class NoteDeleterCaller implements Caller, Interactor {
     private String confirmation;
