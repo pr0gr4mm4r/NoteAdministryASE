@@ -1,4 +1,4 @@
-package notes.processors.multi;
+package unittests.notes.processors.multi;
 
 import application.notes.processors.multi.MultiNoteProcessor;
 import org.junit.Rule;

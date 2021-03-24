@@ -1,4 +1,4 @@
-package notes.crud.read;
+package unittests.notes.crud.read;
 
 import application.notes.crud.read.single.NoteReader;
 import org.junit.Rule;

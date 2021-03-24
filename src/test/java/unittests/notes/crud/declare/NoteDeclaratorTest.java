@@ -1,4 +1,4 @@
-package notes.crud.declare;
+package unittests.notes.crud.declare;
 
 import application.notes.crud.declare.single.NoteDeclarator;
 import application.notes.crud.delete.single.SingleNoteDeleter;

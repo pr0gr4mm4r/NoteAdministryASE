@@ -33,7 +33,8 @@ public class NoteSorterCaller implements Caller, Interactor {
     @Override
     public void call() {
         Sorter sorter = criteriaMap.get(criteria);
-        Map map = sorter.initialize();
+        Map<String, Integer> map = sorter.initialize();
+        map.entrySet().forEach(e-> System.out.println(e.getValue()));
         List result = sorter.sort(map);
         String formattedResult = sorter.format(result);
         sorter.print(formattedResult);

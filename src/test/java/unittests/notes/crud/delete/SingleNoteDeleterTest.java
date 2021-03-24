@@ -1,4 +1,4 @@
-package notes.crud.delete;
+package unittests.notes.crud.delete;
 
 import application.notes.crud.delete.single.SingleNoteDeleter;
 import org.junit.Rule;

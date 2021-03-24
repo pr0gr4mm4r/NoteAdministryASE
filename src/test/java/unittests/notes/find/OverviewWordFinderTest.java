@@ -1,4 +1,4 @@
-package notes.find;
+package unittests.notes.find;
 
 import application.notes.find.multi.OverviewWordFinder;
 import application.notes.processors.multi.MultiNoteProcessor;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
+import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
 
 

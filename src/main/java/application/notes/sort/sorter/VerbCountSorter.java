@@ -10,7 +10,6 @@ import rita.RiTa;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
@@ -18,6 +17,10 @@ public class VerbCountSorter implements Sorter {
     List<String[]> noteList;
     List<String> nameList;
     StringIntegerMap<String, Integer> verbCountMap;
+
+    public VerbCountSorter(MultiNoteProcessor multiNoteProcessor) {
+        this.multiNoteProcessor = multiNoteProcessor;
+    }
 
     @Override
     public Map initialize() {
@@ -36,7 +39,6 @@ public class VerbCountSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         noteList = multiNoteProcessor.getWordListList();
         nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
         verbCountMap = new StringIntegerMap<>();

@@ -11,19 +11,22 @@ import rita.RiTa;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
     MultiNoteProcessor multiNoteProcessor;
-    List<String[]> noteList;
-    List<String> noteNames;
-    Map<String, Integer> rhymeOverview;
+    List<String[]> noteList = new ArrayList<>();
+    List<String> noteNames = new ArrayList<>();
+    StringIntegerMap rhymeOverview = new StringIntegerMap();
+
+    public RhymesNoteSorter(MultiNoteProcessor multiNoteProcessor) {
+        this.multiNoteProcessor = multiNoteProcessor;
+    }
 
     @Override
-    public Map initialize() {
+    public StringIntegerMap initialize() {
         initializeVariables();
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
@@ -34,13 +37,13 @@ public class RhymesNoteSorter implements Sorter {
             List<String> wordsNotInLexicon = filterNegatives(currentNote);
             WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
             List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.discardNegatives();;
-            increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
+            counter = increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
             rhymeOverview.put(currentNotename, counter);
         }
         return rhymeOverview;
     }
 
-    private int increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
+    public int increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
@@ -55,7 +58,6 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         noteList = multiNoteProcessor.getWordListList();
         noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
         rhymeOverview = new StringIntegerMap<>();

@@ -1,4 +1,4 @@
-package notes.find;
+package unittests.notes.find;
 
 import application.notes.find.single.SingleNoteWordFinder;
 import org.junit.Before;

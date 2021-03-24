@@ -10,7 +10,6 @@ import application.notes.wordcount.raw.NoteCounterRaw;
 import java.util.*;
 import java.util.Map.Entry;
 
-import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 
@@ -21,8 +20,8 @@ public class WordCountNoteSorter implements Sorter {
     MultiNoteProcessor multiNoteProcessor;
     NoteCounterRaw noteCounterRaw;
 
-    public WordCountNoteSorter() {
-
+    public WordCountNoteSorter(MultiNoteProcessor multiNoteProcessor) {
+        this.multiNoteProcessor = multiNoteProcessor;
     }
 
     @Override
@@ -38,7 +37,6 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
         noteCounterRaw = new NoteCounterRaw();
         noteList = multiNoteProcessor.getNoteList();
         nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());

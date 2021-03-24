@@ -1,4 +1,4 @@
-package notes.dispatch;
+package unittests.notes.dispatch;
 
 import application.notes.dispatch.model.FakeSendingInformation;
 import application.notes.dispatch.model.SendingInformation;

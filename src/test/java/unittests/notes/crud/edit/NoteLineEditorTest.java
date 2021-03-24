@@ -1,4 +1,4 @@
-package notes.crud.edit;
+package unittests.notes.crud.edit;
 
 import application.notes.crud.edit.model.LineOverwriterInformation;
 import application.notes.crud.edit.single.NoteLineEditor;
@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
+import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
 
 public class NoteLineEditorTest {

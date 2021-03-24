@@ -1,4 +1,4 @@
-package notes.processors.single;
+package unittests.notes.processors.single;
 
 import application.notes.processors.single.SingleNoteProcessor;
 import org.junit.Test;
