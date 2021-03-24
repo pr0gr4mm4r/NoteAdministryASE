@@ -14,15 +14,6 @@ import static config.Globals.path_for_notes;
 
 public class SingleNoteDeleter implements Deleter {
 
-    public SingleNoteDeleter(String fileToDelete) {
-        try {
-            deleteSingleNote(fileToDelete, path_for_notes);
-            System.out.println("successful delete!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public SingleNoteDeleter() {
 
     }
@@ -32,5 +23,9 @@ public class SingleNoteDeleter implements Deleter {
             pathStream.map(Path::toFile).filter(
                     file -> file.getName().equals(fileToDelete)).forEach(File::delete);
         }
+    }
+
+    public void printSuccessMessage() {
+        System.out.println("successful delete!");
     }
 }

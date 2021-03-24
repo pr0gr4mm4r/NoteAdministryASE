@@ -10,13 +10,12 @@ import java.time.temporal.ChronoUnit;
 
 
 public class NoteDeclarator {
-    String noteName;
-    Path pathToNote;
+    private String noteName;
+    private Path pathToNote;
 
     public NoteDeclarator(Path pathToNote, String noteName) {
        this.noteName = noteName;
        this.pathToNote = pathToNote;
-       declareNote(pathToNote);
     }
 
     public void declareNote(Path completePath) {
@@ -76,6 +75,14 @@ public class NoteDeclarator {
 
     public void setNoteName(String noteName) {
         this.noteName = noteName;
+    }
+
+    public Path getPathToNote() {
+        return pathToNote;
+    }
+
+    public void setPathToNote(Path pathToNote) {
+        this.pathToNote = pathToNote;
     }
 }
 

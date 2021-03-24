@@ -45,6 +45,6 @@ public class NoteDeclaratorTest {
 
     @After
     public void deleteDeclaratedNote() {
-        new SingleNoteDeleter(generatedString);
+        SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
     }
 }
