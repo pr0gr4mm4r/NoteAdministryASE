@@ -2,7 +2,7 @@ package application.start;
 
 import application.notes.crud.delete.multi.MultiNoteDeletionCommand;
 import application.notes.crud.delete.single.SingleNoteDeletionCommand;
-import application.notes.crud.edit.single.SingleNoteLineEditorCommand;
+import application.notes.crud.edit.single.NoteLineEditorCommand;
 import application.notes.crud.read.single.NoteReaderCommand;
 import application.notes.dispatch.single.SingleNoteDispatcherCommand;
 import application.notes.find.multi.OverviewWordFinderCommand;
@@ -35,7 +35,7 @@ public class NoteAdministryStart {
         commandList.add(new SingleNoteDeletionCommand("delete", "delete a single note in directory" + path_for_notes));
         commandList.add(new MultiNoteDeletionCommand("delete all", "delete all notes in directory" + path_for_notes));
         commandList.add(new HelpCommand("display", "display an overview of all notes in directory" + path_for_notes));
-        commandList.add(new SingleNoteLineEditorCommand("edit", "replace a single line of a note"));
+        commandList.add(new NoteLineEditorCommand("edit", "replace a single line of a note"));
         commandList.add(new DisplayCommand("help", "display a list of commands"));
         commandList.add(new ExtendedHelpCommand("help+", "display a list of commands with a short description"));
         commandList.add(new NoteReaderCommand("read", "display the content of a note"));

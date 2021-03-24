@@ -17,34 +17,14 @@ import static application.notes.crud.edit.single.DisplayState.SUCCESS;
 
 public class NoteLineEditor {
 
-    public NoteLineEditor(Path path, String fileName) {
-        DisplayState displayState = displayLineByLinesOfNote(path);
-        if (displayState.equals(ERROR)) {
-            return;
-        }
-        final long upperManipulationRangeCap = countLineLength(fileName);
-        final int lowerManipulationRangeCap = 1;
-        if (upperManipulationRangeCap > lowerManipulationRangeCap) {
-            System.out.println("Which line do you want to overwrite? The manipulation range is: "
-                    + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
-            int lineNumber = scanner.nextInt();
-            scanner.nextLine();
-            if (noteHasEnoughLines(path, lineNumber)) {
-                openChangeDialogue(path, lineNumber);
-            } else {
-                openErrorDialogue(path);
-            }
-        }
-    }
-
     public NoteLineEditor() {
     }
 
-    private long countLineLength(String fileName) {
+    public long countLineLength(String fileName) {
         return new NoteCounterRaw(fileName).getLineCount();
     }
 
-    private void openErrorDialogue(Path completePath) {
+    protected void openErrorDialogue(Path completePath) {
         try (Stream<String> lineStream = Files.lines(completePath)) {
             long lineLength = lineStream.count();
             System.out.println("error -> allowed manipulation range is: 2 - " +
@@ -54,7 +34,7 @@ public class NoteLineEditor {
         }
     }
 
-    private void openChangeDialogue(Path completePath, int lineNumber) {
+    protected void openChangeDialogue(Path completePath, int lineNumber) {
         try {
             final int indexLineNumber = lineNumber - 1;
             String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
@@ -95,12 +75,12 @@ public class NoteLineEditor {
                 return false;
             }
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
         return true;
     }
 
-    private DisplayState displayLineByLinesOfNote(Path completePath) {
+    protected DisplayState displayLineByLinesOfNote(Path completePath) {
         try (LineNumberReader lineNumberReader = new LineNumberReader(
                 new InputStreamReader(Files.newInputStream(completePath)))) {
             String str;

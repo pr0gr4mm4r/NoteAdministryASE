@@ -25,7 +25,6 @@ public class SingleNoteDeletionCommand extends AbstractCommand {
             try {
                 singleNoteDeleter.deleteSingleNote(fileToDelete, path_for_notes);
                 singleNoteDeleter.printSuccessMessage();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
