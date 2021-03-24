@@ -19,7 +19,7 @@ public class NoteLineEditorCommand extends AbstractCommand {
         System.out.println("Which note do you want to change?");
         String fileName = scanner.nextLine();
         Path completePath = createCompletePath(fileName, path_for_notes);
-        NoteLineEditor noteLineEditor = new NoteLineEditor(completePath, fileName);
+        NoteLineEditor noteLineEditor = new NoteLineEditor();
         DisplayState displayState = noteLineEditor.displayLineByLinesOfNote(completePath);
         if (displayState.equals(ERROR)) {
             return;

@@ -18,7 +18,8 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             try {
-                new NoteDeleter();
+                NoteDeleter noteDeleter = new NoteDeleter();
+                noteDeleter.deleteWholeDirectory();
             } catch (IOException e) {
                 e.printStackTrace();
             }
