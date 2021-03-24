@@ -94,11 +94,9 @@ public class DisplayNotes extends JFrame {
         return noteDisplayButtons;
     }
 
-
     public List<JButton> getTextManipulationButtons() {
         return textManipulationButtons;
     }
-
 
     public JTextPane getNoteText() {
         return noteText;
@@ -115,5 +113,4 @@ public class DisplayNotes extends JFrame {
     public JLabel getRhymeCounterLabel() {
         return rhymeCounterLabel;
     }
-
 }
