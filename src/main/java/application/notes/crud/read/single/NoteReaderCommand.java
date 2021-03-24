@@ -4,7 +4,7 @@ import application.start.model.AbstractCommand;
 
 import java.nio.file.Path;
 
-import static application.redg.PathCreator.createCompletePath;
+import static application.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 

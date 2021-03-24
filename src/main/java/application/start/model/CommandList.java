@@ -21,6 +21,6 @@ public class CommandList extends ArrayList<AbstractCommand> {
     }
 
     public void resetCommands(){
-       // this.forEach(command -> command.makeActiveDecision("e"));
+       this.forEach(command -> command.makeActiveDecision("e"));
     }
 }

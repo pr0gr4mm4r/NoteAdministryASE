@@ -2,9 +2,20 @@ package application.start;
 
 import application.notes.crud.delete.multi.MultiNoteDeletionCommand;
 import application.notes.crud.delete.single.SingleNoteDeletionCommand;
-import application.start.model.AbstractCommand;
+import application.notes.crud.edit.single.SingleNoteLineEditorCommand;
+import application.notes.crud.read.single.NoteReaderCommand;
+import application.notes.dispatch.single.SingleNoteDispatcherCommand;
+import application.notes.find.multi.OverviewWordFinderCommand;
+import application.notes.find.single.SingleNoteWordFinderCommand;
+import application.notes.spellcheck.multi.OverviewSpellCheckerCommand;
+import application.notes.spellcheck.single.SingleNoteSpellcheckerCommand;
+import application.notes.ui.frame.DisplayCommand;
+import application.notes.ui.frame.DisplayNotes;
+import application.notes.wordcount.multi.OverviewCounterCommand;
+import application.notes.wordcount.single.SingleNoteCounterCommand;
+import application.singleWord.SingleWordSpellCheckerCommand;
+import application.start.model.*;
 import application.notes.crud.declare.single.NoteDeclarationCommand;
-import application.start.model.CommandList;
 
 import java.util.*;
 
@@ -20,27 +31,21 @@ public class NoteAdministryStart {
         commandList.add(new NoteDeclarationCommand("declare", "create a new note with a header containing creating date and time"));
         commandList.add(new SingleNoteDeletionCommand("delete", "delete a single note in directory" + path_for_notes));
         commandList.add(new MultiNoteDeletionCommand("delete all", "delete all notes in directory" + path_for_notes));
-        commandList.add(new Command("display", "display an overview of all notes in directory" + path_for_notes));
-        commandList.add(new Command("edit", "replace a single line of a note"));
-        commandList.add(new Command("help", "display a list of commands"));
-        commandList.add(new Command("help+", "display a list of commands with a short description"));
-        commandList.add(new Command("read", "display the content of a note"));
-        commandList.add(new Command("search", "get information about the occurrence of a keyword within one specified note"));
-        commandList.add(new Command("search all", "get information about the occurrence of a keyword within all notes"));
-        commandList.add(new Command("send", "send a note via email"));
-        commandList.add(new Command("sc sn", "check single word/s for spelling"));
-        commandList.add(new Command("sc sw", "check the spelling for a specific note"));
-        commandList.add(new Command("sc all", "check the spelling for all files in directory" + path_for_notes));
-        commandList.add(new Command("sort", "output sorted overview of files in directory" + path_for_notes));
-        commandList.add(new Command("word count", "count words of all notes in directory" + path_for_notes));
-        commandList.add(new Command("word count all", "count words of a specific note in directory" + path_for_notes));
-        commandList.add(new Command("exit", "exit program"));*/
-    }
-
-    private static void programExit() {
-        scanner.close();
-        System.out.println("Exited program");
-        programRun = false;
+        commandList.add(new HelpCommand("display", "display an overview of all notes in directory" + path_for_notes));
+        commandList.add(new SingleNoteLineEditorCommand("edit", "replace a single line of a note"));
+        commandList.add(new DisplayCommand("help", "display a list of commands"));
+        commandList.add(new ExtendedHelpCommand("help+", "display a list of commands with a short description"));
+        commandList.add(new NoteReaderCommand("read", "display the content of a note"));
+        commandList.add(new SingleNoteWordFinderCommand("search", "get information about the occurrence of a keyword within one specified note"));
+        commandList.add(new OverviewWordFinderCommand("search all", "get information about the occurrence of a keyword within all notes"));
+        commandList.add(new SingleNoteDispatcherCommand("send", "send a note via email"));
+        commandList.add(new SingleWordSpellCheckerCommand("sc sn", "check single word/s for spelling"));
+        commandList.add(new SingleNoteSpellcheckerCommand("sc sw", "check the spelling for a specific note"));
+        commandList.add(new OverviewSpellCheckerCommand("sc all", "check the spelling for all files in directory" + path_for_notes));
+      //  commandList.add(new Command("sort", "output sorted overview of files in directory" + path_for_notes));
+        commandList.add(new OverviewCounterCommand("word count", "count words of all notes in directory" + path_for_notes));
+        commandList.add(new SingleNoteCounterCommand("word count all", "count words of a specific note in directory" + path_for_notes));
+        commandList.add(new ProgramExitCommand("exit", "exit program"));
     }
 
     public static void main(String[] args) {
