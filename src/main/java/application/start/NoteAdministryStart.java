@@ -1,25 +1,10 @@
 package application.start;
 
-import application.notes.crud.declare.caller.NoteDeclaratorCaller;
-import application.notes.crud.delete.caller.NoteDeleterCaller;
-import application.notes.crud.delete.caller.SingleNoteDeleterCaller;
-import application.notes.crud.edit.caller.NoteLineEditorCaller;
-import application.notes.crud.read.caller.NoteReaderCaller;
-import application.notes.dispatch.caller.SingleNoteDispatcherCaller;
-import application.notes.find.caller.SingleNoteWordFinderCaller;
-import application.notes.find.caller.OverviewWordFinderCaller;
-import application.notes.sort.caller.NoteSorterCaller;
-import application.notes.spellcheck.caller.OverviewSpellCheckerCaller;
-import application.notes.spellcheck.caller.SingleNoteSpellCheckerCaller;
-import application.notes.wordcount.caller.OverviewCounterCaller;
-import application.notes.wordcount.caller.SingleNoteCounterCaller;
-import application.singleWord.SingleWordSpellCheckerCaller;
-import application.notes.wordcount.multi.OverviewCounter;
-import application.notes.wordcount.single.SingleNoteCounter;
-import application.start.model.Command;
+import application.notes.crud.delete.multi.MultiNoteDeletionCommand;
+import application.notes.crud.delete.single.SingleNoteDeletionCommand;
+import application.start.model.AbstractCommand;
+import application.notes.crud.declare.single.NoteDeclarationCommand;
 import application.start.model.CommandList;
-import application.start.model.HelpMode;
-import application.notes.ui.frame.DisplayNotes;
 
 import java.util.*;
 
@@ -30,34 +15,11 @@ public class NoteAdministryStart {
     private static CommandList commandList;
     public static boolean programRun = false;
 
-    private static void mapCommandExecution(Command activeCommand) {
-        switch (activeCommand.getComandName()) {
-            case "declare" -> new NoteDeclaratorCaller();
-            case "delete" -> new SingleNoteDeleterCaller();
-            case "delete all" -> new NoteDeleterCaller();
-            case "display" -> new DisplayNotes();
-            case "edit" -> new NoteLineEditorCaller();
-            case "help" -> commandList.listCommands(HelpMode.BASIC);
-            case "help+" -> commandList.listCommands(HelpMode.EXTENDED);
-            case "read" -> new NoteReaderCaller();
-            case "search" -> new SingleNoteWordFinderCaller();
-            case "search all" -> new OverviewWordFinderCaller();
-            case "send" -> new SingleNoteDispatcherCaller();
-            case "sc sn" -> new SingleNoteSpellCheckerCaller();
-            case "sc sw" -> new SingleWordSpellCheckerCaller();
-            case "sc all" -> new OverviewSpellCheckerCaller();
-            case "sort" -> new NoteSorterCaller();
-            case "word count" -> new SingleNoteCounterCaller();
-            case "word count all" -> new OverviewCounterCaller();
-            case "exit" -> programExit();
-        }
-    }
-
     private static void fillCommands() {
         commandList = new CommandList();
-        commandList.add(new Command("declare", "create a new note with a header containing creating date and time"));
-        commandList.add(new Command("delete", "delete a single note in directory" + path_for_notes));
-        commandList.add(new Command("delete all", "delete all notes in directory" + path_for_notes));
+        commandList.add(new NoteDeclarationCommand("declare", "create a new note with a header containing creating date and time"));
+        commandList.add(new SingleNoteDeletionCommand("delete", "delete a single note in directory" + path_for_notes));
+        commandList.add(new MultiNoteDeletionCommand("delete all", "delete all notes in directory" + path_for_notes));
         commandList.add(new Command("display", "display an overview of all notes in directory" + path_for_notes));
         commandList.add(new Command("edit", "replace a single line of a note"));
         commandList.add(new Command("help", "display a list of commands"));
@@ -72,7 +34,7 @@ public class NoteAdministryStart {
         commandList.add(new Command("sort", "output sorted overview of files in directory" + path_for_notes));
         commandList.add(new Command("word count", "count words of all notes in directory" + path_for_notes));
         commandList.add(new Command("word count all", "count words of a specific note in directory" + path_for_notes));
-        commandList.add(new Command("exit", "exit program"));
+        commandList.add(new Command("exit", "exit program"));*/
     }
 
     private static void programExit() {
@@ -88,13 +50,13 @@ public class NoteAdministryStart {
             printStartingMessage();
             String commandName = scanner.nextLine();
             makeActiveDecisions(commandName);
-            Optional<Command> activeCommand = findActiveCommand();
+            Optional<AbstractCommand> activeCommand = findActiveCommand();
             if (activeCommand.isEmpty()) {
                 printErrorMessage(commandName);
                 continue;
             }
-            resetCommandList();
-            mapCommandExecution(activeCommand.get());
+            resetCommandActiveFlagFromCommandList();
+            activeCommand.get().execute();
         }
     }
 
@@ -113,11 +75,11 @@ public class NoteAdministryStart {
         commandList.forEach(command -> command.makeActiveDecision(commandName));
     }
 
-    private static Optional<Command> findActiveCommand() {
-        return commandList.stream().filter(Command::isActive).findAny();
+    private static Optional<AbstractCommand> findActiveCommand() {
+        return commandList.stream().filter(AbstractCommand::isActive).findAny();
     }
 
-    private static void resetCommandList() {
+    private static void resetCommandActiveFlagFromCommandList() {
         commandList.forEach(command -> command.setActive(false));
     }
 }
