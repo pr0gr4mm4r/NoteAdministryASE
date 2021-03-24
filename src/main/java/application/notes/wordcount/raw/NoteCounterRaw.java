@@ -71,10 +71,6 @@ public class NoteCounterRaw {
         return lineCount;
     }
 
-    public void setLineCount(long lineCount) {
-        this.lineCount = lineCount;
-    }
-
     public int getWordCount() {
         return wordCount;
     }
@@ -83,16 +79,8 @@ public class NoteCounterRaw {
         return lineCountList;
     }
 
-    public void setLineCountList(List<Long> lineCountList) {
-        this.lineCountList = lineCountList;
-    }
-
     public List<Integer> getWordCountList() {
         return wordCountList;
-    }
-
-    public void setWordCountList(List<Integer> wordCountList) {
-        this.wordCountList = wordCountList;
     }
 
     public void setWordCount(int wordCount) {

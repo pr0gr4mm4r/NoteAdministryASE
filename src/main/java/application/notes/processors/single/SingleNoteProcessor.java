@@ -61,10 +61,6 @@ public class SingleNoteProcessor implements Processor {
         return wordList;
     }
 
-    public void setWordList(String[] wordList) {
-        this.wordList = wordList;
-    }
-
     public String getNote() {
         return note;
     }
@@ -77,23 +73,11 @@ public class SingleNoteProcessor implements Processor {
         return completePath;
     }
 
-    public void setCompletePath(Path completePath) {
-        this.completePath = completePath;
-    }
-
     public String[] getLineList() {
         return lineList;
     }
 
-    public void setLineList(String[] lineList) {
-        this.lineList = lineList;
-    }
-
     public String getNoteForGraphicalProcessing() {
         return noteForGraphicalProcessing;
-    }
-
-    public void setNoteForGraphicalProcessing(String noteForGraphicalProcessing) {
-        this.noteForGraphicalProcessing = noteForGraphicalProcessing;
     }
 }

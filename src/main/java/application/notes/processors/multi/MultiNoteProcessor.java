@@ -93,39 +93,17 @@ public class MultiNoteProcessor implements Processor {
         return pathList;
     }
 
-    public void setPathList(List<Path> pathList) {
-        this.pathList = pathList;
-    }
-
     public List<String> getNoteList() {
         return noteList;
     }
 
-    public void setNoteList(List<String> noteList) {
-        this.noteList = noteList;
-    }
-
-    public List<String[]> getSeparatedWordListList() {
-        return separatedWordListList;
-    }
-
-    public void setSeparatedWordListList(List<String[]> separatedWordListList) {
-        this.separatedWordListList = separatedWordListList;
-    }
 
     public List<String[]> getWordListList() {
         return finalWordListList;
-    }
-
-    public void setFinalWordListList(List<String[]> finalWordListList) {
-        this.finalWordListList = finalWordListList;
     }
 
     public Set<String> getNoteNames() {
         return noteNames;
     }
 
-    public void setNoteNames(Set<String> noteNames) {
-        this.noteNames = noteNames;
-    }
 }

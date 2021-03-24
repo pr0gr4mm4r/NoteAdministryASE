@@ -77,13 +77,5 @@ public class NoteDeclarator {
     public void setNoteName(String noteName) {
         this.noteName = noteName;
     }
-
-    public Path getPathToNote() {
-        return pathToNote;
-    }
-
-    public void setPathToNote(Path pathToNote) {
-        this.pathToNote = pathToNote;
-    }
 }
 

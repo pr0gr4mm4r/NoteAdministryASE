@@ -36,6 +36,4 @@ public class SingleNoteSpellChecker {
         double resultInPercent = (wordsInLexikon / wordCount) * 100;
         return resultInPercent;
     }
-
-
 }

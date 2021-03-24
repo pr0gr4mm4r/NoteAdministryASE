@@ -55,12 +55,4 @@ public class OverviewSpellChecker {
     private String format(OverviewSpellCheckerResultFormatter overviewSpellCheckerResultFormatter, List<Double> percentageValueList) {
         return overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
     }
-
-    public WordExistenceMapList getWordExistenceMapList() {
-        return wordExistenceMapList;
-    }
-
-    public OverviewSpellCheckerResultFormatter getOverviewSpellCheckerResultFormatter() {
-        return overviewSpellCheckerResultFormatter;
-    }
 }

@@ -75,28 +75,4 @@ public class WordCountNoteSorter implements Sorter {
         new LogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
     }
 
-
-    public List<String> getNoteList() {
-        return noteList;
-    }
-
-    public void setNoteList(List<String> noteList) {
-        this.noteList = noteList;
-    }
-
-    public List<String> getNameList() {
-        return nameList;
-    }
-
-    public void setNameList(List<String> nameList) {
-        this.nameList = nameList;
-    }
-
-    public List<Integer> getWordCountList() {
-        return wordCountList;
-    }
-
-    public void setWordCountList(List<Integer> wordCountList) {
-        this.wordCountList = wordCountList;
-    }
 }

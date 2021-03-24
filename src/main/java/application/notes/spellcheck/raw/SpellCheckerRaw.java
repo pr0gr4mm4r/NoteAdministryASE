@@ -42,28 +42,4 @@ public class SpellCheckerRaw {
     public List<String> getWordsNotInLexicon() {
         return wordsNotInLexicon;
     }
-
-    public void setWordsInLexicon(List<String> wordsInLexicon) {
-        this.wordsInLexicon = wordsInLexicon;
-    }
-
-    public void setWordsNotInLexicon(List<String> wordsNotInLexicon) {
-        this.wordsNotInLexicon = wordsNotInLexicon;
-    }
-
-    public String[] getWordListToCheckSpelling() {
-        return wordList;
-    }
-
-    public void setWordListToCheckSpelling(String[] wordListToCheckSpelling) {
-        this.wordList = wordListToCheckSpelling;
-    }
-
-    public String[] getWordList() {
-        return wordList;
-    }
-
-    public void setWordList(String[] wordList) {
-        this.wordList = wordList;
-    }
 }

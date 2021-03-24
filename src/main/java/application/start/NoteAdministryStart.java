@@ -120,12 +120,4 @@ public class NoteAdministryStart {
     private static void resetCommandList() {
         commandList.forEach(command -> command.setActive(false));
     }
-
-    public static boolean programIsRunning() {
-        return programRun;
-    }
-
-    public static void setProgramRun(boolean programRun) {
-        NoteAdministryStart.programRun = programRun;
-    }
 }

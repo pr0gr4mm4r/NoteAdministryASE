@@ -16,14 +16,14 @@ import static config.Globals.path_for_notes;
 
 public class DisplayNotes extends JFrame {
     private List<JLabel> noteNameLabels = new ArrayList<>();
-    private List<JButton> noteDisplayButtons = new ArrayList<>();
-    private List<JButton> textManipulationButtons = new ArrayList<>();
+    private final List<JButton> noteDisplayButtons = new ArrayList<>();
+    private final List<JButton> textManipulationButtons = new ArrayList<>();
     private GridLayout masterGrid = new GridLayout(3, 1);
     private final GridLayout textContentGrid = new GridLayout(1, 2);
     private GridLayout manipulatingButtonsGrid;
 
     private JLabel verbCounterLabel = new JLabel();
-    private JLabel rhymeCounterLabel = new JLabel();
+    private final JLabel rhymeCounterLabel = new JLabel();
     private JPanel masterPanel = new JPanel();
     private JPanel capturePanel = new JPanel();
     private JPanel noteButtonPanel = new JPanel();
@@ -31,8 +31,8 @@ public class DisplayNotes extends JFrame {
     private JPanel contentPanel = new JPanel();
     private JPanel manipulatingButtonsPanel = new JPanel();
     private JPanel manipulatingButtonsButtonsPanel = new JPanel();
-    private JPanel manipulatingButtonsContentPanel = new JPanel();
-    private JTextPane noteText = new JTextPane();
+    private final JPanel manipulatingButtonsContentPanel = new JPanel();
+    private final JTextPane noteText = new JTextPane();
     private JScrollPane jScrollPane;
 
     public DisplayNotes() {
@@ -90,143 +90,30 @@ public class DisplayNotes extends JFrame {
         this.setVisible(true);
     }
 
-    public List<JLabel> getNoteNameLabels() {
-        return noteNameLabels;
-    }
-
-    public void setNoteNameLabels(List<JLabel> noteNameLabels) {
-        this.noteNameLabels = noteNameLabels;
-    }
-
     public List<JButton> getNoteDisplayButtons() {
         return noteDisplayButtons;
     }
 
-    public void setNoteDisplayButtons(List<JButton> noteDisplayButtons) {
-        this.noteDisplayButtons = noteDisplayButtons;
-    }
 
     public List<JButton> getTextManipulationButtons() {
         return textManipulationButtons;
     }
 
-    public void setTextManipulationButtons(List<JButton> textManipulationButtons) {
-        this.textManipulationButtons = textManipulationButtons;
-    }
-
-    public GridLayout getMasterGrid() {
-        return masterGrid;
-    }
-
-    public void setMasterGrid(GridLayout masterGrid) {
-        this.masterGrid = masterGrid;
-    }
-
-    public GridLayout getTextContentGrid() {
-        return textContentGrid;
-    }
-
-    public GridLayout getManipulatingButtonsGrid() {
-        return manipulatingButtonsGrid;
-    }
-
-    public void setManipulatingButtonsGrid(GridLayout manipulatingButtonsGrid) {
-        this.manipulatingButtonsGrid = manipulatingButtonsGrid;
-    }
-
-    public JPanel getMasterPanel() {
-        return masterPanel;
-    }
-
-    public void setMasterPanel(JPanel masterPanel) {
-        this.masterPanel = masterPanel;
-    }
-
-    public JPanel getCapturePanel() {
-        return capturePanel;
-    }
-
-    public void setCapturePanel(JPanel capturePanel) {
-        this.capturePanel = capturePanel;
-    }
-
-    public JPanel getNoteButtonPanel() {
-        return noteButtonPanel;
-    }
-
-    public void setNoteButtonPanel(JPanel noteButtonPanel) {
-        this.noteButtonPanel = noteButtonPanel;
-    }
-
-    public JPanel getNoteTextPanel() {
-        return noteTextPanel;
-    }
-
-    public void setNoteTextPanel(JPanel noteTextPanel) {
-        this.noteTextPanel = noteTextPanel;
-    }
-
-    public JPanel getContentPanel() {
-        return contentPanel;
-    }
-
-    public void setContentPanel(JPanel contentPanel) {
-        this.contentPanel = contentPanel;
-    }
-
-    public JPanel getManipulatingButtonsPanel() {
-        return manipulatingButtonsPanel;
-    }
-
-    public void setManipulatingButtonsPanel(JPanel manipulatingButtonsPanel) {
-        this.manipulatingButtonsPanel = manipulatingButtonsPanel;
-    }
-
-    public JPanel getManipulatingButtonsButtonsPanel() {
-        return manipulatingButtonsButtonsPanel;
-    }
-
-    public void setManipulatingButtonsButtonsPanel(JPanel manipulatingButtonsButtonsPanel) {
-        this.manipulatingButtonsButtonsPanel = manipulatingButtonsButtonsPanel;
-    }
 
     public JTextPane getNoteText() {
         return noteText;
-    }
-
-    public void setNoteText(JTextPane noteText) {
-        this.noteText = noteText;
-    }
-
-    public JScrollPane getjScrollPane() {
-        return jScrollPane;
-    }
-
-    public void setjScrollPane(JScrollPane jScrollPane) {
-        this.jScrollPane = jScrollPane;
     }
 
     public JPanel getManipulatingButtonsContentPanel() {
         return manipulatingButtonsContentPanel;
     }
 
-    public void setManipulatingButtonsContentPanel(JPanel manipulatingButtonsContentPanel) {
-        this.manipulatingButtonsContentPanel = manipulatingButtonsContentPanel;
-    }
-
     public JLabel getVerbCounterLabel() {
         return verbCounterLabel;
-    }
-
-    public void setVerbCounterLabel(JLabel verbCounterLabel) {
-        this.verbCounterLabel = verbCounterLabel;
     }
 
     public JLabel getRhymeCounterLabel() {
         return rhymeCounterLabel;
     }
 
-    public void setRhymeCounterLabel(JLabel rhymeCounterLabel) {
-        this.rhymeCounterLabel = rhymeCounterLabel;
-    }
 }
