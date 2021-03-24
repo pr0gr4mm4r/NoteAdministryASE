@@ -63,8 +63,8 @@ public class NoteAdministryStart {
         commandList.add(new Command("help", "display a list of commands"));
         commandList.add(new Command("help+", "display a list of commands with a short description"));
         commandList.add(new Command("read", "display the content of a note"));
-        commandList.add(new Command("search", "get information about the occurence of a keyword within one specified note"));
-        commandList.add(new Command("search all", "get information about the occurence of a keyword within all notes"));
+        commandList.add(new Command("search", "get information about the occurrence of a keyword within one specified note"));
+        commandList.add(new Command("search all", "get information about the occurrence of a keyword within all notes"));
         commandList.add(new Command("send", "send a note via email"));
         commandList.add(new Command("sc sn", "check single word/s for spelling"));
         commandList.add(new Command("sc sw", "check the spelling for a specific note"));
