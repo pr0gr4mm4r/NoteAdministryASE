@@ -10,13 +10,6 @@ import static application.start.NoteAdministryStart.programRun;
 public class SingleNoteWordFinder {
     private Map<Integer, Integer> wordOccurrence;
 
-    public SingleNoteWordFinder(String keyword, String nameOfNote) {
-        String[] lineList = initializeLinelist(nameOfNote);
-        wordOccurrence = composeOccurrenceMap(lineList, keyword);
-        if (programRun) {
-            printResults();
-        }
-    }
     public SingleNoteWordFinder() {
 
     }
@@ -59,7 +52,12 @@ public class SingleNoteWordFinder {
         return occurrence;
     }
 
-    private void printResults() {
+    protected void printResults() {
         System.out.println(wordOccurrence);
+    }
+
+    public void findWort(String nameOfNote, String keyword) {
+        String[] lineList = initializeLinelist(nameOfNote);
+        this.wordOccurrence = composeOccurrenceMap(lineList, keyword);
     }
 }
