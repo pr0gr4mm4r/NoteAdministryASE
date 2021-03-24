@@ -19,18 +19,21 @@ public class RhymesNoteSorterTest {
 
     @Test
     public void increaseCounterForEachRhymeTest() throws IOException {
-        Set<Entry<String, Boolean>> wordsInLexiconEntries;
-        Map<String, Boolean> map = new HashMap<>();
-        map.put("fine", true);
-        map.put("line", true);
-        map.put("whine", true);
-        wordsInLexiconEntries = map.entrySet();
+
         RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new MultiNoteProcessor());
-        List<Entry<String, Boolean>> wordsInLexiconEntryList = new ArrayList<>(wordsInLexiconEntries);
+        List<String> wordsInLexiconEntryList = new ArrayList<>();
+        wordsInLexiconEntryList.add("test");
+        wordsInLexiconEntryList.add("quest");
+        wordsInLexiconEntryList.add("chest");
         int counter = 0;
-       /* counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
+
         counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
-        counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);*/
+
         assertEquals(3, counter);
+
+        counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
+        counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
+
+        assertEquals(9, counter);
     }
 }

@@ -39,12 +39,12 @@ public class RhymesNoteSorter implements Sorter {
         return rhymeOverview;
     }
 
-    public int increaseCounterForEachRhyme(List<String> wordsInLexiconEntries, int counter) {
-        final int size = wordsInLexiconEntries.size();
+    public int increaseCounterForEachRhyme(List<String> wordsInLexicon, int counter) {
+        final int size = wordsInLexicon.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
-                String firstWord = wordsInLexiconEntries.get(j);
-                String secondWord = wordsInLexiconEntries.get(k);
+                String firstWord = wordsInLexicon.get(j);
+                String secondWord = wordsInLexicon.get(k);
                 if (RiTa.isRhyme(firstWord, secondWord)) {
                     counter++;
                 }
