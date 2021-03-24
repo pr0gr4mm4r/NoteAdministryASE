@@ -17,29 +17,10 @@ import java.util.Properties;
 public class SingleNoteDispatcher {
     //Zum Funktionieren die Option "Zugriff durch weniger sichere Apps" im Googlekonto aktivieren
 
-    public SingleNoteDispatcher(SendingInformation sendingInformation) {
-        DispatcherRaw dispatcherRaw = new DispatcherRaw();
-        Properties properties = dispatcherRaw.defineProperties();
-        Authenticator auth = new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(sendingInformation.getSender(), sendingInformation.getPassword());
-            }
-        };
-        Session session = Session.getDefaultInstance(properties, auth);
-        try {
-            MimeMessage message = createMessage(session, sendingInformation);
-            Transport.send(message);
-            displaySuccessMessage();
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-        }
-    }
-
     public SingleNoteDispatcher() {
     }
 
-    public void displaySuccessMessage() {
+    protected void displaySuccessMessage() {
         System.out.println("Sent message successfully!");
     }
 

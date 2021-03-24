@@ -1,5 +1,6 @@
 package application.notes.processors.single;
 
+import application.notes.crud.read.single.NoteReader;
 import application.notes.processors.abstraction.Processor;
 
 import java.nio.file.Path;
@@ -7,7 +8,6 @@ import java.util.Arrays;
 
 import static application.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
-import static application.notes.crud.read.single.NoteReader.readNote;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
 
@@ -20,10 +20,11 @@ public class SingleNoteProcessor implements Processor {
     private String noteForGraphicalProcessing;
 
     public SingleNoteProcessor(String noteName) {
+        NoteReader noteReader = new NoteReader();
         this.noteName = noteName;
         completePath = createCompletePath(noteName, path_for_notes);
         note = readNoteForNoteProcessing(completePath);
-        noteForGraphicalProcessing = readNote(completePath);
+        noteForGraphicalProcessing = noteReader.readNote(completePath);
         lineList = createLineList(note);
         wordList = createWordList(note);
         wordList = removeEmptyLines(wordList);

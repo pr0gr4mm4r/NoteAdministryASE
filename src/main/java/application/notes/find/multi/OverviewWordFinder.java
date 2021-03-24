@@ -20,15 +20,10 @@ public class OverviewWordFinder {
         this.keyword = keyword;
         this.multiNoteProcessor = multiNoteProcessor;
         this.singleNoteWordFinder = new SingleNoteWordFinder();
-        try {
-            composeOverview();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 
-    public void composeOverview() throws IOException {
+    protected void composeOverview() throws IOException {
         List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
         List<String> noteList = createNoteList(pathsToNotesList);
         List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();

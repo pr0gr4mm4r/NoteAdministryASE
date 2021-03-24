@@ -22,8 +22,9 @@ public class NoteReaderTest {
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
+        NoteReader noteReader = new NoteReader();
 
-        String fileContent = NoteReader.readNote(completePath);
+        String fileContent = noteReader.readNote(completePath);
 
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent\ntest\ntest");

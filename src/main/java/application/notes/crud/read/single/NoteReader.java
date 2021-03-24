@@ -8,16 +8,14 @@ import java.util.stream.Stream;
 
 public class NoteReader {
 
-    public NoteReader(Path path) {
-        String note = readNote(path);
-        displayNote(note);
+    public NoteReader() {
     }
 
-    private void displayNote(String note) {
+    protected void displayNote(String note) {
         System.out.println(note);
     }
 
-    public static String readNote(Path completePath) {
+    public String readNote(Path completePath) {
         try(Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.collect(
                     Collectors.joining("\n"));
