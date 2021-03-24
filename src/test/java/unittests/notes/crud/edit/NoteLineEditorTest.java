@@ -14,8 +14,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
+import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteLineEditorTest {
     @Rule

@@ -10,9 +10,10 @@ import org.junit.Test;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+import static application.redg.PathCreator.createCompletePath;
 import static config.Globals.*;
 import static config.Globals.scanner;
-import static application.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
+
 import static org.junit.Assert.assertEquals;
 
 public class NoteDeclaratorTest {

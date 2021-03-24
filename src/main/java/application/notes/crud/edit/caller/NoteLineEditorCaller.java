@@ -1,14 +1,13 @@
 package application.notes.crud.edit.caller;
 
-
 import application.notes.crud.edit.single.NoteLineEditor;
 import application.notes.interfaces.Caller;
 import application.notes.interfaces.Interactor;
 
 import java.nio.file.Path;
 
+import static application.redg.PathCreator.createCompletePath;
 import static config.Globals.*;
-import static application.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 
 public class NoteLineEditorCaller implements Caller, Interactor {
     private Path completePath;

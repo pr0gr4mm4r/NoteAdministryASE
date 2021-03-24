@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.assertEquals;
+import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
 public class RhymesNoteSorterIntegrationTest {
     @Rule

@@ -17,7 +17,7 @@ public class WordExistenceMap extends HashMap<String, Boolean> { // use enum
     }
 
     public List<Entry<String, Boolean>> discardNegatives(){
-        List<Entry<String, Boolean>> test = this.entrySet().stream().filter(Entry::getValue).collect(Collectors.toList());
-        return test;
+        List<Entry<String, Boolean>> positives = this.entrySet().stream().filter(Entry::getValue).collect(Collectors.toList());
+        return positives;
     }
 }

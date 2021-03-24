@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
 import static org.junit.Assert.*;
+import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
 
 public class OverviewWordFinderTest {

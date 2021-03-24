@@ -19,9 +19,11 @@ public class SingleNoteDeleterTest {
     @Test
     public void testSingleFileDeletion() throws IOException {
         File artificialFile = temporaryFolder.newFile("myfile.txt");
-        assertTrue("artificial file was not created successfully", artificialFile.exists());
         SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
+
         singleNoteDeleter.deleteSingleNote("myfile.txt", temporaryFolder.getRoot().getPath());
+
+        assertTrue("artificial file was not created successfully", artificialFile.exists());
         assertFalse("deletion of artificial file did not work", artificialFile.exists());
     }
 }

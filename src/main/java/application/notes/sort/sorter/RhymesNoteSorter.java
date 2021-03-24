@@ -19,14 +19,13 @@ public class RhymesNoteSorter implements Sorter {
     MultiNoteProcessor multiNoteProcessor;
     List<String[]> noteList = new ArrayList<>();
     List<String> noteNames = new ArrayList<>();
-    StringIntegerMap rhymeOverview = new StringIntegerMap();
-
+    Map<String, Integer> rhymeOverview = new StringIntegerMap();
     public RhymesNoteSorter(MultiNoteProcessor multiNoteProcessor) {
         this.multiNoteProcessor = multiNoteProcessor;
     }
 
     @Override
-    public StringIntegerMap initialize() {
+    public Map<String, Integer> initialize() {
         initializeVariables();
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
@@ -34,21 +33,18 @@ public class RhymesNoteSorter implements Sorter {
             String[] currentNote = noteList.get(i);
             String currentNotename = noteNames.get(i);
             List<String> wordsInLexicon = filterPositives(currentNote);
-            List<String> wordsNotInLexicon = filterNegatives(currentNote);
-            WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
-            List<Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.discardNegatives();;
-            counter = increaseCounterForEachRhyme(wordsInLexiconEntries, counter);
+            counter = increaseCounterForEachRhyme(wordsInLexicon, counter);
             rhymeOverview.put(currentNotename, counter);
         }
         return rhymeOverview;
     }
 
-    public int increaseCounterForEachRhyme(List<Entry<String, Boolean>> wordsInLexiconEntries, int counter) {
+    public int increaseCounterForEachRhyme(List<String> wordsInLexiconEntries, int counter) {
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
-                String firstWord = wordsInLexiconEntries.get(j).getKey();
-                String secondWord = wordsInLexiconEntries.get(k).getKey();
+                String firstWord = wordsInLexiconEntries.get(j);
+                String secondWord = wordsInLexiconEntries.get(k);
                 if (RiTa.isRhyme(firstWord, secondWord)) {
                     counter++;
                 }

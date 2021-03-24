@@ -6,9 +6,9 @@ import application.notes.interfaces.Interactor;
 
 import java.nio.file.Path;
 
+import static application.redg.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
-import static application.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 
 public class NoteReaderCaller implements Caller, Interactor {
 

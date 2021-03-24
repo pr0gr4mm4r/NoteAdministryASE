@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
+import static application.redg.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
@@ -19,10 +20,6 @@ public class NoteDeclaratorCaller implements Interactor, Caller {
         interact();
         pathToNote = createCompletePath(noteName, path_for_notes);
         call();
-    }
-
-    public static Path createCompletePath(String noteName, String path) {
-        return Paths.get(path + noteName);
     }
 
     @Override

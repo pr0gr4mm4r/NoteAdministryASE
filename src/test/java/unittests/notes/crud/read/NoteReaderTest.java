@@ -6,11 +6,11 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
+import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteReaderTest {
     @Rule
@@ -22,7 +22,9 @@ public class NoteReaderTest {
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
+
         String fileContent = NoteReader.readNote(completePath);
+
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent\ntest\ntest");
     }
@@ -33,16 +35,10 @@ public class NoteReaderTest {
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
         Path completePath = createdFile.toPath();
+
         String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
+
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent test test");
-    }
-
-    public static void writingTestContentToArtificialFile(File createdFile, String testContent) {
-        try (FileWriter fileWriter = new FileWriter(createdFile)) {
-            fileWriter.write(testContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

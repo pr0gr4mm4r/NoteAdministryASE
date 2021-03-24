@@ -1,19 +1,17 @@
 package unittests.notes.sort;
 
 import application.notes.processors.multi.MultiNoteProcessor;
-import application.notes.processors.single.SingleNoteProcessor;
 import application.notes.sort.sorter.RhymesNoteSorter;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
-import static unittests.notes.crud.read.NoteReaderTest.writingTestContentToArtificialFile;
+import static org.junit.Assert.assertEquals;
 
 public class RhymesNoteSorterTest {
     @Rule
@@ -21,15 +19,18 @@ public class RhymesNoteSorterTest {
 
     @Test
     public void increaseCounterForEachRhymeTest() throws IOException {
-      /*  File file1 = temporaryFolder.newFile("myfile1.txt");
-        File file2 = temporaryFolder.newFile("myfile2.txt");
-        String testContent = "fine line whine";
-        String testContent2 = "I like flowers";
-        writingTestContentToArtificialFile(file1, testContent);
-        writingTestContentToArtificialFile(file2, testContent2);
-        List<Entry<String, Integer>> wordsInLexiconEntries = new ArrayList<>();
+        Set<Entry<String, Boolean>> wordsInLexiconEntries;
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("fine", true);
+        map.put("line", true);
+        map.put("whine", true);
+        wordsInLexiconEntries = map.entrySet();
+        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new MultiNoteProcessor());
+        List<Entry<String, Boolean>> wordsInLexiconEntryList = new ArrayList<>(wordsInLexiconEntries);
         int counter = 0;
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
-        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(multiNoteProcessor);*/
+       /* counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
+        counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);
+        counter = rhymesNoteSorter.increaseCounterForEachRhyme(wordsInLexiconEntryList, counter);*/
+        assertEquals(3, counter);
     }
 }

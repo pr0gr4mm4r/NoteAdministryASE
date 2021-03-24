@@ -5,8 +5,8 @@ import application.notes.processors.abstraction.Processor;
 import java.nio.file.Path;
 import java.util.Arrays;
 
+import static application.redg.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
-import static application.notes.crud.declare.caller.NoteDeclaratorCaller.createCompletePath;
 import static application.notes.crud.read.single.NoteReader.readNote;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
