@@ -1,4 +1,6 @@
-package application.start.model;
+package application.start.model.specialCommands.exitCommand;
+
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static application.start.NoteAdministryStart.programRun;
 import static config.Globals.scanner;

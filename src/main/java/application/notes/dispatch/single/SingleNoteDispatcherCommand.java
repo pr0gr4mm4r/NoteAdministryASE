@@ -1,7 +1,7 @@
 package application.notes.dispatch.single;
 
 import application.notes.dispatch.model.SendingInformation;
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;

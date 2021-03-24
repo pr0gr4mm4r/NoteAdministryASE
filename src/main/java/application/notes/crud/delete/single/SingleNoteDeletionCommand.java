@@ -1,6 +1,6 @@
 package application.notes.crud.delete.single;
 
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;

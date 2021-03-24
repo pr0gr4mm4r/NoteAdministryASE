@@ -1,4 +1,4 @@
-package application.start.model;
+package application.start.model.specialCommands.abstractCommand;
 
 public abstract class AbstractCommand {
 

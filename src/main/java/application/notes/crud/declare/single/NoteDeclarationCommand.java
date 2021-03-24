@@ -1,6 +1,6 @@
 package application.notes.crud.declare.single;
 
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import java.nio.file.Path;
 

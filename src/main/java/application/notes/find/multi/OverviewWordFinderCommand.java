@@ -1,7 +1,7 @@
 package application.notes.find.multi;
 
 import application.notes.processors.multi.MultiNoteProcessor;
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;

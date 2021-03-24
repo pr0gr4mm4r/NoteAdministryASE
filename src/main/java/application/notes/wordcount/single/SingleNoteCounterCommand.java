@@ -1,6 +1,6 @@
 package application.notes.wordcount.single;
 
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.scanner;
 

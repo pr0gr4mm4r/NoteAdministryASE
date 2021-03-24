@@ -1,5 +1,7 @@
 package application.start.model;
 
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 

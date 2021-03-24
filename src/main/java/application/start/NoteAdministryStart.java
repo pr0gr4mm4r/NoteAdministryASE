@@ -10,12 +10,15 @@ import application.notes.find.single.SingleNoteWordFinderCommand;
 import application.notes.spellcheck.multi.OverviewSpellCheckerCommand;
 import application.notes.spellcheck.single.SingleNoteSpellcheckerCommand;
 import application.notes.ui.frame.DisplayCommand;
-import application.notes.ui.frame.DisplayNotes;
 import application.notes.wordcount.multi.OverviewCounterCommand;
 import application.notes.wordcount.single.SingleNoteCounterCommand;
 import application.singleWord.SingleWordSpellCheckerCommand;
 import application.start.model.*;
 import application.notes.crud.declare.single.NoteDeclarationCommand;
+import application.start.model.specialCommands.helpCommands.ExtendedHelpCommand;
+import application.start.model.specialCommands.helpCommands.HelpCommand;
+import application.start.model.specialCommands.exitCommand.ProgramExitCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import java.util.*;
 

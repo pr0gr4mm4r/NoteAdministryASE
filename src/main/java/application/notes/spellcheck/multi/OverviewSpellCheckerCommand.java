@@ -1,6 +1,6 @@
 package application.notes.spellcheck.multi;
 
-import application.start.model.AbstractCommand;
+import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.path_for_notes;
 
