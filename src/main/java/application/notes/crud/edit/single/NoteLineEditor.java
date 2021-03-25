@@ -50,7 +50,6 @@ public class NoteLineEditor {
                     .path(completePath)
                     .indexLineNumber(indexLineNumber)
                     .build();
-            System.out.println(lineOverwriterInformation);
             overwriteLine(lineOverwriterInformation);
             System.out.println("Edit was successfull!");
         } catch (IOException e) {

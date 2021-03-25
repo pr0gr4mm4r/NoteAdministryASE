@@ -22,6 +22,7 @@ import application.start.model.specialCommands.exitCommand.ProgramExitCommand;
 import application.start.model.specialCommands.abstractCommand.AbstractCommand;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
@@ -35,9 +36,9 @@ public class NoteAdministryStart {
         commandList.add(new NoteDeclarationCommand("declare", "create a new note with a header containing creating date and time"));
         commandList.add(new SingleNoteDeletionCommand("delete", "delete a single note in directory" + path_for_notes));
         commandList.add(new MultiNoteDeletionCommand("delete all", "delete all notes in directory" + path_for_notes));
-        commandList.add(new HelpCommand("display", "display an overview of all notes in directory" + path_for_notes));
+        commandList.add(new DisplayCommand("display", "display an overview of all notes in directory" + path_for_notes));
         commandList.add(new NoteLineEditorCommand("edit", "replace a single line of a note"));
-        commandList.add(new DisplayCommand("help", "display a list of commands"));
+        commandList.add(new HelpCommand("help", "display a list of commands"));
         commandList.add(new ExtendedHelpCommand("help+", "display a list of commands with a short description"));
         commandList.add(new NoteReaderCommand("read", "display the content of a note"));
         commandList.add(new SingleNoteWordFinderCommand("search", "get information about the occurrence of a keyword within one specified note"));
@@ -59,13 +60,21 @@ public class NoteAdministryStart {
             printStartingMessage();
             String commandName = scanner.nextLine();
             makeActiveDecisions(commandName);
-            Optional<AbstractCommand> activeCommand = findActiveCommand();
-            if (activeCommand.isEmpty()) {
+            Optional<AbstractCommand> activeCommandOptional = findActiveCommand();
+            if (activeCommandOptional.isEmpty()) {
                 printErrorMessage(commandName);
                 continue;
             }
+            AbstractCommand activeCommand = activeCommandOptional.get();
+            if (activeCommand.getCommandName().equals("help")) {
+                listCommands(HelpMode.BASIC);
+                continue;
+            } else if (activeCommand.getCommandName().equals("help+")) {
+                listCommands(HelpMode.EXTENDED);
+                continue;
+            }
             resetCommandActiveFlagFromCommandList();
-            activeCommand.get().execute();
+            activeCommand.execute();
         }
     }
 
@@ -90,5 +99,20 @@ public class NoteAdministryStart {
 
     private static void resetCommandActiveFlagFromCommandList() {
         commandList.forEach(command -> command.setActive(false));
+    }
+
+    protected static void listCommands(HelpMode helpMode) {
+        System.out.println();
+        if (helpMode.equals(HelpMode.EXTENDED)) {
+            System.out.println(commandList.stream().map(
+                    command -> command.getCommandName() + "   |   " +
+                            command.getDescription() + "\n").collect(Collectors.joining())
+            );
+            return;
+        }
+        System.out.println(commandList.stream().map(
+                command -> command.getCommandName() + "    ").collect(Collectors.joining())
+        );
+        System.out.println();
     }
 }
