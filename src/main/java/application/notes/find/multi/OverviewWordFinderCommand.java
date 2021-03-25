@@ -25,7 +25,5 @@ public class OverviewWordFinderCommand extends AbstractCommand {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

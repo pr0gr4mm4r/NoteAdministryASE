@@ -20,13 +20,19 @@ public class OverviewSpellChecker {
     private final List<Double> percentageValueList = new ArrayList<>();
 
     public OverviewSpellChecker() {
+
+    }
+
+    public static OverviewSpellChecker initializeOverviewSpellChecker(){
+        OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
-        wordExistenceMapList.fill(wordListList);
-        fillPercentageValueList(percentageValueList, wordListList);
-        String formattedResult = format(overviewSpellCheckerResultFormatter, percentageValueList);
-        print(formattedResult);
-        openLogFileDialogue(formattedResult);
+        overviewSpellChecker.wordExistenceMapList.fill(wordListList);
+        overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);
+        String formattedResult = overviewSpellChecker.format(overviewSpellChecker.overviewSpellCheckerResultFormatter, overviewSpellChecker.percentageValueList);
+        overviewSpellChecker.print(formattedResult);
+        overviewSpellChecker.openLogFileDialogue(formattedResult);
+        return overviewSpellChecker;
     }
 
     private void fillPercentageValueList(List<Double> percentageValueList, List<String[]> wordListList) {

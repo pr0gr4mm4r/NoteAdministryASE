@@ -10,23 +10,29 @@ import java.util.*;
 import static application.notes.processors.single.Note.initializeNote;
 
 public class SingleNoteSpellChecker {
-    private final WordExistenceMap wordExistence;
-    private final SpellCheckerRaw spellCheckerRaw;
+    private WordExistenceMap wordExistence;
+    private SpellCheckerRaw spellCheckerRaw;
     private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
-    public SingleNoteSpellChecker(String noteName) {
+    public SingleNoteSpellChecker() {
+
+    }
+
+    public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(String noteName){
+        SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
         Note note = initializeNote(noteName);
         String[] wordList = note.getWordList();
-        spellCheckerRaw = new SpellCheckerRaw(wordList);
-        spellCheckerRaw.checkSpelling(wordList);
-        List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
-        List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        singleNoteSpellChecker.spellCheckerRaw = new SpellCheckerRaw(wordList);
+        singleNoteSpellChecker.spellCheckerRaw.checkSpelling(wordList);
+        List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
+        List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();
+        singleNoteSpellChecker.wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
         double wordCountOfNote = wordList.length;
-        double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
+        double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
         double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
-        String result = singleNoteSpellCheckerResultFormatter.format(wordExistence, percentageValue);
-        printResult(result);
+        String result = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
+        singleNoteSpellChecker.printResult(result);
+        return singleNoteSpellChecker;
     }
 
     private void printResult(String result) {

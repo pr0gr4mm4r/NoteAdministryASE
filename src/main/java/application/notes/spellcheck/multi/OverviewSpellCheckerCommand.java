@@ -12,6 +12,6 @@ public class OverviewSpellCheckerCommand extends AbstractCommand {
     @Override
     public void execute() {
         System.out.println("In the following all files of" + path_for_notes + " will be checked for correct spelling:");
-        new OverviewSpellChecker();
+        OverviewSpellChecker overviewSpellChecker = OverviewSpellChecker.initializeOverviewSpellChecker();
     }
 }
