@@ -17,10 +17,40 @@ import java.util.Properties;
 public class SingleNoteDispatcher {
     //Zum Funktionieren die Option "Zugriff durch weniger sichere Apps" im Googlekonto aktivieren
 
+    private MimeMessage message;
+
     public SingleNoteDispatcher() {
+
     }
 
-    protected void displaySuccessMessage() {
+    public static SingleNoteDispatcher initializeSingleNoteDispatcher(SendingInformation sendingInformation){
+        SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
+        DispatcherRaw dispatcherRaw = DispatcherRaw.defineProperties();
+        Authenticator auth = new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(sendingInformation.getSender(), sendingInformation.getPassword());
+            }
+        };
+        Session session = Session.getDefaultInstance(dispatcherRaw.getProperties(), auth);
+        try {
+             singleNoteDispatcher.message = singleNoteDispatcher.createMessage(session, sendingInformation);
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+        return singleNoteDispatcher;
+    }
+
+    void sendMessage(){
+        try {
+            Transport.send(message);
+            displaySuccessMessage();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displaySuccessMessage() {
         System.out.println("Sent message successfully!");
     }
 

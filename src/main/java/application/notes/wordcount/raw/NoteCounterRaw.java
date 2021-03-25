@@ -44,7 +44,6 @@ public class NoteCounterRaw {
     }
 
 
-
     private static void countLinesOfNotes(List<Path> pathList, List<Long> lineCountList) {
         for (Path path: pathList){
             long lineCount = countLinesOfNote(path);

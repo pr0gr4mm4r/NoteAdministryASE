@@ -1,6 +1,6 @@
 package application.notes.crud.delete.multi;
 
-import application.notes.crud.delete.abstraction.Deleter;
+import application.notes.crud.delete.marker.Deleter;
 
 import java.io.File;
 import java.io.IOException;

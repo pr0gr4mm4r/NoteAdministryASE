@@ -1,6 +1,6 @@
 package application.notes.crud.delete.single;
 
-import application.notes.crud.delete.abstraction.Deleter;
+import application.notes.crud.delete.marker.Deleter;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,8 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
-import static config.Globals.path_for_notes;
 
 
 public class SingleNoteDeleter implements Deleter {

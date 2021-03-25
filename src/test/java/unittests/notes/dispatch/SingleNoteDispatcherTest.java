@@ -19,8 +19,7 @@ public class SingleNoteDispatcherTest {
 
     @Test
     public void createMessageTest() throws MessagingException {
-        DispatcherRaw dispatcherRaw = new DispatcherRaw();
-        Properties properties = dispatcherRaw.defineProperties();
+        DispatcherRaw properties = DispatcherRaw.defineProperties();
         Session session = Session.getDefaultInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {

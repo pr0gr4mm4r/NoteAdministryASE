@@ -18,7 +18,7 @@ public class NoteDeclarator {
        this.pathToNote = pathToNote;
     }
 
-    public void declareNote(Path completePath) {
+    void declareNote(Path completePath) {
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
             addHeader(completePath);
@@ -27,11 +27,11 @@ public class NoteDeclarator {
         }
     }
 
-    private void printSuccessMessage() {
+    void printSuccessMessage() {
         System.out.println("Creation of note was successful");
     }
 
-    public boolean tryToCreateFile(Path completePath) {
+    private boolean tryToCreateFile(Path completePath) {
         try {
             Files.createFile(completePath);
             return true;
@@ -41,7 +41,7 @@ public class NoteDeclarator {
         }
     }
 
-    public void addHeader(Path completePath) {
+    private void addHeader(Path completePath) {
         String time = createCurrentTimeString();
         String header = this.noteName + " " + time;
         byte[] bytes = header.getBytes();
