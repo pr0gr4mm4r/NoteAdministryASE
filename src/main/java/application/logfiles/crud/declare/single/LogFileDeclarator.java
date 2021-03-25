@@ -13,18 +13,25 @@ import static application.notes.crud.declare.single.NoteDeclarator.createCurrent
 import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class LogFileDeclarator {
-    private final String action;
+    private String action;
     private String logFileName;
-    public LogFileDeclarator(String content, String capture){
-        this.action = capture;
-        logFileName = generateDefaultLogFileName();
-        Path completePath = createCompletePath(logFileName);
-        final boolean noteDoesNotExist = tryToCreateFile(completePath);
+
+    public LogFileDeclarator() {
+
+    }
+
+    public static LogFileDeclarator initializeLogFileDeclarator(String content, String capture) {
+        LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
+        logFileDeclarator.action = capture;
+        logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
+        Path completePath = createCompletePath(logFileDeclarator.logFileName);
+        final boolean noteDoesNotExist = logFileDeclarator.tryToCreateFile(completePath);
         if (noteDoesNotExist) {
-            addHeader(completePath, capture);
-            addContent(content, completePath);
-            printSuccessMessage();
+            logFileDeclarator.addHeader(completePath, capture);
+            logFileDeclarator.addContent(content, completePath);
+            logFileDeclarator.printSuccessMessage();
         }
+        return logFileDeclarator;
     }
 
     public static Path createCompletePath(String logfileName) {

@@ -18,6 +18,7 @@ public class RhymesNoteSorter implements Sorter {
     List<String[]> noteList = new ArrayList<>();
     List<String> noteNames = new ArrayList<>();
     Map<String, Integer> rhymeOverview = new StringIntegerMap();
+
     public RhymesNoteSorter(NoteStack multiNoteProcessor) {
         this.multiNoteProcessor = multiNoteProcessor;
     }
@@ -81,12 +82,12 @@ public class RhymesNoteSorter implements Sorter {
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-           logFileConfirmation(formattedResult);
+            createLogFile(formattedResult);
         }
     }
 
     @Override
-    public void logFileConfirmation(String formattedResult) {
-        new LogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
+    public void createLogFile(String formattedResult) {
+        LogFileDeclarator.initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
     }
 }

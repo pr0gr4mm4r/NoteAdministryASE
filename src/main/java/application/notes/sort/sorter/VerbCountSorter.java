@@ -67,12 +67,12 @@ public class VerbCountSorter implements Sorter {
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            logFileConfirmation(formattedResult);
+            createLogFile(formattedResult);
         }
     }
 
     @Override
-    public void logFileConfirmation(String formattedResult) {
-        new LogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Verbs");
+    public void createLogFile(String formattedResult) {
+        LogFileDeclarator.initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Verbs");
     }
 }

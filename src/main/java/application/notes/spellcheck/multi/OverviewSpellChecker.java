@@ -23,7 +23,7 @@ public class OverviewSpellChecker {
 
     }
 
-    public static OverviewSpellChecker initializeOverviewSpellChecker(){
+    public static OverviewSpellChecker initializeOverviewSpellChecker() {
         OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
@@ -50,7 +50,7 @@ public class OverviewSpellChecker {
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            new LogFileDeclarator(result, "Spellcheck All Notes");
+            LogFileDeclarator.initializeLogFileDeclarator(result, "Spellcheck All Notes");
         }
     }
 
