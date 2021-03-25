@@ -1,7 +1,7 @@
 package application.notes.find.multi;
 
 import application.notes.processors.multi.NoteStack;
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
 

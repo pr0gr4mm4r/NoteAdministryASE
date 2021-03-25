@@ -1,6 +1,6 @@
 package application.singleWord;
 
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import static config.Globals.scanner;
 

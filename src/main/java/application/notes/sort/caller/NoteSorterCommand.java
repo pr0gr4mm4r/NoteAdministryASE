@@ -2,7 +2,7 @@ package application.notes.sort.caller;
 
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.model.maps.CriteriaMap;
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.util.List;
 import java.util.Map;

@@ -1,6 +1,6 @@
 package application.notes.crud.delete.single;
 
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
 

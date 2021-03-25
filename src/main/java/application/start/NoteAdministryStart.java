@@ -14,16 +14,19 @@ import application.notes.ui.frame.DisplayCommand;
 import application.notes.wordcount.multi.OverviewCounterCommand;
 import application.notes.wordcount.single.SingleNoteCounterCommand;
 import application.singleWord.SingleWordSpellCheckerCommand;
-import application.start.model.*;
 import application.notes.crud.declare.single.NoteDeclarationCommand;
-import application.start.model.specialCommands.helpCommands.ExtendedHelpCommand;
-import application.start.model.specialCommands.helpCommands.HelpCommand;
-import application.start.model.specialCommands.exitCommand.ProgramExitCommand;
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.commands.CommandList;
+import application.start.model.help.HelpMode;
+import application.start.model.specialcommands.helpCommands.ExtendedHelpCommand;
+import application.start.model.specialcommands.helpCommands.HelpCommand;
+import application.start.model.specialcommands.exitCommand.ProgramExitCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static application.start.NoteAdministryStartMessagePrinter.printErrorMessage;
+import static application.start.NoteAdministryStartMessagePrinter.printStartingMessage;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
@@ -48,8 +51,8 @@ public class NoteAdministryStart {
         commandList.add(new SingleNoteSpellcheckerCommand("sc sw", "check the spelling for a specific note"));
         commandList.add(new OverviewSpellCheckerCommand("sc all", "check the spelling for all files in directory" + path_for_notes));
         commandList.add(new NoteSorterCommand("sort", "output sorted overview of files in directory" + path_for_notes));
-        commandList.add(new OverviewCounterCommand("word count", "count words of all notes in directory" + path_for_notes));
-        commandList.add(new SingleNoteCounterCommand("word count all", "count words of a specific note in directory" + path_for_notes));
+        commandList.add(new SingleNoteCounterCommand("word count", "count words of all notes in directory" + path_for_notes));
+        commandList.add(new OverviewCounterCommand("word count all", "count words of a specific note in directory" + path_for_notes));
         commandList.add(new ProgramExitCommand("exit", "exit program"));
     }
 
@@ -69,24 +72,14 @@ public class NoteAdministryStart {
             if (activeCommand.getCommandName().equals("help")) {
                 listCommands(HelpMode.BASIC);
                 continue;
-            } else if (activeCommand.getCommandName().equals("help+")) {
+            }
+            if (activeCommand.getCommandName().equals("help+")) {
                 listCommands(HelpMode.EXTENDED);
                 continue;
             }
             resetCommandActiveFlagFromCommandList();
             activeCommand.execute();
         }
-    }
-
-    private static void printStartingMessage() {
-        System.out.println("Enter a command of your choice" +
-                " (command 'help' for help)");
-    }
-
-    private static void printErrorMessage(String commandName) {
-        System.out.println();
-        System.out.println("error -> command '" + commandName + "' does not exist!");
-        System.out.println();
     }
 
     private static void makeActiveDecisions(String commandName) {
@@ -114,5 +107,6 @@ public class NoteAdministryStart {
                 command -> command.getCommandName() + "    ").collect(Collectors.joining())
         );
         System.out.println();
+        resetCommandActiveFlagFromCommandList();
     }
 }

@@ -2,7 +2,7 @@ package application.notes.dispatch.single;
 
 import application.notes.dispatch.model.SendingInformation;
 import application.notes.dispatch.raw.DispatcherRaw;
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import javax.mail.*;
 import javax.mail.internet.MimeMessage;

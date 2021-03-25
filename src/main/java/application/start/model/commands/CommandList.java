@@ -1,9 +1,8 @@
-package application.start.model;
+package application.start.model.commands;
 
-import application.start.model.specialCommands.abstractCommand.AbstractCommand;
+import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class CommandList extends ArrayList<AbstractCommand> {
 

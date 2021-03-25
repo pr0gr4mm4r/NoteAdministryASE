@@ -1,4 +1,4 @@
-package application.start.model;
+package application.start.model.help;
 
 public enum HelpMode {
     BASIC, EXTENDED
