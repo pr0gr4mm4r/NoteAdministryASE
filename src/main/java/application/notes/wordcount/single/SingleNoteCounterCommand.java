@@ -13,6 +13,6 @@ public class SingleNoteCounterCommand extends AbstractCommand {
     public void execute() {
         System.out.println("Which note do you want to count the lines and words for?");
         String noteName = scanner.nextLine();
-        new SingleNoteCounter(noteName);
+        SingleNoteCounter.initializeSingleNoteCounter(noteName);
     }
 }

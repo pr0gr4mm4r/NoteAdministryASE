@@ -9,10 +9,20 @@ public class SingleNoteCounter {
     private NoteCounterRaw noteCounterRaw;
 
     public SingleNoteCounter(String noteName) {
-        noteCounterRaw = initializeNoteCounterRaw(noteName);
-        long linesCount = noteCounterRaw.getLineCount();
-        long wordsCount = noteCounterRaw.getWordCount();
+
+    }
+
+    public static SingleNoteCounter initializeSingleNoteCounter(String noteName) {
+        SingleNoteCounter singleNoteCounter = new SingleNoteCounter(noteName);
+        singleNoteCounter.noteCounterRaw = initializeNoteCounterRaw(noteName);
+        long linesCount = singleNoteCounter.noteCounterRaw.getLineCount();
+        long wordsCount = singleNoteCounter.noteCounterRaw.getWordCount();
+        singleNoteCounter.printResults(noteName, linesCount, wordsCount);
+        return singleNoteCounter;
+    }
+
+    void printResults(String noteName, long linesCount, long wordCount) {
         System.out.println(
-                noteName + " contains " + linesCount + " lines and " + wordsCount + " words.");
+                noteName + " contains " + linesCount + " lines and " + wordCount + " words.");
     }
 }
