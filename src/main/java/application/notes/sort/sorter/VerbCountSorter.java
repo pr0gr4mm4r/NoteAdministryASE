@@ -10,6 +10,7 @@ import rita.RiTa;
 import java.util.*;
 import java.util.Map.Entry;
 
+import static application.logfiles.crud.declare.single.LogFileDeclarator.initializeLogFileDeclarator;
 import static config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
@@ -61,7 +62,7 @@ public class VerbCountSorter implements Sorter {
     }
 
     @Override
-    public void print(String formattedResult) {
+    public void dialogue(String formattedResult) {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -73,6 +74,7 @@ public class VerbCountSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        LogFileDeclarator.initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Verbs");
+        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Verbs");
+        logFileDeclarator.declareLogFile(formattedResult);
     }
 }

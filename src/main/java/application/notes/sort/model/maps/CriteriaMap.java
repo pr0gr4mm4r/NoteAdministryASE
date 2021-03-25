@@ -7,15 +7,32 @@ import application.notes.sort.sorter.VerbCountSorter;
 import application.notes.sort.sorter.WordCountNoteSorter;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
+import static application.notes.processors.multi.NoteStack.*;
 import static config.Globals.path_for_notes;
 
 public class CriteriaMap extends HashMap<String, Sorter> {
+    private NoteStack noteStack;
 
-    public CriteriaMap(){
-        NoteStack noteStack = NoteStack.initializeStack(path_for_notes);
-        this.put("Rhymes", new RhymesNoteSorter(noteStack));
-        this.put("Verbs", new VerbCountSorter(noteStack));
-        this.put("WordCount", new WordCountNoteSorter(noteStack));
+    public CriteriaMap() {
+
+    }
+
+    public static CriteriaMap initializeCriteriaMap() {
+        CriteriaMap criteriaMap = new CriteriaMap();
+        criteriaMap.noteStack = initializeNoteStack(path_for_notes);
+        criteriaMap.put("Rhymes", new RhymesNoteSorter(criteriaMap.noteStack));
+        criteriaMap.put("Verbs", new VerbCountSorter(criteriaMap.noteStack));
+        criteriaMap.put("WordCount", new WordCountNoteSorter(criteriaMap.noteStack));
+        return criteriaMap;
+    }
+
+    public String createCriteriaListCommaSeparated() {
+        return this.keySet().stream().collect(Collectors.joining(", "));
+    }
+
+    public Sorter getSorterbyCriteria(String criteria) {
+        return this.get(criteria);
     }
 }

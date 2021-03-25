@@ -12,7 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static application.notes.processors.multi.NoteStack.initializeStack;
+import static application.notes.processors.multi.NoteStack.initializeNoteStack;
 import static config.Globals.path_for_notes;
 
 public class DisplayNotes extends JFrame {
@@ -48,7 +48,7 @@ public class DisplayNotes extends JFrame {
         jScrollPane = new JScrollPane(noteTextPanel);
         contentPanel.setLayout(textContentGrid);
         contentPanel.add(jScrollPane);
-        NoteStack noteStack = initializeStack(path_for_notes);
+        NoteStack noteStack = initializeNoteStack(path_for_notes);
         List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
             JLabel jLabel = new JLabel(noteNames.get(i));

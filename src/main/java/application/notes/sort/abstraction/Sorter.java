@@ -7,6 +7,6 @@ public interface Sorter {
     Map<String, Integer> initialize();
     List sort(Map map);
     String format(List result);
-    void print(String formattedResult);
+    void dialogue(String formattedResult);
     void createLogFile(String formattedResult);
 }

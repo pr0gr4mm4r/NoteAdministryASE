@@ -1,4 +1,4 @@
-package application.notes.sort.caller;
+package application.notes.sort.command;
 
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.model.maps.CriteriaMap;
@@ -17,20 +17,19 @@ public class NoteSorterCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        CriteriaMap criteriaMap = new CriteriaMap();
-        String criteriaListCommaSeparated = criteriaMap.keySet().stream().collect(Collectors.joining(", "));
+        CriteriaMap criteriaMap = CriteriaMap.initializeCriteriaMap();
+        String criteriaListCommaSeparated = criteriaMap.createCriteriaListCommaSeparated();
         System.out.print("After which criteria do you want to sort notes?");
         System.out.println(" (You can choose between " +
                 criteriaListCommaSeparated + ")");
         String criteria = scanner.nextLine();
         boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            Sorter sorter = criteriaMap.get(criteria);
+            Sorter sorter = criteriaMap.getSorterbyCriteria(criteria);
             Map<String, Integer> map = sorter.initialize();
-            map.entrySet().forEach(e-> System.out.println(e.getValue()));
             List result = sorter.sort(map);
             String formattedResult = sorter.format(result);
-            sorter.print(formattedResult);
+            sorter.dialogue(formattedResult);
         }
     }
 }

@@ -25,7 +25,7 @@ public class OverviewSpellChecker {
 
     public static OverviewSpellChecker initializeOverviewSpellChecker() {
         OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
-        final NoteStack noteStack = initializeStack(path_for_notes);
+        final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
         overviewSpellChecker.wordExistenceMapList.fill(wordListList);
         overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);

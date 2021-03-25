@@ -25,7 +25,7 @@ public class OverviewCounter {
         overviewCounter.noteCounterRaw = initializeNoteCounterRaw();
         overviewCounter.lineCountList = overviewCounter.noteCounterRaw.getLineCountList();
         overviewCounter.wordCountList = overviewCounter.noteCounterRaw.getWordCountList();
-        overviewCounter.noteStack = NoteStack.initializeStack(path_for_notes);
+        overviewCounter.noteStack = NoteStack.initializeNoteStack(path_for_notes);
         overviewCounter.noteNames = new ArrayList<>(overviewCounter.noteStack.getNoteNames());
         return overviewCounter;
     }

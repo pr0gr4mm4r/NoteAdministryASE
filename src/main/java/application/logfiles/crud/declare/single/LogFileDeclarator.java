@@ -13,25 +13,29 @@ import static application.notes.crud.declare.single.NoteDeclarator.createCurrent
 import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class LogFileDeclarator {
-    private String action;
+    private String capture;
     private String logFileName;
+    private Path completePath;
 
     public LogFileDeclarator() {
 
     }
 
-    public static LogFileDeclarator initializeLogFileDeclarator(String content, String capture) {
+    public static LogFileDeclarator initializeLogFileDeclarator(String formattedResult, String capture) {
         LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
-        logFileDeclarator.action = capture;
+        logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
-        Path completePath = createCompletePath(logFileDeclarator.logFileName);
-        final boolean noteDoesNotExist = logFileDeclarator.tryToCreateFile(completePath);
-        if (noteDoesNotExist) {
-            logFileDeclarator.addHeader(completePath, capture);
-            logFileDeclarator.addContent(content, completePath);
-            logFileDeclarator.printSuccessMessage();
-        }
+        logFileDeclarator.completePath = createCompletePath(logFileDeclarator.logFileName);
         return logFileDeclarator;
+    }
+
+    public void declareLogFile(String content) {
+        final boolean noteDoesNotExist = this.tryToCreateFile(this.completePath);
+        if (noteDoesNotExist) {
+            this.addHeader(this.completePath, this.capture);
+            this.addContent(content, this.completePath);
+            this.printSuccessMessage();
+        }
     }
 
     public static Path createCompletePath(String logfileName) {
@@ -79,7 +83,7 @@ public class LogFileDeclarator {
         }
     }
 
-    private void printSuccessMessage() {
+    public void printSuccessMessage() {
         System.out.println("Creation of logfile was successful");
     }
 }

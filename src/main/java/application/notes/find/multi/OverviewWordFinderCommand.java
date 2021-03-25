@@ -16,7 +16,7 @@ public class OverviewWordFinderCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        NoteStack noteStack = initializeStack(path_for_notes);
+        NoteStack noteStack = initializeNoteStack(path_for_notes);
         System.out.println("type in a keyword to search:");
         String keyword = scanner.nextLine();
         OverviewWordFinder overviewWordFinder = new OverviewWordFinder(keyword, noteStack);

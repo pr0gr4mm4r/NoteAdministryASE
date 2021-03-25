@@ -30,7 +30,7 @@ public class NoteStack implements Processor {
 
     }
 
-    public static NoteStack initializeStack(String path){
+    public static NoteStack initializeNoteStack(String path){
         NoteStack noteStack = new NoteStack();
         try {
             noteStack.noteNames = noteStack.listNoteNames(path, 1);

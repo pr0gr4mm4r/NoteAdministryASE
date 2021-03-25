@@ -7,7 +7,7 @@ import application.notes.crud.read.single.NoteReaderCommand;
 import application.notes.dispatch.single.SingleNoteDispatcherCommand;
 import application.notes.find.multi.OverviewWordFinderCommand;
 import application.notes.find.single.SingleNoteWordFinderCommand;
-import application.notes.sort.caller.NoteSorterCommand;
+import application.notes.sort.command.NoteSorterCommand;
 import application.notes.spellcheck.multi.OverviewSpellCheckerCommand;
 import application.notes.spellcheck.single.SingleNoteSpellcheckerCommand;
 import application.notes.ui.frame.DisplayCommand;
