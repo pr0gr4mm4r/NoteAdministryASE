@@ -20,8 +20,9 @@ public class NoteLineEditor {
     public NoteLineEditor() {
     }
 
-    public long countLineLength(String fileName) {
-        return new NoteCounterRaw(fileName).getLineCount();
+    public long countLineLength(String noteName) {
+        NoteCounterRaw noteCounterRaw = NoteCounterRaw.initializeNoteCounterRaw(noteName);
+        return noteCounterRaw.getLineCount();
     }
 
     protected void openErrorDialogue(Path completePath) {

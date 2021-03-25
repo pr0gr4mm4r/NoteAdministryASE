@@ -7,7 +7,7 @@ import application.WordExistenceMap;
 
 import java.util.*;
 
-import static application.notes.processors.single.Note.initialize;
+import static application.notes.processors.single.Note.initializeNote;
 
 public class SingleNoteSpellChecker {
     private final WordExistenceMap wordExistence;
@@ -15,7 +15,7 @@ public class SingleNoteSpellChecker {
     private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
     public SingleNoteSpellChecker(String noteName) {
-        Note note = initialize(noteName);
+        Note note = initializeNote(noteName);
         String[] wordList = note.getWordList();
         spellCheckerRaw = new SpellCheckerRaw(wordList);
         spellCheckerRaw.checkSpelling(wordList);

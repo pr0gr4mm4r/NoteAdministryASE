@@ -19,7 +19,7 @@ public class Note {
     private String noteForGraphicalProcessing;
 
 
-    public static Note initialize(String noteName){
+    public static Note initializeNote(String noteName){
         Note note = new Note();
         NoteReader noteReader = new NoteReader();
         note.noteName = noteName;

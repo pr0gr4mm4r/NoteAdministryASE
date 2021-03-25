@@ -6,21 +6,35 @@ import application.notes.wordcount.raw.NoteCounterRaw;
 import java.util.ArrayList;
 import java.util.List;
 
+import static application.notes.wordcount.raw.NoteCounterRaw.initializeNoteCounterRaw;
 import static config.Globals.path_for_notes;
 
 public class OverviewCounter {
-    NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
+    NoteCounterRaw noteCounterRaw;
+    List<Long> lineCountList;
+    List<Integer> wordCountList;
+    List<String> noteNames;
+    NoteStack noteStack;
 
     public OverviewCounter() {
-        List<Long> lineCountList = noteCounterRaw.getLineCountList();
-        List<Integer> wordCountList = noteCounterRaw.getWordCountList();
-        NoteStack noteStack = NoteStack.initializeStack(path_for_notes);
-        System.out.println(noteStack.getNoteList());
-        List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
-        for (int i = 0; i < noteNames.size(); i++) {
+
+    }
+
+    public static OverviewCounter initializeOverviewCounter() {
+        OverviewCounter overviewCounter = new OverviewCounter();
+        overviewCounter.noteCounterRaw = initializeNoteCounterRaw();
+        overviewCounter.lineCountList = overviewCounter.noteCounterRaw.getLineCountList();
+        overviewCounter.wordCountList = overviewCounter.noteCounterRaw.getWordCountList();
+        overviewCounter.noteStack = NoteStack.initializeStack(path_for_notes);
+        overviewCounter.noteNames = new ArrayList<>(overviewCounter.noteStack.getNoteNames());
+        return overviewCounter;
+    }
+
+    public void printResults() {
+        for (int i = 0; i < this.noteNames.size(); i++) {
             System.out.println(
-                    noteNames.get(i) + " contains " + lineCountList.get(i) +
-                    " lines and " + wordCountList.get(i) + " words.");
+                    this.noteNames.get(i) + " contains " + this.lineCountList.get(i) +
+                            " lines and " + this.wordCountList.get(i) + " words.");
         }
     }
 }

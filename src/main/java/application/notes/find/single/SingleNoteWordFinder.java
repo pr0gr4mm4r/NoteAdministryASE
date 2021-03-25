@@ -13,7 +13,7 @@ public class SingleNoteWordFinder {
     }
 
     public String[] initializeLinelist(String nameOfNote) {
-        Note note = Note.initialize(nameOfNote);
+        Note note = Note.initializeNote(nameOfNote);
         String[] lineList = note.getLineList();
         return lineList;
     }

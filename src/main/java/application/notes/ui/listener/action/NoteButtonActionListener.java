@@ -22,7 +22,7 @@ public class NoteButtonActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Note note = initialize(this.noteName);
+        Note note = initializeNote(this.noteName);
         String content = note.getNoteForGraphicalProcessing();
         JEditorPane jEditorPane = displayNotes.getNoteText();
         jEditorPane.setText(content);

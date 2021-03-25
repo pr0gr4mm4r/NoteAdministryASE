@@ -17,33 +17,42 @@ public class NoteCounterRaw {
     private long lineCount;
     private int wordCount;
 
-    private List<Long> lineCountList = new ArrayList<>();
+    private final List<Long> lineCountList = new ArrayList<>();
     private List<Integer> wordCountList = new ArrayList<>();
 
-    public NoteCounterRaw(String noteName) {
-        Note note = initialize(noteName);
-        Path path = note.getCompletePath();
-        lineCount = countLinesOfNote(path);
-        wordCount = countWordsOfNote(note);
+    public NoteCounterRaw() {
+
     }
 
-    public NoteCounterRaw() {
+    public static NoteCounterRaw initializeNoteCounterRaw(String noteName){
+        NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
+        Note note = initializeNote(noteName);
+        Path path = note.getCompletePath();
+        noteCounterRaw.lineCount = countLinesOfNote(path);
+        noteCounterRaw.wordCount = noteCounterRaw.countWordsOfNote(note);
+        return noteCounterRaw;
+    }
+
+    public static NoteCounterRaw initializeNoteCounterRaw(){
+        NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
         NoteStack noteStack = NoteStack.initializeStack(path_for_notes);
         List<Path> pathList = noteStack.getPathList();
-        lineCountList = countLinesOfNotes(pathList, lineCountList);
+        countLinesOfNotes(pathList, noteCounterRaw.lineCountList);
         List<String[]> wordListList = noteStack.getWordListList();
-        wordCountList = countWordsOfNotes(wordListList);
+        noteCounterRaw.wordCountList = noteCounterRaw.countWordsOfNotes(wordListList);
+        return noteCounterRaw;
     }
 
-    private List<Long> countLinesOfNotes(List<Path> pathList, List<Long> lineCountList) {
+
+
+    private static void countLinesOfNotes(List<Path> pathList, List<Long> lineCountList) {
         for (Path path: pathList){
             long lineCount = countLinesOfNote(path);
             lineCountList.add(lineCount);
         }
-        return lineCountList;
     }
 
-    public long countLinesOfNote(Path completePath) {
+    public static long countLinesOfNote(Path completePath) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.count();
         } catch (IOException e) {
@@ -51,7 +60,6 @@ public class NoteCounterRaw {
             return -1;
         }
     }
-
 
     public int countWordsOfNote(Note singleNoteProcessor) {
         wordCount = singleNoteProcessor.getWordList().length;
