@@ -1,12 +1,14 @@
 package application.notes.ui.listener.action;
 
-import application.notes.processors.single.SingleNoteProcessor;
+import application.notes.processors.single.Note;
 import application.notes.ui.frame.DisplayNotes;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static application.notes.processors.single.Note.*;
 
 public class NoteButtonActionListener implements ActionListener {
 
@@ -20,10 +22,10 @@ public class NoteButtonActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor(this.noteName);
-        String note = singleNoteProcessor.getNoteForGraphicalProcessing();
+        Note note = initialize(this.noteName);
+        String content = note.getNoteForGraphicalProcessing();
         JEditorPane jEditorPane = displayNotes.getNoteText();
-        jEditorPane.setText(note);
+        jEditorPane.setText(content);
         Font font = new Font("Arial", Font.PLAIN, 16);
         jEditorPane.setFont(font);
         displayNotes.getTextManipulationButtons().forEach(button -> button.setEnabled(true));

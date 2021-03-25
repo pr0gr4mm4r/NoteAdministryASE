@@ -1,7 +1,6 @@
 package application.notes.processors.single;
 
 import application.notes.crud.read.single.NoteReader;
-import application.notes.processors.abstraction.Processor;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -11,38 +10,38 @@ import static config.Globals.path_for_notes;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
 
-public class SingleNoteProcessor implements Processor {
+public class Note {
     private Path completePath;
     private String noteName;
     private String[] wordList;
     private String[] lineList;
-    private String note;
+    private String content;
     private String noteForGraphicalProcessing;
 
-    public SingleNoteProcessor(String noteName) {
+
+    public static Note initialize(String noteName){
+        Note note = new Note();
         NoteReader noteReader = new NoteReader();
-        this.noteName = noteName;
-        completePath = createCompletePath(noteName, path_for_notes);
-        note = readNoteForNoteProcessing(completePath);
-        noteForGraphicalProcessing = noteReader.readNote(completePath);
-        lineList = createLineList(note);
-        wordList = createWordList(note);
-        wordList = removeEmptyLines(wordList);
+        note.noteName = noteName;
+        note.completePath = createCompletePath(noteName, path_for_notes);
+        note.content = readNoteForNoteProcessing(note.completePath);
+        note.noteForGraphicalProcessing = noteReader.readNote(note.completePath);
+        note.lineList = createLineList(note.content);
+        note.wordList = createWordList(note.content);
+        note.wordList = removeEmptyLines(note.wordList);
+        return note;
     }
 
-    public SingleNoteProcessor(){
 
-    }
-
-    private String[] createLineList(String note) {
+    private static String[] createLineList(String note) {
         return note.split("\n");
     }
 
-    public String[] removeEmptyLines(String[] words) {
+    public static String[] removeEmptyLines(String[] words) {
         return Arrays.stream(words).filter(word->!word.equals("")).toArray(String[]::new);
     }
 
-    public String[] createWordList(String string){
+    public static String[] createWordList(String string){
         return string.split(" ");
     }
 
@@ -62,12 +61,12 @@ public class SingleNoteProcessor implements Processor {
         return wordList;
     }
 
-    public String getNote() {
-        return note;
+    public String getContent() {
+        return content;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Path getCompletePath() {

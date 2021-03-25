@@ -1,7 +1,6 @@
 package application.notes.processors.multi;
 
 import application.notes.processors.abstraction.Processor;
-import application.notes.processors.single.SingleNoteProcessor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,37 +13,40 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static application.notes.processors.single.Note.createWordList;
+import static application.notes.processors.single.Note.removeEmptyLines;
 import static application.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
-public class MultiNoteProcessor implements Processor {
+public class NoteStack implements Processor {
     private List<Path> pathList;
     private List<String> noteList;
     private List<String[]> separatedWordListList = new ArrayList<>();
     private List<String[]> finalWordListList;
     private Set<String> noteNames = new HashSet<>();
-    private final SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
 
-    public MultiNoteProcessor(String path) {
+    public NoteStack() {
+
+    }
+
+    public static NoteStack initializeStack(String path){
+        NoteStack noteStack = new NoteStack();
         try {
-            noteNames = listNoteNames(path, 1);
+            noteStack.noteNames = noteStack.listNoteNames(path, 1);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        pathList = createPathList(noteNames, path);
-        noteList = createNoteList(pathList);
-        separatedWordListList = separateWordsForEachNote(noteList, separatedWordListList);
-        finalWordListList = removeEmptyLinesForEachNote(separatedWordListList);
-    }
-
-    public MultiNoteProcessor() {
-
+        noteStack.pathList = noteStack.createPathList(noteStack.noteNames, path);
+        noteStack.noteList = noteStack.createNoteList(noteStack.pathList);
+        noteStack.separatedWordListList = noteStack.separateWordsForEachNote(noteStack.noteList, noteStack.separatedWordListList);
+        noteStack.finalWordListList = noteStack.removeEmptyLinesForEachNote(noteStack.separatedWordListList);
+        return noteStack;
     }
 
     public List<String[]> removeEmptyLinesForEachNote(List<String[]> wordListLists) {
         for (int i = 0; i < wordListLists.size(); i++) {
-            String[] filteredWordList = singleNoteProcessor.removeEmptyLines(wordListLists.get(i));
+            String[] filteredWordList = removeEmptyLines(wordListLists.get(i));
             wordListLists.set(i, filteredWordList);
         }
         return wordListLists;
@@ -52,7 +54,7 @@ public class MultiNoteProcessor implements Processor {
 
     public List<String[]> separateWordsForEachNote(List<String> noteList, List<String[]> separatedWordListList) {
         for (String note : noteList) {
-            String[] separatedWords = singleNoteProcessor.createWordList(note);
+            String[] separatedWords = createWordList(note);
             separatedWordListList.add(separatedWords);
         }
         return separatedWordListList;

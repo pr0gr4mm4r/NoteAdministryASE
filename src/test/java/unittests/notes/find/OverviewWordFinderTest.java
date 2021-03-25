@@ -1,7 +1,7 @@
 package unittests.notes.find;
 
 import application.notes.find.multi.OverviewWordFinder;
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static application.notes.processors.multi.NoteStack.initializeStack;
 import static org.junit.Assert.*;
 import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
@@ -31,7 +32,7 @@ public class OverviewWordFinderTest {
     @Before
     public void setup() throws IOException {
         artificialFile = temporaryFolder.newFile("myfile.txt");
-        overviewWordFinder = new OverviewWordFinder(testWord, new MultiNoteProcessor(temporaryFolder.getRoot().getPath() + "\\"));
+        overviewWordFinder = new OverviewWordFinder(testWord, initializeStack(temporaryFolder.getRoot().getPath() + "\\"));
     }
 
     @Test

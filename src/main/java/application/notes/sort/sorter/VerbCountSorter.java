@@ -1,7 +1,7 @@
 package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.formatter.VerbCountSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
@@ -13,12 +13,12 @@ import java.util.Map.Entry;
 import static config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
-    MultiNoteProcessor multiNoteProcessor;
+    NoteStack multiNoteProcessor;
     List<String[]> noteList;
     List<String> nameList;
     StringIntegerMap<String, Integer> verbCountMap;
 
-    public VerbCountSorter(MultiNoteProcessor multiNoteProcessor) {
+    public VerbCountSorter(NoteStack multiNoteProcessor) {
         this.multiNoteProcessor = multiNoteProcessor;
     }
 

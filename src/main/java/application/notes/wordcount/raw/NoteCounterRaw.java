@@ -1,7 +1,7 @@
 package application.notes.wordcount.raw;
 
-import application.notes.processors.multi.MultiNoteProcessor;
-import application.notes.processors.single.SingleNoteProcessor;
+import application.notes.processors.multi.NoteStack;
+import application.notes.processors.single.Note;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,29 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static application.notes.processors.single.Note.*;
 import static config.Globals.path_for_notes;
 
 public class NoteCounterRaw {
     private long lineCount;
     private int wordCount;
-    private SingleNoteProcessor singleNoteProcessor;
-    private MultiNoteProcessor multiNoteProcessor;
 
     private List<Long> lineCountList = new ArrayList<>();
     private List<Integer> wordCountList = new ArrayList<>();
 
     public NoteCounterRaw(String noteName) {
-        singleNoteProcessor = new SingleNoteProcessor(noteName);
-        Path path = singleNoteProcessor.getCompletePath();
+        Note note = initialize(noteName);
+        Path path = note.getCompletePath();
         lineCount = countLinesOfNote(path);
-        wordCount = countWordsOfNote(singleNoteProcessor);
+        wordCount = countWordsOfNote(note);
     }
 
     public NoteCounterRaw() {
-        multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        List<Path> pathList = multiNoteProcessor.getPathList();
+        NoteStack noteStack = NoteStack.initializeStack(path_for_notes);
+        List<Path> pathList = noteStack.getPathList();
         lineCountList = countLinesOfNotes(pathList, lineCountList);
-        List<String[]> wordListList = multiNoteProcessor.getWordListList();
+        List<String[]> wordListList = noteStack.getWordListList();
         wordCountList = countWordsOfNotes(wordListList);
     }
 
@@ -54,7 +53,7 @@ public class NoteCounterRaw {
     }
 
 
-    public int countWordsOfNote(SingleNoteProcessor singleNoteProcessor) {
+    public int countWordsOfNote(Note singleNoteProcessor) {
         wordCount = singleNoteProcessor.getWordList().length;
         return wordCount;
     }

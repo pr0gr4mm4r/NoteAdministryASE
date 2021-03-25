@@ -1,6 +1,6 @@
 package unittests.notes.sort;
 
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.sort.sorter.RhymesNoteSorter;
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class RhymesNoteSorterTest {
 
     @Test
     public void increaseCounterForEachRhymeTest() throws IOException {
-        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new MultiNoteProcessor());
+        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new NoteStack());
         List<String> wordsInLexiconEntryList = new ArrayList<>();
         wordsInLexiconEntryList.add("test");
         wordsInLexiconEntryList.add("quest");

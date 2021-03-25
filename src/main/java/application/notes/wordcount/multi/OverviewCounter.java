@@ -1,6 +1,6 @@
 package application.notes.wordcount.multi;
 
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ public class OverviewCounter {
     public OverviewCounter() {
         List<Long> lineCountList = noteCounterRaw.getLineCountList();
         List<Integer> wordCountList = noteCounterRaw.getWordCountList();
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        System.out.println(multiNoteProcessor.getNoteList());
-        List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        NoteStack noteStack = NoteStack.initializeStack(path_for_notes);
+        System.out.println(noteStack.getNoteList());
+        List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
             System.out.println(
                     noteNames.get(i) + " contains " + lineCountList.get(i) +

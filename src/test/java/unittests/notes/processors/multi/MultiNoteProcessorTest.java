@@ -1,6 +1,6 @@
 package unittests.notes.processors.multi;
 
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -20,7 +20,7 @@ public class MultiNoteProcessorTest {
     public void listNoteNamesTest() throws IOException {
         temporaryFolder.newFile("myfile.txt");
         String path = temporaryFolder.getRoot().getPath();
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor();
+        NoteStack multiNoteProcessor = new NoteStack();
         Set<String> noteNames =  multiNoteProcessor.listNoteNames(path,1);
         List<String> noteNameList = new ArrayList<>(noteNames);
         assertEquals("myfile.txt", noteNameList.get(0));

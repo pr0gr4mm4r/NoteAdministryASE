@@ -1,6 +1,6 @@
 package integrationtests.sort;
 
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.sort.sorter.RhymesNoteSorter;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import static application.notes.processors.multi.NoteStack.*;
 import static org.junit.Assert.assertEquals;
 import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
 
@@ -25,7 +26,7 @@ public class RhymesNoteSorterIntegrationTest {
         String testContent2 = "I like flowers";
         writingTestContentToArtificialFile(file1, testContent);
         writingTestContentToArtificialFile(file2, testContent2);
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(file1.getParent() + "\\");
+        NoteStack multiNoteProcessor = initializeStack(file1.getParent() + "\\");
         RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(multiNoteProcessor);
         Map<String, Integer> map = rhymesNoteSorter.initialize();
         int rhymeCount1 = map.get("myfile1.txt");

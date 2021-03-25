@@ -1,9 +1,8 @@
 package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
-import application.WordExistenceMap;
 import application.notes.sort.formatter.RhymesNoteSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
@@ -12,15 +11,14 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import static config.Globals.scanner;
-import static application.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
-    MultiNoteProcessor multiNoteProcessor;
+    NoteStack multiNoteProcessor;
     List<String[]> noteList = new ArrayList<>();
     List<String> noteNames = new ArrayList<>();
     Map<String, Integer> rhymeOverview = new StringIntegerMap();
-    public RhymesNoteSorter(MultiNoteProcessor multiNoteProcessor) {
+    public RhymesNoteSorter(NoteStack multiNoteProcessor) {
         this.multiNoteProcessor = multiNoteProcessor;
     }
 

@@ -1,7 +1,7 @@
 package application.notes.find.multi;
 
 import application.notes.find.single.SingleNoteWordFinder;
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.start.NoteAdministryStart;
 
 import java.io.IOException;
@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 public class OverviewWordFinder {
 
     private final String keyword;
-    private final MultiNoteProcessor multiNoteProcessor;
+    private final NoteStack multiNoteProcessor;
     private final SingleNoteWordFinder singleNoteWordFinder;
 
-    public OverviewWordFinder(String keyword, MultiNoteProcessor multiNoteProcessor) {
+    public OverviewWordFinder(String keyword, NoteStack multiNoteProcessor) {
         this.keyword = keyword;
         this.multiNoteProcessor = multiNoteProcessor;
         this.singleNoteWordFinder = new SingleNoteWordFinder();
@@ -104,7 +104,7 @@ public class OverviewWordFinder {
         return keyword;
     }
 
-    public MultiNoteProcessor getMultiNoteProcessor() {
+    public NoteStack getMultiNoteProcessor() {
         return multiNoteProcessor;
     }
 }

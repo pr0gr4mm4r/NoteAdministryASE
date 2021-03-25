@@ -1,6 +1,6 @@
 package application.notes.ui.frame;
 
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.ui.listener.action.NoteButtonActionListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;
 import application.notes.ui.display.RhymeCounterDisplay;
@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static application.notes.processors.multi.NoteStack.initializeStack;
 import static config.Globals.path_for_notes;
 
 public class DisplayNotes extends JFrame {
@@ -47,8 +48,8 @@ public class DisplayNotes extends JFrame {
         jScrollPane = new JScrollPane(noteTextPanel);
         contentPanel.setLayout(textContentGrid);
         contentPanel.add(jScrollPane);
-        MultiNoteProcessor multiNoteProcessor = new MultiNoteProcessor(path_for_notes);
-        List<String> noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        NoteStack noteStack = initializeStack(path_for_notes);
+        List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
             JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);

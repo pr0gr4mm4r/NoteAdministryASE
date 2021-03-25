@@ -1,11 +1,9 @@
 package application.notes.find.single;
 
-import application.notes.processors.single.SingleNoteProcessor;
+import application.notes.processors.single.Note;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static application.start.NoteAdministryStart.programRun;
 
 public class SingleNoteWordFinder {
     private Map<Integer, Integer> wordOccurrence;
@@ -15,8 +13,8 @@ public class SingleNoteWordFinder {
     }
 
     public String[] initializeLinelist(String nameOfNote) {
-        SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor(nameOfNote);
-        String[] lineList = singleNoteProcessor.getLineList();
+        Note note = Note.initialize(nameOfNote);
+        String[] lineList = note.getLineList();
         return lineList;
     }
 

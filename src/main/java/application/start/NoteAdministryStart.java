@@ -7,6 +7,7 @@ import application.notes.crud.read.single.NoteReaderCommand;
 import application.notes.dispatch.single.SingleNoteDispatcherCommand;
 import application.notes.find.multi.OverviewWordFinderCommand;
 import application.notes.find.single.SingleNoteWordFinderCommand;
+import application.notes.sort.caller.NoteSorterCommand;
 import application.notes.spellcheck.multi.OverviewSpellCheckerCommand;
 import application.notes.spellcheck.single.SingleNoteSpellcheckerCommand;
 import application.notes.ui.frame.DisplayCommand;
@@ -45,7 +46,7 @@ public class NoteAdministryStart {
         commandList.add(new SingleWordSpellCheckerCommand("sc sn", "check single word/s for spelling"));
         commandList.add(new SingleNoteSpellcheckerCommand("sc sw", "check the spelling for a specific note"));
         commandList.add(new OverviewSpellCheckerCommand("sc all", "check the spelling for all files in directory" + path_for_notes));
-      //  commandList.add(new Command("sort", "output sorted overview of files in directory" + path_for_notes));
+        commandList.add(new NoteSorterCommand("sort", "output sorted overview of files in directory" + path_for_notes));
         commandList.add(new OverviewCounterCommand("word count", "count words of all notes in directory" + path_for_notes));
         commandList.add(new SingleNoteCounterCommand("word count all", "count words of a specific note in directory" + path_for_notes));
         commandList.add(new ProgramExitCommand("exit", "exit program"));

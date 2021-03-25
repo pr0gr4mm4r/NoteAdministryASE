@@ -1,16 +1,15 @@
 package unittests.notes.processors.single;
 
-import application.notes.processors.single.SingleNoteProcessor;
 import org.junit.Test;
 
+import static application.notes.processors.single.Note.*;
 import static org.junit.Assert.assertEquals;
 
 public class SingleNoteProcessorTest {
     @Test
     public void removeEmptyLinesTest() {
-        SingleNoteProcessor singleNoteProcessor = new SingleNoteProcessor();
         String[] lines = {"test", "test", "", "test", "", "", "test"};
-        lines = singleNoteProcessor.removeEmptyLines(lines);
+        lines = removeEmptyLines(lines);
         assertEquals(4, lines.length);
     }
 }

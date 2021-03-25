@@ -1,7 +1,7 @@
 package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
-import application.notes.processors.multi.MultiNoteProcessor;
+import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
@@ -17,10 +17,10 @@ public class WordCountNoteSorter implements Sorter {
     List<String> noteList;
     List<String> nameList;
     List<Integer> wordCountList;
-    MultiNoteProcessor multiNoteProcessor;
+    NoteStack multiNoteProcessor;
     NoteCounterRaw noteCounterRaw;
 
-    public WordCountNoteSorter(MultiNoteProcessor multiNoteProcessor) {
+    public WordCountNoteSorter(NoteStack multiNoteProcessor) {
         this.multiNoteProcessor = multiNoteProcessor;
     }
 
