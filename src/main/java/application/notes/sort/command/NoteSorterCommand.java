@@ -25,11 +25,11 @@ public class NoteSorterCommand extends AbstractCommand {
         String criteria = scanner.nextLine();
         boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            Sorter sorter = criteriaMap.getSorterbyCriteria(criteria);
-            Map<String, Integer> map = sorter.initialize();
-            List result = sorter.sort(map);
-            String formattedResult = sorter.format(result);
-            sorter.dialogue(formattedResult);
+            Sorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
+            Map<String, Integer> map = noteSorter.initialize();
+            List result = noteSorter.sort(map);
+            String formattedResult = noteSorter.format(result);
+            noteSorter.dialogue(formattedResult);
         }
     }
 }
