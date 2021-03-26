@@ -22,6 +22,9 @@ import application.start.model.specialcommands.helpCommands.ExtendedHelpCommand;
 import application.start.model.specialcommands.helpCommands.HelpCommand;
 import application.start.model.specialcommands.exitCommand.ProgramExitCommand;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import utility.logger.GlobalLogger;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -34,6 +37,7 @@ import static config.Globals.scanner;
 public class NoteAdministryStart {
     private static CommandList commandList;
     public static boolean programRun;
+    private static final Logger logger = LogManager.getLogger();
 
     private static void fillCommands() {
         commandList = new CommandList();
@@ -57,7 +61,8 @@ public class NoteAdministryStart {
         commandList.add(new ProgramExitCommand("exit", "exit program"));
     }
 
-    public static void main(final String[] args) {
+    public static void main(final String... args) {
+        logger.info("Das ist eine Info");
         programRun = true;
         fillCommands();
         while (programRun) {
