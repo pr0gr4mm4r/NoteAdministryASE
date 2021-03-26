@@ -14,13 +14,13 @@ import static application.logfiles.crud.declare.single.LogFileDeclarator.initial
 import static config.Globals.scanner;
 
 public class VerbCountSorter implements Sorter {
-    NoteStack multiNoteProcessor;
+    NoteStack noteStack;
     List<String[]> noteList;
     List<String> nameList;
     StringIntegerMap<String, Integer> verbCountMap;
 
     public VerbCountSorter(NoteStack multiNoteProcessor) {
-        this.multiNoteProcessor = multiNoteProcessor;
+        this.noteStack = multiNoteProcessor;
     }
 
     @Override
@@ -40,8 +40,8 @@ public class VerbCountSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        noteList = multiNoteProcessor.getWordListList();
-        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        noteList = noteStack.getWordListList();
+        nameList = new ArrayList<>(noteStack.getNoteNames());
         verbCountMap = new StringIntegerMap<>();
     }
 

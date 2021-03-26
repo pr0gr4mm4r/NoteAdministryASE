@@ -17,11 +17,11 @@ public class WordCountNoteSorter implements Sorter {
     List<String> noteList;
     List<String> nameList;
     List<Integer> wordCountList;
-    NoteStack multiNoteProcessor;
+    NoteStack noteStack;
     NoteCounterRaw noteCounterRaw;
 
-    public WordCountNoteSorter(NoteStack multiNoteProcessor) {
-        this.multiNoteProcessor = multiNoteProcessor;
+    public WordCountNoteSorter(NoteStack noteStack) {
+        this.noteStack = noteStack;
     }
 
     @Override
@@ -38,8 +38,8 @@ public class WordCountNoteSorter implements Sorter {
 
     private void initializeVariables() {
         noteCounterRaw = new NoteCounterRaw();
-        noteList = multiNoteProcessor.getNoteList();
-        nameList = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        noteList = noteStack.getNoteList();
+        nameList = new ArrayList<>(noteStack.getNoteNames());
         wordCountList = noteCounterRaw.getWordCountList();
     }
 

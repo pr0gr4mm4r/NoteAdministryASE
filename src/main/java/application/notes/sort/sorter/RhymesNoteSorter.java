@@ -14,13 +14,13 @@ import static config.Globals.scanner;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
-    NoteStack multiNoteProcessor;
+    NoteStack noteStack;
     List<String[]> noteList = new ArrayList<>();
     List<String> noteNames = new ArrayList<>();
     Map<String, Integer> rhymeOverview = new StringIntegerMap();
 
     public RhymesNoteSorter(NoteStack multiNoteProcessor) {
-        this.multiNoteProcessor = multiNoteProcessor;
+        this.noteStack = multiNoteProcessor;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        noteList = multiNoteProcessor.getWordListList();
-        noteNames = new ArrayList<>(multiNoteProcessor.getNoteNames());
+        noteList = noteStack.getWordListList();
+        noteNames = new ArrayList<>(noteStack.getNoteNames());
         rhymeOverview = new StringIntegerMap<>();
     }
 

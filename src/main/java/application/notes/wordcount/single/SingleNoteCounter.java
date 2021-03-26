@@ -8,12 +8,12 @@ import static config.Globals.scanner;
 public class SingleNoteCounter {
     private NoteCounterRaw noteCounterRaw;
 
-    public SingleNoteCounter(String noteName) {
+    private SingleNoteCounter() {
 
     }
 
     public static SingleNoteCounter initializeSingleNoteCounter(String noteName) {
-        SingleNoteCounter singleNoteCounter = new SingleNoteCounter(noteName);
+        SingleNoteCounter singleNoteCounter = new SingleNoteCounter();
         singleNoteCounter.noteCounterRaw = initializeNoteCounterRaw(noteName);
         long linesCount = singleNoteCounter.noteCounterRaw.getLineCount();
         long wordsCount = singleNoteCounter.noteCounterRaw.getWordCount();
