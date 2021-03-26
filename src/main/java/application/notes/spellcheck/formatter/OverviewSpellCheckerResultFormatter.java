@@ -4,7 +4,7 @@ import application.notes.spellcheck.model.WordExistenceMapList;
 
 import java.util.List;
 
-import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
+import static utility.formatting.BasicFormatter.insertLineBreak;
 
 public class OverviewSpellCheckerResultFormatter {   //InterfacePotential
     SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();

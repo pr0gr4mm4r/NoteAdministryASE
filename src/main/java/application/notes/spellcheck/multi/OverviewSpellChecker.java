@@ -10,6 +10,7 @@ import application.notes.spellcheck.raw.SpellCheckerRaw;
 import java.util.*;
 
 import static application.notes.processors.multi.NoteStack.*;
+import static application.notes.spellcheck.model.WordExistenceMapList.initializeWordExistenceMapList;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
@@ -17,9 +18,9 @@ import static utility.calc.PercentageCalculator.calculatePercentageWiseOccurrenc
 
 
 public class OverviewSpellChecker {
-    private final WordExistenceMapList wordExistenceMapList = new WordExistenceMapList();
     private final OverviewSpellCheckerResultFormatter overviewSpellCheckerResultFormatter = new OverviewSpellCheckerResultFormatter();
     private final List<Double> percentageValueList = new ArrayList<>();
+    private WordExistenceMapList wordExistenceMapList;
 
     private OverviewSpellChecker() {
 
@@ -29,9 +30,9 @@ public class OverviewSpellChecker {
         OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
-        overviewSpellChecker.wordExistenceMapList.fill(wordListList);
+        overviewSpellChecker.wordExistenceMapList = initializeWordExistenceMapList(wordListList);
         overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);
-        String formattedResult = overviewSpellChecker.format(overviewSpellChecker.overviewSpellCheckerResultFormatter, overviewSpellChecker.percentageValueList);
+        String formattedResult = overviewSpellChecker.format();
         overviewSpellChecker.print(formattedResult);
         overviewSpellChecker.openLogFileDialogue(formattedResult);
         return overviewSpellChecker;
@@ -62,7 +63,7 @@ public class OverviewSpellChecker {
         System.out.println();
     }
 
-    private String format(OverviewSpellCheckerResultFormatter overviewSpellCheckerResultFormatter, List<Double> percentageValueList) {
+    private String format() {
         return overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
     }
 }

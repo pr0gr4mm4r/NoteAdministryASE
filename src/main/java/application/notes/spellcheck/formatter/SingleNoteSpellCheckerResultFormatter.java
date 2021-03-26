@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static utility.formatting.BasicFormatter.insertLineBreak;
+
 public class SingleNoteSpellCheckerResultFormatter {
     public SingleNoteSpellCheckerResultFormatter() {
 
@@ -31,10 +33,6 @@ public class SingleNoteSpellCheckerResultFormatter {
         result += percentageValue + "% of words can be found in RiTa Dictionary";
         result = insertLineBreak(result);
         return result;
-    }
-
-    public static String insertLineBreak(String string){
-        return string + "\n";
     }
 
     private String insertSpace(String string){

@@ -3,7 +3,7 @@ package application.notes.sort.formatter;
 import java.util.List;
 import java.util.Map.Entry;
 
-import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
+import static utility.formatting.BasicFormatter.insertLineBreak;
 
 public class VerbCountSorterResultFormatter {
     private final String theme;
