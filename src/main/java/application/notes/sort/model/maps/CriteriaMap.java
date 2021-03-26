@@ -33,7 +33,7 @@ public class CriteriaMap extends HashMap<String, Sorter> {
         return this.keySet().stream().collect(Collectors.joining(", "));
     }
 
-    public Sorter getSorterbyCriteria(String criteria) {
+    public Sorter getSorterbyCriteria(final String criteria) {
         return this.get(criteria);
     }
 }

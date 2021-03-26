@@ -38,7 +38,7 @@ public class OverviewSpellChecker {
         return overviewSpellChecker;
     }
 
-    private void fillPercentageValueList(List<Double> percentageValueList, List<String[]> wordListList) {
+    private void fillPercentageValueList(final List<Double> percentageValueList, final List<String[]> wordListList) {
         for (final String[] wordList : wordListList) {
             final double wordCountOfNote = wordList.length;
             final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
@@ -48,7 +48,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    private void openLogFileDialogue(String result) {
+    private void openLogFileDialogue(final String result) {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
@@ -58,7 +58,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    private void print(String result) {
+    private void print(final String result) {
         System.out.println(result);
         System.out.println();
     }

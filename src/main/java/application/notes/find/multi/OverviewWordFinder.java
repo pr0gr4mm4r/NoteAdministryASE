@@ -16,7 +16,7 @@ public class OverviewWordFinder {
     private final NoteStack multiNoteProcessor;
     private final SingleNoteWordFinder singleNoteWordFinder;
 
-    public OverviewWordFinder(String keyword, NoteStack multiNoteProcessor) {
+    public OverviewWordFinder(final String keyword, NoteStack multiNoteProcessor) {
         this.keyword = keyword;
         this.multiNoteProcessor = multiNoteProcessor;
         this.singleNoteWordFinder = new SingleNoteWordFinder();
@@ -32,14 +32,14 @@ public class OverviewWordFinder {
         }
     }
 
-    private void composeWordOccurrenceOverview(List<Path> pathsToNotesList, List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
+    private void composeWordOccurrenceOverview(final List<Path> pathsToNotesList, final List<Map<Integer, Integer>> wordOccurenceOverview) throws IOException {
         for (final Path value : pathsToNotesList) {
             final Map<Integer, Integer> wordOccurenceSingleNote = composeWordOccurrenceSingleNote(value);
             wordOccurenceOverview.add(wordOccurenceSingleNote);
         }
     }
 
-    public Map<Integer, Integer> composeWordOccurrenceSingleNote(Path path) throws IOException {
+    public Map<Integer, Integer> composeWordOccurrenceSingleNote(final Path path) throws IOException {
         final Map<Integer, Integer> wordOccurenceSingleNote = new HashMap<>();
         final long lineLength = Files.lines(path).count();
         final List<List<String>> fileContent = new ArrayList<>();
@@ -53,11 +53,11 @@ public class OverviewWordFinder {
         return wordOccurenceSingleNote;
     }
 
-    public List<String> createNoteList(List<Path> pathsToNotesList) {
+    public List<String> createNoteList(final List<Path> pathsToNotesList) {
         return pathsToNotesList.stream().map(Path::toString).collect(Collectors.toList());
     }
 
-    public void printResults(List<String> noteList, List<Map<Integer, Integer>> keyWordOccurenceOverview) {
+    public void printResults(final List<String> noteList, final List<Map<Integer, Integer>> keyWordOccurenceOverview) {
         final boolean keywordPresent = checkIfKeyWordIsPresent(keyWordOccurenceOverview);
         if (!keywordPresent) {
             System.out.println("The keyword '" + keyword + "' is not present in any of your notes!");
@@ -77,7 +77,7 @@ public class OverviewWordFinder {
         }
     }
 
-    public List<Integer> createRememberRemovedList(List<Map<Integer, Integer>> keyWordOccurenceOverview) {
+    public List<Integer> createRememberRemovedList(final List<Map<Integer, Integer>> keyWordOccurenceOverview) {
         final List<Integer> rememberRemoved = new ArrayList<>();
         for (int i = 0; i < keyWordOccurenceOverview.size(); i++) {
             final Map<Integer, Integer> keyWordOccurenceSingleNote = keyWordOccurenceOverview.get(i);

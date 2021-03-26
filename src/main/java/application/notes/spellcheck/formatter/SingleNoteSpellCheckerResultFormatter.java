@@ -13,7 +13,7 @@ public class SingleNoteSpellCheckerResultFormatter {
 
     }
 
-    public String format(WordExistenceMap wordExistenceMap, double percentageValue) {
+    public String format(final WordExistenceMap wordExistenceMap, final double percentageValue) {
         final List<String> positives = wordExistenceMap.entrySet().stream().filter(Map.Entry::getValue).map(Map.Entry::getKey).collect(Collectors.toList());
         final List<String> negatives = wordExistenceMap.entrySet().stream().filter(word -> !word.getValue()).map(Map.Entry::getKey).collect(Collectors.toList());
         String result = "CORRECTLY SPELLED:";
@@ -35,7 +35,7 @@ public class SingleNoteSpellCheckerResultFormatter {
         return result;
     }
 
-    private String insertSpace(String string){
+    private String insertSpace(final String string){
         return string + " ";
     }
 }

@@ -13,13 +13,13 @@ public class NoteButtonsSelectedMouseListener implements MouseListener {
     private DisplayNotes displayNotes;
     private JButton jButton;
 
-    public NoteButtonsSelectedMouseListener(DisplayNotes displayNotes, JButton jButton) {
+    public NoteButtonsSelectedMouseListener(final DisplayNotes displayNotes, final JButton jButton) {
         this.jButton = jButton;
         this.displayNotes = displayNotes;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(final MouseEvent e) {
         final List<JButton> noteDisplayButtons = displayNotes.getNoteDisplayButtons();
         final List<JButton> textManipulationButtons = displayNotes.getTextManipulationButtons();
         final Color defaultBackgroundColor = new JButton().getBackground();
@@ -38,22 +38,22 @@ public class NoteButtonsSelectedMouseListener implements MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(final MouseEvent e) {
 
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(final MouseEvent e) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(final MouseEvent e) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(final MouseEvent e) {
 
     }
 }

@@ -5,7 +5,7 @@ import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 import static config.Globals.scanner;
 
 public class SingleWordSpellCheckerCommand extends AbstractCommand {
-    public SingleWordSpellCheckerCommand(String commandName, String description) {
+    public SingleWordSpellCheckerCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

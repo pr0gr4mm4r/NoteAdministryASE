@@ -8,13 +8,13 @@ public abstract class AbstractCommand {
     private boolean active;
     private String description;
 
-    public AbstractCommand(String commandName, String description) {
+    public AbstractCommand(final String commandName, final String description) {
         this.commandName = commandName;
         this.active = false;
         this.description = description;
     }
 
-    public void makeActiveDecision(String scannedCommandName) {
+    public void makeActiveDecision(final String scannedCommandName) {
         if (this.commandName.equalsIgnoreCase(scannedCommandName)) {
             this.setActive(true);
         }
@@ -26,7 +26,7 @@ public abstract class AbstractCommand {
         return commandName;
     }
 
-    public void setCommandName(String commandName) {
+    public void setCommandName(final String commandName) {
         this.commandName = commandName;
     }
 
@@ -34,7 +34,7 @@ public abstract class AbstractCommand {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(final boolean active) {
         this.active = active;
     }
 
@@ -42,7 +42,7 @@ public abstract class AbstractCommand {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 }

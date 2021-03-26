@@ -6,7 +6,7 @@ public class VerbCounterRaw {
     private String content;
     private int counter = 0;
 
-    public VerbCounterRaw(String content) {
+    public VerbCounterRaw(final String content) {
         this.content = content;
     }
 

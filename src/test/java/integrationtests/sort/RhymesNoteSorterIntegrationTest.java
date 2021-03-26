@@ -10,7 +10,6 @@ import org.junit.rules.TemporaryFolder;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Optional;
 
 import static application.notes.processors.multi.NoteStack.*;
 import static org.junit.Assert.assertEquals;

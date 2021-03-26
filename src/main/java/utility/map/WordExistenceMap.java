@@ -10,7 +10,7 @@ public class WordExistenceMap extends HashMap<String, Boolean> { // use enum
 
     }
 
-    public static WordExistenceMap initializeWordExistenceMap(List<String> positives, List<String> negatives){
+    public static WordExistenceMap initializeWordExistenceMap(final List<String> positives, final List<String> negatives){
         final WordExistenceMap wordExistenceMap = new WordExistenceMap();
         for (final String positive : positives) {
             wordExistenceMap.put(positive, true);

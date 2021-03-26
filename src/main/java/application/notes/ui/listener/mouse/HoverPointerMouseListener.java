@@ -8,33 +8,33 @@ import java.awt.event.MouseListener;
 public class HoverPointerMouseListener implements MouseListener {
     private JButton jButton;
 
-    public HoverPointerMouseListener(JButton jButton) {
+    public HoverPointerMouseListener(final JButton jButton) {
         this.jButton = jButton;
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(final MouseEvent e) {
 
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(final MouseEvent e) {
 
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(final MouseEvent e) {
 
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(final MouseEvent e) {
         final Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         this.jButton.setCursor(cursor);
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(final MouseEvent e) {
 
     }
 }

@@ -15,13 +15,13 @@ public class WordExistenceMapList extends ArrayList<WordExistenceMap> {
 
     }
 
-    public static WordExistenceMapList initializeWordExistenceMapList(List<String[]> wordListList) {
+    public static WordExistenceMapList initializeWordExistenceMapList(final List<String[]> wordListList) {
         final WordExistenceMapList wordExistenceMapList = new WordExistenceMapList();
         wordExistenceMapList.fill(wordListList);
         return wordExistenceMapList;
     }
 
-    private void fill(List<String[]> wordListList) {
+    private void fill(final List<String[]> wordListList) {
         for (final String[] wordList : wordListList) {
             final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
             final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();

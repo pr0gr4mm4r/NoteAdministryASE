@@ -9,7 +9,7 @@ import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class NoteReaderCommand extends AbstractCommand {
-    public NoteReaderCommand(String commandName, String description) {
+    public NoteReaderCommand(final String commandName, String description) {
         super(commandName, description);
     }
 

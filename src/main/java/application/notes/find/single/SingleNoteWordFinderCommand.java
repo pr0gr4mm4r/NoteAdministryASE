@@ -6,7 +6,7 @@ import static application.start.NoteAdministryStart.programRun;
 import static config.Globals.scanner;
 
 public class SingleNoteWordFinderCommand extends AbstractCommand {
-    public SingleNoteWordFinderCommand(String commandName, String description) {
+    public SingleNoteWordFinderCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

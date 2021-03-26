@@ -11,7 +11,7 @@ import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class OverviewWordFinderCommand extends AbstractCommand {
-    public OverviewWordFinderCommand(String commandName, String description) {
+    public OverviewWordFinderCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

@@ -15,13 +15,13 @@ public class NoteButtonActionListener implements ActionListener {
     private final DisplayNotes displayNotes;
     private final String noteName;
 
-    public NoteButtonActionListener(DisplayNotes displayNotes, String noteName) {
+    public NoteButtonActionListener(final DisplayNotes displayNotes, final String noteName) {
         this.displayNotes = displayNotes;
         this.noteName = noteName;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         final Note note = initializeNote(this.noteName);
         final String content = note.getNoteForGraphicalProcessing();
         final JEditorPane jEditorPane = displayNotes.getNoteText();

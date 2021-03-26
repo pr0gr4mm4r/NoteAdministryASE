@@ -12,13 +12,13 @@ public class SingleNoteWordFinder {
 
     }
 
-    public String[] initializeLinelist(String nameOfNote) {
+    public String[] initializeLinelist(final String nameOfNote) {
         final Note note = Note.initializeNote(nameOfNote);
         final String[] lineList = note.getLineList();
         return lineList;
     }
 
-    public Map<Integer, Integer> composeOccurrenceMap(String[] lineList, String keyword) {
+    public Map<Integer, Integer> composeOccurrenceMap(final String[] lineList, final String keyword) {
         Map<Integer, Integer> wordOccurence = new HashMap<>();
         final List<List<String>> fileContent = new ArrayList<>();
         final long lineLength = lineList.length;
@@ -54,7 +54,7 @@ public class SingleNoteWordFinder {
         System.out.println(wordOccurrence);
     }
 
-    public void findWort(String nameOfNote, String keyword) {
+    public void findWort(final String nameOfNote, final String keyword) {
         final String[] lineList = initializeLinelist(nameOfNote);
         this.wordOccurrence = composeOccurrenceMap(lineList, keyword);
     }

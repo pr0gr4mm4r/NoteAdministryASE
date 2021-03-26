@@ -7,7 +7,7 @@ public class FileWriter {
     public FileWriter() {
     }
 
-    public static void writingTestContentToArtificialFile(File createdFile, String testContent) {
+    public static void writingTestContentToArtificialFile(final File createdFile, final String testContent) {
         try (java.io.FileWriter fileWriter = new java.io.FileWriter(createdFile)) {
             fileWriter.write(testContent);
         } catch (IOException e) {

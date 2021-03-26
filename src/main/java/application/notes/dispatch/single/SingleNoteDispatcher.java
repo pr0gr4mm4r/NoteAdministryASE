@@ -25,7 +25,7 @@ public class SingleNoteDispatcher {
 
     }
 
-    public static SingleNoteDispatcher initializeSingleNoteDispatcher(SendingInformation sendingInformation) {
+    public static SingleNoteDispatcher initializeSingleNoteDispatcher(final SendingInformation sendingInformation) {
         final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
         final DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
         final Authenticator auth = new Authenticator() {
@@ -56,7 +56,7 @@ public class SingleNoteDispatcher {
         System.out.println("Sent message successfully!");
     }
 
-    public MimeMessage createMessage(Session session, SendingInformation sendingInfo) throws MessagingException {
+    public MimeMessage createMessage(final Session session, final SendingInformation sendingInfo) throws MessagingException {
         final Multipart multipart = createAttachment(sendingInfo);
         final MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sendingInfo.getSender()));
@@ -67,7 +67,7 @@ public class SingleNoteDispatcher {
         return message;
     }
 
-    public Multipart createAttachment(SendingInformation sendingInfo) throws MessagingException {
+    public Multipart createAttachment(final SendingInformation sendingInfo) throws MessagingException {
         final MimeBodyPart messageBodyPart = new MimeBodyPart();
         final DataSource source = new FileDataSource(sendingInfo.getPath());
         messageBodyPart.setDataHandler(new DataHandler(source));

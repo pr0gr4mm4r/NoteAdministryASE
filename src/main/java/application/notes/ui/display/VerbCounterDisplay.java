@@ -10,7 +10,7 @@ import javax.swing.*;
 public class VerbCounterDisplay extends JButton {
     DisplayNotes displayNotes;
 
-    public VerbCounterDisplay(String buttonText, DisplayNotes displayNotes) {
+    public VerbCounterDisplay(final String buttonText, final DisplayNotes displayNotes) {
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {

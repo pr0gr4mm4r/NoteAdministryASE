@@ -6,7 +6,7 @@ import static application.start.NoteAdministryStart.programRun;
 import static config.Globals.scanner;
 
 public class ProgramExitCommand extends AbstractCommand {
-    public ProgramExitCommand(String commandName, String description) {
+    public ProgramExitCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

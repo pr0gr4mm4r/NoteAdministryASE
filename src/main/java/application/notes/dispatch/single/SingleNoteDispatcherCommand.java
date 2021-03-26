@@ -1,12 +1,7 @@
 package application.notes.dispatch.single;
 
 import application.notes.dispatch.model.SendingInformation;
-import application.notes.dispatch.raw.DispatcherRaw;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
-
-import javax.mail.*;
-import javax.mail.internet.MimeMessage;
-import java.util.Properties;
 
 import static application.notes.dispatch.single.SingleNoteDispatcher.initializeSingleNoteDispatcher;
 import static config.Globals.path_for_notes;

@@ -10,7 +10,7 @@ public class NoteAdministryStartMessagePrinter {
                 " (command 'help' for help)");
     }
 
-    static void printErrorMessage(String commandName) {
+    static void printErrorMessage(final String commandName) {
         System.out.println();
         System.out.println("error -> command '" + commandName + "' does not exist!");
         System.out.println();

@@ -39,7 +39,7 @@ public class OverviewWordFinderTest {
         final List<Path> pathList = new ArrayList<>();
         pathList.add(Paths.get("testPath"));
         final List<String> noteList = overviewWordFinder.createNoteList(pathList);
-        assertTrue("NoteList not initialized successfully", noteList.size() > 0);
+        assertFalse("NoteList not initialized successfully", noteList.isEmpty());
     }
 
     @Test

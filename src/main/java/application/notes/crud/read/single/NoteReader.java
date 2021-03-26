@@ -11,11 +11,11 @@ public class NoteReader {
     public NoteReader() {
     }
 
-    protected void displayNote(String note) {
+    protected void displayNote(final String note) {
         System.out.println(note);
     }
 
-    public String readNote(Path completePath) {
+    public String readNote(final Path completePath) {
         try(Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.collect(
                     Collectors.joining("\n"));
@@ -25,7 +25,7 @@ public class NoteReader {
         }
     }
 
-    public static String readNoteForNoteProcessing(Path completePath) {
+    public static String readNoteForNoteProcessing(final Path completePath) {
         try(Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.collect(
                     Collectors.joining(" "));

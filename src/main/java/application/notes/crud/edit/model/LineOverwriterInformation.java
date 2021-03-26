@@ -7,7 +7,7 @@ public class LineOverwriterInformation {
     private final int indexLineNumber;
     private final String replacementLine;
 
-    public LineOverwriterInformation(Builder builder) {
+    public LineOverwriterInformation(final Builder builder) {
         this.completePath = builder.path;
         this.indexLineNumber = builder.indexLineNumber;
         this.replacementLine = builder.replacementline;

@@ -28,7 +28,7 @@ public class DispatcherRaw {
         return properties;
     }
 
-    public void setProperties(Properties properties) {
+    public void setProperties(final Properties properties) {
         this.properties = properties;
     }
 }

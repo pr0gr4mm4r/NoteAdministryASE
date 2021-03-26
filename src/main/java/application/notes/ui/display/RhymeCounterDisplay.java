@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class RhymeCounterDisplay extends JButton {
     DisplayNotes displayNotes;
-    public RhymeCounterDisplay(String buttonText, DisplayNotes displayNotes){
+    public RhymeCounterDisplay(final String buttonText, final DisplayNotes displayNotes){
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {

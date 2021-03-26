@@ -12,7 +12,7 @@ public class VerbCountSorterResultFormatter {
         this.theme = "verbs";
     }
 
-     public String formatList(List<Entry<String, Integer>> verbCountOverview) {
+     public String formatList(final List<Entry<String, Integer>> verbCountOverview) {
         String result = "";
         result = insertLineBreak(result);
         for (final Entry<String, Integer> stringIntegerEntry : verbCountOverview) {

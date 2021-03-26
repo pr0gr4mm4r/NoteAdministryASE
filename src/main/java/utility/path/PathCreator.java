@@ -7,7 +7,7 @@ public class PathCreator {
     public PathCreator() {
     }
 
-    public static Path createCompletePath(String noteName, String path) {
+    public static Path createCompletePath(final String noteName, final String path) {
         return Paths.get(path + noteName);
     }
 }

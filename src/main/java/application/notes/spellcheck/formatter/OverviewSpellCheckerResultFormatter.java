@@ -12,7 +12,7 @@ public class OverviewSpellCheckerResultFormatter {   //InterfacePotential
     public OverviewSpellCheckerResultFormatter() {
     }
 
-    public String formatList(WordExistenceMapList wordExistenceMapList, List<Double> percentageValues) {
+    public String formatList(final WordExistenceMapList wordExistenceMapList, final List<Double> percentageValues) {
         String result = "";
         for (int i = 0; i < wordExistenceMapList.size(); i++) {
             result = insertLineBreak(result);

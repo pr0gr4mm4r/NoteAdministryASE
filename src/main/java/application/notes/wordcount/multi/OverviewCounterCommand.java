@@ -7,7 +7,7 @@ import static application.notes.wordcount.multi.OverviewCounter.initializeOvervi
 import static config.Globals.path_for_notes;
 
 public class OverviewCounterCommand extends AbstractCommand {
-    public OverviewCounterCommand(String commandName, String description) {
+    public OverviewCounterCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

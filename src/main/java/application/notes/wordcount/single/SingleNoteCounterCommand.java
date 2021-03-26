@@ -5,7 +5,7 @@ import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 import static config.Globals.scanner;
 
 public class SingleNoteCounterCommand extends AbstractCommand {
-    public SingleNoteCounterCommand(String commandName, String description) {
+    public SingleNoteCounterCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

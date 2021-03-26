@@ -16,7 +16,7 @@ public class SingleNoteDeleter implements Deleter {
 
     }
 
-    public void deleteSingleNote(String fileToDelete, String pathToNote) throws IOException {
+    public void deleteSingleNote(final String fileToDelete, String pathToNote) throws IOException {
         try (Stream<Path> pathStream = Files.walk(Paths.get(pathToNote))) {
             pathStream.map(Path::toFile).filter(
                     file -> file.getName().equals(fileToDelete)).forEach(File::delete);

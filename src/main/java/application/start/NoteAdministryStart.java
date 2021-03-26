@@ -57,7 +57,7 @@ public class NoteAdministryStart {
         commandList.add(new ProgramExitCommand("exit", "exit program"));
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         programRun = true;
         fillCommands();
         while (programRun) {
@@ -87,7 +87,7 @@ public class NoteAdministryStart {
         }
     }
 
-    private static void makeActiveDecisions(String commandName) {
+    private static void makeActiveDecisions(final String commandName) {
         commandList.forEach(command -> command.makeActiveDecision(commandName));
     }
 
@@ -99,7 +99,7 @@ public class NoteAdministryStart {
         commandList.forEach(command -> command.setActive(false));
     }
 
-    protected static void listCommands(HelpMode helpMode) {
+    protected static void listCommands(final HelpMode helpMode) {
         System.out.println();
         if (helpMode.equals(HelpMode.EXTENDED)) {
             System.out.println(commandList.stream().map(

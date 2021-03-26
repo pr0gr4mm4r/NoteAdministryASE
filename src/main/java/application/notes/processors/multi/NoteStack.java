@@ -27,11 +27,11 @@ public class NoteStack implements Processor {
 
     }
 
-    public static NoteStack initializeNoteStack(String path) throws NoFilesInDirectoryException {
+    public static NoteStack initializeNoteStack(final String path) throws NoFilesInDirectoryException {
         final NoteStack noteStack = new NoteStack();
         try {
             noteStack.noteNames = noteStack.listNoteNames(path, 1);
-            if (noteStack.noteNames.size() == 0) {
+            if (noteStack.noteNames.isEmpty()) {
                 throw new NoFilesInDirectoryException(path_for_notes);
             }
         } catch (IOException e) {
@@ -44,7 +44,7 @@ public class NoteStack implements Processor {
         return noteStack;
     }
 
-    public List<String[]> removeEmptyLinesForEachNote(List<String[]> wordListLists) {
+    public List<String[]> removeEmptyLinesForEachNote(final List<String[]> wordListLists) {
         for (int i = 0; i < wordListLists.size(); i++) {
             final String[] filteredWordList = removeEmptyLines(wordListLists.get(i));
             wordListLists.set(i, filteredWordList);
@@ -52,7 +52,7 @@ public class NoteStack implements Processor {
         return wordListLists;
     }
 
-    public List<String[]> separateWordsForEachNote(List<String> noteList, List<String[]> separatedWordListList) {
+    public List<String[]> separateWordsForEachNote(final List<String> noteList, final List<String[]> separatedWordListList) {
         for (final String note : noteList) {
             final String[] separatedWords = createWordList(note);
             separatedWordListList.add(separatedWords);
@@ -60,7 +60,7 @@ public class NoteStack implements Processor {
         return separatedWordListList;
     }
 
-    public List<String> createNoteList(List<Path> pathList) {
+    public List<String> createNoteList(final List<Path> pathList) {
         final List<String> noteList = new ArrayList<>();
         for (final Path path : pathList) {
             final String note = readNoteForNoteProcessing(path);
@@ -69,7 +69,7 @@ public class NoteStack implements Processor {
         return noteList;
     }
 
-    public List<Path> createPathList(Set<String> strings, String path) {
+    public List<Path> createPathList(final Set<String> strings, final String path) {
         final List<Path> pathList = new ArrayList<>();
         for (final String string : strings) {
             pathList.add(createCompletePath(string, path));
@@ -77,7 +77,7 @@ public class NoteStack implements Processor {
         return pathList;
     }
 
-    public Set<String> listNoteNames(String path, int depth) throws IOException {
+    public Set<String> listNoteNames(final String path, final int depth) throws IOException {
         try (Stream<Path> stream = Files.walk(Paths.get(path), depth)) {
             return stream
                     .filter(file -> !Files.isDirectory(file))

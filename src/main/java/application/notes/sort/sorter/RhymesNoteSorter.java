@@ -20,7 +20,7 @@ public class RhymesNoteSorter implements Sorter {
     List<String> noteNames = new ArrayList<>();
     Map<String, Integer> rhymeOverview = new StringIntegerMap();
 
-    public RhymesNoteSorter(NoteStack noteStack) {
+    public RhymesNoteSorter(final NoteStack noteStack) {
         this.noteStack = noteStack;
     }
 
@@ -40,7 +40,7 @@ public class RhymesNoteSorter implements Sorter {
         return rhymeOverview;
     }
 
-    public int increaseCounterForEachRhyme(List<String> wordsInLexicon, int counter) {
+    public int increaseCounterForEachRhyme(final List<String> wordsInLexicon, int counter) {
         final int size = wordsInLexicon.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
@@ -61,7 +61,7 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     @Override
-    public List sort(Map rhymeOverview) {
+    public List sort(final Map rhymeOverview) {
         final Set<Entry<String, Integer>> rhymeOverviewSet = rhymeOverview.entrySet();
         List<Entry<String, Integer>> finalRhymeOverview = new ArrayList<>(rhymeOverviewSet);
         final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
@@ -70,7 +70,7 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     @Override
-    public String format(List finalRhymeOverview) {
+    public String format(final List finalRhymeOverview) {
         final RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
         final String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(finalRhymeOverview);
         return formattedResult;
@@ -78,7 +78,7 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     @Override
-    public void dialogue(String formattedResult) {
+    public void dialogue(final String formattedResult) {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -89,7 +89,7 @@ public class RhymesNoteSorter implements Sorter {
     }
 
     @Override
-    public void createLogFile(String formattedResult) {
+    public void createLogFile(final String formattedResult) {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);
     }

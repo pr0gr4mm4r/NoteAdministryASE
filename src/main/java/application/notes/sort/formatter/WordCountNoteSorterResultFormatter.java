@@ -12,7 +12,7 @@ public class WordCountNoteSorterResultFormatter {
         this.theme = "words";
     }
 
-    public String formatList(List<Entry<String, Integer>> wordCountOverview) {
+    public String formatList(final List<Entry<String, Integer>> wordCountOverview) {
         String result = "";
         result = insertLineBreak(result);
         for (final Entry<String, Integer> stringIntegerEntry : wordCountOverview) {

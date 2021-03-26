@@ -13,7 +13,7 @@ public class RhymesNoteSorterResultFormatter {
         this.theme = "rhymes";
     }
 
-    public String convertListToResultString(List<Entry<String, Integer>> finalRhymeOverview){
+    public String convertListToResultString(final List<Entry<String, Integer>> finalRhymeOverview){
         String result = "";
         result = insertLineBreak(result);
         for (final Entry<String, Integer> stringIntegerEntry : finalRhymeOverview) {

@@ -21,7 +21,7 @@ public class SingleNoteSpellChecker {
 
     }
 
-    public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(String noteName) {
+    public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(final String noteName) {
         final SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
         final Note note = initializeNote(noteName);
         final String[] wordList = note.getWordList();
@@ -37,7 +37,7 @@ public class SingleNoteSpellChecker {
         return singleNoteSpellChecker;
     }
 
-    private void printResult(String result) {
+    private void printResult(final String result) {
         System.out.println(result);
     }
 

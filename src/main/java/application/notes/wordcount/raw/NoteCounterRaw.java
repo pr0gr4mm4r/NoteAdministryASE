@@ -25,7 +25,7 @@ public class NoteCounterRaw {
 
     }
 
-    public static NoteCounterRaw initializeNoteCounterRaw(String noteName){
+    public static NoteCounterRaw initializeNoteCounterRaw(final String noteName){
         final NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
         final Note note = initializeNote(noteName);
         final Path path = note.getCompletePath();
@@ -45,14 +45,14 @@ public class NoteCounterRaw {
     }
 
 
-    private static void countLinesOfNotes(List<Path> pathList, List<Long> lineCountList) {
+    private static void countLinesOfNotes(final List<Path> pathList, final List<Long> lineCountList) {
         for (final Path path: pathList){
             final long lineCount = countLinesOfNote(path);
             lineCountList.add(lineCount);
         }
     }
 
-    public static long countLinesOfNote(Path completePath) {
+    public static long countLinesOfNote(final Path completePath) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.count();
         } catch (IOException e) {
@@ -61,12 +61,12 @@ public class NoteCounterRaw {
         }
     }
 
-    public int countWordsOfNote(Note singleNoteProcessor) {
+    public int countWordsOfNote(final Note singleNoteProcessor) {
         wordCount = singleNoteProcessor.getWordList().length;
         return wordCount;
     }
 
-    public List<Integer> countWordsOfNotes(List<String[]> wordListList) {
+    public List<Integer> countWordsOfNotes(final List<String[]> wordListList) {
         for (final String[] strings : wordListList) {
             final Integer wordCount = strings.length;
             wordCountList.add(wordCount);
@@ -90,7 +90,7 @@ public class NoteCounterRaw {
         return wordCountList;
     }
 
-    public void setWordCount(int wordCount) {
+    public void setWordCount(final int wordCount) {
         this.wordCount = wordCount;
     }
 }

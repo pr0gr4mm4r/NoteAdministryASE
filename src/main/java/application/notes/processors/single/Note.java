@@ -19,7 +19,7 @@ public class Note {
     private String noteForGraphicalProcessing;
 
 
-    public static Note initializeNote(String noteName){
+    public static Note initializeNote(final String noteName){
         final Note note = new Note();
         final NoteReader noteReader = new NoteReader();
         note.noteName = noteName;
@@ -33,15 +33,15 @@ public class Note {
     }
 
 
-    private static String[] createLineList(String note) {
+    private static String[] createLineList(final String note) {
         return note.split("\n");
     }
 
-    public static String[] removeEmptyLines(String[] words) {
+    public static String[] removeEmptyLines(final String... words) {
         return Arrays.stream(words).filter(word->!word.equals("")).toArray(String[]::new);
     }
 
-    public static String[] createWordList(String string){
+    public static String[] createWordList(final String string){
         return string.split(" ");
     }
 
@@ -53,7 +53,7 @@ public class Note {
         return noteName;
     }
 
-    public void setNoteName(String noteName) {
+    public void setNoteName(final String noteName) {
         this.noteName = noteName;
     }
 
@@ -65,7 +65,7 @@ public class Note {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(final String content) {
         this.content = content;
     }
 

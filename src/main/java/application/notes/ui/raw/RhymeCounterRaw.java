@@ -14,7 +14,7 @@ import static application.notes.spellcheck.raw.SpellCheckerRaw.*;
 public class RhymeCounterRaw {
     private String content;
 
-    public RhymeCounterRaw(String content) {
+    public RhymeCounterRaw(final String content) {
         this.content = content;
     }
 

@@ -7,7 +7,7 @@ import static application.notes.spellcheck.multi.OverviewSpellChecker.initialize
 import static config.Globals.path_for_notes;
 
 public class OverviewSpellCheckerCommand extends AbstractCommand {
-    public OverviewSpellCheckerCommand(String commandName, String description) {
+    public OverviewSpellCheckerCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

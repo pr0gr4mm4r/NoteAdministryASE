@@ -21,7 +21,7 @@ public class LogFileDeclarator {
 
     }
 
-    public static LogFileDeclarator initializeLogFileDeclarator(String capture) {
+    public static LogFileDeclarator initializeLogFileDeclarator(final String capture) {
         final LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
@@ -29,7 +29,7 @@ public class LogFileDeclarator {
         return logFileDeclarator;
     }
 
-    public void declareLogFile(String content) {
+    public void declareLogFile(final String content) {
         final boolean noteDoesNotExist = this.tryToCreateFile(this.completePath);
         if (noteDoesNotExist) {
             this.addHeader(this.completePath, this.capture);
@@ -38,11 +38,11 @@ public class LogFileDeclarator {
         }
     }
 
-    public static Path createCompletePath(String logfileName) {
+    public static Path createCompletePath(final String logfileName) {
         return Paths.get(path_for_logfiles + logfileName);
     }
 
-    public void addContent(String content, Path completePath) {
+    public void addContent(final String content, final Path completePath) {
         try {
             Files.write(
                     Paths.get(String.valueOf(completePath)),
@@ -53,7 +53,7 @@ public class LogFileDeclarator {
         }
     }
 
-    public boolean tryToCreateFile(Path completePath) {
+    public boolean tryToCreateFile(final Path completePath) {
         try {
             Files.createFile(completePath);
             return true;
@@ -70,7 +70,7 @@ public class LogFileDeclarator {
     }
 
 
-    public void addHeader(Path completePath, String action) {
+    public void addHeader(final Path completePath, final String action) {
         final String time = createCurrentTimeString();
         String header = this.logFileName + " " + time;
         header = insertLineBreak(header);

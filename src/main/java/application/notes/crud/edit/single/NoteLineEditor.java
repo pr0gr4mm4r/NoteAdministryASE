@@ -21,12 +21,12 @@ public class NoteLineEditor {
     public NoteLineEditor() {
     }
 
-    public long countLineLength(String noteName) {
+    public long countLineLength(final String noteName) {
         final NoteCounterRaw noteCounterRaw = initializeNoteCounterRaw(noteName);
         return noteCounterRaw.getLineCount();
     }
 
-    protected void openErrorDialogue(Path completePath) {
+    protected void openErrorDialogue(final Path completePath) {
         try (Stream<String> lineStream = Files.lines(completePath)) {
             final long lineLength = lineStream.count();
             System.out.println("error -> allowed manipulation range is: 2 - " +
@@ -36,7 +36,7 @@ public class NoteLineEditor {
         }
     }
 
-    protected void openChangeDialogue(Path completePath, int lineNumber) {
+    protected void openChangeDialogue(final Path completePath, int lineNumber) {
         try {
             final int indexLineNumber = lineNumber - 1;
             final String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
@@ -59,7 +59,7 @@ public class NoteLineEditor {
         }
     }
 
-    public void overwriteLine(LineOverwriterInformation lineOverwriterInformation) throws IOException {
+    public void overwriteLine(final LineOverwriterInformation lineOverwriterInformation) throws IOException {
         List<String> lines;
         final Path path = lineOverwriterInformation.getCompletePath();
         final int indexLineNumber = lineOverwriterInformation.getIndexLineNumber();
@@ -69,7 +69,7 @@ public class NoteLineEditor {
         Files.write(Paths.get(String.valueOf(path)), Collections.singleton(String.join("\n", lines)));
     }
 
-    public boolean noteHasEnoughLines(Path completePath, int lineNumber) {
+    public boolean noteHasEnoughLines(final Path completePath, int lineNumber) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             final long lineCount = stringStream.count();
             if (lineCount < lineNumber || lineNumber < 1) {
@@ -81,7 +81,7 @@ public class NoteLineEditor {
         return true;
     }
 
-    protected DisplayState displayLineByLinesOfNote(Path completePath) {
+    protected DisplayState displayLineByLinesOfNote(final Path completePath) {
         try (LineNumberReader lineNumberReader = new LineNumberReader(
                 new InputStreamReader(Files.newInputStream(completePath)))) {
             String str;

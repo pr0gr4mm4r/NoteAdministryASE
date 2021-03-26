@@ -23,7 +23,7 @@ public class WordCountNoteSorter implements Sorter {
     NoteStack noteStack;
     NoteCounterRaw noteCounterRaw;
 
-    public WordCountNoteSorter(NoteStack noteStack) {
+    public WordCountNoteSorter(final NoteStack noteStack) {
         this.noteStack = noteStack;
     }
 
@@ -47,7 +47,7 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     @Override
-    public List sort(Map wordCountMap) {
+    public List sort(final Map wordCountMap) {
         final Set<Entry<String, Integer>> wordCountSet = wordCountMap.entrySet();
         final List<Entry<String, Integer>> finalWordCountList = new ArrayList<>(wordCountSet);
         final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
@@ -56,14 +56,14 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     @Override
-    public String format(List finalWordCountList) {
+    public String format(final List finalWordCountList) {
         final WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
         final String formattedResult = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
         return formattedResult;
     }
 
     @Override
-    public void dialogue(String formattedResult) {
+    public void dialogue(final String formattedResult) {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -74,7 +74,7 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     @Override
-    public void createLogFile(String formattedResult) {
+    public void createLogFile(final String formattedResult) {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);
     }
