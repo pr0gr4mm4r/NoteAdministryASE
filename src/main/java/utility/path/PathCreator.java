@@ -1,4 +1,4 @@
-package application.path;
+package utility.path;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

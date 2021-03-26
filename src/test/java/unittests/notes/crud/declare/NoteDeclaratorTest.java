@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.nio.file.Path;
 import java.util.Scanner;
 
-import static application.path.PathCreator.createCompletePath;
+import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.*;
 import static config.Globals.scanner;
 

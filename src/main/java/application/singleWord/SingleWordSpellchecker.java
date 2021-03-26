@@ -1,11 +1,11 @@
 package application.singleWord;
 
 import application.notes.spellcheck.raw.SpellCheckerRaw;
-import application.WordExistenceMap;
+import utility.map.WordExistenceMap;
 
 import java.util.*;
 
-import static application.WordExistenceMap.initializeWordExistenceMap;
+import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.processors.single.Note.*;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.*;
 

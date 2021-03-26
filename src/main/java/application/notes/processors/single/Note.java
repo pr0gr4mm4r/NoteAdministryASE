@@ -5,7 +5,7 @@ import application.notes.crud.read.single.NoteReader;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import static application.path.PathCreator.createCompletePath;
+import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 

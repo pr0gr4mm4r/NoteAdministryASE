@@ -3,11 +3,11 @@ package application.notes.spellcheck.single;
 import application.notes.processors.single.Note;
 import application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
-import application.WordExistenceMap;
+import utility.map.WordExistenceMap;
 
 import java.util.*;
 
-import static application.WordExistenceMap.initializeWordExistenceMap;
+import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.processors.single.Note.initializeNote;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 

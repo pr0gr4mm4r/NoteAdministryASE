@@ -5,7 +5,7 @@ import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 import java.nio.file.Path;
 
 import static application.notes.crud.edit.single.DisplayState.ERROR;
-import static application.path.PathCreator.createCompletePath;
+import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 

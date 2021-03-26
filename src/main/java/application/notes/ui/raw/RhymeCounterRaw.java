@@ -1,6 +1,6 @@
 package application.notes.ui.raw;
 
-import application.WordExistenceMap;
+import utility.map.WordExistenceMap;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static application.WordExistenceMap.initializeWordExistenceMap;
+import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.*;
 
 public class RhymeCounterRaw {

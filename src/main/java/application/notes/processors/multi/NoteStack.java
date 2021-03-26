@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import static application.notes.processors.single.Note.createWordList;
 import static application.notes.processors.single.Note.removeEmptyLines;
-import static application.path.PathCreator.createCompletePath;
+import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 

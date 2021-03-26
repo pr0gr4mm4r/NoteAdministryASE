@@ -1,12 +1,12 @@
 package application.notes.spellcheck.model;
 
-import application.WordExistenceMap;
+import utility.map.WordExistenceMap;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static application.WordExistenceMap.initializeWordExistenceMap;
+import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 
 public class WordExistenceMapList extends ArrayList<WordExistenceMap> {
