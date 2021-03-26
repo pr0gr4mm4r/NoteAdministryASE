@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-public class MultiNoteProcessorTest {
+public class NoteStackTest {
     @Rule
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 

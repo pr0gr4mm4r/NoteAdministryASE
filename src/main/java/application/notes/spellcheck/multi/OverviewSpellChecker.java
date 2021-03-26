@@ -9,6 +9,7 @@ import application.notes.spellcheck.raw.SpellCheckerRaw;
 import java.util.*;
 
 import static application.notes.processors.multi.NoteStack.*;
+import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 import static application.notes.spellcheck.single.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
@@ -19,7 +20,7 @@ public class OverviewSpellChecker {
     private final OverviewSpellCheckerResultFormatter overviewSpellCheckerResultFormatter = new OverviewSpellCheckerResultFormatter();
     private final List<Double> percentageValueList = new ArrayList<>();
 
-    public OverviewSpellChecker() {
+    private OverviewSpellChecker() {
 
     }
 
@@ -38,7 +39,7 @@ public class OverviewSpellChecker {
     private void fillPercentageValueList(List<Double> percentageValueList, List<String[]> wordListList) {
         for (String[] wordList : wordListList) {
             double wordCountOfNote = wordList.length;
-            SpellCheckerRaw spellCheckerRaw = new SpellCheckerRaw(wordList);
+            SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
             double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
             double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
             percentageValueList.add(percentageValue);

@@ -8,6 +8,7 @@ import application.WordExistenceMap;
 import java.util.*;
 
 import static application.notes.processors.single.Note.initializeNote;
+import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 
 public class SingleNoteSpellChecker {
     private WordExistenceMap wordExistence;
@@ -22,8 +23,7 @@ public class SingleNoteSpellChecker {
         SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
         Note note = initializeNote(noteName);
         String[] wordList = note.getWordList();
-        singleNoteSpellChecker.spellCheckerRaw = new SpellCheckerRaw(wordList);
-        singleNoteSpellChecker.spellCheckerRaw.checkSpelling(wordList);
+        singleNoteSpellChecker.spellCheckerRaw = initializeSpellCheckerRaw(wordList);
         List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
         List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();
         singleNoteSpellChecker.wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);

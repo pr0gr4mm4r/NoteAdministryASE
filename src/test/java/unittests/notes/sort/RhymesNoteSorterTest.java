@@ -16,7 +16,7 @@ public class RhymesNoteSorterTest {
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void increaseCounterForEachRhymeTest() throws IOException {
+    public void increaseCounterForEachRhymeTest() {
         RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new NoteStack());
         List<String> wordsInLexiconEntryList = new ArrayList<>();
         wordsInLexiconEntryList.add("test");

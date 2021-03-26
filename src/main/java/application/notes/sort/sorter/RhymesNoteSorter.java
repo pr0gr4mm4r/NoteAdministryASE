@@ -4,6 +4,7 @@ import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.formatter.RhymesNoteSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
+import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
 
 import java.util.*;
@@ -11,7 +12,6 @@ import java.util.Map.Entry;
 
 import static application.logfiles.crud.declare.single.LogFileDeclarator.initializeLogFileDeclarator;
 import static config.Globals.scanner;
-import static application.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
 
 public class RhymesNoteSorter implements Sorter {
     NoteStack noteStack;
@@ -31,7 +31,8 @@ public class RhymesNoteSorter implements Sorter {
             counter = 0;
             String[] currentNote = noteList.get(i);
             String currentNotename = noteNames.get(i);
-            List<String> wordsInLexicon = filterPositives(currentNote);
+            SpellCheckerRaw spellCheckerRaw = SpellCheckerRaw.initializeSpellCheckerRaw(currentNote);
+            List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
             counter = increaseCounterForEachRhyme(wordsInLexicon, counter);
             rhymeOverview.put(currentNotename, counter);
         }

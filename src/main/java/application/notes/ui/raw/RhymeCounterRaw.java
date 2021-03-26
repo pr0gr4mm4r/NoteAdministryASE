@@ -1,14 +1,14 @@
 package application.notes.ui.raw;
 
 import application.WordExistenceMap;
+import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
 
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static application.notes.spellcheck.raw.SpellCheckerRaw.filterNegatives;
-import static application.notes.spellcheck.raw.SpellCheckerRaw.filterPositives;
+import static application.notes.spellcheck.raw.SpellCheckerRaw.*;
 
 public class RhymeCounterRaw {
     private String content;
@@ -20,9 +20,10 @@ public class RhymeCounterRaw {
     public Integer calcRhymes() {
         int counter = 0;
         String[] splittedContent = content.split("\\s+");
-        List<String> wordsInLexicon = filterPositives(splittedContent);
-        List<String> wordsNotInLexicon = filterNegatives(splittedContent);
-        WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(splittedContent);
+        List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
+        List<String> wordsnotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
+        WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsnotInLexicon);
         List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.entrySet().stream().
                 filter(Map.Entry::getValue).collect(Collectors.toList());
         final int size = wordsInLexiconEntries.size();
