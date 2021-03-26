@@ -30,22 +30,22 @@ public class OverviewWordFinderTest {
     @Before
     public void setup() throws IOException, NoFilesInDirectoryException {
         artificialFile = temporaryFolder.newFile("myfile.txt");
-        NoteStack noteStack = initializeNoteStack(temporaryFolder.getRoot().getPath() + "\\");
+        final NoteStack noteStack = initializeNoteStack(temporaryFolder.getRoot().getPath() + "\\");
         overviewWordFinder = new OverviewWordFinder(testWord, noteStack);
     }
 
     @Test
     public void createNoteListTest() {
-        List<Path> pathList = new ArrayList<>();
+        final List<Path> pathList = new ArrayList<>();
         pathList.add(Paths.get("testPath"));
-        List<String> noteList = overviewWordFinder.createNoteList(pathList);
+        final List<String> noteList = overviewWordFinder.createNoteList(pathList);
         assertTrue("NoteList not initialized successfully", noteList.size() > 0);
     }
 
     @Test
     public void checkIfKeyWordIsPresent() {
-        List<Map<Integer, Integer>> testList = new ArrayList<>();
-        Map<Integer, Integer> testMap = new HashMap<>();
+        final List<Map<Integer, Integer>> testList = new ArrayList<>();
+        final Map<Integer, Integer> testMap = new HashMap<>();
         testMap.put(1, 0);
         testMap.put(2, 0);
         testMap.put(3, 0);
@@ -59,9 +59,9 @@ public class OverviewWordFinderTest {
 
     @Test
     public void createRememberRemovedList() {
-        List<Map<Integer, Integer>> testList = new ArrayList<>();
-        Map<Integer, Integer> testMap1 = new HashMap<>();
-        Map<Integer, Integer> testMap2 = new HashMap<>();
+        final List<Map<Integer, Integer>> testList = new ArrayList<>();
+        final Map<Integer, Integer> testMap1 = new HashMap<>();
+        final Map<Integer, Integer> testMap2 = new HashMap<>();
         testMap1.put(1, 0);
         testMap1.put(2, 0);
         testMap1.put(3, 0);
@@ -70,7 +70,7 @@ public class OverviewWordFinderTest {
         testMap2.put(3,4);
         testList.add(testMap1);
         testList.add(testMap2);
-        List<Integer> testRememberRemovedList = overviewWordFinder.createRememberRemovedList(testList);
+        final List<Integer> testRememberRemovedList = overviewWordFinder.createRememberRemovedList(testList);
         assertEquals(1, testRememberRemovedList.size());
     }
 
@@ -79,10 +79,10 @@ public class OverviewWordFinderTest {
     public void composeWordOccurrenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
         writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
-        Map<Integer, Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
-        int occurrenceInFirstLine = wordOccurrence.get(1);
-        int occurrenceInSecondLine = wordOccurrence.get(2);
-        Object nullExpectation = wordOccurrence.get(3);
+        final Map<Integer, Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
+        final int occurrenceInFirstLine = wordOccurrence.get(1);
+        final int occurrenceInSecondLine = wordOccurrence.get(2);
+        final Object nullExpectation = wordOccurrence.get(3);
         assertEquals(2, occurrenceInFirstLine);
         assertEquals(1, occurrenceInSecondLine);
         assertNull(nullExpectation);

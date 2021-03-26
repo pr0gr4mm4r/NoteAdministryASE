@@ -17,10 +17,10 @@ public class NoteLineEditorCommand extends AbstractCommand {
     @Override
     public void execute() {
         System.out.println("Which note do you want to change?");
-        String fileName = scanner.nextLine();
-        Path completePath = createCompletePath(fileName, path_for_notes);
-        NoteLineEditor noteLineEditor = new NoteLineEditor();
-        DisplayState displayState = noteLineEditor.displayLineByLinesOfNote(completePath);
+        final String fileName = scanner.nextLine();
+        final Path completePath = createCompletePath(fileName, path_for_notes);
+        final NoteLineEditor noteLineEditor = new NoteLineEditor();
+        final DisplayState displayState = noteLineEditor.displayLineByLinesOfNote(completePath);
         if (displayState.equals(ERROR)) {
             return;
         }
@@ -29,7 +29,7 @@ public class NoteLineEditorCommand extends AbstractCommand {
         if (upperManipulationRangeCap > lowerManipulationRangeCap) {
             System.out.println("Which line do you want to overwrite? The manipulation range is: "
                     + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
-            int lineNumber = scanner.nextInt();
+            final int lineNumber = scanner.nextInt();
             scanner.nextLine();
             if (noteLineEditor.noteHasEnoughLines(completePath, lineNumber)) {
                 noteLineEditor.openChangeDialogue(completePath, lineNumber);

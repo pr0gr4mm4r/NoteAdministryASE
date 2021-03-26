@@ -11,7 +11,7 @@ public class VerbCounterSorterTest {
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void increaseCounterForEachRhymeTest() throws IOException {
+    public void increaseCounterForEachRhymeTest() {
 
     }
 }

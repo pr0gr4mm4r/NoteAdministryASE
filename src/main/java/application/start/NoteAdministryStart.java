@@ -62,14 +62,14 @@ public class NoteAdministryStart {
         fillCommands();
         while (programRun) {
             printStartingMessage();
-            String commandName = scanner.nextLine();
+            final String commandName = scanner.nextLine();
             makeActiveDecisions(commandName);
-            Optional<AbstractCommand> activeCommandOptional = findActiveCommand();
+            final Optional<AbstractCommand> activeCommandOptional = findActiveCommand();
             if (activeCommandOptional.isEmpty()) {
                 printErrorMessage(commandName);
                 continue;
             }
-            AbstractCommand activeCommand = activeCommandOptional.get();
+            final AbstractCommand activeCommand = activeCommandOptional.get();
             if (activeCommand.getCommandName().equals("help")) {
                 listCommands(HelpMode.BASIC);
                 continue;

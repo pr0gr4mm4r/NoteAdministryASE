@@ -17,7 +17,7 @@ public class SpellCheckerRaw {
     }
 
     public static SpellCheckerRaw initializeSpellCheckerRaw(String[] wordList){
-        SpellCheckerRaw spellCheckerRaw = new SpellCheckerRaw(wordList);
+        final SpellCheckerRaw spellCheckerRaw = new SpellCheckerRaw(wordList);
         spellCheckerRaw.wordsInLexicon = spellCheckerRaw.filterPositives(spellCheckerRaw.wordList);
         spellCheckerRaw.wordsNotInLexicon = spellCheckerRaw.filterNegatives(spellCheckerRaw.wordList);
         return spellCheckerRaw;

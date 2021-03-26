@@ -20,7 +20,7 @@ public class SpellCheckerRawTest {
 
     @Test
     public void testCorrectFillOfWordsInLexicon() {
-        ArrayList exampleStringListPositives = new ArrayList(spellCheckerRaw.getWordsInLexicon());
+        final ArrayList exampleStringListPositives = new ArrayList(spellCheckerRaw.getWordsInLexicon());
 
         assertTrue(exampleStringListPositives.contains("correct"));
         assertFalse(exampleStringListPositives.contains("falsee"));
@@ -29,7 +29,7 @@ public class SpellCheckerRawTest {
 
     @Test
     public void testCorrectFillOfWordsNotInLexicon() {
-        ArrayList exampleStringListNegatives = new ArrayList(spellCheckerRaw.getWordsNotInLexicon());
+        final ArrayList exampleStringListNegatives = new ArrayList(spellCheckerRaw.getWordsNotInLexicon());
 
         assertTrue(exampleStringListNegatives.contains("falsee"));
         assertTrue(exampleStringListNegatives.contains("faaalse"));
@@ -38,7 +38,7 @@ public class SpellCheckerRawTest {
 
     @Test
     public void testcountWordsPresentInLexiconMethod() {
-        double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(exampleStrings);
+        final double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(exampleStrings);
 
         assertEquals(1, wordsInLexikon, 0.0);
     }

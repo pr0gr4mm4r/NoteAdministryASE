@@ -18,26 +18,26 @@ public class SingleNoteDispatcherTest {
 
     @Test
     public void createMessageTest() throws MessagingException {
-        DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
-        Session session = Session.getDefaultInstance(dispatcherRaw.getProperties(), new Authenticator() {
+        final DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
+        final Session session = Session.getDefaultInstance(dispatcherRaw.getProperties(), new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return super.getPasswordAuthentication();
             }
         });
-        SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
-        SendingInformation sendingInformation = new FakeSendingInformation().getSendingInformation();
-        MimeMessage mimeMessage = singleNoteDispatcher.createMessage(session, sendingInformation);
+        final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
+        final SendingInformation sendingInformation = new FakeSendingInformation().getSendingInformation();
+        final MimeMessage mimeMessage = singleNoteDispatcher.createMessage(session, sendingInformation);
         assertEquals("text/plain", mimeMessage.getContentType());
         assertEquals("[fakeRecipient]", Arrays.toString(mimeMessage.getAllRecipients()));
     }
 
     @Test
     public void createAttachmentTest() throws MessagingException {
-        SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
-        FakeSendingInformation fakeSendingInformation = new FakeSendingInformation();
-        SendingInformation sendingInformation = fakeSendingInformation.getSendingInformation();
-        Multipart multipart = singleNoteDispatcher.createAttachment(sendingInformation);
+        final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
+        final FakeSendingInformation fakeSendingInformation = new FakeSendingInformation();
+        final SendingInformation sendingInformation = fakeSendingInformation.getSendingInformation();
+        final Multipart multipart = singleNoteDispatcher.createAttachment(sendingInformation);
         assertFalse(multipart.getContentType().isEmpty());
     }
 }

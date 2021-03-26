@@ -19,12 +19,12 @@ public class ContentButtonsSelectedMouseListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        List<JButton> textManipulationButtons = displayNotes.getTextManipulationButtons();
-        Color defaultBackgroundColor = new JButton().getBackground();
-        for (JButton button : textManipulationButtons) {
+        final List<JButton> textManipulationButtons = displayNotes.getTextManipulationButtons();
+        final Color defaultBackgroundColor = new JButton().getBackground();
+        for (final JButton button : textManipulationButtons) {
             button.setBackground(defaultBackgroundColor);
         }
-        Color color = Color.orange;
+        final Color color = Color.orange;
         if(jButton.getBackground() == color){
             jButton.setBackground(defaultBackgroundColor);
             return;

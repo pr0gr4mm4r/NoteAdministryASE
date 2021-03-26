@@ -11,7 +11,7 @@ public class WordCountNoteSorterTest {
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
-    public void increaseCounterForEachRhymeTest() throws IOException {
+    public void increaseCounterForEachRhymeTest() {
       /*  File file1 = temporaryFolder.newFile("myfile1.txt");
         File file2 = temporaryFolder.newFile("myfile2.txt");
         String testContent = "fine line whine";

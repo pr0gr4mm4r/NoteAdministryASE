@@ -11,18 +11,18 @@ public class WordExistenceMap extends HashMap<String, Boolean> { // use enum
     }
 
     public static WordExistenceMap initializeWordExistenceMap(List<String> positives, List<String> negatives){
-        WordExistenceMap wordExistenceMap = new WordExistenceMap();
-        for (String positive : positives) {
+        final WordExistenceMap wordExistenceMap = new WordExistenceMap();
+        for (final String positive : positives) {
             wordExistenceMap.put(positive, true);
         }
-        for (String negative : negatives) {
+        for (final String negative : negatives) {
             wordExistenceMap.put(negative, false);
         }
         return wordExistenceMap;
     }
 
     public List<Entry<String, Boolean>> discardNegatives(){
-        List<Entry<String, Boolean>> positives = this.entrySet().stream().filter(Entry::getValue).collect(Collectors.toList());
+        final List<Entry<String, Boolean>> positives = this.entrySet().stream().filter(Entry::getValue).collect(Collectors.toList());
         return positives;
     }
 }

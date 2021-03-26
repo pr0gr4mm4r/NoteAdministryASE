@@ -27,23 +27,23 @@ public class OverviewSpellChecker {
     }
 
     public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException {
-        OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
+        final OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
         overviewSpellChecker.wordExistenceMapList = initializeWordExistenceMapList(wordListList);
         overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);
-        String formattedResult = overviewSpellChecker.format();
+        final String formattedResult = overviewSpellChecker.format();
         overviewSpellChecker.print(formattedResult);
         overviewSpellChecker.openLogFileDialogue(formattedResult);
         return overviewSpellChecker;
     }
 
     private void fillPercentageValueList(List<Double> percentageValueList, List<String[]> wordListList) {
-        for (String[] wordList : wordListList) {
-            double wordCountOfNote = wordList.length;
-            SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
-            double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
-            double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
+        for (final String[] wordList : wordListList) {
+            final double wordCountOfNote = wordList.length;
+            final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
+            final double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(wordList);
+            final double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
             percentageValueList.add(percentageValue);
         }
     }
@@ -51,9 +51,9 @@ public class OverviewSpellChecker {
     private void openLogFileDialogue(String result) {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        String confirmation = scanner.nextLine();
+        final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
+            final LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
             logFileDeclarator.declareLogFile(result);
         }
     }

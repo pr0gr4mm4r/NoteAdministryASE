@@ -11,7 +11,7 @@ public class SingleWordSpellCheckerCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-        String wordToCheckSpelling = scanner.nextLine();
+        final String wordToCheckSpelling = scanner.nextLine();
         new SingleWordSpellchecker(wordToCheckSpelling);
         System.out.println("Provide an english word to check if it is correctly spelled:");
     }

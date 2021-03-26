@@ -40,8 +40,8 @@ public class DisplayNotes extends JFrame {
     public DisplayNotes() throws NoFilesInDirectoryException {
         this.setTitle("Overview of Notes");
         masterPanel.setLayout(masterGrid);
-        JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);
-        Font font = new Font("Arial", Font.BOLD, 18);
+        final JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);
+        final Font font = new Font("Arial", Font.BOLD, 18);
         capture.setFont(font);
         capturePanel.add(capture);
         noteText.setEditable(false);
@@ -49,24 +49,24 @@ public class DisplayNotes extends JFrame {
         jScrollPane = new JScrollPane(noteTextPanel);
         contentPanel.setLayout(textContentGrid);
         contentPanel.add(jScrollPane);
-        NoteStack noteStack = initializeNoteStack(path_for_notes);
-        List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
+        final NoteStack noteStack = initializeNoteStack(path_for_notes);
+        final List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
-            JLabel jLabel = new JLabel(noteNames.get(i));
+            final JLabel jLabel = new JLabel(noteNames.get(i));
             noteNameLabels.add(jLabel);
-            JButton jButton = new JButton(noteNames.get(i));
+            final JButton jButton = new JButton(noteNames.get(i));
             jButton.addMouseListener(new HoverPointerMouseListener(jButton));
             jButton.addMouseListener(new NoteButtonsSelectedMouseListener(this, jButton));
             jButton.addActionListener(e -> {
                 this.getManipulatingButtonsContentPanel().removeAll();
                 this.verbCounterLabel = new JLabel(" "); //reset counter
-                JPanel jPanel = new JPanel();
+                final JPanel jPanel = new JPanel();
                 jPanel.add(verbCounterLabel);
                 this.getManipulatingButtonsContentPanel().add(jPanel);
                 this.invalidate();
                 this.validate();
             });
-            NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
+            final NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             noteDisplayButtons.add(jButton);
             noteButtonPanel.add(noteDisplayButtons.get(i));
@@ -75,7 +75,7 @@ public class DisplayNotes extends JFrame {
         textManipulationButtons.add(new RhymeCounterDisplay("Rhymes", this));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
         manipulatingButtonsPanel.setLayout(new GridLayout(2, 1));
-        for (JButton textManipulationButton : textManipulationButtons) {
+        for (final JButton textManipulationButton : textManipulationButtons) {
             textManipulationButton.setEnabled(false);
             manipulatingButtonsButtonsPanel.add(textManipulationButton);
         }

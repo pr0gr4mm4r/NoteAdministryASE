@@ -13,10 +13,10 @@ public class SingleNoteWordFinderCommand extends AbstractCommand {
     @Override
     public void execute() {
         System.out.println("type in a keyword to search:");
-        String keyword = scanner.nextLine();
+        final String keyword = scanner.nextLine();
         System.out.println("type in the name of the note to search:");
-        String nameOfNote = scanner.nextLine();
-        SingleNoteWordFinder singleNoteWordFinder = new SingleNoteWordFinder();
+        final String nameOfNote = scanner.nextLine();
+        final SingleNoteWordFinder singleNoteWordFinder = new SingleNoteWordFinder();
         singleNoteWordFinder.findWort(nameOfNote, keyword);
         if (programRun) {
             singleNoteWordFinder.printResults(); //NotNullValidator

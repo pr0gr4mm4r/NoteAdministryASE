@@ -14,7 +14,7 @@ public class OverviewCounterCommand extends AbstractCommand {
     @Override
     public void execute() throws NoFilesInDirectoryException {
         System.out.println("In the following will be counted the words of all notes in " + path_for_notes);
-        OverviewCounter overviewCounter = initializeOverviewCounter();
+        final OverviewCounter overviewCounter = initializeOverviewCounter();
         overviewCounter.printResults();
     }
 }

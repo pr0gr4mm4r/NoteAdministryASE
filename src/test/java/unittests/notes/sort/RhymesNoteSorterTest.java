@@ -17,8 +17,8 @@ public class RhymesNoteSorterTest {
 
     @Test
     public void increaseCounterForEachRhymeTest() {
-        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new NoteStack());
-        List<String> wordsInLexiconEntryList = new ArrayList<>();
+        final RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(new NoteStack());
+        final List<String> wordsInLexiconEntryList = new ArrayList<>();
         wordsInLexiconEntryList.add("test");
         wordsInLexiconEntryList.add("quest");
         wordsInLexiconEntryList.add("chest");

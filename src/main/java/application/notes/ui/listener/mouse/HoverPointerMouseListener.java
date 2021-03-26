@@ -29,7 +29,7 @@ public class HoverPointerMouseListener implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
+        final Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
         this.jButton.setCursor(cursor);
     }
 

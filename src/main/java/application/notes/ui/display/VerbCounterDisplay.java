@@ -14,12 +14,12 @@ public class VerbCounterDisplay extends JButton {
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {
-            String text = displayNotes.getNoteText().getText();
-            VerbCounterRaw verbCounterRaw = new VerbCounterRaw(text);
-            int verbCount = verbCounterRaw.countWords();
-            JLabel verbCounterLabel = displayNotes.getVerbCounterLabel();
+            final String text = displayNotes.getNoteText().getText();
+            final VerbCounterRaw verbCounterRaw = new VerbCounterRaw(text);
+            final int verbCount = verbCounterRaw.countWords();
+            final JLabel verbCounterLabel = displayNotes.getVerbCounterLabel();
             verbCounterLabel.setText("" + verbCount);
-            JPanel jPanel = new JPanel();
+            final JPanel jPanel = new JPanel();
             jPanel.add(verbCounterLabel);
             displayNotes.getManipulatingButtonsContentPanel().removeAll();
             displayNotes.getManipulatingButtonsContentPanel().add(jPanel);

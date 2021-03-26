@@ -26,28 +26,28 @@ public class NoteCounterRaw {
     }
 
     public static NoteCounterRaw initializeNoteCounterRaw(String noteName){
-        NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
-        Note note = initializeNote(noteName);
-        Path path = note.getCompletePath();
+        final NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
+        final Note note = initializeNote(noteName);
+        final Path path = note.getCompletePath();
         noteCounterRaw.lineCount = countLinesOfNote(path);
         noteCounterRaw.wordCount = noteCounterRaw.countWordsOfNote(note);
         return noteCounterRaw;
     }
 
     public static NoteCounterRaw initializeNoteCounterRaw() throws NoFilesInDirectoryException {
-        NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
-        NoteStack noteStack = NoteStack.initializeNoteStack(path_for_notes);
-        List<Path> pathList = noteStack.getPathList();
+        final NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
+        final NoteStack noteStack = NoteStack.initializeNoteStack(path_for_notes);
+        final List<Path> pathList = noteStack.getPathList();
         countLinesOfNotes(pathList, noteCounterRaw.lineCountList);
-        List<String[]> wordListList = noteStack.getWordListList();
+        final List<String[]> wordListList = noteStack.getWordListList();
         noteCounterRaw.wordCountList = noteCounterRaw.countWordsOfNotes(wordListList);
         return noteCounterRaw;
     }
 
 
     private static void countLinesOfNotes(List<Path> pathList, List<Long> lineCountList) {
-        for (Path path: pathList){
-            long lineCount = countLinesOfNote(path);
+        for (final Path path: pathList){
+            final long lineCount = countLinesOfNote(path);
             lineCountList.add(lineCount);
         }
     }
@@ -67,8 +67,8 @@ public class NoteCounterRaw {
     }
 
     public List<Integer> countWordsOfNotes(List<String[]> wordListList) {
-        for (String[] strings : wordListList) {
-            Integer wordCount = strings.length;
+        for (final String[] strings : wordListList) {
+            final Integer wordCount = strings.length;
             wordCountList.add(wordCount);
         }
         return wordCountList;

@@ -10,7 +10,7 @@ public class DispatcherRaw {
     }
 
     public static DispatcherRaw initializeDispatcherRaw() {
-        DispatcherRaw dispatcherRaw = new DispatcherRaw();
+        final DispatcherRaw dispatcherRaw = new DispatcherRaw();
         dispatcherRaw.properties = System.getProperties();
         final String host = "smtp.gmail.com";
         final String port = "465";

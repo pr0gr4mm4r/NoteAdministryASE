@@ -33,7 +33,7 @@ public class VerbCountSorter implements Sorter {
                     verbCounter++;
                 }
             }
-            String nameOfNote = nameList.get(i);
+            final String nameOfNote = nameList.get(i);
             verbCountMap.put(nameOfNote, verbCounter);
         }
         return verbCountMap;
@@ -47,17 +47,17 @@ public class VerbCountSorter implements Sorter {
 
     @Override
     public List sort(Map verbCountMap) {
-        Set<Entry<String, Integer>> verbCountSet = verbCountMap.entrySet();
-        List<Entry<String, Integer>> finalVerbCountList = new ArrayList<>(verbCountSet);
-        Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
+        final Set<Entry<String, Integer>> verbCountSet = verbCountMap.entrySet();
+        final List<Entry<String, Integer>> finalVerbCountList = new ArrayList<>(verbCountSet);
+        final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalVerbCountList.sort(valueComparator);
         return finalVerbCountList;
     }
 
     @Override
     public String format(List finalVerbCountList) {
-        VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
-        String result = verbCountSorterResultFormatter.formatList(finalVerbCountList);
+        final VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
+        final String result = verbCountSorterResultFormatter.formatList(finalVerbCountList);
         return result;
     }
 
@@ -66,7 +66,7 @@ public class VerbCountSorter implements Sorter {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        String confirmation = scanner.nextLine();
+        final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             createLogFile(formattedResult);
         }
@@ -74,7 +74,7 @@ public class VerbCountSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
+        final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
         logFileDeclarator.declareLogFile(formattedResult);
     }
 }

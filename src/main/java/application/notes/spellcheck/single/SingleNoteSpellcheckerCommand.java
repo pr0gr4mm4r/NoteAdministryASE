@@ -12,7 +12,7 @@ public class SingleNoteSpellcheckerCommand  extends AbstractCommand {
     @Override
     public void execute() {
         System.out.println("Which note do you want to check spelling for?");
-        String noteName = scanner.nextLine();
+        final String noteName = scanner.nextLine();
         SingleNoteSpellChecker.initializeSingleNoteSpellChecker(noteName);
     }
 }

@@ -22,13 +22,13 @@ public class NoteLineEditor {
     }
 
     public long countLineLength(String noteName) {
-        NoteCounterRaw noteCounterRaw = initializeNoteCounterRaw(noteName);
+        final NoteCounterRaw noteCounterRaw = initializeNoteCounterRaw(noteName);
         return noteCounterRaw.getLineCount();
     }
 
     protected void openErrorDialogue(Path completePath) {
         try (Stream<String> lineStream = Files.lines(completePath)) {
-            long lineLength = lineStream.count();
+            final long lineLength = lineStream.count();
             System.out.println("error -> allowed manipulation range is: 2 - " +
                     lineLength + "for this note");
         } catch (IOException e) {
@@ -39,15 +39,15 @@ public class NoteLineEditor {
     protected void openChangeDialogue(Path completePath, int lineNumber) {
         try {
             final int indexLineNumber = lineNumber - 1;
-            String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
+            final String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
             System.out.println(lineToChange);
             System.out.println("Type in a line to replace above line. If you don't want to change anything, type '_' without '' and hit enter");
-            String overwriteLine = scanner.nextLine();
+            final String overwriteLine = scanner.nextLine();
             System.out.println(overwriteLine);
             if (overwriteLine.equals("_")) {
                 return;
             }
-            LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
+            final LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
                     .replacementLine(overwriteLine)
                     .path(completePath)
                     .indexLineNumber(indexLineNumber)
@@ -61,9 +61,9 @@ public class NoteLineEditor {
 
     public void overwriteLine(LineOverwriterInformation lineOverwriterInformation) throws IOException {
         List<String> lines;
-        Path path = lineOverwriterInformation.getCompletePath();
-        int indexLineNumber = lineOverwriterInformation.getIndexLineNumber();
-        String replacementLine = lineOverwriterInformation.getReplacementLine();
+        final Path path = lineOverwriterInformation.getCompletePath();
+        final int indexLineNumber = lineOverwriterInformation.getIndexLineNumber();
+        final String replacementLine = lineOverwriterInformation.getReplacementLine();
         lines = Files.readAllLines(Paths.get(String.valueOf(path)));
         lines.set(indexLineNumber, replacementLine);
         Files.write(Paths.get(String.valueOf(path)), Collections.singleton(String.join("\n", lines)));
@@ -71,7 +71,7 @@ public class NoteLineEditor {
 
     public boolean noteHasEnoughLines(Path completePath, int lineNumber) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
-            long lineCount = stringStream.count();
+            final long lineCount = stringStream.count();
             if (lineCount < lineNumber || lineNumber < 1) {
                 return false;
             }

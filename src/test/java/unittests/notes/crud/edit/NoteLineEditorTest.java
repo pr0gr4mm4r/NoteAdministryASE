@@ -23,21 +23,21 @@ public class NoteLineEditorTest {
 
     @Test
     public void overwriteLineMethod() throws IOException {
-        File artificialFile = temporaryFolder.newFile("myfile.txt");
+        final File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
         writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
-        NoteLineEditor noteLineEditor = new NoteLineEditor();
-        LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
+        final NoteLineEditor noteLineEditor = new NoteLineEditor();
+        final LineOverwriterInformation lineOverwriterInformation = new LineOverwriterInformation.Builder()
                 .path(artificialFilePath)
                 .indexLineNumber(1)
                 .replacementLine("replacement as one likes")
                 .build();
         noteLineEditor.overwriteLine(lineOverwriterInformation);
-        List<String> noteList = Files.readAllLines(artificialFilePath);
-        String line1 = noteList.get(0);
-        String line2 = noteList.get(1);
-        String line3 = noteList.get(2);
+        final List<String> noteList = Files.readAllLines(artificialFilePath);
+        final String line1 = noteList.get(0);
+        final String line2 = noteList.get(1);
+        final String line3 = noteList.get(2);
         assertEquals("Unwanted Side Effects occurred", "test", line1);
         assertEquals("Line did not change accordingly", "replacement as one likes", line2);
         assertEquals("Unwanted Side Effects occurred", "test", line3);
@@ -45,14 +45,14 @@ public class NoteLineEditorTest {
 
     @Test
     public void noteHasEnoughLinesMethodPositive() throws IOException {
-        File artificialFile = temporaryFolder.newFile("myfile.txt");
+        final File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
         writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
-        NoteLineEditor noteLineEditor = new NoteLineEditor();
-        boolean positive1 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 2);
-        boolean positive2 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 1);
-        boolean positive3 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 3);
+        final NoteLineEditor noteLineEditor = new NoteLineEditor();
+        final boolean positive1 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 2);
+        final boolean positive2 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 1);
+        final boolean positive3 = noteLineEditor.noteHasEnoughLines(artificialFilePath, 3);
         assertTrue(positive1);
         assertTrue(positive2);
         assertTrue(positive3);
@@ -60,12 +60,12 @@ public class NoteLineEditorTest {
 
     @Test
     public void noteHasEnoughLinesMethodNegative() throws IOException {
-        File artificialFile = temporaryFolder.newFile("myfile.txt");
+        final File artificialFile = temporaryFolder.newFile("myfile.txt");
         final Path artificialFilePath = artificialFile.toPath();
         assertTrue("artificial file was not created successfully", artificialFile.exists());
         writingTestContentToArtificialFile(artificialFile, "test\ntest\ntest");
-        NoteLineEditor noteLineEditor = new NoteLineEditor();
-        List<Boolean> negativeExpected = new ArrayList<>();
+        final NoteLineEditor noteLineEditor = new NoteLineEditor();
+        final List<Boolean> negativeExpected = new ArrayList<>();
         negativeExpected.add(noteLineEditor.noteHasEnoughLines(artificialFilePath, -10));
         negativeExpected.add(noteLineEditor.noteHasEnoughLines(artificialFilePath, 0));
         negativeExpected.add(noteLineEditor.noteHasEnoughLines(artificialFilePath, 4));

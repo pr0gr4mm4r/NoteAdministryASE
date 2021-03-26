@@ -15,9 +15,9 @@ public class VerbCountSorterResultFormatter {
      public String formatList(List<Entry<String, Integer>> verbCountOverview) {
         String result = "";
         result = insertLineBreak(result);
-        for (Entry<String, Integer> stringIntegerEntry : verbCountOverview) {
-            String noteName = stringIntegerEntry.getKey();
-            Integer verbCount = stringIntegerEntry.getValue();
+        for (final Entry<String, Integer> stringIntegerEntry : verbCountOverview) {
+            final String noteName = stringIntegerEntry.getKey();
+            final Integer verbCount = stringIntegerEntry.getValue();
             result += noteName + " " + "contains " + verbCount + " "  + theme + ".";
             result = insertLineBreak(result);
         }

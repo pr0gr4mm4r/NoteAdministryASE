@@ -19,10 +19,10 @@ public class NoteStackTest {
     @Test
     public void listNoteNamesTest() throws IOException {
         temporaryFolder.newFile("myfile.txt");
-        String path = temporaryFolder.getRoot().getPath();
-        NoteStack multiNoteProcessor = new NoteStack();
-        Set<String> noteNames =  multiNoteProcessor.listNoteNames(path,1);
-        List<String> noteNameList = new ArrayList<>(noteNames);
+        final String path = temporaryFolder.getRoot().getPath();
+        final NoteStack multiNoteProcessor = new NoteStack();
+        final Set<String> noteNames =  multiNoteProcessor.listNoteNames(path,1);
+        final List<String> noteNameList = new ArrayList<>(noteNames);
         assertEquals("myfile.txt", noteNameList.get(0));
     }
 

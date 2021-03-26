@@ -13,11 +13,11 @@ public class SingleWordSpellchecker {
     private SpellCheckerRaw spellCheckerRaw;
 
     public SingleWordSpellchecker(String wordToCheckSpelling) {
-        String[] wordList = createWordList(wordToCheckSpelling);
+        final String[] wordList = createWordList(wordToCheckSpelling);
         spellCheckerRaw = initializeSpellCheckerRaw(wordList);
-        List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
-        List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        WordExistenceMap wordExistenceMap = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
+        final List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
+        final WordExistenceMap wordExistenceMap = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
         System.out.println(wordExistenceMap);
     }
 }

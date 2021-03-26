@@ -15,10 +15,10 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
     public void execute() {
         System.out.println("Are you sure to permanently delete all files within 'src/base/files'? ");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        String confirmation = scanner.nextLine();
+        final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             try {
-                NoteDeleter noteDeleter = new NoteDeleter();
+                final NoteDeleter noteDeleter = new NoteDeleter();
                 noteDeleter.deleteWholeDirectory();
             } catch (IOException e) {
                 e.printStackTrace();

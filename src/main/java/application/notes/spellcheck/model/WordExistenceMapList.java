@@ -16,17 +16,17 @@ public class WordExistenceMapList extends ArrayList<WordExistenceMap> {
     }
 
     public static WordExistenceMapList initializeWordExistenceMapList(List<String[]> wordListList) {
-        WordExistenceMapList wordExistenceMapList = new WordExistenceMapList();
+        final WordExistenceMapList wordExistenceMapList = new WordExistenceMapList();
         wordExistenceMapList.fill(wordListList);
         return wordExistenceMapList;
     }
 
     private void fill(List<String[]> wordListList) {
-        for (String[] wordList : wordListList) {
-            SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
-            List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
-            List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-            WordExistenceMap wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        for (final String[] wordList : wordListList) {
+            final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(wordList);
+            final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
+            final List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
+            final WordExistenceMap wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
             this.add(wordExistence);
         }
     }

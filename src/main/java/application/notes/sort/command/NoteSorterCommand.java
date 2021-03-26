@@ -17,18 +17,18 @@ public class NoteSorterCommand extends AbstractCommand {
 
     @Override
     public void execute() throws NoFilesInDirectoryException {
-        CriteriaMap criteriaMap = CriteriaMap.initializeCriteriaMap();
-        String criteriaListCommaSeparated = criteriaMap.createCriteriaListCommaSeparated();
+        final CriteriaMap criteriaMap = CriteriaMap.initializeCriteriaMap();
+        final String criteriaListCommaSeparated = criteriaMap.createCriteriaListCommaSeparated();
         System.out.print("After which criteria do you want to sort notes?");
         System.out.println(" (You can choose between " +
                 criteriaListCommaSeparated + ")");
-        String criteria = scanner.nextLine();
-        boolean criteriaExists = criteriaMap.containsKey(criteria);
+        final String criteria = scanner.nextLine();
+        final boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            Sorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
-            Map<String, Integer> map = noteSorter.initialize();
-            List result = noteSorter.sort(map);
-            String formattedResult = noteSorter.format(result);
+            final Sorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
+            final Map<String, Integer> map = noteSorter.initialize();
+            final List result = noteSorter.sort(map);
+            final String formattedResult = noteSorter.format(result);
             noteSorter.dialogue(formattedResult);
         }
     }

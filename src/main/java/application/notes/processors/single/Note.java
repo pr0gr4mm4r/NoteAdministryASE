@@ -20,8 +20,8 @@ public class Note {
 
 
     public static Note initializeNote(String noteName){
-        Note note = new Note();
-        NoteReader noteReader = new NoteReader();
+        final Note note = new Note();
+        final NoteReader noteReader = new NoteReader();
         note.noteName = noteName;
         note.completePath = createCompletePath(noteName, path_for_notes);
         note.content = readNoteForNoteProcessing(note.completePath);

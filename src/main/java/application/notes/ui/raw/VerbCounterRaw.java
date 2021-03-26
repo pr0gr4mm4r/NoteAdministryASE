@@ -11,11 +11,11 @@ public class VerbCounterRaw {
     }
 
     public int countWords() {
-        String[] splittedContent = content.split("\\s+");
+        final String[] splittedContent = content.split("\\s+");
 
-        for(int i = 0; i < splittedContent.length; i++){
-            boolean isVerb = RiTa.isVerb(splittedContent[i]);
-            if(isVerb){
+        for (String s : splittedContent) {
+            final boolean isVerb = RiTa.isVerb(s);
+            if (isVerb) {
                 counter++;
             }
         }

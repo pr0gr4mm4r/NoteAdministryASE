@@ -22,17 +22,17 @@ public class SingleNoteSpellChecker {
     }
 
     public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(String noteName) {
-        SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
-        Note note = initializeNote(noteName);
-        String[] wordList = note.getWordList();
+        final SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
+        final Note note = initializeNote(noteName);
+        final String[] wordList = note.getWordList();
         singleNoteSpellChecker.spellCheckerRaw = initializeSpellCheckerRaw(wordList);
-        List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
-        List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();
+        final List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
+        final List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();
         singleNoteSpellChecker.wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
-        double wordCountOfNote = wordList.length;
-        double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
-        double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
-        String result = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
+        final double wordCountOfNote = wordList.length;
+        final double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
+        final double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
+        final String result = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
         singleNoteSpellChecker.printResult(result);
         return singleNoteSpellChecker;
     }

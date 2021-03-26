@@ -22,7 +22,7 @@ public class OverviewCounter {
     }
 
     public static OverviewCounter initializeOverviewCounter() throws NoFilesInDirectoryException {
-        OverviewCounter overviewCounter = new OverviewCounter();
+        final OverviewCounter overviewCounter = new OverviewCounter();
         overviewCounter.noteCounterRaw = initializeNoteCounterRaw();
         overviewCounter.lineCountList = overviewCounter.noteCounterRaw.getLineCountList();
         overviewCounter.wordCountList = overviewCounter.noteCounterRaw.getWordCountList();

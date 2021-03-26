@@ -22,17 +22,17 @@ public class RhymesNoteSorterIntegrationTest {
 
     @Test
     public void correctInitializationTest() throws IOException, NoFilesInDirectoryException {
-        File file1 = temporaryFolder.newFile("myfile1.txt");
-        File file2 = temporaryFolder.newFile("myfile2.txt");
-        String testContent = "fine line whine";
-        String testContent2 = "I like flowers";
+        final File file1 = temporaryFolder.newFile("myfile1.txt");
+        final File file2 = temporaryFolder.newFile("myfile2.txt");
+        final String testContent = "fine line whine";
+        final String testContent2 = "I like flowers";
         writingTestContentToArtificialFile(file1, testContent);
         writingTestContentToArtificialFile(file2, testContent2);
-        NoteStack noteStack = initializeNoteStack(file1.getParent() + "\\");
-        RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(noteStack);
-        Map<String, Integer> map = rhymesNoteSorter.initialize();
-        int rhymeCount1 = map.get("myfile1.txt");
-        int rhymeCount2 = map.get("myfile2.txt");
+        final NoteStack noteStack = initializeNoteStack(file1.getParent() + "\\");
+        final RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(noteStack);
+        final Map<String, Integer> map = rhymesNoteSorter.initialize();
+        final int rhymeCount1 = map.get("myfile1.txt");
+        final int rhymeCount2 = map.get("myfile2.txt");
         assertEquals("Rhymes were not counted correctly", 3, rhymeCount1);
         assertEquals("Rhymes werde not counted correctly", 0, rhymeCount2);
     }

@@ -17,10 +17,10 @@ public class OverviewWordFinderCommand extends AbstractCommand {
 
     @Override
     public void execute() throws NoFilesInDirectoryException {
-        NoteStack noteStack = initializeNoteStack(path_for_notes);
+        final NoteStack noteStack = initializeNoteStack(path_for_notes);
         System.out.println("type in a keyword to search:");
-        String keyword = scanner.nextLine();
-        OverviewWordFinder overviewWordFinder = new OverviewWordFinder(keyword, noteStack);
+        final String keyword = scanner.nextLine();
+        final OverviewWordFinder overviewWordFinder = new OverviewWordFinder(keyword, noteStack);
         try {
             overviewWordFinder.composeOverview();
         } catch (IOException e) {

@@ -13,12 +13,12 @@ public class RhymeCounterDisplay extends JButton {
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {
-            String text = displayNotes.getNoteText().getText();
-            RhymeCounterRaw rhymeCounterRaw = new RhymeCounterRaw(text);
-            int rhymeCount = rhymeCounterRaw.calcRhymes();
-            JLabel rhymeCounterLabel = displayNotes.getRhymeCounterLabel();
+            final String text = displayNotes.getNoteText().getText();
+            final RhymeCounterRaw rhymeCounterRaw = new RhymeCounterRaw(text);
+            final int rhymeCount = rhymeCounterRaw.calcRhymes();
+            final JLabel rhymeCounterLabel = displayNotes.getRhymeCounterLabel();
             rhymeCounterLabel.setText("" + rhymeCount);
-            JPanel jPanel = new JPanel();
+            final JPanel jPanel = new JPanel();
             jPanel.add(rhymeCounterLabel);
             displayNotes.getManipulatingButtonsContentPanel().removeAll();
             displayNotes.getManipulatingButtonsContentPanel().add(jPanel);

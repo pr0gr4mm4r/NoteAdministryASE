@@ -16,11 +16,11 @@ public class NoteReaderCommand extends AbstractCommand {
     @Override
     public void execute() {
         System.out.println("Please provide a name for the note to read:");
-        String noteName = scanner.nextLine();
-        Path path = createCompletePath(noteName, path_for_notes);
+        final String noteName = scanner.nextLine();
+        final Path path = createCompletePath(noteName, path_for_notes);
 
-        NoteReader noteReader = new NoteReader();
-        String note = noteReader.readNote(path);
+        final NoteReader noteReader = new NoteReader();
+        final String note = noteReader.readNote(path);
         noteReader.displayNote(note);
     }
 }

@@ -30,10 +30,10 @@ public class WordCountNoteSorter implements Sorter {
     @Override
     public Map initialize() throws NoFilesInDirectoryException {
         initializeVariables();
-        StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
+        final StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
         for (int i = 0; i < noteList.size(); i++) {
-            String nameOfNote = nameList.get(i);
-            Integer wordCount = wordCountList.get(i);
+            final String nameOfNote = nameList.get(i);
+            final Integer wordCount = wordCountList.get(i);
             wordCountMap.put(nameOfNote, wordCount);
         }
         return wordCountMap;
@@ -48,17 +48,17 @@ public class WordCountNoteSorter implements Sorter {
 
     @Override
     public List sort(Map wordCountMap) {
-        Set<Entry<String, Integer>> wordCountSet = wordCountMap.entrySet();
-        List<Entry<String, Integer>> finalWordCountList = new ArrayList<>(wordCountSet);
-        Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
+        final Set<Entry<String, Integer>> wordCountSet = wordCountMap.entrySet();
+        final List<Entry<String, Integer>> finalWordCountList = new ArrayList<>(wordCountSet);
+        final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalWordCountList.sort(valueComparator);
         return finalWordCountList;
     }
 
     @Override
     public String format(List finalWordCountList) {
-        WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
-        String formattedResult = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
+        final WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
+        final String formattedResult = wordCountNoteSorterResultFormatter.formatList(finalWordCountList);
         return formattedResult;
     }
 
@@ -67,7 +67,7 @@ public class WordCountNoteSorter implements Sorter {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        String confirmation = scanner.nextLine();
+        final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             createLogFile(formattedResult);
         }
@@ -75,7 +75,7 @@ public class WordCountNoteSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
+        final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);
     }
 

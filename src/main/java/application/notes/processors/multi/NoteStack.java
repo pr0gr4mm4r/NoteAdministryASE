@@ -28,7 +28,7 @@ public class NoteStack implements Processor {
     }
 
     public static NoteStack initializeNoteStack(String path) throws NoFilesInDirectoryException {
-        NoteStack noteStack = new NoteStack();
+        final NoteStack noteStack = new NoteStack();
         try {
             noteStack.noteNames = noteStack.listNoteNames(path, 1);
             if (noteStack.noteNames.size() == 0) {
@@ -46,32 +46,32 @@ public class NoteStack implements Processor {
 
     public List<String[]> removeEmptyLinesForEachNote(List<String[]> wordListLists) {
         for (int i = 0; i < wordListLists.size(); i++) {
-            String[] filteredWordList = removeEmptyLines(wordListLists.get(i));
+            final String[] filteredWordList = removeEmptyLines(wordListLists.get(i));
             wordListLists.set(i, filteredWordList);
         }
         return wordListLists;
     }
 
     public List<String[]> separateWordsForEachNote(List<String> noteList, List<String[]> separatedWordListList) {
-        for (String note : noteList) {
-            String[] separatedWords = createWordList(note);
+        for (final String note : noteList) {
+            final String[] separatedWords = createWordList(note);
             separatedWordListList.add(separatedWords);
         }
         return separatedWordListList;
     }
 
     public List<String> createNoteList(List<Path> pathList) {
-        List<String> noteList = new ArrayList<>();
-        for (Path path : pathList) {
-            String note = readNoteForNoteProcessing(path);
+        final List<String> noteList = new ArrayList<>();
+        for (final Path path : pathList) {
+            final String note = readNoteForNoteProcessing(path);
             noteList.add(note);
         }
         return noteList;
     }
 
     public List<Path> createPathList(Set<String> strings, String path) {
-        List<Path> pathList = new ArrayList<>();
-        for (String string : strings) {
+        final List<Path> pathList = new ArrayList<>();
+        for (final String string : strings) {
             pathList.add(createCompletePath(string, path));
         }
         return pathList;

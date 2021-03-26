@@ -22,11 +22,11 @@ public class NoteButtonActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Note note = initializeNote(this.noteName);
-        String content = note.getNoteForGraphicalProcessing();
-        JEditorPane jEditorPane = displayNotes.getNoteText();
+        final Note note = initializeNote(this.noteName);
+        final String content = note.getNoteForGraphicalProcessing();
+        final JEditorPane jEditorPane = displayNotes.getNoteText();
         jEditorPane.setText(content);
-        Font font = new Font("Arial", Font.PLAIN, 16);
+        final Font font = new Font("Arial", Font.PLAIN, 16);
         jEditorPane.setFont(font);
         displayNotes.getTextManipulationButtons().forEach(button -> button.setEnabled(true));
     }

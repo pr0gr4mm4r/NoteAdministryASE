@@ -22,7 +22,7 @@ public class LogFileDeclarator {
     }
 
     public static LogFileDeclarator initializeLogFileDeclarator(String capture) {
-        LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
+        final LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
         logFileDeclarator.completePath = createCompletePath(logFileDeclarator.logFileName);
@@ -71,11 +71,11 @@ public class LogFileDeclarator {
 
 
     public void addHeader(Path completePath, String action) {
-        String time = createCurrentTimeString();
+        final String time = createCurrentTimeString();
         String header = this.logFileName + " " + time;
         header = insertLineBreak(header);
         header += action;
-        byte[] bytes = header.getBytes();
+        final byte[] bytes = header.getBytes();
         try {
             Files.write(completePath, bytes);
         } catch (IOException e) {

@@ -21,10 +21,10 @@ public class NoteReaderTest {
         final String testContent = "testContent\ntest\ntest";
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
-        Path completePath = createdFile.toPath();
-        NoteReader noteReader = new NoteReader();
+        final Path completePath = createdFile.toPath();
+        final NoteReader noteReader = new NoteReader();
 
-        String fileContent = noteReader.readNote(completePath);
+        final String fileContent = noteReader.readNote(completePath);
 
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent\ntest\ntest");
@@ -35,9 +35,9 @@ public class NoteReaderTest {
         final String testContent = "testContent\ntest\ntest";
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
-        Path completePath = createdFile.toPath();
+        final Path completePath = createdFile.toPath();
 
-        String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
+        final String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
 
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent test test");

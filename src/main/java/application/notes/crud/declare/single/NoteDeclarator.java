@@ -42,9 +42,9 @@ public class NoteDeclarator {
     }
 
     private void addHeader(Path completePath) {
-        String time = createCurrentTimeString();
-        String header = this.noteName + " " + time;
-        byte[] bytes = header.getBytes();
+        final String time = createCurrentTimeString();
+        final String header = this.noteName + " " + time;
+        final byte[] bytes = header.getBytes();
         try {
             Files.write(completePath, bytes);
         } catch (IOException e) {
@@ -53,7 +53,7 @@ public class NoteDeclarator {
     }
 
     private void addDummyLines(final Path completePath) {
-        String dummyMessage = "\n\nDUMMY TEXT";
+        final String dummyMessage = "\n\nDUMMY TEXT";
         try {
             Files.write(
                     Paths.get(String.valueOf(completePath)),
@@ -65,7 +65,7 @@ public class NoteDeclarator {
     }
 
     public static String createCurrentTimeString() {
-        String rawDateString = Instant.now().plus(2, ChronoUnit.HOURS).toString();
+        final String rawDateString = Instant.now().plus(2, ChronoUnit.HOURS).toString();
         return rawDateString.replace("T", " ").substring(0, rawDateString.length() - 11);
     }
 

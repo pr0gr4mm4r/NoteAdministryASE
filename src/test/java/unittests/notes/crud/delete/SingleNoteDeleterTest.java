@@ -18,8 +18,8 @@ public class SingleNoteDeleterTest {
 
     @Test
     public void testSingleFileDeletion() throws IOException {
-        File artificialFile = temporaryFolder.newFile("myfile.txt");
-        SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
+        final File artificialFile = temporaryFolder.newFile("myfile.txt");
+        final SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
 
         singleNoteDeleter.deleteSingleNote("myfile.txt", temporaryFolder.getRoot().getPath());
 

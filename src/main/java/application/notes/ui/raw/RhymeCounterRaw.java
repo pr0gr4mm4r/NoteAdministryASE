@@ -20,18 +20,18 @@ public class RhymeCounterRaw {
 
     public Integer calcRhymes() {
         int counter = 0;
-        String[] splittedContent = content.split("\\s+");
-        SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(splittedContent);
-        List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
-        List<String> wordsnotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        WordExistenceMap wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsnotInLexicon);
-        List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.entrySet().stream().
+        final String[] splittedContent = content.split("\\s+");
+        final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(splittedContent);
+        final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
+        final List<String> wordsnotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
+        final WordExistenceMap wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsnotInLexicon);
+        final List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.entrySet().stream().
                 filter(Map.Entry::getValue).collect(Collectors.toList());
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {
             for (int k = j + 1; k < size; k++) {
-                String firstWord = wordsInLexiconEntries.get(j).getKey();
-                String secondWord = wordsInLexiconEntries.get(k).getKey();
+                final String firstWord = wordsInLexiconEntries.get(j).getKey();
+                final String secondWord = wordsInLexiconEntries.get(k).getKey();
                 if (RiTa.isRhyme(firstWord, secondWord)) {
                     counter++;
                 }

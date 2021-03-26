@@ -23,7 +23,7 @@ public class NoteDeclaratorTest {
     @Before
     public void createNoteDeclarator() {
         generatedString = RandomStringUtils.randomAlphabetic(6);
-        Path path = createCompletePath(generatedString, path_for_notes);
+        final Path path = createCompletePath(generatedString, path_for_notes);
         noteDeclarator = new NoteDeclarator(path, generatedString);
     }
 
@@ -34,7 +34,7 @@ public class NoteDeclaratorTest {
 
     @Test
     public void noteName() {
-        String noteName = noteDeclarator.getNoteName();
+        final String noteName = noteDeclarator.getNoteName();
         assertEquals(noteName, generatedString);
     }
 
@@ -45,6 +45,6 @@ public class NoteDeclaratorTest {
 
     @After
     public void deleteDeclaratedNote() {
-        SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
+        new SingleNoteDeleter();
     }
 }

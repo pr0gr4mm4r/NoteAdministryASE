@@ -21,7 +21,7 @@ public class CriteriaMap extends HashMap<String, Sorter> {
     }
 
     public static CriteriaMap initializeCriteriaMap() throws NoFilesInDirectoryException {
-        CriteriaMap criteriaMap = new CriteriaMap();
+        final CriteriaMap criteriaMap = new CriteriaMap();
         criteriaMap.noteStack = initializeNoteStack(path_for_notes);
         criteriaMap.put("Rhymes", new RhymesNoteSorter(criteriaMap.noteStack));
         criteriaMap.put("Verbs", new VerbCountSorter(criteriaMap.noteStack));

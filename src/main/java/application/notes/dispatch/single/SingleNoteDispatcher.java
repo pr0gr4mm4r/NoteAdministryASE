@@ -26,15 +26,15 @@ public class SingleNoteDispatcher {
     }
 
     public static SingleNoteDispatcher initializeSingleNoteDispatcher(SendingInformation sendingInformation) {
-        SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
-        DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
-        Authenticator auth = new Authenticator() {
+        final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
+        final DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
+        final Authenticator auth = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(sendingInformation.getSender(), sendingInformation.getPassword());
             }
         };
-        Session session = getDefaultInstance(dispatcherRaw.getProperties(), auth);
+        final Session session = getDefaultInstance(dispatcherRaw.getProperties(), auth);
         try {
             singleNoteDispatcher.message = singleNoteDispatcher.createMessage(session, sendingInformation);
         } catch (MessagingException mex) {
@@ -57,8 +57,8 @@ public class SingleNoteDispatcher {
     }
 
     public MimeMessage createMessage(Session session, SendingInformation sendingInfo) throws MessagingException {
-        Multipart multipart = createAttachment(sendingInfo);
-        MimeMessage message = new MimeMessage(session);
+        final Multipart multipart = createAttachment(sendingInfo);
+        final MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sendingInfo.getSender()));
         message.setRecipients(RecipientType.TO, parse(sendingInfo.getRecipient(), false));
         message.setSubject("Your subject line");
@@ -68,11 +68,11 @@ public class SingleNoteDispatcher {
     }
 
     public Multipart createAttachment(SendingInformation sendingInfo) throws MessagingException {
-        MimeBodyPart messageBodyPart = new MimeBodyPart();
-        DataSource source = new FileDataSource(sendingInfo.getPath());
+        final MimeBodyPart messageBodyPart = new MimeBodyPart();
+        final DataSource source = new FileDataSource(sendingInfo.getPath());
         messageBodyPart.setDataHandler(new DataHandler(source));
         messageBodyPart.setFileName(sendingInfo.getPath());
-        Multipart multipart = new MimeMultipart();
+        final Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(messageBodyPart);
         return multipart;
     }

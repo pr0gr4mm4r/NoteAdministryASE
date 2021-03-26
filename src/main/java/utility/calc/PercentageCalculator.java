@@ -6,7 +6,7 @@ public class PercentageCalculator {
     }
 
     public static double calculatePercentageWiseOccurrence(double wordCount, double wordsInLexikon) {
-        double resultInPercent = (wordsInLexikon / wordCount) * 100;
+        final double resultInPercent = (wordsInLexikon / wordCount) * 100;
         return resultInPercent;
     }
 }
