@@ -7,6 +7,7 @@ import application.WordExistenceMap;
 
 import java.util.*;
 
+import static application.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.processors.single.Note.initializeNote;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 
@@ -19,14 +20,14 @@ public class SingleNoteSpellChecker {
 
     }
 
-    public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(String noteName){
+    public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(String noteName) {
         SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
         Note note = initializeNote(noteName);
         String[] wordList = note.getWordList();
         singleNoteSpellChecker.spellCheckerRaw = initializeSpellCheckerRaw(wordList);
         List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
         List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();
-        singleNoteSpellChecker.wordExistence = new WordExistenceMap(wordsInLexicon, wordsNotInLexicon);
+        singleNoteSpellChecker.wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
         double wordCountOfNote = wordList.length;
         double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
         double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);

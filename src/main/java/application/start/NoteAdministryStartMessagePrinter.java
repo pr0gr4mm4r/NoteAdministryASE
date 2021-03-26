@@ -1,6 +1,10 @@
 package application.start;
 
 public class NoteAdministryStartMessagePrinter {
+
+    public NoteAdministryStartMessagePrinter() {
+    }
+
     static void printStartingMessage() {
         System.out.println("Enter a command of your choice" +
                 " (command 'help' for help)");

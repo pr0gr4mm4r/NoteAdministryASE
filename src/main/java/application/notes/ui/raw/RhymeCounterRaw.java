@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static application.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.*;
 
 public class RhymeCounterRaw {
@@ -23,7 +24,7 @@ public class RhymeCounterRaw {
         SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(splittedContent);
         List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
         List<String> wordsnotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
-        WordExistenceMap wordExistence = new WordExistenceMap(wordsInLexicon, wordsnotInLexicon);
+        WordExistenceMap wordExistence = initializeWordExistenceMap(wordsInLexicon, wordsnotInLexicon);
         List<Map.Entry<String, Boolean>> wordsInLexiconEntries = wordExistence.entrySet().stream().
                 filter(Map.Entry::getValue).collect(Collectors.toList());
         final int size = wordsInLexiconEntries.size();

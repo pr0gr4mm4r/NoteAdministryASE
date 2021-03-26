@@ -6,14 +6,19 @@ import java.util.stream.Collectors;
 
 public class WordExistenceMap extends HashMap<String, Boolean> { // use enum
 
+    public WordExistenceMap() {
 
-    public WordExistenceMap(List<String> positives, List<String> negatives) {
+    }
+
+    public static WordExistenceMap initializeWordExistenceMap(List<String> positives, List<String> negatives){
+        WordExistenceMap wordExistenceMap = new WordExistenceMap();
         for (String positive : positives) {
-            this.put(positive, true);
+            wordExistenceMap.put(positive, true);
         }
         for (String negative : negatives) {
-            this.put(negative, false);
+            wordExistenceMap.put(negative, false);
         }
+        return wordExistenceMap;
     }
 
     public List<Entry<String, Boolean>> discardNegatives(){
