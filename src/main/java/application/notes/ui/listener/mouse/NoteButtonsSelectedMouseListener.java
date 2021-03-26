@@ -30,7 +30,7 @@ public class NoteButtonsSelectedMouseListener implements MouseListener {
             button.setBackground(defaultBackgroundColor);
         }
         final Color color = Color.orange;
-        if(jButton.getBackground() == color){
+        if(jButton.getBackground().equals(color)){
             jButton.setBackground(defaultBackgroundColor);
             return;
         }
