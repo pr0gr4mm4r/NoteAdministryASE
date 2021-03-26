@@ -7,7 +7,7 @@ import java.io.IOException;
 import static config.Globals.scanner;
 
 public class MultiNoteDeletionCommand extends AbstractCommand {
-    public MultiNoteDeletionCommand(final String commandName, String description) {
+    public MultiNoteDeletionCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

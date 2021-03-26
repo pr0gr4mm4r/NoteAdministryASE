@@ -8,7 +8,7 @@ import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class SingleNoteDispatcherCommand extends AbstractCommand {
-    public SingleNoteDispatcherCommand(String commandName, String description) {
+    public SingleNoteDispatcherCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

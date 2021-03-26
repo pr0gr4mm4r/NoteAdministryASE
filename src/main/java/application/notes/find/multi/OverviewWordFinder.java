@@ -16,7 +16,7 @@ public class OverviewWordFinder {
     private final NoteStack multiNoteProcessor;
     private final SingleNoteWordFinder singleNoteWordFinder;
 
-    public OverviewWordFinder(final String keyword, NoteStack multiNoteProcessor) {
+    public OverviewWordFinder(final String keyword, final NoteStack multiNoteProcessor) {
         this.keyword = keyword;
         this.multiNoteProcessor = multiNoteProcessor;
         this.singleNoteWordFinder = new SingleNoteWordFinder();

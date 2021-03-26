@@ -4,7 +4,7 @@ import rita.RiTa;
 
 public class VerbCounterRaw {
     private String content;
-    private int counter = 0;
+    private int counter;
 
     public VerbCounterRaw(final String content) {
         this.content = content;

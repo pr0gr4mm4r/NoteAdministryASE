@@ -10,7 +10,7 @@ import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class NoteLineEditorCommand extends AbstractCommand {
-    public NoteLineEditorCommand(final String commandName, String description) {
+    public NoteLineEditorCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

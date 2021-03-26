@@ -36,7 +36,7 @@ public class NoteLineEditor {
         }
     }
 
-    protected void openChangeDialogue(final Path completePath, int lineNumber) {
+    protected void openChangeDialogue(final Path completePath, final int lineNumber) {
         try {
             final int indexLineNumber = lineNumber - 1;
             final String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
@@ -69,7 +69,7 @@ public class NoteLineEditor {
         Files.write(Paths.get(String.valueOf(path)), Collections.singleton(String.join("\n", lines)));
     }
 
-    public boolean noteHasEnoughLines(final Path completePath, int lineNumber) {
+    public boolean noteHasEnoughLines(final Path completePath, final int lineNumber) {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             final long lineCount = stringStream.count();
             if (lineCount < lineNumber || lineNumber < 1) {

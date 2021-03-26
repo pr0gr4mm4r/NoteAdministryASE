@@ -33,7 +33,7 @@ import static config.Globals.scanner;
 
 public class NoteAdministryStart {
     private static CommandList commandList;
-    public static boolean programRun = false;
+    public static boolean programRun;
 
     private static void fillCommands() {
         commandList = new CommandList();

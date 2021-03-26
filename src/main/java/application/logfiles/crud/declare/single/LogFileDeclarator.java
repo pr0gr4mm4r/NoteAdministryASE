@@ -56,11 +56,11 @@ public class LogFileDeclarator {
     public boolean tryToCreateFile(final Path completePath) {
         try {
             Files.createFile(completePath);
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
+        return true;
     }
 
     private String generateDefaultLogFileName() {

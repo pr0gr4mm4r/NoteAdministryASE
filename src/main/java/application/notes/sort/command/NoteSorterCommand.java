@@ -11,7 +11,7 @@ import java.util.Map;
 import static config.Globals.scanner;
 
 public class NoteSorterCommand extends AbstractCommand {
-    public NoteSorterCommand(final String commandName, String description) {
+    public NoteSorterCommand(final String commandName, final String description) {
         super(commandName, description);
     }
 

@@ -12,7 +12,6 @@ import java.util.Scanner;
 
 import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.*;
-import static config.Globals.scanner;
 
 import static org.junit.Assert.assertEquals;
 

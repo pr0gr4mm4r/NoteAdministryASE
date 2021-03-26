@@ -34,11 +34,11 @@ public class NoteDeclarator {
     private boolean tryToCreateFile(final Path completePath) {
         try {
             Files.createFile(completePath);
-            return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
+        return true;
     }
 
     private void addHeader(final Path completePath) {
