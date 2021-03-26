@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import static application.logfiles.crud.declare.single.LogFileDeclarator.initializeLogFileDeclarator;
+import static application.notes.wordcount.raw.NoteCounterRaw.initializeNoteCounterRaw;
 import static config.Globals.scanner;
 
 
@@ -37,7 +38,7 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     private void initializeVariables() {
-        noteCounterRaw = new NoteCounterRaw();
+        noteCounterRaw = initializeNoteCounterRaw();
         noteList = noteStack.getNoteList();
         nameList = new ArrayList<>(noteStack.getNoteNames());
         wordCountList = noteCounterRaw.getWordCountList();

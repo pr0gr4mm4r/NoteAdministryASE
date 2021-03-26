@@ -70,7 +70,7 @@ public class RhymesNoteSorter implements Sorter {
     @Override
     public String format(List finalRhymeOverview) {
         RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
-        String formattedResult = rhymesNoteSorterResultFormatter.formatList(finalRhymeOverview);
+        String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(finalRhymeOverview);
         return formattedResult;
 
     }

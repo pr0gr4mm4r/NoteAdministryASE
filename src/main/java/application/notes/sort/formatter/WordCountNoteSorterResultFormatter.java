@@ -6,7 +6,9 @@ import java.util.Map.Entry;
 import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class WordCountNoteSorterResultFormatter {
+    private final String theme;
     public WordCountNoteSorterResultFormatter() {
+        this.theme = "words";
     }
 
     public String formatList(List<Entry<String, Integer>> wordCountOverview) {
@@ -15,7 +17,7 @@ public class WordCountNoteSorterResultFormatter {
         for (Entry<String, Integer> stringIntegerEntry : wordCountOverview) {
             String noteName = stringIntegerEntry.getKey();
             Integer wordCount = stringIntegerEntry.getValue();
-            result += noteName + " " + "contains " + wordCount + " lines.";
+            result += noteName + " " + "contains " + wordCount + " " + theme + ".";
             result = insertLineBreak(result);
         }
         return result;

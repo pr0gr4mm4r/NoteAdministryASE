@@ -6,16 +6,19 @@ import java.util.Map.Entry;
 import static application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter.insertLineBreak;
 
 public class VerbCountSorterResultFormatter {
+    private final String theme;
+
     public VerbCountSorterResultFormatter() {
+        this.theme = "verbs";
     }
 
-    public String formatList(List<Entry<String, Integer>> verbCountOverview) {
+     public String formatList(List<Entry<String, Integer>> verbCountOverview) {
         String result = "";
         result = insertLineBreak(result);
         for (Entry<String, Integer> stringIntegerEntry : verbCountOverview) {
             String noteName = stringIntegerEntry.getKey();
             Integer verbCount = stringIntegerEntry.getValue();
-            result += noteName + " " + "contains " + verbCount + " verbs.";
+            result += noteName + " " + "contains " + verbCount + " "  + theme + ".";
             result = insertLineBreak(result);
         }
         return result;
