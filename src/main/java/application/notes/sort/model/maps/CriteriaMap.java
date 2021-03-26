@@ -1,5 +1,6 @@
 package application.notes.sort.model.maps;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.sorter.RhymesNoteSorter;
@@ -19,7 +20,7 @@ public class CriteriaMap extends HashMap<String, Sorter> {
 
     }
 
-    public static CriteriaMap initializeCriteriaMap() {
+    public static CriteriaMap initializeCriteriaMap() throws NoFilesInDirectoryException {
         CriteriaMap criteriaMap = new CriteriaMap();
         criteriaMap.noteStack = initializeNoteStack(path_for_notes);
         criteriaMap.put("Rhymes", new RhymesNoteSorter(criteriaMap.noteStack));

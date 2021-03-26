@@ -1,5 +1,6 @@
 package application.notes.wordcount.multi;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
@@ -20,7 +21,7 @@ public class OverviewCounter {
 
     }
 
-    public static OverviewCounter initializeOverviewCounter() {
+    public static OverviewCounter initializeOverviewCounter() throws NoFilesInDirectoryException {
         OverviewCounter overviewCounter = new OverviewCounter();
         overviewCounter.noteCounterRaw = initializeNoteCounterRaw();
         overviewCounter.lineCountList = overviewCounter.noteCounterRaw.getLineCountList();

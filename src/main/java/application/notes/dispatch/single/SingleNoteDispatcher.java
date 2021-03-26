@@ -6,13 +6,15 @@ import application.notes.dispatch.raw.DispatcherRaw;
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
 import javax.mail.*;
+import javax.mail.Message.RecipientType;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.activation.DataSource;
 import javax.mail.internet.MimeMultipart;
 
-import java.util.Properties;
+import static javax.mail.Session.getDefaultInstance;
+import static javax.mail.internet.InternetAddress.parse;
 
 public class SingleNoteDispatcher {
     //Zum Funktionieren die Option "Zugriff durch weniger sichere Apps" im Googlekonto aktivieren
@@ -23,25 +25,25 @@ public class SingleNoteDispatcher {
 
     }
 
-    public static SingleNoteDispatcher initializeSingleNoteDispatcher(SendingInformation sendingInformation){
+    public static SingleNoteDispatcher initializeSingleNoteDispatcher(SendingInformation sendingInformation) {
         SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
-        DispatcherRaw dispatcherRaw = DispatcherRaw.defineProperties();
+        DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
         Authenticator auth = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(sendingInformation.getSender(), sendingInformation.getPassword());
             }
         };
-        Session session = Session.getDefaultInstance(dispatcherRaw.getProperties(), auth);
+        Session session = getDefaultInstance(dispatcherRaw.getProperties(), auth);
         try {
-             singleNoteDispatcher.message = singleNoteDispatcher.createMessage(session, sendingInformation);
+            singleNoteDispatcher.message = singleNoteDispatcher.createMessage(session, sendingInformation);
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
         return singleNoteDispatcher;
     }
 
-    void sendMessage(){
+    void sendMessage() {
         try {
             Transport.send(message);
             displaySuccessMessage();
@@ -58,7 +60,7 @@ public class SingleNoteDispatcher {
         Multipart multipart = createAttachment(sendingInfo);
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(sendingInfo.getSender()));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(sendingInfo.getRecipient(), false));
+        message.setRecipients(RecipientType.TO, parse(sendingInfo.getRecipient(), false));
         message.setSubject("Your subject line");
         message.setText("Your message");
         message.setContent(multipart);

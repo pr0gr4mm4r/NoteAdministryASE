@@ -13,6 +13,6 @@ public class SingleNoteSpellcheckerCommand  extends AbstractCommand {
     public void execute() {
         System.out.println("Which note do you want to check spelling for?");
         String noteName = scanner.nextLine();
-        SingleNoteSpellChecker singleNoteSpellChecker = SingleNoteSpellChecker.initializeSingleNoteSpellChecker(noteName);
+        SingleNoteSpellChecker.initializeSingleNoteSpellChecker(noteName);
     }
 }

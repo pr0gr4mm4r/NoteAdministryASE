@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -30,10 +27,13 @@ public class NoteStack implements Processor {
 
     }
 
-    public static NoteStack initializeNoteStack(String path){
+    public static NoteStack initializeNoteStack(String path) throws NoFilesInDirectoryException {
         NoteStack noteStack = new NoteStack();
         try {
             noteStack.noteNames = noteStack.listNoteNames(path, 1);
+            if (noteStack.noteNames.size() == 0) {
+                throw new NoFilesInDirectoryException(path_for_notes);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

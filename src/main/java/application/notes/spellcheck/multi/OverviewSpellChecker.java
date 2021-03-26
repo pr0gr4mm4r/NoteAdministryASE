@@ -1,6 +1,7 @@
 package application.notes.spellcheck.multi;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
 import application.notes.spellcheck.model.WordExistenceMapList;
@@ -12,7 +13,7 @@ import static application.notes.processors.multi.NoteStack.*;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
-import static application.notes.spellcheck.single.SingleNoteSpellChecker.calculatePercentageWiseOccurrence;
+import static utility.calc.PercentageCalculator.calculatePercentageWiseOccurrence;
 
 
 public class OverviewSpellChecker {
@@ -24,7 +25,7 @@ public class OverviewSpellChecker {
 
     }
 
-    public static OverviewSpellChecker initializeOverviewSpellChecker() {
+    public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException {
         OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
@@ -51,7 +52,8 @@ public class OverviewSpellChecker {
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            LogFileDeclarator.initializeLogFileDeclarator(result, "Spellcheck All Notes");
+            LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
+            logFileDeclarator.declareLogFile(result);
         }
     }
 

@@ -1,6 +1,8 @@
 package unittests.notes.find;
 
 import application.notes.find.multi.OverviewWordFinder;
+import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.NoteStack;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,10 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static application.notes.processors.multi.NoteStack.initializeNoteStack;
 import static org.junit.Assert.*;
@@ -29,9 +28,10 @@ public class OverviewWordFinderTest {
     public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
-    public void setup() throws IOException {
+    public void setup() throws IOException, NoFilesInDirectoryException {
         artificialFile = temporaryFolder.newFile("myfile.txt");
-        overviewWordFinder = new OverviewWordFinder(testWord, initializeNoteStack(temporaryFolder.getRoot().getPath() + "\\"));
+        NoteStack noteStack = initializeNoteStack(temporaryFolder.getRoot().getPath() + "\\");
+        overviewWordFinder = new OverviewWordFinder(testWord, noteStack);
     }
 
     @Test

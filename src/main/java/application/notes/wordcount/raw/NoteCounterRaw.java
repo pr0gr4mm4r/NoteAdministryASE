@@ -1,5 +1,6 @@
 package application.notes.wordcount.raw;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.processors.single.Note;
 
@@ -33,7 +34,7 @@ public class NoteCounterRaw {
         return noteCounterRaw;
     }
 
-    public static NoteCounterRaw initializeNoteCounterRaw(){
+    public static NoteCounterRaw initializeNoteCounterRaw() throws NoFilesInDirectoryException {
         NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
         NoteStack noteStack = NoteStack.initializeNoteStack(path_for_notes);
         List<Path> pathList = noteStack.getPathList();

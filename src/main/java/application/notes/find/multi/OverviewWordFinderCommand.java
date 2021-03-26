@@ -1,5 +1,6 @@
 package application.notes.find.multi;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
@@ -15,7 +16,7 @@ public class OverviewWordFinderCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws NoFilesInDirectoryException {
         NoteStack noteStack = initializeNoteStack(path_for_notes);
         System.out.println("type in a keyword to search:");
         String keyword = scanner.nextLine();

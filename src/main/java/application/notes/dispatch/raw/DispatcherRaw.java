@@ -9,7 +9,7 @@ public class DispatcherRaw {
 
     }
 
-    public static DispatcherRaw defineProperties() {
+    public static DispatcherRaw initializeDispatcherRaw() {
         DispatcherRaw dispatcherRaw = new DispatcherRaw();
         dispatcherRaw.properties = System.getProperties();
         final String host = "smtp.gmail.com";

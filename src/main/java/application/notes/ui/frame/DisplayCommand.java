@@ -1,5 +1,6 @@
 package application.notes.ui.frame;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 public class DisplayCommand extends AbstractCommand {
@@ -8,7 +9,7 @@ public class DisplayCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws NoFilesInDirectoryException {
         new DisplayNotes();
     }
 }

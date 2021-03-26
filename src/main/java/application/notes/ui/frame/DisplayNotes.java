@@ -1,5 +1,6 @@
 package application.notes.ui.frame;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.ui.listener.action.NoteButtonActionListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;
@@ -36,7 +37,7 @@ public class DisplayNotes extends JFrame {
     private final JTextPane noteText = new JTextPane();
     private JScrollPane jScrollPane;
 
-    public DisplayNotes() {
+    public DisplayNotes() throws NoFilesInDirectoryException {
         this.setTitle("Overview of Notes");
         masterPanel.setLayout(masterGrid);
         JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);

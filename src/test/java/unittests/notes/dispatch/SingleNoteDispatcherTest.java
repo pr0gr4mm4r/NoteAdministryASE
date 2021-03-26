@@ -10,7 +10,6 @@ import javax.mail.*;
 import javax.mail.internet.MimeMessage;
 
 import java.util.Arrays;
-import java.util.Properties;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +18,7 @@ public class SingleNoteDispatcherTest {
 
     @Test
     public void createMessageTest() throws MessagingException {
-        DispatcherRaw dispatcherRaw = DispatcherRaw.defineProperties();
+        DispatcherRaw dispatcherRaw = DispatcherRaw.initializeDispatcherRaw();
         Session session = Session.getDefaultInstance(dispatcherRaw.getProperties(), new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {

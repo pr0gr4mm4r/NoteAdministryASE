@@ -1,5 +1,6 @@
 package application.notes.sort.command;
 
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.model.maps.CriteriaMap;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
@@ -15,7 +16,7 @@ public class NoteSorterCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws NoFilesInDirectoryException {
         CriteriaMap criteriaMap = CriteriaMap.initializeCriteriaMap();
         String criteriaListCommaSeparated = criteriaMap.createCriteriaListCommaSeparated();
         System.out.print("After which criteria do you want to sort notes?");

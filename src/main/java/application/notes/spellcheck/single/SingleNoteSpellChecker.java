@@ -7,6 +7,7 @@ import utility.map.WordExistenceMap;
 
 import java.util.*;
 
+import static utility.calc.PercentageCalculator.calculatePercentageWiseOccurrence;
 import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.processors.single.Note.initializeNote;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
@@ -16,7 +17,7 @@ public class SingleNoteSpellChecker {
     private SpellCheckerRaw spellCheckerRaw;
     private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
-    public SingleNoteSpellChecker() {
+    private SingleNoteSpellChecker() {
 
     }
 
@@ -40,8 +41,5 @@ public class SingleNoteSpellChecker {
         System.out.println(result);
     }
 
-    public static double calculatePercentageWiseOccurrence(double wordCount, double wordsInLexikon) {
-        double resultInPercent = (wordsInLexikon / wordCount) * 100;
-        return resultInPercent;
-    }
+
 }

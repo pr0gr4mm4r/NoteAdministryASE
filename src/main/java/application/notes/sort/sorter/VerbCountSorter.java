@@ -74,7 +74,7 @@ public class VerbCountSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Verbs");
+        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
         logFileDeclarator.declareLogFile(formattedResult);
     }
 }

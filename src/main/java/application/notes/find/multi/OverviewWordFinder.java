@@ -22,7 +22,6 @@ public class OverviewWordFinder {
         this.singleNoteWordFinder = new SingleNoteWordFinder();
     }
 
-
     protected void composeOverview() throws IOException {
         List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
         List<String> noteList = createNoteList(pathsToNotesList);

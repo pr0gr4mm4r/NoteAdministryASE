@@ -1,5 +1,6 @@
 package application.notes.sort.sorter;
 
+import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.formatter.RhymesNoteSorterResultFormatter;
@@ -19,8 +20,8 @@ public class RhymesNoteSorter implements Sorter {
     List<String> noteNames = new ArrayList<>();
     Map<String, Integer> rhymeOverview = new StringIntegerMap();
 
-    public RhymesNoteSorter(NoteStack multiNoteProcessor) {
-        this.noteStack = multiNoteProcessor;
+    public RhymesNoteSorter(NoteStack noteStack) {
+        this.noteStack = noteStack;
     }
 
     @Override
@@ -89,6 +90,7 @@ public class RhymesNoteSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
+        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
+        logFileDeclarator.declareLogFile(formattedResult);
     }
 }

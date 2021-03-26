@@ -17,11 +17,11 @@ public class LogFileDeclarator {
     private String logFileName;
     private Path completePath;
 
-    public LogFileDeclarator() {
+    private LogFileDeclarator() {
 
     }
 
-    public static LogFileDeclarator initializeLogFileDeclarator(String formattedResult, String capture) {
+    public static LogFileDeclarator initializeLogFileDeclarator(String capture) {
         LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();

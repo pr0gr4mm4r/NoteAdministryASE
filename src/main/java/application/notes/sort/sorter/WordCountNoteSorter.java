@@ -1,5 +1,7 @@
 package application.notes.sort.sorter;
 
+import application.logfiles.crud.declare.single.LogFileDeclarator;
+import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.Sorter;
 import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
@@ -26,7 +28,7 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     @Override
-    public Map initialize() {
+    public Map initialize() throws NoFilesInDirectoryException {
         initializeVariables();
         StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
         for (int i = 0; i < noteList.size(); i++) {
@@ -37,7 +39,7 @@ public class WordCountNoteSorter implements Sorter {
         return wordCountMap;
     }
 
-    private void initializeVariables() {
+    private void initializeVariables() throws NoFilesInDirectoryException {
         noteCounterRaw = initializeNoteCounterRaw();
         noteList = noteStack.getNoteList();
         nameList = new ArrayList<>(noteStack.getNoteNames());
@@ -73,7 +75,8 @@ public class WordCountNoteSorter implements Sorter {
 
     @Override
     public void createLogFile(String formattedResult) {
-        initializeLogFileDeclarator(formattedResult, "Sorting Notes by Quantity of Rhymes");
+        LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
+        logFileDeclarator.declareLogFile(formattedResult);
     }
 
 }

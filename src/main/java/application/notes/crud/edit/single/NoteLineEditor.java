@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static application.notes.wordcount.raw.NoteCounterRaw.initializeNoteCounterRaw;
 import static config.Globals.scanner;
 import static application.notes.crud.edit.single.DisplayState.ERROR;
 import static application.notes.crud.edit.single.DisplayState.SUCCESS;
@@ -21,7 +22,7 @@ public class NoteLineEditor {
     }
 
     public long countLineLength(String noteName) {
-        NoteCounterRaw noteCounterRaw = NoteCounterRaw.initializeNoteCounterRaw(noteName);
+        NoteCounterRaw noteCounterRaw = initializeNoteCounterRaw(noteName);
         return noteCounterRaw.getLineCount();
     }
 
