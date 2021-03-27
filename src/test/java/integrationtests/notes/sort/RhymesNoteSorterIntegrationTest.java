@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static application.notes.processors.multi.NoteStack.*;
 import static org.junit.Assert.assertEquals;
-import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
+import static helper.FileWriter.writingTestContentToArtificialFile;
 
 public class RhymesNoteSorterIntegrationTest {
     @Rule

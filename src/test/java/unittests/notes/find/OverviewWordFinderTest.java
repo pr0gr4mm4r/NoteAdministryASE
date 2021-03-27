@@ -16,7 +16,7 @@ import java.util.*;
 
 import static application.notes.processors.multi.NoteStack.initializeNoteStack;
 import static org.junit.Assert.*;
-import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
+import static helper.FileWriter.writingTestContentToArtificialFile;
 
 
 public class OverviewWordFinderTest {

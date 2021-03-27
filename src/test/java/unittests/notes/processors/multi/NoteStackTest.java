@@ -21,8 +21,10 @@ public class NoteStackTest {
         temporaryFolder.newFile("myfile.txt");
         final String path = temporaryFolder.getRoot().getPath();
         final NoteStack noteStack = new NoteStack();
+
         final Set<String> noteNames =  noteStack.listNoteNames(path,1);
         final List<String> noteNameList = new ArrayList<>(noteNames);
+
         assertEquals("myfile.txt", noteNameList.get(0));
         assertEquals(1, noteNameList.size());
     }
@@ -34,8 +36,10 @@ public class NoteStackTest {
         temporaryFolder.newFile("myfile3.txt");
         final String path = temporaryFolder.getRoot().getPath();
         final NoteStack noteStack = new NoteStack();
+
         final Set<String> noteNames =  noteStack.listNoteNames(path,1);
         final List<String> noteNameList = new ArrayList<>(noteNames);
+
         assertTrue(noteNameList.contains("myfile1.txt"));
         assertTrue(noteNameList.contains("myfile2.txt"));
         assertTrue(noteNameList.contains("myfile3.txt"));

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
+import static helper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteLineEditorTest {
     @Rule

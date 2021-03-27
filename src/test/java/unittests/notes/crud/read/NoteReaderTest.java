@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
-import static unittests.notes.helper.FileWriter.writingTestContentToArtificialFile;
+import static helper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteReaderTest {
     @Rule
