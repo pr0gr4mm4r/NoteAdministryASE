@@ -14,6 +14,9 @@ public class OverviewSpellCheckerCommand extends AbstractCommand {
     @Override
     public void execute() throws NoFilesInDirectoryException {
         System.out.println("In the following all files of " + path_for_notes + " will be checked for correct spelling:");
-        initializeOverviewSpellChecker();
+        OverviewSpellChecker overviewSpellChecker = initializeOverviewSpellChecker();
+        final String formattedResult = overviewSpellChecker.format();
+        overviewSpellChecker.printResult(formattedResult);
+        overviewSpellChecker.openLogFileDialogue(formattedResult);
     }
 }

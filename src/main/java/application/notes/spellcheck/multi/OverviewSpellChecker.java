@@ -32,9 +32,6 @@ public class OverviewSpellChecker {
         final List<String[]> wordListList = noteStack.getWordListList();
         overviewSpellChecker.wordExistenceMapList = initializeWordExistenceMapList(wordListList);
         overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);
-        final String formattedResult = overviewSpellChecker.format();
-        overviewSpellChecker.print(formattedResult);
-        overviewSpellChecker.openLogFileDialogue(formattedResult);
         return overviewSpellChecker;
     }
 
@@ -48,7 +45,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    private void openLogFileDialogue(final String result) {
+    void openLogFileDialogue(final String result) {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
@@ -58,12 +55,12 @@ public class OverviewSpellChecker {
         }
     }
 
-    private void print(final String result) {
+    void printResult(final String result) {
         System.out.println(result);
         System.out.println();
     }
 
-    private String format() {
+    String format() {
         return overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
     }
 }
