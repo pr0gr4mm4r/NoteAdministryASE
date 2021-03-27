@@ -10,9 +10,8 @@ public class VerbCounterRaw {
         this.content = content;
     }
 
-    public int countWords() {
+    public int countVerbs() {
         final String[] splittedContent = content.split("\\s+");
-
         for (String s : splittedContent) {
             final boolean isVerb = RiTa.isVerb(s);
             if (isVerb) {

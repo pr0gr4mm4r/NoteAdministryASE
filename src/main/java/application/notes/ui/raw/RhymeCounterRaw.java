@@ -36,7 +36,7 @@ public class RhymeCounterRaw {
         return counter;
     }
 
-    private List<Entry<String, Boolean>> initializeWordsInLexiconEntries(WordExistenceMap wordExistence) {
+    private List<Entry<String, Boolean>> initializeWordsInLexiconEntries(final WordExistenceMap wordExistence) {
         return wordExistence.entrySet().stream().
                 filter(Entry::getValue).collect(Collectors.toList());
     }
