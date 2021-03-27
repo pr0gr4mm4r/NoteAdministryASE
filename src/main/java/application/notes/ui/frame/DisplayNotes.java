@@ -16,7 +16,7 @@ import java.util.List;
 import static application.notes.processors.multi.NoteStack.initializeNoteStack;
 import static config.Globals.path_for_notes;
 
-public class DisplayNotes extends JFrame {
+public class DisplayNotes extends JFrame implements DisplayTechnology {
     private List<JLabel> noteNameLabels = new ArrayList<>();
     private final List<JButton> noteDisplayButtons = new ArrayList<>();
     private final List<JButton> textManipulationButtons = new ArrayList<>();
