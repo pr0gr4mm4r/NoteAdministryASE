@@ -20,8 +20,7 @@ public class RhymeCounterRaw {
     }
 
     public Integer calcRhymes() {
-        WordExistenceMap wordExistence = initializeWordExistence();
-        initializeWordsInLexiconEntries(wordExistence);
+        WordExistenceMap wordExistence = customInitializeWordExistence();
         final List<Entry<String, Boolean>> wordsInLexiconEntries = initializeWordsInLexiconEntries(wordExistence);
         final int size = wordsInLexiconEntries.size();
         for (int j = 0; j < size - 1; j++) {
@@ -36,12 +35,12 @@ public class RhymeCounterRaw {
         return counter;
     }
 
-    private List<Entry<String, Boolean>> initializeWordsInLexiconEntries(final WordExistenceMap wordExistence) {
+    public List<Entry<String, Boolean>> initializeWordsInLexiconEntries(final WordExistenceMap wordExistence) {
         return wordExistence.entrySet().stream().
                 filter(Entry::getValue).collect(Collectors.toList());
     }
 
-    private WordExistenceMap initializeWordExistence() {
+    public WordExistenceMap customInitializeWordExistence() {
         final String[] splittedContent = content.split("\\s+");
         final SpellCheckerRaw spellCheckerRaw = initializeSpellCheckerRaw(splittedContent);
         final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
