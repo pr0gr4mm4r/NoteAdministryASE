@@ -13,11 +13,6 @@ import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 
 public class RhymeCounterRawTest {
 
-    @Before
-    public void setup() {
-
-    }
-
     @Test
     public void customInitializeWordExistence() {
         RhymeCounterRaw rhymeCounterRaw = new RhymeCounterRaw("This\nis test\ncontent gonne wronng");
