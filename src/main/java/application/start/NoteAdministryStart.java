@@ -22,9 +22,6 @@ import application.start.model.specialcommands.helpCommands.ExtendedHelpCommand;
 import application.start.model.specialcommands.helpCommands.HelpCommand;
 import application.start.model.specialcommands.exitCommand.ProgramExitCommand;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import utility.logger.GlobalLogger;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -33,11 +30,12 @@ import static application.start.NoteAdministryStartMessagePrinter.printErrorMess
 import static application.start.NoteAdministryStartMessagePrinter.printStartingMessage;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
+import static utility.logger.GlobalLogger.logger;
+import static utility.logger.GlobalLogger.loggerLineBreak;
 
 public class NoteAdministryStart {
     private static CommandList commandList;
     public static boolean programRun;
-    private static final Logger logger = LogManager.getLogger();
 
     private static void fillCommands() {
         commandList = new CommandList();
@@ -62,7 +60,6 @@ public class NoteAdministryStart {
     }
 
     public static void main(final String... args) {
-        logger.info("Das ist eine Info");
         programRun = true;
         fillCommands();
         while (programRun) {
@@ -90,6 +87,7 @@ public class NoteAdministryStart {
                 e.printStackTrace();
             }
         }
+
     }
 
     private static void makeActiveDecisions(final String commandName) {
@@ -105,18 +103,18 @@ public class NoteAdministryStart {
     }
 
     protected static void listCommands(final HelpMode helpMode) {
-        System.out.println();
+        loggerLineBreak();
         if (helpMode.equals(HelpMode.EXTENDED)) {
-            System.out.println(commandList.stream().map(
+            logger().info(commandList.stream().map(
                     command -> command.getCommandName() + "   |   " +
                             command.getDescription() + "\n").collect(Collectors.joining())
             );
             return;
         }
-        System.out.println(commandList.stream().map(
+        logger().info(commandList.stream().map(
                 command -> command.getCommandName() + "    ").collect(Collectors.joining())
         );
-        System.out.println();
+        loggerLineBreak();
         resetCommandActiveFlagFromCommandList();
     }
 }

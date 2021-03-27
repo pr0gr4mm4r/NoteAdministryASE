@@ -1,4 +1,4 @@
-package integrationtests.sort;
+package integrationtests.notes.sort;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;

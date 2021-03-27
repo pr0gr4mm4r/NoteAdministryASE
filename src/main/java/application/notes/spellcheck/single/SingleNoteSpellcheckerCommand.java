@@ -2,6 +2,7 @@ package application.notes.spellcheck.single;
 
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
+import static application.notes.spellcheck.single.SingleNoteSpellChecker.initializeSingleNoteSpellChecker;
 import static config.Globals.scanner;
 
 public class SingleNoteSpellcheckerCommand  extends AbstractCommand {
@@ -13,6 +14,6 @@ public class SingleNoteSpellcheckerCommand  extends AbstractCommand {
     public void execute() {
         System.out.println("Which note do you want to check spelling for?");
         final String noteName = scanner.nextLine();
-        SingleNoteSpellChecker.initializeSingleNoteSpellChecker(noteName);
+        SingleNoteSpellChecker singleNoteSpellChecker = initializeSingleNoteSpellChecker(noteName);
     }
 }

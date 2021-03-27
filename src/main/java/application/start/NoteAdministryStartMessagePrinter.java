@@ -1,18 +1,21 @@
 package application.start;
 
+
+import static utility.logger.GlobalLogger.*;
+
 public class NoteAdministryStartMessagePrinter {
 
     public NoteAdministryStartMessagePrinter() {
     }
 
     static void printStartingMessage() {
-        System.out.println("Enter a command of your choice" +
+        logger().info("Enter a command of your choice" +
                 " (command 'help' for help)");
     }
 
     static void printErrorMessage(final String commandName) {
-        System.out.println();
-        System.out.println("error -> command '" + commandName + "' does not exist!");
-        System.out.println();
+        loggerLineBreak();
+        logger().info("error -> command '" + commandName + "' does not exist!");
+        loggerLineBreak();
     }
 }
