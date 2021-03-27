@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class NoteStackTest {
     @Rule
@@ -20,10 +20,26 @@ public class NoteStackTest {
     public void listNoteNamesTest() throws IOException {
         temporaryFolder.newFile("myfile.txt");
         final String path = temporaryFolder.getRoot().getPath();
-        final NoteStack multiNoteProcessor = new NoteStack();
-        final Set<String> noteNames =  multiNoteProcessor.listNoteNames(path,1);
+        final NoteStack noteStack = new NoteStack();
+        final Set<String> noteNames =  noteStack.listNoteNames(path,1);
         final List<String> noteNameList = new ArrayList<>(noteNames);
         assertEquals("myfile.txt", noteNameList.get(0));
+        assertEquals(1, noteNameList.size());
+    }
+
+    @Test
+    public void listNoteNamesExtendedTest() throws IOException {
+        temporaryFolder.newFile("myfile1.txt");
+        temporaryFolder.newFile("myfile2.txt");
+        temporaryFolder.newFile("myfile3.txt");
+        final String path = temporaryFolder.getRoot().getPath();
+        final NoteStack noteStack = new NoteStack();
+        final Set<String> noteNames =  noteStack.listNoteNames(path,1);
+        final List<String> noteNameList = new ArrayList<>(noteNames);
+        assertTrue(noteNameList.contains("myfile1.txt"));
+        assertTrue(noteNameList.contains("myfile2.txt"));
+        assertTrue(noteNameList.contains("myfile3.txt"));
+        assertEquals(3, noteNameList.size());
     }
 
 }

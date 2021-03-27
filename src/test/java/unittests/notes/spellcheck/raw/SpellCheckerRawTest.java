@@ -37,7 +37,7 @@ public class SpellCheckerRawTest {
     }
 
     @Test
-    public void testcountWordsPresentInLexiconMethod() {
+    public void countWordsPresentInLexiconTest() {
         final double wordsInLexikon = spellCheckerRaw.countWordsPresentInLexicon(exampleStrings);
 
         assertEquals(1, wordsInLexikon, 0.0);

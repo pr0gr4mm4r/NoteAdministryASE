@@ -7,26 +7,28 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class SingleNoteWordFinderTest {
     private SingleNoteWordFinder singelNoteWordFinder;
 
     @Before
-    public void setup(){
+    public void setup() {
         singelNoteWordFinder = new SingleNoteWordFinder();
     }
 
     @Test
     public void filterWordOccurrenceTest() {
         Map<Integer, Integer> wordOccurrence = new HashMap<>();
-        wordOccurrence.put(1,0);
-        wordOccurrence.put(2,0);
-        wordOccurrence.put(3,0);
-        wordOccurrence.put(4,2);
-        wordOccurrence.put(5,0);
+        wordOccurrence.put(1, 0);
+        wordOccurrence.put(2, 0);
+        wordOccurrence.put(3, 0);
+        wordOccurrence.put(4, 2);
+        wordOccurrence.put(5, 0);
         wordOccurrence = singelNoteWordFinder.filterWordOccurrence(wordOccurrence);
-        assertEquals(1, wordOccurrence.size());
+        assertEquals(wordOccurrence.get(4).intValue(), 2);
+        wordOccurrence.remove(4);
+        assertTrue(wordOccurrence.isEmpty());
     }
 
     @Test

@@ -82,9 +82,9 @@ public class OverviewWordFinderTest {
         final Map<Integer, Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
         final int occurrenceInFirstLine = wordOccurrence.get(1);
         final int occurrenceInSecondLine = wordOccurrence.get(2);
-        final Object nullExpectation = wordOccurrence.get(3);
+        final Integer occurrenceInThirdLine = wordOccurrence.get(3);
         assertEquals(2, occurrenceInFirstLine);
         assertEquals(1, occurrenceInSecondLine);
-        assertNull(nullExpectation);
+        assertNull(occurrenceInThirdLine);
     }
 }

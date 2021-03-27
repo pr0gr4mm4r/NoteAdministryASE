@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class VerbCounterRawTest {
 
     @Test
-    public void testCountVerbsMethod() {
+    public void countVerbsTest() {
         String testContent = "test\nwalk run say actress";
         VerbCounterRaw verbCounterRaw = new VerbCounterRaw(testContent);
         int verbCount = verbCounterRaw.countVerbs();
