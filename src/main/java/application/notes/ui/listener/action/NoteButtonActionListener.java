@@ -1,7 +1,7 @@
 package application.notes.ui.listener.action;
 
 import application.notes.processors.single.Note;
-import application.notes.ui.frame.DisplayNotes;
+import application.notes.ui.display.DisplayNotes;
 
 import javax.swing.*;
 import java.awt.*;

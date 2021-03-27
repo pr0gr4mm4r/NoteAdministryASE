@@ -1,4 +1,4 @@
-package application.notes.ui.frame;
+package application.notes.ui.display;
 
 public interface DisplayTechnology {
 }

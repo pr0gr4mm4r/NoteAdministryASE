@@ -1,15 +1,15 @@
-package application.notes.ui.display;
+package application.notes.ui.buttons;
 
-import application.notes.ui.frame.DisplayNotes;
+import application.notes.ui.display.DisplayNotes;
 import application.notes.ui.listener.mouse.ContentButtonsSelectedMouseListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;
 import application.notes.ui.raw.RhymeCounterRaw;
 
 import javax.swing.*;
 
-public class RhymeCounterDisplay extends JButton {
+public class RhymeCounterDisplayButton extends JButton {
     DisplayNotes displayNotes;
-    public RhymeCounterDisplay(final String buttonText, final DisplayNotes displayNotes){
+    public RhymeCounterDisplayButton(final String buttonText, final DisplayNotes displayNotes){
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {

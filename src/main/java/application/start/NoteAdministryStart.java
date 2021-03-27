@@ -11,7 +11,7 @@ import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.sort.command.NoteSorterCommand;
 import application.notes.spellcheck.multi.OverviewSpellCheckerCommand;
 import application.notes.spellcheck.single.SingleNoteSpellcheckerCommand;
-import application.notes.ui.frame.DisplayCommand;
+import application.notes.ui.command.DisplayCommand;
 import application.notes.wordcount.multi.OverviewCounterCommand;
 import application.notes.wordcount.single.SingleNoteCounterCommand;
 import application.singleWord.SingleWordSpellCheckerCommand;

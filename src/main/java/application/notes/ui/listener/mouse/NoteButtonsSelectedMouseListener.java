@@ -1,6 +1,6 @@
 package application.notes.ui.listener.mouse;
 
-import application.notes.ui.frame.DisplayNotes;
+import application.notes.ui.display.DisplayNotes;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,11 +1,11 @@
-package application.notes.ui.frame;
+package application.notes.ui.display;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.ui.listener.action.NoteButtonActionListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;
-import application.notes.ui.display.RhymeCounterDisplay;
-import application.notes.ui.display.VerbCounterDisplay;
+import application.notes.ui.buttons.RhymeCounterDisplayButton;
+import application.notes.ui.buttons.VerbCounterDisplayButton;
 import application.notes.ui.listener.mouse.NoteButtonsSelectedMouseListener;
 
 import javax.swing.*;
@@ -71,8 +71,8 @@ public class DisplayNotes extends JFrame implements DisplayTechnology {
             noteDisplayButtons.add(jButton);
             noteButtonPanel.add(noteDisplayButtons.get(i));
         }
-        textManipulationButtons.add(new VerbCounterDisplay("Verbs", this));
-        textManipulationButtons.add(new RhymeCounterDisplay("Rhymes", this));
+        textManipulationButtons.add(new VerbCounterDisplayButton("Verbs", this));
+        textManipulationButtons.add(new RhymeCounterDisplayButton("Rhymes", this));
         manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
         manipulatingButtonsPanel.setLayout(new GridLayout(2, 1));
         for (final JButton textManipulationButton : textManipulationButtons) {

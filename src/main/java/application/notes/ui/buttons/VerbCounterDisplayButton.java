@@ -1,16 +1,16 @@
-package application.notes.ui.display;
+package application.notes.ui.buttons;
 
-import application.notes.ui.frame.DisplayNotes;
+import application.notes.ui.display.DisplayNotes;
 import application.notes.ui.listener.mouse.ContentButtonsSelectedMouseListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;
 import application.notes.ui.raw.VerbCounterRaw;
 
 import javax.swing.*;
 
-public class VerbCounterDisplay extends JButton {
+public class VerbCounterDisplayButton extends JButton {
     DisplayNotes displayNotes;
 
-    public VerbCounterDisplay(final String buttonText, final DisplayNotes displayNotes) {
+    public VerbCounterDisplayButton(final String buttonText, final DisplayNotes displayNotes) {
         super(buttonText);
         this.displayNotes = displayNotes;
         this.addActionListener(e -> {
