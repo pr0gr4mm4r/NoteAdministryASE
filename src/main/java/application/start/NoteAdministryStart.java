@@ -23,6 +23,7 @@ import application.start.model.specialcommands.helpCommands.HelpCommand;
 import application.start.model.specialcommands.exitCommand.ProgramExitCommand;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -83,7 +84,7 @@ public class NoteAdministryStart {
             resetCommandActiveFlagFromCommandList();
             try {
                 activeCommand.execute();
-            } catch (NoFilesInDirectoryException e) {
+            } catch (NoFilesInDirectoryException | IOException e) {
                 e.printStackTrace();
             }
         }

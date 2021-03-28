@@ -13,7 +13,7 @@ public class SingleNoteDeletionCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IOException {
         System.out.println("Which file do you want to delete within '" + path_for_notes + "'?");
         System.out.println("Provide the name of the file including ending if present (i.e. .txt)");
         final String fileToDelete = scanner.nextLine();
@@ -22,12 +22,8 @@ public class SingleNoteDeletionCommand extends AbstractCommand {
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             final SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
-            try {
                 singleNoteDeleter.deleteSingleNote(fileToDelete, path_for_notes);
                 singleNoteDeleter.printSuccessMessage();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

@@ -1,10 +1,11 @@
 package application.notes.sort.command;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
-import application.notes.sort.abstraction.Sorter;
+import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.model.maps.CriteriaMap;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public class NoteSorterCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() throws NoFilesInDirectoryException {
+    public void execute() throws NoFilesInDirectoryException, IOException {
         final CriteriaMap criteriaMap = CriteriaMap.initializeCriteriaMap();
         final String criteriaListCommaSeparated = criteriaMap.createCriteriaListCommaSeparated();
         System.out.print("After which criteria do you want to sort notes?");
@@ -25,7 +26,7 @@ public class NoteSorterCommand extends AbstractCommand {
         final String criteria = scanner.nextLine();
         final boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            final Sorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
+            final NoteSorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
             final Map<String, Integer> map = noteSorter.initialize();
             final List result = noteSorter.sort(map);
             final String formattedResult = noteSorter.format(result);

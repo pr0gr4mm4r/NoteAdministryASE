@@ -2,6 +2,7 @@ package application.notes.crud.declare.single;
 
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 import static utility.path.PathCreator.createCompletePath;
@@ -14,7 +15,7 @@ public class NoteDeclarationCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IOException {
         System.out.println("Please provide a name for the note:");
         final String noteName = scanner.nextLine();
         final Path pathToNote = createCompletePath(noteName, path_for_notes);

@@ -1,6 +1,6 @@
 package application.notes.processors.multi;
 
-import application.notes.processors.abstraction.Processor;
+import application.notes.processors.abstraction.NoteProcessor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +16,7 @@ import static utility.path.PathCreator.createCompletePath;
 import static config.Globals.path_for_notes;
 import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
-public class NoteStack implements Processor {
+public class NoteStack implements NoteProcessor {
     private List<Path> pathList;
     private List<String> noteList;
     private List<String[]> separatedWordListList = new ArrayList<>();
@@ -27,16 +27,12 @@ public class NoteStack implements Processor {
 
     }
 
-    public static NoteStack initializeNoteStack(final String path) throws NoFilesInDirectoryException {
+    public static NoteStack initializeNoteStack(final String path) throws NoFilesInDirectoryException, IOException {
         final NoteStack noteStack = new NoteStack();
-        try {
             noteStack.noteNames = noteStack.listNoteNames(path, 1);
             if (noteStack.noteNames.isEmpty()) {
                 throw new NoFilesInDirectoryException(path_for_notes);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         noteStack.pathList = noteStack.createPathList(noteStack.noteNames, path);
         noteStack.noteList = noteStack.createNoteList(noteStack.pathList);
         noteStack.separatedWordListList = noteStack.separateWordsForEachNote(noteStack.noteList, noteStack.separatedWordListList);

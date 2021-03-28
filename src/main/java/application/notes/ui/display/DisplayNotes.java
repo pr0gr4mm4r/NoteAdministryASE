@@ -10,6 +10,7 @@ import application.notes.ui.listener.mouse.NoteButtonsSelectedMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class DisplayNotes extends JFrame implements DisplayTechnology {
     private final JTextPane noteText = new JTextPane();
     private JScrollPane jScrollPane;
 
-    public DisplayNotes() throws NoFilesInDirectoryException {
+    public DisplayNotes() throws NoFilesInDirectoryException, IOException {
         this.setTitle("Overview of Notes");
         masterPanel.setLayout(masterGrid);
         final JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);

@@ -4,6 +4,7 @@ import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class OverviewCounter {
 
     }
 
-    public static OverviewCounter initializeOverviewCounter() throws NoFilesInDirectoryException {
+    public static OverviewCounter initializeOverviewCounter() throws NoFilesInDirectoryException, IOException {
         final OverviewCounter overviewCounter = new OverviewCounter();
         overviewCounter.noteCounterRaw = initializeNoteCounterRaw();
         overviewCounter.lineCountList = overviewCounter.noteCounterRaw.getLineCountList();

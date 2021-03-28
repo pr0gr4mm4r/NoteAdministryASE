@@ -3,11 +3,12 @@ package application.notes.sort.sorter;
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
-import application.notes.sort.abstraction.Sorter;
+import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -16,7 +17,7 @@ import static application.notes.wordcount.raw.NoteCounterRaw.initializeNoteCount
 import static config.Globals.scanner;
 
 
-public class WordCountNoteSorter implements Sorter {
+public class WordCountNoteSorter implements NoteSorter {
     List<String> noteList;
     List<String> nameList;
     List<Integer> wordCountList;
@@ -28,7 +29,7 @@ public class WordCountNoteSorter implements Sorter {
     }
 
     @Override
-    public Map initialize() throws NoFilesInDirectoryException {
+    public Map initialize() throws NoFilesInDirectoryException, IOException {
         initializeVariables();
         final StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
         for (int i = 0; i < noteList.size(); i++) {
@@ -39,7 +40,7 @@ public class WordCountNoteSorter implements Sorter {
         return wordCountMap;
     }
 
-    private void initializeVariables() throws NoFilesInDirectoryException {
+    private void initializeVariables() throws NoFilesInDirectoryException, IOException {
         noteCounterRaw = initializeNoteCounterRaw();
         noteList = noteStack.getNoteList();
         nameList = new ArrayList<>(noteStack.getNoteNames());

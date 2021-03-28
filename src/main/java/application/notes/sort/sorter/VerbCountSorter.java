@@ -2,7 +2,7 @@ package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
-import application.notes.sort.abstraction.Sorter;
+import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.VerbCountSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 import static application.logfiles.crud.declare.single.LogFileDeclarator.initializeLogFileDeclarator;
 import static config.Globals.scanner;
 
-public class VerbCountSorter implements Sorter {
+public class VerbCountSorter implements NoteSorter {
     NoteStack noteStack;
     List<String[]> noteList;
     List<String> nameList;
