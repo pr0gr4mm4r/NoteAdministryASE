@@ -26,7 +26,7 @@ public class NoteSorterCommand extends AbstractCommand {
         final String criteria = scanner.nextLine();
         final boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            final NoteSorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
+            final NoteSorter noteSorter = criteriaMap.getSorterbyCriteria(criteria); //execute method hängt von Abstraktion NoteSorter ab, statt direkt von einer Implementierung
             final Map<String, Integer> map = noteSorter.initialize();
             final List result = noteSorter.sort(map);
             final String formattedResult = noteSorter.format(result);
