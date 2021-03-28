@@ -10,6 +10,6 @@ public interface NoteSorter {
     Map initialize() throws NoFilesInDirectoryException, IOException;
     List sort(Map map);
     String format(List result);
-    void dialogue(String formattedResult); //abstract class
+    void dialogue(String formattedResult);
     void createLogFile(String formattedResult);
 }
