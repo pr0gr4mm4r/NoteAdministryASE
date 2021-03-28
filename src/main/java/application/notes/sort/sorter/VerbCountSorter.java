@@ -7,6 +7,7 @@ import application.notes.sort.formatter.VerbCountSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -62,7 +63,7 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     @Override
-    public void dialogue(final String formattedResult) {
+    public void dialogue(final String formattedResult) throws IOException {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -73,7 +74,7 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     @Override
-    public void createLogFile(final String formattedResult) {
+    public void createLogFile(final String formattedResult) throws IOException {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
         logFileDeclarator.declareLogFile(formattedResult);
     }

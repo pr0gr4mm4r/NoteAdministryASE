@@ -46,7 +46,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    void openLogFileDialogue(final String result) {
+    void openLogFileDialogue(final String result) throws IOException {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();

@@ -64,7 +64,7 @@ public class WordCountNoteSorter implements NoteSorter {
     }
 
     @Override
-    public void dialogue(final String formattedResult) {
+    public void dialogue(final String formattedResult) throws IOException {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -75,7 +75,7 @@ public class WordCountNoteSorter implements NoteSorter {
     }
 
     @Override
-    public void createLogFile(final String formattedResult) {
+    public void createLogFile(final String formattedResult) throws IOException {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);
     }

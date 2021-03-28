@@ -21,6 +21,7 @@ public class NoteDeclarationCommand extends AbstractCommand {
         final Path pathToNote = createCompletePath(noteName, path_for_notes);
 
         final NoteDeclarator noteDeclarator = new NoteDeclarator(pathToNote, noteName);
+
         noteDeclarator.declareNote(noteDeclarator.getPathToNote());
     }
 }
