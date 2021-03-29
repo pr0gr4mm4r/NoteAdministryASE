@@ -59,6 +59,8 @@ public class SingleNoteDispatcher {
     public MimeMessage createMessage(final Session session, final SendingInformation sendingInfo) throws MessagingException {
         final Multipart multipart = createAttachment(sendingInfo);
         final MimeMessage message = new MimeMessage(session);
+        //Klasse A (SingleNoteDispatcher) ist abhängig von Klasse B (Mimemessage)
+        // new InternetAddress trägt zur Erzeugung von message bei von welcher SingleNoteDispatcher abhängt
         message.setFrom(new InternetAddress(sendingInfo.getSender()));
         message.setRecipients(RecipientType.TO, parse(sendingInfo.getRecipient(), false));
         message.setSubject("Your subject line");
@@ -69,8 +71,11 @@ public class SingleNoteDispatcher {
 
     public Multipart createAttachment(final SendingInformation sendingInfo) throws MessagingException {
         final MimeBodyPart messageBodyPart = new MimeBodyPart();
+        // new MimeBodyPart trägt zur Erzeugung von messageBodyPart und messageBodyPart zur Erzeugung von message bei, vgl. Zeile 68
         final DataSource source = new FileDataSource(sendingInfo.getPath());
+        // new FileDataSource trägt zur Erzeugung von messageBodyPart und messageBodyPart zur Erzeugung von message bei
         messageBodyPart.setDataHandler(new DataHandler(source));
+        // new DataHandler trägt zur Erzeugung von messageBodyPart und messageBodyPart zur Erzeugung von message bei
         messageBodyPart.setFileName(sendingInfo.getPath());
         final Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(messageBodyPart);
