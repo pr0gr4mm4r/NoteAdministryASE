@@ -35,15 +35,18 @@ public class Note {
 
     private static String[] createLineList(final String note) {
         return note.split("\n");
-    }
+    } // besser als statische Hilfsmethode in einer Helperklasse zu definieren,
+    // da das Wissen in der Klasse bereits vorhanden ist (Information Expert Principle)
 
     public static String[] removeEmptyLines(final String... words) {
         return Arrays.stream(words).filter(word->!word.equals("")).toArray(String[]::new);
-    }
+    }// besser als statische Hilfsmethode in einer Helperklasse zu definieren,
+    // da das Wissen in der Klasse bereits vorhanden ist
 
     public static String[] createWordList(final String string){
         return string.split(" ");
-    }
+    }// besser als statische Hilfsmethode in einer Helperklasse zu definieren,
+    // da das Wissen in der Klasse bereits vorhanden ist
 
     public static String getPath() {
         return path_for_notes;

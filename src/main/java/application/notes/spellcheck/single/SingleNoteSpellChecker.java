@@ -15,7 +15,7 @@ import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCh
 public class SingleNoteSpellChecker {
     private WordExistenceMap wordExistence;
     private SpellCheckerRaw spellCheckerRaw;
-    private SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
+    private final SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
     private SingleNoteSpellChecker() {
 
