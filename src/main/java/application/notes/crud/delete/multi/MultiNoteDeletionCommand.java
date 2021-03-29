@@ -12,17 +12,13 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IOException {
         System.out.println("Are you sure to permanently delete all files within 'src/base/files'? ");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            try {
-                final NoteDeleter noteDeleter = new NoteDeleter();
-                noteDeleter.deleteWholeDirectory();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            final NoteDeleter noteDeleter = new NoteDeleter();
+            noteDeleter.deleteWholeDirectory();
             System.out.println("delete successful!");
         }
     }

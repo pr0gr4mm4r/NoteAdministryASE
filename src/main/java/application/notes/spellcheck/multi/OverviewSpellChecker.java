@@ -7,6 +7,7 @@ import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatte
 import application.notes.spellcheck.model.WordExistenceMapList;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 
+import java.io.IOException;
 import java.util.*;
 
 import static application.notes.processors.multi.NoteStack.*;
@@ -26,7 +27,7 @@ public class OverviewSpellChecker {
 
     }
 
-    public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException {
+    public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException, IOException {
         final OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getWordListList();
@@ -45,7 +46,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    void openLogFileDialogue(final String result) {
+    void openLogFileDialogue(final String result) throws IOException {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();

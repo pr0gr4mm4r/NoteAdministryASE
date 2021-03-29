@@ -69,14 +69,12 @@ public class NoteLineEditor {
         Files.write(Paths.get(String.valueOf(path)), Collections.singleton(String.join("\n", lines)));
     }
 
-    public boolean noteHasEnoughLines(final Path completePath, final int lineNumber) {
+    public boolean noteHasEnoughLines(final Path completePath, final int lineNumber) throws IOException {
         try (Stream<String> stringStream = Files.lines(completePath)) {
             final long lineCount = stringStream.count();
             if (lineCount < lineNumber || lineNumber < 1) {
                 return false;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return true;
     }

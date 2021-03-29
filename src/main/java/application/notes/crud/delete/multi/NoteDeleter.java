@@ -14,7 +14,7 @@ import static config.Globals.path_for_notes;
 public class NoteDeleter implements Deleter {
 
 
-    public NoteDeleter() throws IOException {
+    public NoteDeleter() {
     }
 
     protected void deleteWholeDirectory() throws IOException {

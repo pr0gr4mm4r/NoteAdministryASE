@@ -1,5 +1,10 @@
 package application.logfiles.crud.declare.single;
 
+import application.notes.crud.declare.abstraction.FileCreator;
+import application.notes.crud.declare.abstraction.HeaderAdder;
+import application.notes.crud.declare.abstraction.HeaderInformation;
+import utility.path.PathCreator;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,7 +17,7 @@ import static config.Globals.path_for_logfiles;
 import static application.notes.crud.declare.single.NoteDeclarator.createCurrentTimeString;
 import static utility.formatting.BasicFormatter.insertLineBreak;
 
-public class LogFileDeclarator {
+public class LogFileDeclarator implements HeaderAdder, FileCreator {
     private String capture;
     private String logFileName;
     private Path completePath;
@@ -25,21 +30,18 @@ public class LogFileDeclarator {
         final LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
-        logFileDeclarator.completePath = createCompletePath(logFileDeclarator.logFileName);
+        logFileDeclarator.completePath = PathCreator.createCompletePath(logFileDeclarator.logFileName, path_for_logfiles);
         return logFileDeclarator;
     }
 
-    public void declareLogFile(final String content) {
-        final boolean noteDoesNotExist = this.tryToCreateFile(this.completePath);
+    public void declareLogFile(final String content) throws IOException {
+        final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
-            this.addHeader(this.completePath, this.capture);
-            this.addContent(content, this.completePath);
-            this.printSuccessMessage();
+            HeaderInformation headerInformation = new HeaderInformation(completePath, capture);
+            addHeader(headerInformation);
+            addContent(content, completePath);
+            printSuccessMessage();
         }
-    }
-
-    public static Path createCompletePath(final String logfileName) {
-        return Paths.get(path_for_logfiles + logfileName);
     }
 
     public void addContent(final String content, final Path completePath) {
@@ -53,6 +55,7 @@ public class LogFileDeclarator {
         }
     }
 
+    @Override
     public boolean tryToCreateFile(final Path completePath) {
         try {
             Files.createFile(completePath);
@@ -69,18 +72,14 @@ public class LogFileDeclarator {
         return logfileName;
     }
 
-
-    public void addHeader(final Path completePath, final String action) {
+    @Override
+    public void addHeader(final HeaderInformation headerInformation) throws IOException {
         final String time = createCurrentTimeString();
-        String header = this.logFileName + " " + time;
+        String header = logFileName + " " + time;
         header = insertLineBreak(header);
-        header += action;
+        header += headerInformation.getCapture();
         final byte[] bytes = header.getBytes();
-        try {
-            Files.write(completePath, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Files.write(completePath, bytes);
     }
 
     public void printSuccessMessage() {

@@ -1,5 +1,9 @@
 package application.notes.crud.declare.single;
 
+import application.notes.crud.declare.abstraction.FileCreator;
+import application.notes.crud.declare.abstraction.HeaderAdder;
+import application.notes.crud.declare.abstraction.HeaderInformation;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,29 +13,31 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
 
-public class NoteDeclarator {
+public class NoteDeclarator implements HeaderAdder, FileCreator {
     private String noteName;
     private Path pathToNote;
 
     public NoteDeclarator(final Path pathToNote, final String noteName) {
-       this.noteName = noteName;
-       this.pathToNote = pathToNote;
+        this.noteName = noteName;
+        this.pathToNote = pathToNote;
     }
 
-    void declareNote(final Path completePath) {
+    void declareNote(final Path completePath) throws IOException {
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
-            addHeader(completePath);
+            HeaderInformation headerInformation = new HeaderInformation(completePath);
+            addHeader(headerInformation);
             addDummyLines(completePath);
             printSuccessMessage();
         }
     }
 
-    void printSuccessMessage() {
+    private void printSuccessMessage() {
         System.out.println("Creation of note was successful");
     }
 
-    private boolean tryToCreateFile(final Path completePath) {
+    @Override
+    public boolean tryToCreateFile(final Path completePath) {
         try {
             Files.createFile(completePath);
         } catch (IOException e) {
@@ -41,27 +47,20 @@ public class NoteDeclarator {
         return true;
     }
 
-    private void addHeader(final Path completePath) {
+    @Override
+    public void addHeader(final HeaderInformation headerInformation) throws IOException {
         final String time = createCurrentTimeString();
         final String header = this.noteName + " " + time;
         final byte[] bytes = header.getBytes();
-        try {
-            Files.write(completePath, bytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Files.write(headerInformation.getPath(), bytes);
     }
 
-    private void addDummyLines(final Path completePath) {
+    private void addDummyLines(final Path completePath) throws IOException {
         final String dummyMessage = "\n\nDUMMY TEXT";
-        try {
-            Files.write(
-                    Paths.get(String.valueOf(completePath)),
-                    dummyMessage.getBytes(),
-                    StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Files.write(
+                Paths.get(String.valueOf(completePath)),
+                dummyMessage.getBytes(),
+                StandardOpenOption.APPEND);
     }
 
     public static String createCurrentTimeString() {

@@ -1,4 +1,4 @@
 package application.notes.processors.abstraction;
 
-public interface Processor {
+public interface NoteProcessor {
 }

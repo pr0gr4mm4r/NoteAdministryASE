@@ -34,7 +34,7 @@ public class NoteCounterRaw {
         return noteCounterRaw;
     }
 
-    public static NoteCounterRaw initializeNoteCounterRaw() throws NoFilesInDirectoryException {
+    public static NoteCounterRaw initializeNoteCounterRaw() throws NoFilesInDirectoryException, IOException {
         final NoteCounterRaw noteCounterRaw = new NoteCounterRaw();
         final NoteStack noteStack = NoteStack.initializeNoteStack(path_for_notes);
         final List<Path> pathList = noteStack.getPathList();

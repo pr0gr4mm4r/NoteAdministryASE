@@ -42,6 +42,4 @@ public class SpellCheckerRawTest {
 
         assertEquals(1, wordsInLexikon, 0.0);
     }
-
-
 }

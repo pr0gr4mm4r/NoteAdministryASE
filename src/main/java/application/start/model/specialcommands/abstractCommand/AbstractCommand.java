@@ -2,6 +2,8 @@ package application.start.model.specialcommands.abstractCommand;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
 
+import java.io.IOException;
+
 public abstract class AbstractCommand {
 
     private String commandName;
@@ -20,7 +22,7 @@ public abstract class AbstractCommand {
         }
     }
 
-    public abstract void execute() throws NoFilesInDirectoryException;
+    public abstract void execute() throws NoFilesInDirectoryException, IOException;
 
     public String getCommandName() {
         return commandName;

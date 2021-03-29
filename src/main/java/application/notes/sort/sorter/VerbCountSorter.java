@@ -2,18 +2,19 @@ package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
-import application.notes.sort.abstraction.Sorter;
+import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.VerbCountSorterResultFormatter;
 import application.notes.sort.model.maps.StringIntegerMap;
 import rita.RiTa;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.Map.Entry;
 
 import static application.logfiles.crud.declare.single.LogFileDeclarator.initializeLogFileDeclarator;
 import static config.Globals.scanner;
 
-public class VerbCountSorter implements Sorter {
+public class VerbCountSorter implements NoteSorter {
     NoteStack noteStack;
     List<String[]> noteList;
     List<String> nameList;
@@ -62,7 +63,7 @@ public class VerbCountSorter implements Sorter {
     }
 
     @Override
-    public void dialogue(final String formattedResult) {
+    public void dialogue(final String formattedResult) throws IOException {
         System.out.println(formattedResult);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
@@ -73,7 +74,7 @@ public class VerbCountSorter implements Sorter {
     }
 
     @Override
-    public void createLogFile(final String formattedResult) {
+    public void createLogFile(final String formattedResult) throws IOException {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
         logFileDeclarator.declareLogFile(formattedResult);
     }

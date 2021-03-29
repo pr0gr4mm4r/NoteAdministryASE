@@ -2,6 +2,7 @@ package application.notes.crud.edit.single;
 
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 import static application.notes.crud.edit.single.DisplayState.ERROR;
@@ -15,7 +16,7 @@ public class NoteLineEditorCommand extends AbstractCommand {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws IOException {
         System.out.println("Which note do you want to change?");
         final String fileName = scanner.nextLine();
         final Path completePath = createCompletePath(fileName, path_for_notes);
