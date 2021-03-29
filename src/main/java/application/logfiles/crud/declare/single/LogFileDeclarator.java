@@ -3,7 +3,6 @@ package application.logfiles.crud.declare.single;
 import application.notes.crud.declare.abstraction.FileCreator;
 import application.notes.crud.declare.abstraction.HeaderAdder;
 import application.notes.crud.declare.abstraction.HeaderInformation;
-import utility.path.PathCreator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,6 +15,7 @@ import java.time.temporal.ChronoUnit;
 import static config.Globals.path_for_logfiles;
 import static application.notes.crud.declare.single.NoteDeclarator.createCurrentTimeString;
 import static utility.formatting.BasicFormatter.insertLineBreak;
+import static utility.path.PathCreator.createCompletePath;
 
 public class LogFileDeclarator implements HeaderAdder, FileCreator {
     private String capture;
@@ -30,7 +30,7 @@ public class LogFileDeclarator implements HeaderAdder, FileCreator {
         final LogFileDeclarator logFileDeclarator = new LogFileDeclarator();
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
-        logFileDeclarator.completePath = PathCreator.createCompletePath(logFileDeclarator.logFileName, path_for_logfiles);
+        logFileDeclarator.completePath = createCompletePath(logFileDeclarator.logFileName, path_for_logfiles);
         return logFileDeclarator;
     }
 

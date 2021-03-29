@@ -25,7 +25,7 @@ public class NoteReader {
         }
     }
 
-    public static String readNoteForNoteProcessing(final Path completePath) {
+    public String readNoteForNoteProcessing(final Path completePath) {
         try(Stream<String> stringStream = Files.lines(completePath)) {
             return stringStream.collect(
                     Collectors.joining(" "));

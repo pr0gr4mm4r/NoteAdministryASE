@@ -42,7 +42,7 @@ public class WordCountNoteSorter implements NoteSorter {
 
     private void initializeVariables() throws NoFilesInDirectoryException, IOException {
         noteCounterRaw = initializeNoteCounterRaw();
-        noteList = noteStack.getNoteList();
+        noteList = noteStack.getNoteContentList();
         nameList = new ArrayList<>(noteStack.getNoteNames());
         wordCountList = noteCounterRaw.getWordCountList();
     }

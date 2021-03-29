@@ -39,7 +39,7 @@ public class NoteCounterRaw {
         final NoteStack noteStack = NoteStack.initializeNoteStack(path_for_notes);
         final List<Path> pathList = noteStack.getPathList();
         countLinesOfNotes(pathList, noteCounterRaw.lineCountList);
-        final List<String[]> wordListList = noteStack.getWordListList();
+        final List<String[]> wordListList = noteStack.getSeparatedWordListList();
         noteCounterRaw.wordCountList = noteCounterRaw.countWordsOfNotes(wordListList);
         return noteCounterRaw;
     }

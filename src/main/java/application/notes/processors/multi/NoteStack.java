@@ -1,6 +1,7 @@
 package application.notes.processors.multi;
 
 import application.notes.processors.abstraction.NoteProcessor;
+import application.notes.processors.single.Note;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,18 +11,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static application.notes.processors.single.Note.createWordList;
-import static application.notes.processors.single.Note.removeEmptyLines;
-import static utility.path.PathCreator.createCompletePath;
+import static application.notes.processors.single.Note.*;
 import static config.Globals.path_for_notes;
-import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
 
 public class NoteStack implements NoteProcessor {
     private List<Path> pathList;
-    private List<String> noteList;
-    private List<String[]> separatedWordListList = new ArrayList<>();
-    private List<String[]> finalWordListList;
+    private List<String> noteContentList;
+    private final List<String[]> separatedWordListList = new ArrayList<>();
     private Set<String> noteNames = new HashSet<>();
+    private List<Note> notes = new ArrayList<>();
 
     public NoteStack() {
 
@@ -29,46 +27,45 @@ public class NoteStack implements NoteProcessor {
 
     public static NoteStack initializeNoteStack(final String path) throws NoFilesInDirectoryException, IOException {
         final NoteStack noteStack = new NoteStack();
-            noteStack.noteNames = noteStack.listNoteNames(path, 1);
-            if (noteStack.noteNames.isEmpty()) {
-                throw new NoFilesInDirectoryException(path_for_notes);
-            }
-        noteStack.pathList = noteStack.createPathList(noteStack.noteNames, path);
-        noteStack.noteList = noteStack.createNoteList(noteStack.pathList);
-        noteStack.separatedWordListList = noteStack.separateWordsForEachNote(noteStack.noteList, noteStack.separatedWordListList);
-        noteStack.finalWordListList = noteStack.removeEmptyLinesForEachNote(noteStack.separatedWordListList);
+        noteStack.noteNames = noteStack.listNoteNames(path, 1);
+        if (noteStack.noteNames.isEmpty()) {
+            throw new NoFilesInDirectoryException(path_for_notes);
+        }
+        noteStack.notes = noteStack.initializeNotes(noteStack);
+        noteStack.pathList = noteStack.createPathList(noteStack.notes);
+        noteStack.noteContentList = noteStack.createNoteContentList(noteStack.notes);
+        noteStack.separateWordsForEachNote(noteStack.notes, noteStack.separatedWordListList);
         return noteStack;
     }
 
-    public List<String[]> removeEmptyLinesForEachNote(final List<String[]> wordListLists) {
-        for (int i = 0; i < wordListLists.size(); i++) {
-            final String[] filteredWordList = removeEmptyLines(wordListLists.get(i));
-            wordListLists.set(i, filteredWordList);
+    private List<Note> initializeNotes(NoteStack noteStack) {
+        List<String> noteNames = new ArrayList<>(noteStack.noteNames);
+        for (final String noteName : noteNames) {
+            noteStack.notes.add(initializeNote(noteName));
         }
-        return wordListLists;
+        return noteStack.notes;
     }
 
-    public List<String[]> separateWordsForEachNote(final List<String> noteList, final List<String[]> separatedWordListList) {
-        for (final String note : noteList) {
-            final String[] separatedWords = createWordList(note);
+    private void separateWordsForEachNote(final List<Note> noteContentList, final List<String[]> separatedWordListList) {
+        for (final Note noteContent : noteContentList) {
+            final String[] separatedWords = noteContent.getWordList();
             separatedWordListList.add(separatedWords);
         }
-        return separatedWordListList;
     }
 
-    public List<String> createNoteList(final List<Path> pathList) {
-        final List<String> noteList = new ArrayList<>();
-        for (final Path path : pathList) {
-            final String note = readNoteForNoteProcessing(path);
-            noteList.add(note);
+    private List<String> createNoteContentList(final List<Note> noteList) {
+        final List<String> noteContentList = new ArrayList<>();
+        for (final Note note : noteList) {
+            final String noteContent = note.getContent();
+            noteContentList.add(noteContent);
         }
-        return noteList;
+        return noteContentList;
     }
 
-    public List<Path> createPathList(final Set<String> strings, final String path) {
+    private List<Path> createPathList(final List<Note> notes) {
         final List<Path> pathList = new ArrayList<>();
-        for (final String string : strings) {
-            pathList.add(createCompletePath(string, path));
+        for (final Note note : notes) {
+            pathList.add(note.getCompletePath());
         }
         return pathList;
     }
@@ -83,25 +80,23 @@ public class NoteStack implements NoteProcessor {
         }
     }
 
-    public static String getPath() {
-        return path_for_notes;
-    }
-
     public List<Path> getPathList() {
         return pathList;
     }
 
-    public List<String> getNoteList() {
-        return noteList;
-    }
-
-
-    public List<String[]> getWordListList() {
-        return finalWordListList;
+    public List<String> getNoteContentList() {
+        return noteContentList;
     }
 
     public Set<String> getNoteNames() {
         return noteNames;
     }
 
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public List<String[]> getSeparatedWordListList() {
+        return separatedWordListList;
+    }
 }

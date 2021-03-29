@@ -30,7 +30,7 @@ public class OverviewSpellChecker {
     public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException, IOException {
         final OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
-        final List<String[]> wordListList = noteStack.getWordListList();
+        final List<String[]> wordListList = noteStack.getSeparatedWordListList();
         overviewSpellChecker.wordExistenceMapList = initializeWordExistenceMapList(wordListList);
         overviewSpellChecker.fillPercentageValueList(overviewSpellChecker.percentageValueList, wordListList);
         return overviewSpellChecker;

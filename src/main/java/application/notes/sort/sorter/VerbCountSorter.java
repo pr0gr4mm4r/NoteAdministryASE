@@ -41,7 +41,7 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     private void initializeVariables() {
-        noteList = noteStack.getWordListList();
+        noteList = noteStack.getSeparatedWordListList();
         nameList = new ArrayList<>(noteStack.getNoteNames());
         verbCountMap = new StringIntegerMap<>();
     }

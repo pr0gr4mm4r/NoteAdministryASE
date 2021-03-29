@@ -5,9 +5,9 @@ import application.notes.crud.read.single.NoteReader;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-import static utility.path.PathCreator.createCompletePath;
+import static utility.formatting.WordListCreator.createWordList;
 import static config.Globals.path_for_notes;
-import static application.notes.crud.read.single.NoteReader.readNoteForNoteProcessing;
+import static utility.path.PathCreator.createCompletePath;
 
 
 public class Note {
@@ -18,37 +18,31 @@ public class Note {
     private String content;
     private String noteForGraphicalProcessing;
 
+    private Note() {
+    }
 
     public static Note initializeNote(final String noteName){
         final Note note = new Note();
         final NoteReader noteReader = new NoteReader();
         note.noteName = noteName;
         note.completePath = createCompletePath(noteName, path_for_notes);
-        note.content = readNoteForNoteProcessing(note.completePath);
+        note.content = noteReader.readNoteForNoteProcessing(note.completePath);
         note.noteForGraphicalProcessing = noteReader.readNote(note.completePath);
-        note.lineList = createLineList(note.content);
+        note.lineList = note.createLineList(note.content);
         note.wordList = createWordList(note.content);
-        note.wordList = removeEmptyLines(note.wordList);
+        note.wordList = note.removeEmptyLines(note.wordList);
         return note;
     }
 
-
-    private static String[] createLineList(final String note) {
+    private String[] createLineList(final String note) {
         return note.split("\n");
-    } // besser als statische Hilfsmethode in einer Helperklasse zu definieren,
-    // da das Wissen in der Klasse bereits vorhanden ist (Information Expert Principle)
+    }
 
-    public static String[] removeEmptyLines(final String... words) {
+    public String[] removeEmptyLines(final String... words) {
         return Arrays.stream(words).filter(word->!word.equals("")).toArray(String[]::new);
-    }// besser als statische Hilfsmethode in einer Helperklasse zu definieren,
-    // da das Wissen in der Klasse bereits vorhanden ist
+    }
 
-    public static String[] createWordList(final String string){
-        return string.split(" ");
-    }// besser als statische Hilfsmethode in einer Helperklasse zu definieren,
-    // da das Wissen in der Klasse bereits vorhanden ist
-
-    public static String getPath() {
+    public String getPath() {
         return path_for_notes;
     }
 
@@ -64,14 +58,6 @@ public class Note {
         return wordList;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(final String content) {
-        this.content = content;
-    }
-
     public Path getCompletePath() {
         return completePath;
     }
@@ -82,5 +68,9 @@ public class Note {
 
     public String getNoteForGraphicalProcessing() {
         return noteForGraphicalProcessing;
+    }
+
+    public String getContent() {
+        return content;
     }
 }

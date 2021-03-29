@@ -13,17 +13,17 @@ import java.util.stream.Collectors;
 public class OverviewWordFinder {
 
     private final String keyword;
-    private final NoteStack multiNoteProcessor;
+    private final NoteStack noteStack;
     private final SingleNoteWordFinder singleNoteWordFinder;
 
-    public OverviewWordFinder(final String keyword, final NoteStack multiNoteProcessor) {
+    public OverviewWordFinder(final String keyword, final NoteStack noteStack) {
         this.keyword = keyword;
-        this.multiNoteProcessor = multiNoteProcessor;
+        this.noteStack = noteStack;
         this.singleNoteWordFinder = new SingleNoteWordFinder();
     }
 
     protected void composeOverview() throws IOException {
-        final List<Path> pathsToNotesList = multiNoteProcessor.getPathList();
+        final List<Path> pathsToNotesList = noteStack.getPathList();
         final List<String> noteList = createNoteList(pathsToNotesList);
         final List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
         composeWordOccurrenceOverview(pathsToNotesList, wordOccurenceOverview);
@@ -103,7 +103,7 @@ public class OverviewWordFinder {
         return keyword;
     }
 
-    public NoteStack getMultiNoteProcessor() {
-        return multiNoteProcessor;
+    public NoteStack getNoteStack() {
+        return noteStack;
     }
 }

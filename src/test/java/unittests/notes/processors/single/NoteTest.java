@@ -1,5 +1,6 @@
 package unittests.notes.processors.single;
 
+import application.notes.processors.single.Note;
 import org.junit.Test;
 
 import static application.notes.processors.single.Note.*;
@@ -9,7 +10,8 @@ public class NoteTest {
     @Test
     public void removeEmptyLinesTest() {
         String[] lines = {"test", "test", "", "test", "", "", "test"};
-        lines = removeEmptyLines(lines);
+        Note note = initializeNote("test");
+        lines = note.removeEmptyLines(lines);
         assertEquals(4, lines.length);
     }
 }

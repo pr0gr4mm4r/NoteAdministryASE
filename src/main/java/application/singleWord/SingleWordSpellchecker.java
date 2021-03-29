@@ -6,8 +6,8 @@ import utility.map.WordExistenceMap;
 import java.util.*;
 
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
+import static utility.formatting.WordListCreator.createWordList;
 import static utility.map.WordExistenceMap.initializeWordExistenceMap;
-import static application.notes.processors.single.Note.*;
 
 
 public class SingleWordSpellchecker {

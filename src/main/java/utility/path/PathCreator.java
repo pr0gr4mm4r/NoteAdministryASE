@@ -4,7 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class PathCreator {
-    public PathCreator() {
+    private PathCreator() {
     }
 
     public static Path createCompletePath(final String noteName, final String path) {

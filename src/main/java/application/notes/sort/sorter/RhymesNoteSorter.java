@@ -56,7 +56,7 @@ public class RhymesNoteSorter implements NoteSorter {
     }
 
     private void initializeVariables() {
-        noteList = noteStack.getWordListList();
+        noteList = noteStack.getSeparatedWordListList();
         noteNames = new ArrayList<>(noteStack.getNoteNames());
         rhymeOverview = new StringIntegerMap<>();
     }

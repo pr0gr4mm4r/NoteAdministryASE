@@ -36,8 +36,9 @@ public class NoteReaderTest {
         final File createdFile = temporaryFolder.newFile("myfile.txt");
         writingTestContentToArtificialFile(createdFile, testContent);
         final Path completePath = createdFile.toPath();
+        final NoteReader noteReader = new NoteReader();
 
-        final String fileContent = NoteReader.readNoteForNoteProcessing(completePath);
+        final String fileContent = noteReader.readNoteForNoteProcessing(completePath);
 
         assertEquals("fileContent does not match the actual content of file",
                 fileContent, "testContent test test");
