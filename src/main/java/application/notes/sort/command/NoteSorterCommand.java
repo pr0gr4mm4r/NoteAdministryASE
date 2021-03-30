@@ -12,8 +12,7 @@ import java.util.Map;
 import static config.Globals.scanner;
 
 public class NoteSorterCommand extends AbstractCommand {
-    NoteSorter noteSorter; //NoteSorterCommand hängt von NoteSorter, einem interface, ab  -> Abstraktion wird eingeführt
-    //Dadurch wird Low Coupling erreicht ->  wenn sich eine Implementierung ändert müssen nicht an zwei Stellen Codeänderungen durchgeführt werden
+    private NoteSorter noteSorter;
     public NoteSorterCommand(final String commandName, final String description) {
         super(commandName, description);
     }
@@ -29,7 +28,7 @@ public class NoteSorterCommand extends AbstractCommand {
         final boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
             noteSorter = criteriaMap.getSorterbyCriteria(criteria);
-            final Map<String, Integer> map = noteSorter.initialize();
+            final Map map = noteSorter.initialize();
             final List result = noteSorter.sort(map);
             final String formattedResult = noteSorter.format(result);
             noteSorter.dialogue(formattedResult);
