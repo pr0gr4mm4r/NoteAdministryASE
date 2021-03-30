@@ -34,13 +34,11 @@ public class Note {
         return note;
     }
 
-    private String[] createLineList(final String content) {//createLineList sollte nach dem Information Expert Pattern
-        // keine static helper Methode sein, weil die Klasse Note bereits über Vorwissen (konkret die String Instanz content) verfügt
-        return content.split("\n");
+    private String[] createLineList(final String note) {
+        return note.split("\n");
     }
 
-    public String[] removeEmptyLines(final String... words) {  //removeEmptyLines sollte nach dem Information Expert Pattern
-        // keine static helper Methode sein, weil die Klasse Note bereits über Vorwissen (konkret die String[] Instanz wordList) verfügt
+    public String[] removeEmptyLines(final String... words) {
         return Arrays.stream(words).filter(word->!word.equals("")).toArray(String[]::new);
     }
 
