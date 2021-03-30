@@ -16,17 +16,17 @@ import static application.logfiles.crud.declare.single.LogFileDeclarator.initial
 import static config.Globals.scanner;
 
 public class RhymesNoteSorter implements NoteSorter {
-    NoteStack noteStack;
-    List<String[]> noteList = new ArrayList<>();
-    List<String> noteNames = new ArrayList<>();
-    Map<String, Integer> rhymeOverview = new StringIntegerMap();
+    private NoteStack noteStack;
+    private List<String[]> noteList = new ArrayList<>();
+    private List<String> noteNames = new ArrayList<>();
+    private Map<String, Integer> rhymeOverview = new StringIntegerMap();
 
     public RhymesNoteSorter(final NoteStack noteStack) {
         this.noteStack = noteStack;
     }
 
     @Override
-    public Map<String, Integer> initialize() {
+    public Map<String, Integer> initializeMapToSort() {
         initializeVariables();
         int counter;
         for (int i = 0; i < noteList.size(); i++) {
@@ -62,8 +62,8 @@ public class RhymesNoteSorter implements NoteSorter {
     }
 
     @Override
-    public List sort(final Map rhymeOverview) {
-        final Set<Entry<String, Integer>> rhymeOverviewSet = rhymeOverview.entrySet();
+    public List sort(final Map mapToSort) {
+        final Set<Entry<String, Integer>> rhymeOverviewSet = mapToSort.entrySet();
         List<Entry<String, Integer>> finalRhymeOverview = new ArrayList<>(rhymeOverviewSet);
         final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalRhymeOverview.sort(valueComparator);
@@ -71,25 +71,24 @@ public class RhymesNoteSorter implements NoteSorter {
     }
 
     @Override
-    public String format(final List finalRhymeOverview) {
+    public String format(final List resultOfSorting) {
         final RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
-        final String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(finalRhymeOverview);
+        final String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(resultOfSorting);
         return formattedResult;
 
     }
 
     @Override
-    public void dialogue(final String formattedResult) throws IOException {
-        System.out.println(formattedResult);
+    public void dialogue(final String formattedResultOfSorting) throws IOException {
+        System.out.println(formattedResultOfSorting);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            createLogFile(formattedResult);
+            createLogFile(formattedResultOfSorting);
         }
     }
 
-    @Override
     public void createLogFile(final String formattedResult) throws IOException {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);

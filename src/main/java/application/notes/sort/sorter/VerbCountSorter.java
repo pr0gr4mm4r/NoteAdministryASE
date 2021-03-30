@@ -15,17 +15,17 @@ import static application.logfiles.crud.declare.single.LogFileDeclarator.initial
 import static config.Globals.scanner;
 
 public class VerbCountSorter implements NoteSorter {
-    NoteStack noteStack;
-    List<String[]> noteList;
-    List<String> nameList;
-    Map<String, Integer> verbCountMap;
+    private NoteStack noteStack;
+    private List<String[]> noteList;
+    private List<String> nameList;
+    private Map<String, Integer> verbCountMap;
 
     public VerbCountSorter(final NoteStack multiNoteProcessor) {
         this.noteStack = multiNoteProcessor;
     }
 
     @Override
-    public Map initialize() {
+    public Map initializeMapToSort() {
         initializeVariables();
         for (int i = 0; i < noteList.size(); i++) {
             int verbCounter = 0;
@@ -47,8 +47,8 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     @Override
-    public List sort(final Map verbCountMap) {
-        final Set<Entry<String, Integer>> verbCountSet = verbCountMap.entrySet();
+    public List sort(final Map mapToSort) {
+        final Set<Entry<String, Integer>> verbCountSet = mapToSort.entrySet();
         final List<Entry<String, Integer>> finalVerbCountList = new ArrayList<>(verbCountSet);
         final Comparator<Entry<String, Integer>> valueComparator = Comparator.comparingInt(Entry::getValue);
         finalVerbCountList.sort(valueComparator);
@@ -56,24 +56,23 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     @Override
-    public String format(final List finalVerbCountList) {
+    public String format(final List resultOfSorting) {
         final VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
-        final String result = verbCountSorterResultFormatter.formatList(finalVerbCountList);
+        final String result = verbCountSorterResultFormatter.formatList(resultOfSorting);
         return result;
     }
 
     @Override
-    public void dialogue(final String formattedResult) throws IOException {
-        System.out.println(formattedResult);
+    public void dialogue(final String formattedResultOfSorting) throws IOException {
+        System.out.println(formattedResultOfSorting);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
-            createLogFile(formattedResult);
+            createLogFile(formattedResultOfSorting);
         }
     }
 
-    @Override
     public void createLogFile(final String formattedResult) throws IOException {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Verbs");
         logFileDeclarator.declareLogFile(formattedResult);

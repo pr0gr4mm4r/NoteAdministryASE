@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface NoteSorter {
-    Map initialize() throws NoFilesInDirectoryException, IOException;
-    List sort(Map map);
-    String format(List result);
-    void dialogue(String formattedResult) throws IOException;
-    void createLogFile(String formattedResult) throws IOException;
+    Map initializeMapToSort() throws NoFilesInDirectoryException, IOException;
+    List sort(Map mapToSort);
+    String format(List resultOfSorting);
+    void dialogue(String formattedResultOfSorting) throws IOException;
 }
