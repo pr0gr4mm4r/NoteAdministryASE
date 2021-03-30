@@ -18,7 +18,7 @@ public class VerbCountSorter implements NoteSorter {
     NoteStack noteStack;
     List<String[]> noteList;
     List<String> nameList;
-    StringIntegerMap<String, Integer> verbCountMap;
+    Map<String, Integer> verbCountMap;
 
     public VerbCountSorter(final NoteStack multiNoteProcessor) {
         this.noteStack = multiNoteProcessor;
