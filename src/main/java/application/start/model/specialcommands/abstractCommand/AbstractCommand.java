@@ -22,9 +22,7 @@ public abstract class AbstractCommand {
         }
     }
 
-    public abstract void execute() throws NoFilesInDirectoryException, IOException; // custom execute Methoden Implementierungen (z.B. execute() in NoteDeclarationCommand)
-    // "ersetzen" Controller Klasse
-
+    public abstract void execute() throws NoFilesInDirectoryException, IOException; 
     public String getCommandName() {
         return commandName;
     }
