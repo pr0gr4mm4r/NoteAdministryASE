@@ -6,14 +6,12 @@ import application.notes.sort.model.maps.CriteriaMap;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static config.Globals.scanner;
 
 public class NoteSorterCommand extends AbstractCommand {
-    private NoteSorter noteSorter;
     public NoteSorterCommand(final String commandName, final String description) {
         super(commandName, description);
     }
@@ -28,7 +26,7 @@ public class NoteSorterCommand extends AbstractCommand {
         final String criteria = scanner.nextLine();
         final boolean criteriaExists = criteriaMap.containsKey(criteria);
         if (criteriaExists) {
-            noteSorter = criteriaMap.getSorterbyCriteria(criteria);
+            NoteSorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
             final Map map = noteSorter.initializeMapToSort();
             final List result = noteSorter.sort(map);
             final String formattedResult = noteSorter.format(result);
