@@ -16,7 +16,7 @@ import static application.logfiles.crud.declare.single.LogFileDeclarator.initial
 import static config.Globals.scanner;
 
 public class RhymesNoteSorter implements NoteSorter {
-    private NoteStack noteStack;
+    private final NoteStack noteStack;
     private List<String[]> noteList = new ArrayList<>();
     private List<String> noteNames = new ArrayList<>();
     private Map<String, Integer> rhymeOverview = new StringIntegerMap();
