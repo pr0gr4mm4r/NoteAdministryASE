@@ -21,6 +21,7 @@ public class LogFileDeclarator implements HeaderAdder, FileCreator {
     private String capture;
     private String logFileName;
     private Path completePath;
+    private String successMessage;
 
     private LogFileDeclarator() {
 
@@ -31,6 +32,7 @@ public class LogFileDeclarator implements HeaderAdder, FileCreator {
         logFileDeclarator.capture = capture;
         logFileDeclarator.logFileName = logFileDeclarator.generateDefaultLogFileName();
         logFileDeclarator.completePath = createCompletePath(logFileDeclarator.logFileName, path_for_logfiles);
+        logFileDeclarator.successMessage = "Creation of Logfile was successful";
         return logFileDeclarator;
     }
 
@@ -44,7 +46,7 @@ public class LogFileDeclarator implements HeaderAdder, FileCreator {
         }
     }
 
-    public void addContent(final String content, final Path completePath) {
+    private void addContent(final String content, final Path completePath) {
         try {
             Files.write(
                     Paths.get(String.valueOf(completePath)),
@@ -83,6 +85,6 @@ public class LogFileDeclarator implements HeaderAdder, FileCreator {
     }
 
     public void printSuccessMessage() {
-        System.out.println("Creation of logfile was successful");
+        System.out.println(successMessage);
     }
 }

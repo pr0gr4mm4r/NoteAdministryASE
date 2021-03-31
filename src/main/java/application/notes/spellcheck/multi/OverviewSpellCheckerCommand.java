@@ -1,6 +1,7 @@
 package application.notes.spellcheck.multi;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.spellcheck.model.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
@@ -17,8 +18,8 @@ public class OverviewSpellCheckerCommand extends AbstractCommand {
     public void execute() throws NoFilesInDirectoryException, IOException {
         System.out.println("In the following all files of " + path_for_notes + " will be checked for correct spelling:");
         OverviewSpellChecker overviewSpellChecker = initializeOverviewSpellChecker();
-        final String formattedResult = overviewSpellChecker.format();
-        overviewSpellChecker.printResult(formattedResult);
+        final Result formattedResult = overviewSpellChecker.format();
+        formattedResult.print();
         overviewSpellChecker.openLogFileDialogue(formattedResult);
     }
 }

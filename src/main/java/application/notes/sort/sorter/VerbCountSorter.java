@@ -3,8 +3,9 @@ package application.notes.sort.sorter;
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.confirmationString.ConfirmationString;
 import application.notes.sort.formatter.VerbCountSorterResultFormatter;
-import application.notes.sort.model.maps.StringIntegerMap;
+import application.notes.spellcheck.model.Result;
 import rita.RiTa;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class VerbCountSorter implements NoteSorter {
     private void initializeVariables() {
         noteList = noteStack.getSeparatedWordListList();
         nameList = new ArrayList<>(noteStack.getNoteNames());
-        verbCountMap = new StringIntegerMap<>();
+        verbCountMap = new HashMap<>();
     }
 
     @Override
@@ -56,10 +57,10 @@ public class VerbCountSorter implements NoteSorter {
     }
 
     @Override
-    public String format(final List resultOfSorting) {
+    public Result format(final List resultOfSorting) {
         final VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
-        final String result = verbCountSorterResultFormatter.formatList(resultOfSorting);
-        return result;
+        final String formattedResult = verbCountSorterResultFormatter.formatList(resultOfSorting);
+        return new Result(formattedResult);
     }
 
     @Override
@@ -67,8 +68,8 @@ public class VerbCountSorter implements NoteSorter {
         System.out.println(formattedResultOfSorting);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        final String confirmation = scanner.nextLine();
-        if (confirmation.equals("yes")) {
+        final ConfirmationString confirmationString = new ConfirmationString(scanner.nextLine());
+        if(confirmationString.confirm()){
             createLogFile(formattedResultOfSorting);
         }
     }

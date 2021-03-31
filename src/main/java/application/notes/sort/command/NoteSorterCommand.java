@@ -3,6 +3,7 @@ package application.notes.sort.command;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.model.maps.CriteriaMap;
+import application.notes.spellcheck.model.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
@@ -29,8 +30,8 @@ public class NoteSorterCommand extends AbstractCommand {
             NoteSorter noteSorter = criteriaMap.getSorterbyCriteria(criteria);
             final Map map = noteSorter.initializeMapToSort();
             final List result = noteSorter.sort(map);
-            final String formattedResult = noteSorter.format(result);
-            noteSorter.dialogue(formattedResult);
+            final Result formattedResult = noteSorter.format(result);
+            noteSorter.dialogue(formattedResult.getResultString());
         }
     }
 }

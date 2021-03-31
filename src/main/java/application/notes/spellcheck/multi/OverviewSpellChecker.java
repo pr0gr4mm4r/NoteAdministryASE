@@ -4,6 +4,7 @@ import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
+import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.model.WordExistenceMapList;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 
@@ -27,7 +28,7 @@ public class OverviewSpellChecker {
 
     }
 
-    public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException, IOException { 
+    public static OverviewSpellChecker initializeOverviewSpellChecker() throws NoFilesInDirectoryException, IOException {
         final OverviewSpellChecker overviewSpellChecker = new OverviewSpellChecker();
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String[]> wordListList = noteStack.getSeparatedWordListList();
@@ -46,22 +47,20 @@ public class OverviewSpellChecker {
         }
     }
 
-    void openLogFileDialogue(final String result) throws IOException {
+    void openLogFileDialogue(final Result result) throws IOException {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             final LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
-            logFileDeclarator.declareLogFile(result);
+            logFileDeclarator.declareLogFile(result.getResultString());
         }
     }
 
-    void printResult(final String result) {
-        System.out.println(result);
-        System.out.println();
-    }
 
-    String format() {
-        return overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
+
+    Result format() {
+        String resultString = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
+        return new Result(resultString);
     }
 }

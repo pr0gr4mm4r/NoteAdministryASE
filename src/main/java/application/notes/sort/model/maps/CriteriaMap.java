@@ -17,7 +17,7 @@ import static config.Globals.path_for_notes;
 public class CriteriaMap extends HashMap<String, NoteSorter> {
     private NoteStack noteStack;
 
-    public CriteriaMap() {
+    private CriteriaMap() {
 
     }
 

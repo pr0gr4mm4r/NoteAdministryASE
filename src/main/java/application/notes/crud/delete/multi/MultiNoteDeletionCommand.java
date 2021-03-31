@@ -1,5 +1,6 @@
 package application.notes.crud.delete.multi;
 
+import application.notes.sort.confirmationString.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
@@ -15,8 +16,8 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
     public void execute() throws IOException {
         System.out.println("Are you sure to permanently delete all files within 'src/base/files'? ");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        final String confirmation = scanner.nextLine();
-        if (confirmation.equals("yes")) {
+        final ConfirmationString confirmationString = new ConfirmationString(scanner.nextLine());
+        if (confirmationString.confirm()) {
             final NoteDeleter noteDeleter = new NoteDeleter();
             noteDeleter.deleteWholeDirectory();
             System.out.println("delete successful!");

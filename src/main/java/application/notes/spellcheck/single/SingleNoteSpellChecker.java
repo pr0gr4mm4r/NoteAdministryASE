@@ -2,6 +2,7 @@ package application.notes.spellcheck.single;
 
 import application.notes.processors.single.Note;
 import application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;
+import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import utility.map.WordExistenceMap;
 
@@ -32,14 +33,9 @@ public class SingleNoteSpellChecker {
         final double wordCountOfNote = wordList.length;
         final double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
         final double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
-        final String result = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
-        singleNoteSpellChecker.printResult(result);
+        String resultString = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
+        final Result result = new Result(resultString);
+        result.print();
         return singleNoteSpellChecker;
     }
-
-    private void printResult(final String result) {
-        System.out.println(result);
-    }
-
-
 }

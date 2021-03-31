@@ -4,8 +4,9 @@ import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.confirmationString.ConfirmationString;
 import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
-import application.notes.sort.model.maps.StringIntegerMap;
+import application.notes.spellcheck.model.Result;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class WordCountNoteSorter implements NoteSorter {
     @Override
     public Map initializeMapToSort() throws NoFilesInDirectoryException, IOException {
         initializeVariables();
-        final StringIntegerMap<String, Integer> wordCountMap = new StringIntegerMap<>();
+        final Map<String, Integer> wordCountMap = new HashMap<>();
         for (int i = 0; i < noteList.size(); i++) {
             final String nameOfNote = nameList.get(i);
             final Integer wordCount = wordCountList.get(i);
@@ -57,10 +58,10 @@ public class WordCountNoteSorter implements NoteSorter {
     }
 
     @Override
-    public String format(final List resultOfSorting) {
+    public Result format(final List resultOfSorting) {
         final WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
         final String formattedResult = wordCountNoteSorterResultFormatter.formatList(resultOfSorting);
-        return formattedResult;
+        return new Result(formattedResult);
     }
 
     @Override
@@ -68,8 +69,8 @@ public class WordCountNoteSorter implements NoteSorter {
         System.out.println(formattedResultOfSorting);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        final String confirmation = scanner.nextLine();
-        if (confirmation.equals("yes")) {
+        final ConfirmationString confirmationString = new ConfirmationString(scanner.nextLine());
+        if(confirmationString.confirm()){
             createLogFile(formattedResultOfSorting);
         }
     }
@@ -78,5 +79,4 @@ public class WordCountNoteSorter implements NoteSorter {
         final LogFileDeclarator logFileDeclarator = initializeLogFileDeclarator("Sorting Notes by Quantity of Rhymes");
         logFileDeclarator.declareLogFile(formattedResult);
     }
-
 }

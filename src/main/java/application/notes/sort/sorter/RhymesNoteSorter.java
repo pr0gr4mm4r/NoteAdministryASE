@@ -3,8 +3,9 @@ package application.notes.sort.sorter;
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.confirmationString.ConfirmationString;
 import application.notes.sort.formatter.RhymesNoteSorterResultFormatter;
-import application.notes.sort.model.maps.StringIntegerMap;
+import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
 
@@ -19,7 +20,7 @@ public class RhymesNoteSorter implements NoteSorter {
     private final NoteStack noteStack;
     private List<String[]> noteList = new ArrayList<>();
     private List<String> noteNames = new ArrayList<>();
-    private Map<String, Integer> rhymeOverview = new StringIntegerMap();
+    private Map<String, Integer> rhymeOverview = new HashMap<>();
 
     public RhymesNoteSorter(final NoteStack noteStack) {
         this.noteStack = noteStack;
@@ -58,7 +59,7 @@ public class RhymesNoteSorter implements NoteSorter {
     private void initializeVariables() {
         noteList = noteStack.getSeparatedWordListList();
         noteNames = new ArrayList<>(noteStack.getNoteNames());
-        rhymeOverview = new StringIntegerMap<>();
+        rhymeOverview = new HashMap<>();
     }
 
     @Override
@@ -71,10 +72,10 @@ public class RhymesNoteSorter implements NoteSorter {
     }
 
     @Override
-    public String format(final List resultOfSorting) {
+    public Result format(final List resultOfSorting) {
         final RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
         final String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(resultOfSorting);
-        return formattedResult;
+        return new Result(formattedResult);
 
     }
 
@@ -83,8 +84,8 @@ public class RhymesNoteSorter implements NoteSorter {
         System.out.println(formattedResultOfSorting);
         System.out.println("Do you want to save the Output as a Logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        final String confirmation = scanner.nextLine();
-        if (confirmation.equals("yes")) {
+        final ConfirmationString confirmationString = new ConfirmationString(scanner.nextLine());
+        if(confirmationString.confirm()){
             createLogFile(formattedResultOfSorting);
         }
     }
