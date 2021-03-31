@@ -1,5 +1,6 @@
 package application.notes.crud.delete.single;
 
+import application.notes.sort.confirmationString.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
@@ -19,8 +20,8 @@ public class SingleNoteDeletionCommand extends AbstractCommand {
         final String fileToDelete = scanner.nextLine();
         System.out.println("Are you sure to permanently delete this file within 'src/base/files'? ");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
-        final String confirmation = scanner.nextLine();
-        if (confirmation.equals("yes")) {
+        final ConfirmationString confirmationString = new ConfirmationString(scanner.nextLine());
+        if (confirmationString.confirm()) {
             final SingleNoteDeleter singleNoteDeleter = new SingleNoteDeleter();
                 singleNoteDeleter.deleteSingleNote(fileToDelete, path_for_notes);
                 singleNoteDeleter.printSuccessMessage();

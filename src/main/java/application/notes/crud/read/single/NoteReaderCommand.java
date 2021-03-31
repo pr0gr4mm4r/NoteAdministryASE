@@ -18,7 +18,6 @@ public class NoteReaderCommand extends AbstractCommand {
         System.out.println("Please provide a name for the note to read:");
         final String noteName = scanner.nextLine();
         final Path path = createCompletePath(noteName, path_for_notes);
-
         final NoteReader noteReader = new NoteReader();
         final String note = noteReader.readNote(path);
         noteReader.displayNote(note);

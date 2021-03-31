@@ -54,8 +54,9 @@ public class SingleNoteWordFinder {
         System.out.println(wordOccurrence);
     }
 
-    public void findWort(final String nameOfNote, final String keyword) {
+    public String findWort(final String nameOfNote, final String keyword) {
         final String[] lineList = initializeLinelist(nameOfNote);
         this.wordOccurrence = composeOccurrenceMap(lineList, keyword);
+        return wordOccurrence.toString();
     }
 }

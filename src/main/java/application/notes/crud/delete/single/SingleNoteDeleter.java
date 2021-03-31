@@ -11,9 +11,10 @@ import java.util.stream.Stream;
 
 
 public class SingleNoteDeleter implements Deleter {
+    private final String successMessage;
 
     public SingleNoteDeleter() {
-
+        successMessage = "successful delete!";
     }
 
     public void deleteSingleNote(final String fileToDelete, final String pathToNote) throws IOException {
@@ -24,6 +25,6 @@ public class SingleNoteDeleter implements Deleter {
     }
 
     public void printSuccessMessage() {
-        System.out.println("successful delete!");
+        System.out.println(successMessage);
     }
 }

@@ -1,5 +1,6 @@
 package application.singleWord;
 
+import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import utility.map.WordExistenceMap;
 
@@ -13,12 +14,19 @@ import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 public class SingleWordSpellchecker {
     private SpellCheckerRaw spellCheckerRaw;
 
-    public SingleWordSpellchecker(final String wordToCheckSpelling) {
+    private SingleWordSpellchecker() {
+
+    }
+
+    public static SingleWordSpellchecker initializeSingleWordSpellChecker(final String wordToCheckSpelling){
+        final SingleWordSpellchecker singleWordSpellchecker = new SingleWordSpellchecker();
         final String[] wordList = createWordList(wordToCheckSpelling);
-        spellCheckerRaw = initializeSpellCheckerRaw(wordList);
-        final List<String> wordsInLexicon = spellCheckerRaw.getWordsInLexicon();
-        final List<String> wordsNotInLexicon = spellCheckerRaw.getWordsNotInLexicon();
+        singleWordSpellchecker.spellCheckerRaw = initializeSpellCheckerRaw(wordList);
+        final List<String> wordsInLexicon = singleWordSpellchecker.spellCheckerRaw.getWordsInLexicon();
+        final List<String> wordsNotInLexicon = singleWordSpellchecker.spellCheckerRaw.getWordsNotInLexicon();
         final WordExistenceMap wordExistenceMap = initializeWordExistenceMap(wordsInLexicon, wordsNotInLexicon);
-        System.out.println(wordExistenceMap);
+        final Result result = new Result(wordExistenceMap.toString());
+        result.print();
+        return singleWordSpellchecker;
     }
 }

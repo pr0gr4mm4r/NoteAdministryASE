@@ -1,5 +1,6 @@
 package application.notes.find.single;
 
+import application.notes.spellcheck.model.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import static application.start.NoteAdministryStart.programRun;
@@ -17,9 +18,10 @@ public class SingleNoteWordFinderCommand extends AbstractCommand {
         System.out.println("type in the name of the note to search:");
         final String nameOfNote = scanner.nextLine();
         final SingleNoteWordFinder singleNoteWordFinder = new SingleNoteWordFinder();
-        singleNoteWordFinder.findWort(nameOfNote, keyword);
+        String resultString = singleNoteWordFinder.findWort(nameOfNote, keyword);
+        Result result = new Result(resultString);
         if (programRun) {
-            singleNoteWordFinder.printResults(); //NotNullValidator
+            result.print();
         }
     }
 }
