@@ -16,7 +16,7 @@ public class Note {
     private String[] wordList;
     private String[] lineList;
     private String content;
-    private String noteForGraphicalProcessing;
+    private String contentForGraphicalProcessing;
 
     private Note() {
     }
@@ -27,7 +27,7 @@ public class Note {
         note.noteName = noteName;
         note.completePath = createCompletePath(noteName, path_for_notes);
         note.content = noteReader.readNoteForNoteProcessing(note.completePath);
-        note.noteForGraphicalProcessing = noteReader.readNote(note.completePath);
+        note.contentForGraphicalProcessing = noteReader.readNote(note.completePath);
         note.lineList = note.createLineList(note.content);
         note.wordList = createWordList(note.content);
         note.wordList = note.removeEmptyLines(note.wordList);
@@ -66,8 +66,8 @@ public class Note {
         return lineList;
     }
 
-    public String getNoteForGraphicalProcessing() {
-        return noteForGraphicalProcessing;
+    public String getContentForGraphicalProcessing() {
+        return contentForGraphicalProcessing;
     }
 
     public String getContent() {

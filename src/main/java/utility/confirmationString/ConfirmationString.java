@@ -1,4 +1,4 @@
-package application.notes.sort.confirmationString;
+package utility.confirmationString;
 
 public class ConfirmationString {
     private final String confirmation;

@@ -3,7 +3,7 @@ package application.notes.crud.declare.abstraction;
 import java.nio.file.Path;
 
 public class HeaderInformation {
-    private Path path;
+    private final Path path;
     private String capture;
 
     public HeaderInformation(Path path, String capture) {

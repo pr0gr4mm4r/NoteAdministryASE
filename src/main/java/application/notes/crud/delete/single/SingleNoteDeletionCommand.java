@@ -1,6 +1,6 @@
 package application.notes.crud.delete.single;
 
-import application.notes.sort.confirmationString.ConfirmationString;
+import utility.confirmationString.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

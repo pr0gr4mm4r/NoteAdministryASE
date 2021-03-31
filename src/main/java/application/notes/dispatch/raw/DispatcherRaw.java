@@ -5,7 +5,7 @@ import java.util.Properties;
 public class DispatcherRaw {
     private Properties properties;
 
-    public DispatcherRaw() {
+    private DispatcherRaw() {
 
     }
 

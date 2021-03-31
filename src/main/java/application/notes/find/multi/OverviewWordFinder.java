@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static application.start.NoteAdministryStart.programRun;
+
 public class OverviewWordFinder {
 
     private final String keyword;
@@ -27,7 +29,7 @@ public class OverviewWordFinder {
         final List<String> noteList = createNoteList(pathsToNotesList);
         final List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
         composeWordOccurrenceOverview(pathsToNotesList, wordOccurenceOverview);
-        if (NoteAdministryStart.programRun) {
+        if (programRun) {
             printResults(noteList, wordOccurenceOverview);
         }
     }

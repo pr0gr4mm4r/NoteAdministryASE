@@ -4,7 +4,7 @@ import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
-import application.notes.sort.confirmationString.ConfirmationString;
+import utility.confirmationString.ConfirmationString;
 import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import application.notes.spellcheck.model.Result;
 import application.notes.wordcount.raw.NoteCounterRaw;

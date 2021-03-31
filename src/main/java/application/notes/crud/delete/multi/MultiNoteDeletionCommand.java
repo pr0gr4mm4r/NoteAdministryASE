@@ -1,6 +1,6 @@
 package application.notes.crud.delete.multi;
 
-import application.notes.sort.confirmationString.ConfirmationString;
+import utility.confirmationString.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import static config.Globals.scanner;
 
 public class MultiNoteDeletionCommand extends AbstractCommand {
+    private String successMessage = "delete successful!";
     public MultiNoteDeletionCommand(final String commandName, final String description) {
         super(commandName, description);
     }
@@ -20,7 +21,7 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
         if (confirmationString.confirm()) {
             final NoteDeleter noteDeleter = new NoteDeleter();
             noteDeleter.deleteWholeDirectory();
-            System.out.println("delete successful!");
+            System.out.println(successMessage);
         }
     }
 }
