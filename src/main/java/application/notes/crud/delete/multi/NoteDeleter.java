@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import static config.Globals.path_for_notes;
 
 public class NoteDeleter implements Deleter {
-
+    private final String successMessage = "delete successful!";
 
     public NoteDeleter() {
     }
@@ -21,5 +21,9 @@ public class NoteDeleter implements Deleter {
         try (Stream<Path> pathStream = Files.walk(Paths.get(path_for_notes))) {
             pathStream.map(Path::toFile).forEach(File::delete);
         }
+    }
+
+    public void printSuccessMessage() {
+        System.out.println(successMessage);
     }
 }

@@ -18,6 +18,8 @@ import static application.notes.crud.edit.single.DisplayState.SUCCESS;
 
 public class NoteLineEditor {
 
+    private String successMessage = "Edit was successfull!";
+
     public NoteLineEditor() {
     }
 
@@ -53,10 +55,14 @@ public class NoteLineEditor {
                     .indexLineNumber(indexLineNumber)
                     .build();
             overwriteLine(lineOverwriterInformation);
-            System.out.println("Edit was successfull!");
+            printSuccessMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void printSuccessMessage() {
+        System.out.println(successMessage);
     }
 
     public void overwriteLine(final LineOverwriterInformation lineOverwriterInformation) throws IOException {

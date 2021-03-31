@@ -8,7 +8,7 @@ import java.io.IOException;
 import static config.Globals.scanner;
 
 public class MultiNoteDeletionCommand extends AbstractCommand {
-    private String successMessage = "delete successful!";
+
     public MultiNoteDeletionCommand(final String commandName, final String description) {
         super(commandName, description);
     }
@@ -21,7 +21,7 @@ public class MultiNoteDeletionCommand extends AbstractCommand {
         if (confirmationString.confirm()) {
             final NoteDeleter noteDeleter = new NoteDeleter();
             noteDeleter.deleteWholeDirectory();
-            System.out.println(successMessage);
+            noteDeleter.printSuccessMessage();
         }
     }
 }

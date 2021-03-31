@@ -22,7 +22,7 @@ public class NoteStackTest {
         final String path = temporaryFolder.getRoot().getPath();
         final NoteStack noteStack = new NoteStack();
 
-        final Set<String> noteNames =  noteStack.listNoteNames(path,1);
+        final Set<String> noteNames =  noteStack.listNoteNames(path);
         final List<String> noteNameList = new ArrayList<>(noteNames);
 
         assertEquals("myfile.txt", noteNameList.get(0));
@@ -37,7 +37,7 @@ public class NoteStackTest {
         final String path = temporaryFolder.getRoot().getPath();
         final NoteStack noteStack = new NoteStack();
 
-        final Set<String> noteNames =  noteStack.listNoteNames(path,1);
+        final Set<String> noteNames =  noteStack.listNoteNames(path);
         final List<String> noteNameList = new ArrayList<>(noteNames);
 
         assertTrue(noteNameList.contains("myfile1.txt"));

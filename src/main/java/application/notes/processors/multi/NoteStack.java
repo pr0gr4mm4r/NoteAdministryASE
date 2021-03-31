@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static application.notes.processors.single.Note.*;
 import static config.Globals.path_for_notes;
 
-public class NoteStack implements NoteProcessor {
+public class NoteStack implements NoteProcessor { 
     private List<Path> pathList;
     private List<String> noteContentList;
     private final List<String[]> separatedWordListList = new ArrayList<>();
@@ -27,7 +27,7 @@ public class NoteStack implements NoteProcessor {
 
     public static NoteStack initializeNoteStack(final String path) throws NoFilesInDirectoryException, IOException {
         final NoteStack noteStack = new NoteStack();
-        noteStack.noteNames = noteStack.listNoteNames(path, 1);
+        noteStack.noteNames = noteStack.listNoteNames(path);
         if (noteStack.noteNames.isEmpty()) {
             throw new NoFilesInDirectoryException(path_for_notes);
         }
@@ -70,8 +70,8 @@ public class NoteStack implements NoteProcessor {
         return pathList;
     }
 
-    public Set<String> listNoteNames(final String path, final int depth) throws IOException {
-        try (Stream<Path> stream = Files.walk(Paths.get(path), depth)) {
+    public Set<String> listNoteNames(final String path) throws IOException {
+        try (Stream<Path> stream = Files.walk(Paths.get(path))) {
             return stream
                     .filter(file -> !Files.isDirectory(file))
                     .map(Path::getFileName)
