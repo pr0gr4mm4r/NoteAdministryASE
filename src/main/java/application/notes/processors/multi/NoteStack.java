@@ -14,11 +14,13 @@ import java.util.stream.Stream;
 import static application.notes.processors.single.Note.*;
 import static config.Globals.path_for_notes;
 
-public class NoteStack implements NoteProcessor { 
+public class NoteStack implements NoteProcessor {
     private List<Path> pathList;
     private List<String> noteContentList;
     private final List<String[]> separatedWordListList = new ArrayList<>();
     private Set<String> noteNames = new HashSet<>();
+    //High Cohesion, da NoteStack auf Noteklasse zurückgreift
+    // und sämtliche Methoden von NoteStack darauf aufbauen -> macht Sinn, da NoteStack ja ein "Stapel" von Notizen sein soll (alle Notizen des Maindirectories)
     private List<Note> notes = new ArrayList<>();
 
     public NoteStack() {
