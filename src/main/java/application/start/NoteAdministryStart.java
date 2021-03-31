@@ -34,7 +34,7 @@ import static config.Globals.scanner;
 import static utility.logger.GlobalLogger.logger;
 import static utility.logger.GlobalLogger.loggerLineBreak;
 
-public class NoteAdministryStart {
+public final class NoteAdministryStart {
     private static CommandList commandList;
     public static boolean programRun;
 
