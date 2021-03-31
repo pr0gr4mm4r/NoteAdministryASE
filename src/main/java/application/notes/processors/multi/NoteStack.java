@@ -19,8 +19,6 @@ public class NoteStack implements NoteProcessor {
     private List<String> noteContentList;
     private final List<String[]> separatedWordListList = new ArrayList<>();
     private Set<String> noteNames = new HashSet<>();
-    //High Cohesion, da NoteStack auf Noteklasse zurückgreift
-    // und sämtliche Methoden von NoteStack darauf aufbauen -> macht Sinn, da NoteStack ja ein "Stapel" von Notizen sein soll (alle Notizen des Maindirectories)
     private List<Note> notes = new ArrayList<>();
 
     public NoteStack() {
