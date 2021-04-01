@@ -1,22 +1,22 @@
 package application.notes.spellcheck.formatter;
 
+import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.model.WordExistenceMapList;
 
 import java.util.List;
 
-import static utility.formatting.BasicFormatter.insertLineBreak;
 
-public class OverviewSpellCheckerResultFormatter  {
+public class OverviewSpellCheckerResultFormatter {
     SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
     public OverviewSpellCheckerResultFormatter() {
     }
 
-    public String formatList(final WordExistenceMapList wordExistenceMapList, final List<Double> percentageValues) {
-        String result = "";
+    public Result formatList(final WordExistenceMapList wordExistenceMapList, final List<Double> percentageValues) {
+        Result result = new Result("");
         for (int i = 0; i < wordExistenceMapList.size(); i++) {
-            result = insertLineBreak(result);
-            result += singleNoteSpellCheckerResultFormatter.format(wordExistenceMapList.get(i), percentageValues.get(i));
+            result.insertLineBreak();
+            result.add(singleNoteSpellCheckerResultFormatter.format(wordExistenceMapList.get(i), percentageValues.get(i)).getResultString());
         }
         return result;
     }

@@ -15,4 +15,19 @@ public class Result {
     public String getResultString() {
         return resultString;
     }
+
+    public void setResultString(String resultString) {
+        this.resultString = resultString;
+    }
+
+    public void insertLineBreak(){
+        resultString += "\n";
+    }
+    public void insertSpace(){
+        resultString += " ";
+    }
+
+    public void add(String stringToAdd) {
+        resultString += stringToAdd;
+    }
 }

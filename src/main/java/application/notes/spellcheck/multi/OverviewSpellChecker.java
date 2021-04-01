@@ -59,7 +59,7 @@ public class OverviewSpellChecker {
 
 
     protected Result format() {
-        String resultString = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
-        return new Result(resultString);
+        final Result result = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
+        return result;
     }
 }

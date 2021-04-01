@@ -33,8 +33,7 @@ public class SingleNoteSpellChecker  {
         final double wordCountOfNote = wordList.length;
         final double wordsInLexikon = singleNoteSpellChecker.spellCheckerRaw.countWordsPresentInLexicon(wordList);
         final double percentageValue = calculatePercentageWiseOccurrence(wordCountOfNote, wordsInLexikon);
-        String resultString = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
-        final Result result = new Result(resultString);
+        final Result result = singleNoteSpellChecker.singleNoteSpellCheckerResultFormatter.format(singleNoteSpellChecker.wordExistence, percentageValue);
         result.print();
         return singleNoteSpellChecker;
     }
