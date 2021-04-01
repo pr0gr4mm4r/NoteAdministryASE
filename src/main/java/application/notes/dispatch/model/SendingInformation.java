@@ -1,6 +1,6 @@
 package application.notes.dispatch.model;
 
-public class SendingInformation {
+public class SendingInformation { // Einführung des Builder Pattern anstelle des normalen Konstruktors zur Erstellung von Sendinginformation-Instanzen
     private final String recipient;
     private final String sender;
     private final String password;
