@@ -3,8 +3,8 @@ package application.notes.sort.sorter;
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.formatter.NoteSorterFormatter;
 import utility.confirmationString.ConfirmationString;
-import application.notes.sort.formatter.RhymesNoteSorterResultFormatter;
 import application.notes.spellcheck.model.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
@@ -73,8 +73,8 @@ public class RhymesNoteSorter implements NoteSorter {
 
     @Override
     public Result format(final List resultOfSorting) {
-        final RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
-        final Result formattedResult = rhymesNoteSorterResultFormatter.convertListToResult(resultOfSorting);
+        final NoteSorterFormatter noteSorterFormatter = new NoteSorterFormatter("rhymes");
+        final Result formattedResult = noteSorterFormatter.convertListToResult(resultOfSorting);
         return formattedResult;
 
     }

@@ -4,8 +4,8 @@ import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.formatter.NoteSorterFormatter;
 import utility.confirmationString.ConfirmationString;
-import application.notes.sort.formatter.WordCountNoteSorterResultFormatter;
 import application.notes.spellcheck.model.Result;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
@@ -59,8 +59,8 @@ public class WordCountNoteSorter implements NoteSorter {
 
     @Override
     public Result format(final List resultOfSorting) {
-        final WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
-        final Result formattedResult = wordCountNoteSorterResultFormatter.formatList(resultOfSorting);
+        final NoteSorterFormatter wordCountNoteSorterResultFormatter = new NoteSorterFormatter("wordCount");
+        final Result formattedResult = wordCountNoteSorterResultFormatter.convertListToResult(resultOfSorting);
         return formattedResult;
     }
 

@@ -3,8 +3,8 @@ package application.notes.sort.sorter;
 import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
+import application.notes.sort.formatter.NoteSorterFormatter;
 import utility.confirmationString.ConfirmationString;
-import application.notes.sort.formatter.VerbCountSorterResultFormatter;
 import application.notes.spellcheck.model.Result;
 import rita.RiTa;
 
@@ -58,8 +58,8 @@ public class VerbCountSorter implements NoteSorter {
 
     @Override
     public Result format(final List resultOfSorting) {
-        final VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
-        final Result formattedResult = verbCountSorterResultFormatter.formatList(resultOfSorting);
+        final NoteSorterFormatter noteSorterFormatter = new NoteSorterFormatter("verbs");
+        final Result formattedResult = noteSorterFormatter.convertListToResult(resultOfSorting);
         return formattedResult;
     }
 
