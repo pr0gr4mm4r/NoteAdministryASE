@@ -13,7 +13,7 @@ import static utility.map.WordExistenceMap.initializeWordExistenceMap;
 import static application.notes.processors.single.Note.initializeNote;
 import static application.notes.spellcheck.raw.SpellCheckerRaw.initializeSpellCheckerRaw;
 
-public class SingleNoteSpellChecker {
+public class SingleNoteSpellChecker  {
     private WordExistenceMap wordExistence;
     private SpellCheckerRaw spellCheckerRaw;
     private final SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();

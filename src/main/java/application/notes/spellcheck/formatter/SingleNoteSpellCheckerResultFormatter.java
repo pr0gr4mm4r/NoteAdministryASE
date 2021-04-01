@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static utility.formatting.BasicFormatter.insertLineBreak;
+import static utility.formatting.BasicFormatter.insertSpace;
 
 public class SingleNoteSpellCheckerResultFormatter {
     public SingleNoteSpellCheckerResultFormatter() {
@@ -35,7 +36,4 @@ public class SingleNoteSpellCheckerResultFormatter {
         return result;
     }
 
-    private String insertSpace(final String string){
-        return string + " ";
-    }
 }

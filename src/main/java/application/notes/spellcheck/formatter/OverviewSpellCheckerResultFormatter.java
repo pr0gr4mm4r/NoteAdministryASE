@@ -6,7 +6,7 @@ import java.util.List;
 
 import static utility.formatting.BasicFormatter.insertLineBreak;
 
-public class OverviewSpellCheckerResultFormatter {   //InterfacePotential
+public class OverviewSpellCheckerResultFormatter  {
     SingleNoteSpellCheckerResultFormatter singleNoteSpellCheckerResultFormatter = new SingleNoteSpellCheckerResultFormatter();
 
     public OverviewSpellCheckerResultFormatter() {

@@ -5,6 +5,8 @@ import application.notes.processors.single.Note;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static application.notes.processors.single.Note.initializeNote;
+
 public class SingleNoteWordFinder {
     private Map<Integer, Integer> wordOccurrence;
 
@@ -13,7 +15,7 @@ public class SingleNoteWordFinder {
     }
 
     public String[] initializeLinelist(final String nameOfNote) {
-        final Note note = Note.initializeNote(nameOfNote);
+        final Note note = initializeNote(nameOfNote);
         final String[] lineList = note.getLineList();
         return lineList;
     }
@@ -48,10 +50,6 @@ public class SingleNoteWordFinder {
         final int oldNewLineLengthDifference = oldLineLength - newLineLength;
         final int occurrence = oldNewLineLengthDifference / wordLength;
         return occurrence;
-    }
-
-    protected void printResults() {
-        System.out.println(wordOccurrence);
     }
 
     public String findWort(final String nameOfNote, final String keyword) {

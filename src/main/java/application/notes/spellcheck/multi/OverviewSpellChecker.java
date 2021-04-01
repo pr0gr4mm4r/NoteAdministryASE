@@ -58,8 +58,7 @@ public class OverviewSpellChecker {
     }
 
 
-
-    Result format() {
+    protected Result format() {
         String resultString = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
         return new Result(resultString);
     }
