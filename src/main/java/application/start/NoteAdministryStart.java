@@ -16,7 +16,6 @@ import application.notes.wordcount.multi.OverviewCounterCommand;
 import application.notes.wordcount.single.SingleNoteCounterCommand;
 import application.singleWord.SingleWordSpellCheckerCommand;
 import application.notes.crud.declare.single.NoteDeclarationCommand;
-import application.start.model.commands.CommandList;
 import application.start.model.help.HelpMode;
 import application.start.model.specialcommands.helpCommands.ExtendedHelpCommand;
 import application.start.model.specialcommands.helpCommands.HelpCommand;
@@ -35,11 +34,11 @@ import static utility.logger.GlobalLogger.logger;
 import static utility.logger.GlobalLogger.loggerLineBreak;
 
 public final class NoteAdministryStart {
-    private static CommandList commandList;
+    private static List<AbstractCommand> commandList;
     public static boolean programRun;
 
     private static void fillCommands() {
-        commandList = new CommandList();
+        commandList = new ArrayList<>();
         commandList.add(new NoteDeclarationCommand("declare", "create a new note with a header containing creating date and time"));
         commandList.add(new SingleNoteDeletionCommand("delete", "delete a single note in directory" + path_for_notes));
         commandList.add(new MultiNoteDeletionCommand("delete all", "delete all notes in directory" + path_for_notes));
