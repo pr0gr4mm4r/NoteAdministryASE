@@ -4,7 +4,7 @@ import application.notes.crud.declare.abstraction.FileCreator;
 import application.notes.crud.declare.abstraction.HeaderAdder;
 import application.notes.crud.declare.abstraction.HeaderInformation;
 import application.notes.spellcheck.model.Header;
-import application.notes.spellcheck.model.StringRepresentation;
+import utility.formatting.StringRepresentation;
 
 import java.io.IOException;
 import java.nio.file.Files;

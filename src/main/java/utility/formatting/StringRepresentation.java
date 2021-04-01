@@ -1,4 +1,4 @@
-package application.notes.spellcheck.model;
+package utility.formatting;
 
 public class StringRepresentation {
 
