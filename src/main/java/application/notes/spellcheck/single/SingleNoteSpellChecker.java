@@ -2,7 +2,7 @@ package application.notes.spellcheck.single;
 
 import application.notes.processors.single.Note;
 import application.notes.spellcheck.formatter.SingleNoteSpellCheckerResultFormatter;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import utility.map.WordExistenceMap;
 

@@ -4,7 +4,7 @@ import application.logfiles.crud.declare.single.LogFileDeclarator;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.model.WordExistenceMapList;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 
@@ -47,7 +47,7 @@ public class OverviewSpellChecker {
         }
     }
 
-    void openLogFileDialogue(final Result result) throws IOException {
+    public void openLogFileDialogue(final Result result) throws IOException {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
@@ -58,7 +58,7 @@ public class OverviewSpellChecker {
     }
 
 
-    protected Result format() {
+    public Result format() {
         final Result result = overviewSpellCheckerResultFormatter.formatList(wordExistenceMapList, percentageValueList);
         return result;
     }

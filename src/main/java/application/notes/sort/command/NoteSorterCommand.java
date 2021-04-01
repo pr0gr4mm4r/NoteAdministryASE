@@ -3,7 +3,7 @@ package application.notes.sort.command;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.model.maps.CriteriaMap;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

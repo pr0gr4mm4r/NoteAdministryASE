@@ -1,6 +1,6 @@
 package application.notes.find.single;
 
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import static application.start.NoteAdministryStart.programRun;

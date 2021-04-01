@@ -1,4 +1,4 @@
-package utility.formatting;
+package utility.formatting.StringRepresentation;
 
 public class StringRepresentation {
 

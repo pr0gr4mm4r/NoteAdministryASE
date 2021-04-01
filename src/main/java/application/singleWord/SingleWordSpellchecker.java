@@ -1,6 +1,6 @@
 package application.singleWord;
 
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import utility.map.WordExistenceMap;
 

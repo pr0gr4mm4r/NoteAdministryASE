@@ -1,6 +1,6 @@
 package application.notes.spellcheck.formatter;
 
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.model.WordExistenceMapList;
 
 import java.util.List;

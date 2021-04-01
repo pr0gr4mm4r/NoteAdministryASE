@@ -1,6 +1,4 @@
-package application.notes.spellcheck.model;
-
-import utility.formatting.StringRepresentation;
+package utility.formatting.StringRepresentation;
 
 public class Result extends StringRepresentation {
 

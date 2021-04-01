@@ -1,4 +1,4 @@
-package application.notes.spellcheck.single;
+package application.notes.spellcheck.commands;
 
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 

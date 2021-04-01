@@ -5,7 +5,7 @@ import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.NoteSorterFormatter;
 import utility.confirmationString.ConfirmationString;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
 import rita.RiTa;
 

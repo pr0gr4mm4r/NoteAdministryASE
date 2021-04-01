@@ -1,7 +1,7 @@
 package application.notes.sort.abstraction;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 
 import java.io.IOException;
 import java.util.List;

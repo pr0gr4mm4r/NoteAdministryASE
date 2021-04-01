@@ -3,8 +3,8 @@ package application.logfiles.crud.declare.single;
 import application.notes.crud.declare.abstraction.FileCreator;
 import application.notes.crud.declare.abstraction.HeaderAdder;
 import application.notes.crud.declare.abstraction.HeaderInformation;
-import application.notes.spellcheck.model.Header;
-import utility.formatting.StringRepresentation;
+import utility.formatting.StringRepresentation.Header;
+import utility.formatting.StringRepresentation.StringRepresentation;
 
 import java.io.IOException;
 import java.nio.file.Files;

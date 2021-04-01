@@ -1,6 +1,6 @@
 package application.notes.sort.formatter;
 
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
 
 import java.util.List;
 import java.util.Map.Entry;

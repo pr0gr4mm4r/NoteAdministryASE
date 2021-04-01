@@ -1,7 +1,8 @@
-package application.notes.spellcheck.multi;
+package application.notes.spellcheck.commands;
 
 import application.notes.processors.multi.NoFilesInDirectoryException;
-import application.notes.spellcheck.model.Result;
+import utility.formatting.StringRepresentation.Result;
+import application.notes.spellcheck.multi.OverviewSpellChecker;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;
