@@ -1,9 +1,9 @@
 package application.notes.sort.formatter;
 
+import application.notes.spellcheck.model.Result;
+
 import java.util.List;
 import java.util.Map.Entry;
-
-import static utility.formatting.BasicFormatter.insertLineBreak;
 
 public class VerbCountSorterResultFormatter {
     private final String theme;
@@ -12,15 +12,18 @@ public class VerbCountSorterResultFormatter {
         this.theme = "verbs";
     }
 
-     public String formatList(final List<Entry<String, Integer>> verbCountOverview) {
-        String result = "";
-        result = insertLineBreak(result);
+    public Result formatList(final List<Entry<String, Integer>> verbCountOverview){
+        Result result = new Result("");
+        result.insertLineBreak();
         for (final Entry<String, Integer> stringIntegerEntry : verbCountOverview) {
             final String noteName = stringIntegerEntry.getKey();
             final Integer verbCount = stringIntegerEntry.getValue();
-            result += noteName + " " + "contains " + verbCount + " "  + theme + ".";
-            result = insertLineBreak(result);
+            result.add(noteName + " " + "contains " + verbCount + " " + theme + ".");
+            result.insertLineBreak();
         }
         return result;
     }
+
+
+
 }

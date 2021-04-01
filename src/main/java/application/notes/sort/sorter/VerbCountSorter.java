@@ -59,8 +59,8 @@ public class VerbCountSorter implements NoteSorter {
     @Override
     public Result format(final List resultOfSorting) {
         final VerbCountSorterResultFormatter verbCountSorterResultFormatter = new VerbCountSorterResultFormatter();
-        final String formattedResult = verbCountSorterResultFormatter.formatList(resultOfSorting);
-        return new Result(formattedResult);
+        final Result formattedResult = verbCountSorterResultFormatter.formatList(resultOfSorting);
+        return formattedResult;
     }
 
     @Override

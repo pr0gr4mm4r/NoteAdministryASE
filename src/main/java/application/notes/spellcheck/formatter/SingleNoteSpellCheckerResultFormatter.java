@@ -16,7 +16,7 @@ public class SingleNoteSpellCheckerResultFormatter {
     public Result format(final WordExistenceMap wordExistenceMap, final double percentageValue) {
         final List<String> positives = wordExistenceMap.entrySet().stream().filter(Map.Entry::getValue).map(Map.Entry::getKey).collect(Collectors.toList());
         final List<String> negatives = wordExistenceMap.entrySet().stream().filter(word -> !word.getValue()).map(Map.Entry::getKey).collect(Collectors.toList());
-        Result result = new Result("CORRECTLY SPELLED:"); 
+        Result result = new Result("CORRECTLY SPELLED:");
         result.insertLineBreak();
         for (final String positive : positives) {
             result.add(positive);

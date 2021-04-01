@@ -60,8 +60,8 @@ public class WordCountNoteSorter implements NoteSorter {
     @Override
     public Result format(final List resultOfSorting) {
         final WordCountNoteSorterResultFormatter wordCountNoteSorterResultFormatter = new WordCountNoteSorterResultFormatter();
-        final String formattedResult = wordCountNoteSorterResultFormatter.formatList(resultOfSorting);
-        return new Result(formattedResult);
+        final Result formattedResult = wordCountNoteSorterResultFormatter.formatList(resultOfSorting);
+        return formattedResult;
     }
 
     @Override

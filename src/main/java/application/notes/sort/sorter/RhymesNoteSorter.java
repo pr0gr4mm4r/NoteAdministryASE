@@ -74,8 +74,8 @@ public class RhymesNoteSorter implements NoteSorter {
     @Override
     public Result format(final List resultOfSorting) {
         final RhymesNoteSorterResultFormatter rhymesNoteSorterResultFormatter = new RhymesNoteSorterResultFormatter();
-        final String formattedResult = rhymesNoteSorterResultFormatter.convertListToResultString(resultOfSorting);
-        return new Result(formattedResult);
+        final Result formattedResult = rhymesNoteSorterResultFormatter.convertListToResult(resultOfSorting);
+        return formattedResult;
 
     }
 

@@ -53,7 +53,7 @@ public class OverviewSpellChecker {
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             final LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
-            logFileDeclarator.declareLogFile(result.getResultString());
+            logFileDeclarator.declareLogFile(result.getStringRepresentation());
         }
     }
 

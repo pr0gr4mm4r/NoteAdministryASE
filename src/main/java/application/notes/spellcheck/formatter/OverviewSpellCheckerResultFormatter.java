@@ -16,7 +16,7 @@ public class OverviewSpellCheckerResultFormatter {
         Result result = new Result("");
         for (int i = 0; i < wordExistenceMapList.size(); i++) {
             result.insertLineBreak();
-            result.add(singleNoteSpellCheckerResultFormatter.format(wordExistenceMapList.get(i), percentageValues.get(i)).getResultString());
+            result.add(singleNoteSpellCheckerResultFormatter.format(wordExistenceMapList.get(i), percentageValues.get(i)).getStringRepresentation());
         }
         return result;
     }

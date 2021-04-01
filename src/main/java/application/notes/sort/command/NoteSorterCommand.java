@@ -31,7 +31,7 @@ public class NoteSorterCommand extends AbstractCommand {
             final Map map = noteSorter.initializeMapToSort();
             final List result = noteSorter.sort(map);
             final Result formattedResult = noteSorter.format(result);
-            noteSorter.dialogue(formattedResult.getResultString());
+            noteSorter.dialogue(formattedResult.getStringRepresentation());
         }
     }
 }
