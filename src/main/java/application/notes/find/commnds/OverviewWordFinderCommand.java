@@ -1,5 +1,6 @@
-package application.notes.find.multi;
+package application.notes.find.commnds;
 
+import application.notes.find.multi.OverviewWordFinder;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;

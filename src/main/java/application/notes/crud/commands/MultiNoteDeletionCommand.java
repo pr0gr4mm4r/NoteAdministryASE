@@ -1,5 +1,6 @@
-package application.notes.crud.delete.multi;
+package application.notes.crud.commands;
 
+import application.notes.crud.delete.multi.NoteDeleter;
 import utility.confirmationString.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 

@@ -1,12 +1,12 @@
 package application.start;
 
-import application.notes.crud.delete.multi.MultiNoteDeletionCommand;
-import application.notes.crud.delete.single.SingleNoteDeletionCommand;
-import application.notes.crud.edit.single.NoteLineEditorCommand;
-import application.notes.crud.read.single.NoteReaderCommand;
-import application.notes.dispatch.single.SingleNoteDispatcherCommand;
-import application.notes.find.multi.OverviewWordFinderCommand;
-import application.notes.find.single.SingleNoteWordFinderCommand;
+import application.notes.crud.commands.MultiNoteDeletionCommand;
+import application.notes.crud.commands.SingleNoteDeletionCommand;
+import application.notes.crud.commands.NoteLineEditorCommand;
+import application.notes.crud.commands.NoteReaderCommand;
+import application.notes.dispatch.commands.SingleNoteDispatcherCommand;
+import application.notes.find.commnds.OverviewWordFinderCommand;
+import application.notes.find.commnds.SingleNoteWordFinderCommand;
 import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.sort.command.NoteSorterCommand;
 import application.notes.spellcheck.commands.OverviewSpellCheckerCommand;
@@ -15,7 +15,7 @@ import application.notes.ui.command.DisplayCommand;
 import application.notes.wordcount.multi.OverviewCounterCommand;
 import application.notes.wordcount.single.SingleNoteCounterCommand;
 import application.singleWord.SingleWordSpellCheckerCommand;
-import application.notes.crud.declare.single.NoteDeclarationCommand;
+import application.notes.crud.commands.NoteDeclarationCommand;
 import application.start.model.help.HelpMode;
 import application.start.model.specialcommands.helpCommands.ExtendedHelpCommand;
 import application.start.model.specialcommands.helpCommands.HelpCommand;

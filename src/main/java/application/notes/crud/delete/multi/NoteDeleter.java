@@ -17,7 +17,7 @@ public class NoteDeleter implements Deleter {
     public NoteDeleter() {
     }
 
-    protected void deleteWholeDirectory() throws IOException {
+    public void deleteWholeDirectory() throws IOException {
         try (Stream<Path> pathStream = Files.walk(Paths.get(path_for_notes))) {
             pathStream.map(Path::toFile).forEach(File::delete);
         }

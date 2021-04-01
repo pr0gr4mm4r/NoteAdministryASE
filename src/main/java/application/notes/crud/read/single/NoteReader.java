@@ -11,7 +11,7 @@ public class NoteReader {
     public NoteReader() {
     }
 
-    protected void displayNote(final String note) {
+    public void displayNote(final String note) {
         System.out.println(note);
     }
 

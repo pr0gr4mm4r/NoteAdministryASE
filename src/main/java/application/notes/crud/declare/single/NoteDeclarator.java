@@ -22,7 +22,7 @@ public class NoteDeclarator implements HeaderAdder, FileCreator {
         this.pathToNote = pathToNote;
     }
 
-    void declareNote(final Path completePath) throws IOException {
+    public void declareNote(final Path completePath) throws IOException {
         final boolean noteDoesNotExist = tryToCreateFile(completePath);
         if (noteDoesNotExist) {
             HeaderInformation headerInformation = new HeaderInformation(completePath);

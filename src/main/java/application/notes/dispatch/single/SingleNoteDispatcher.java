@@ -43,7 +43,7 @@ public class SingleNoteDispatcher {
         return singleNoteDispatcher;
     }
 
-    void sendMessage() {
+    public void sendMessage() {
         try {
             Transport.send(message);
             displaySuccessMessage();

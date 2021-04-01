@@ -28,7 +28,7 @@ public class NoteLineEditor {
         return noteCounterRaw.getLineCount();
     }
 
-    protected void openErrorDialogue(final Path completePath) {
+    public void openErrorDialogue(final Path completePath) {
         try (Stream<String> lineStream = Files.lines(completePath)) {
             final long lineLength = lineStream.count();
             System.out.println("error -> allowed manipulation range is: 2 - " +
@@ -38,7 +38,7 @@ public class NoteLineEditor {
         }
     }
 
-    protected void openChangeDialogue(final Path completePath, final int lineNumber) {
+    public void openChangeDialogue(final Path completePath, final int lineNumber) {
         try {
             final int indexLineNumber = lineNumber - 1;
             final String lineToChange = Files.readAllLines(completePath).get(indexLineNumber);
@@ -85,7 +85,7 @@ public class NoteLineEditor {
         return true;
     }
 
-    protected DisplayState displayLineByLinesOfNote(final Path completePath) {
+    public DisplayState displayLineByLinesOfNote(final Path completePath) {
         try (LineNumberReader lineNumberReader = new LineNumberReader(
                 new InputStreamReader(Files.newInputStream(completePath)))) {
             String str;

@@ -1,5 +1,6 @@
-package application.notes.crud.declare.single;
+package application.notes.crud.commands;
 
+import application.notes.crud.declare.single.NoteDeclarator;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

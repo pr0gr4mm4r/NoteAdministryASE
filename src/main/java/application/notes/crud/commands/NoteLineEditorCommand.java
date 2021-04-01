@@ -1,5 +1,7 @@
-package application.notes.crud.edit.single;
+package application.notes.crud.commands;
 
+import application.notes.crud.edit.single.DisplayState;
+import application.notes.crud.edit.single.NoteLineEditor;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

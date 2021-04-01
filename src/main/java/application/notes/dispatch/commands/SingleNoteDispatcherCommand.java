@@ -1,6 +1,7 @@
-package application.notes.dispatch.single;
+package application.notes.dispatch.commands;
 
 import application.notes.dispatch.model.SendingInformation;
+import application.notes.dispatch.single.SingleNoteDispatcher;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import static application.notes.dispatch.single.SingleNoteDispatcher.initializeSingleNoteDispatcher;

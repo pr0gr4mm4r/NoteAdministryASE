@@ -1,5 +1,6 @@
-package application.notes.find.single;
+package application.notes.find.commnds;
 
+import application.notes.find.single.SingleNoteWordFinder;
 import utility.formatting.StringRepresentation.Result;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
