@@ -3,7 +3,7 @@ package utility.calc;
 public class PercentageCalculator {
 
     public PercentageCalculator() {
-        
+
     }
 
     public static double calculatePercentageWiseOccurrence(final double actualCount, final double totalOccurrence) {
