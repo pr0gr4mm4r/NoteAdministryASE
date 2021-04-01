@@ -2,7 +2,8 @@ package utility.calc;
 
 public class PercentageCalculator {
 
-    public PercentageCalculator() { // Pure Fabrication wird verwendet, um mathematischen Sachverhalt vom Domänenwissen zu trennen
+    public PercentageCalculator() {
+        
     }
 
     public static double calculatePercentageWiseOccurrence(final double actualCount, final double totalOccurrence) {
