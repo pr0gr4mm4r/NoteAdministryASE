@@ -18,38 +18,82 @@ import static application.notes.processors.multi.NoteStack.initializeNoteStack;
 import static config.Globals.path_for_notes;
 
 public class DisplayNotes extends JFrame implements DisplayTechnology {
-    private List<JLabel> noteNameLabels = new ArrayList<>();
+    private final List<JLabel> noteNameLabels = new ArrayList<>();
     private final List<JButton> noteDisplayButtons = new ArrayList<>();
     private final List<JButton> textManipulationButtons = new ArrayList<>();
-    private GridLayout masterGrid = new GridLayout(3, 1);
+    private final GridLayout masterGrid = new GridLayout(3, 1);
     private final GridLayout textContentGrid = new GridLayout(1, 2);
-    private GridLayout manipulatingButtonsGrid;
-
+    private final GridLayout textManipulationButtonsGrid = new GridLayout(2, 1);
     private JLabel verbCounterLabel = new JLabel();
     private final JLabel rhymeCounterLabel = new JLabel();
-    private JPanel masterPanel = new JPanel();
-    private JPanel capturePanel = new JPanel();
-    private JPanel noteButtonPanel = new JPanel();
-    private JPanel noteTextPanel = new JPanel();
-    private JPanel contentPanel = new JPanel();
-    private JPanel manipulatingButtonsPanel = new JPanel();
-    private JPanel manipulatingButtonsButtonsPanel = new JPanel();
+    private final JPanel masterPanel = new JPanel();
+    private final JPanel capturePanel = new JPanel();
+    private final JPanel noteButtonPanel = new JPanel();
+    private final JPanel noteTextPanel = new JPanel();
+    private final JPanel contentPanel = new JPanel();
+    private final JPanel textManipulationButtonsPanel = new JPanel();
+    private final JPanel manipulatingButtonsButtonsPanel = new JPanel();
     private final JPanel manipulatingButtonsContentPanel = new JPanel();
     private final JTextPane noteText = new JTextPane();
     private JScrollPane jScrollPane;
 
-    public DisplayNotes() throws NoFilesInDirectoryException, IOException {
-        this.setTitle("Overview of Notes");
-        masterPanel.setLayout(masterGrid);
+    private DisplayNotes() {
+
+    }
+
+    public static void initializeDisplayNotes() throws NoFilesInDirectoryException, IOException { // Monstermethode von 53 Zeilen auf 17 Zeilen refactored
+        DisplayNotes display = new DisplayNotes();
+        display.defineGeneralFrameSettings();
+        display.addCapture();
+        display.definePanelLayouts();
+        display.noteText.setEditable(false);
+        display.noteTextPanel.add(display.noteText);
+        display.jScrollPane = new JScrollPane(display.noteTextPanel);
+        display.contentPanel.add(display.jScrollPane);
+        display.addNoteButtons();
+        display.fillTextManipulationButtons();
+        display.prepareTextManipulationButtons();
+        display.fillTextManipulationButtonsPanel();
+        display.contentPanel.add(display.textManipulationButtonsPanel);
+        display.addPanelsToMasterPanel();
+        display.add(display.masterPanel);
+        display.setVisible(true);
+    }
+
+
+    private void defineGeneralFrameSettings(){
+        setTitle("Overview of Notes");
+        setSize(800, 500);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    private void addCapture() {
         final JLabel capture = new JLabel("Overview of all Notes in Directory " + path_for_notes);
         final Font font = new Font("Arial", Font.BOLD, 18);
         capture.setFont(font);
         capturePanel.add(capture);
-        noteText.setEditable(false);
-        noteTextPanel.add(noteText);
-        jScrollPane = new JScrollPane(noteTextPanel);
+    }
+
+    private void definePanelLayouts() {
+        masterPanel.setLayout(masterGrid);
         contentPanel.setLayout(textContentGrid);
-        contentPanel.add(jScrollPane);
+        textManipulationButtonsPanel.setLayout(textManipulationButtonsGrid);
+    }
+
+    private void prepareTextManipulationButtons() {
+        for (final JButton textManipulationButton : textManipulationButtons) {
+            textManipulationButton.setEnabled(false);
+            manipulatingButtonsButtonsPanel.add(textManipulationButton);
+        }
+    }
+
+    private void fillTextManipulationButtons() {
+        textManipulationButtons.add(new VerbCounterDisplayButton("Verbs", this));
+        textManipulationButtons.add(new RhymeCounterDisplayButton("Rhymes", this));
+    }
+
+    private void addNoteButtons() throws NoFilesInDirectoryException, IOException {
         final NoteStack noteStack = initializeNoteStack(path_for_notes);
         final List<String> noteNames = new ArrayList<>(noteStack.getNoteNames());
         for (int i = 0; i < noteNames.size(); i++) {
@@ -59,38 +103,30 @@ public class DisplayNotes extends JFrame implements DisplayTechnology {
             jButton.addMouseListener(new HoverPointerMouseListener(jButton));
             jButton.addMouseListener(new NoteButtonsSelectedMouseListener(this, jButton));
             jButton.addActionListener(e -> {
-                this.getManipulatingButtonsContentPanel().removeAll();
-                this.verbCounterLabel = new JLabel(" "); //reset counter
+                getManipulatingButtonsContentPanel().removeAll();
+                verbCounterLabel = new JLabel(" ");
                 final JPanel jPanel = new JPanel();
                 jPanel.add(verbCounterLabel);
-                this.getManipulatingButtonsContentPanel().add(jPanel);
-                this.invalidate();
-                this.validate();
+                getManipulatingButtonsContentPanel().add(jPanel);
+                invalidate();
+                validate();
             });
             final NoteButtonActionListener actionListener = new NoteButtonActionListener(this, jButton.getText());
             jButton.addActionListener(actionListener);
             noteDisplayButtons.add(jButton);
             noteButtonPanel.add(noteDisplayButtons.get(i));
         }
-        textManipulationButtons.add(new VerbCounterDisplayButton("Verbs", this));
-        textManipulationButtons.add(new RhymeCounterDisplayButton("Rhymes", this));
-        manipulatingButtonsGrid = new GridLayout(textManipulationButtons.size(), 1);
-        manipulatingButtonsPanel.setLayout(new GridLayout(2, 1));
-        for (final JButton textManipulationButton : textManipulationButtons) {
-            textManipulationButton.setEnabled(false);
-            manipulatingButtonsButtonsPanel.add(textManipulationButton);
-        }
-        manipulatingButtonsPanel.add(manipulatingButtonsButtonsPanel);
-        manipulatingButtonsPanel.add(manipulatingButtonsContentPanel);
-        contentPanel.add(manipulatingButtonsPanel);
+    }
+
+    private void fillTextManipulationButtonsPanel() {
+        textManipulationButtonsPanel.add(manipulatingButtonsButtonsPanel);
+        textManipulationButtonsPanel.add(manipulatingButtonsContentPanel);
+    }
+
+    private void addPanelsToMasterPanel() {
         masterPanel.add(capturePanel);
         masterPanel.add(noteButtonPanel);
         masterPanel.add(contentPanel);
-        this.add(masterPanel);
-        this.setSize(800, 500);
-        this.setLocationRelativeTo(null);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
     }
 
     public List<JButton> getNoteDisplayButtons() {

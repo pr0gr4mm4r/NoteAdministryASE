@@ -24,7 +24,7 @@ public class OverviewWordFinder {
         this.singleNoteWordFinder = new SingleNoteWordFinder();
     }
 
-    protected void composeOverview() throws IOException {
+    public void composeOverview() throws IOException {
         final List<Path> pathsToNotesList = noteStack.getPathList();
         final List<String> noteList = createNoteList(pathsToNotesList);
         final List<Map<Integer, Integer>> wordOccurenceOverview = new ArrayList<>();
