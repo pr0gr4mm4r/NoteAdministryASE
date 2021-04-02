@@ -27,7 +27,9 @@ public class SingleNoteDispatcherTest {
         });
         final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
         final SendingInformation sendingInformation = new FakeSendingInformation().getSendingInformation();
+
         final MimeMessage mimeMessage = singleNoteDispatcher.createMessage(session, sendingInformation);
+
         assertEquals("text/plain", mimeMessage.getContentType());
         assertEquals("[fakeRecipient]", Arrays.toString(mimeMessage.getAllRecipients()));
     }
@@ -37,7 +39,9 @@ public class SingleNoteDispatcherTest {
         final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
         final FakeSendingInformation fakeSendingInformation = new FakeSendingInformation();
         final SendingInformation sendingInformation = fakeSendingInformation.getSendingInformation();
+        
         final Multipart multipart = singleNoteDispatcher.createAttachment(sendingInformation);
+
         assertFalse(multipart.getContentType().isEmpty());
     }
 }

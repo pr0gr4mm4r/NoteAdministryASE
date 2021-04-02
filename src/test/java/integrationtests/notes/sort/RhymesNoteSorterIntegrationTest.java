@@ -27,9 +27,9 @@ public class RhymesNoteSorterIntegrationTest {
         final String testContent2 = "I like flowers";
         writingTestContentToArtificialFile(file1, testContent);
         writingTestContentToArtificialFile(file2, testContent2);
-
         final NoteStack noteStack = initializeNoteStackFake(file1.getParent() + "\\");
         final RhymesNoteSorter rhymesNoteSorter = new RhymesNoteSorter(noteStack);
+
         final Map<String, Integer> map = rhymesNoteSorter.initializeMapToSort();
         final int rhymeCount1 = map.get("myfile1.txt");
         final int rhymeCount2 = map.get("myfile2.txt");

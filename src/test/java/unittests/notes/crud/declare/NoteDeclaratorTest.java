@@ -32,12 +32,14 @@ public class NoteDeclaratorTest {
     @Test
     public void checkNoteNameCorrectlySet() {
         final String noteName = noteDeclaratorFake.getNoteName();
+
         assertEquals(noteName, randomNoteName);
     }
 
     @Test
     public void declareNoteTest() throws IOException {
         noteDeclaratorFake.declareNote(noteDeclaratorFake.getPathToNote());
+
         assertEquals(1, asList(requireNonNull(temporaryFolder.getRoot().list())).size());
     }
 }
