@@ -67,7 +67,8 @@ public class SingleNoteDispatcher {
         return message;
     }
 
-    public Multipart createAttachment(final SendingInformation sendingInfo) throws MessagingException {
+    public Multipart createAttachment(final SendingInformation sendingInfo) throws MessagingException { //z.B. hier wurden 4 einzelne Parameter übergeben (String sender, String recipient, String password, String path)
+        // was u.a. der Übersichtlichkeit schadete
         final MimeBodyPart messageBodyPart = new MimeBodyPart();
         final DataSource source = new FileDataSource(sendingInfo.getPath());
         messageBodyPart.setDataHandler(new DataHandler(source));
