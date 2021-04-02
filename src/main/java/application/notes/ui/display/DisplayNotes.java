@@ -41,7 +41,7 @@ public class DisplayNotes extends JFrame implements DisplayTechnology {
 
     }
 
-    public static void initializeDisplayNotes() throws NoFilesInDirectoryException, IOException { // Monstermethode von 53 Zeilen auf 17 Zeilen refactored
+    public static void initializeDisplayNotes() throws NoFilesInDirectoryException, IOException { // Monstermethode von >50 Zeilen auf 16 Zeilen refactored
         DisplayNotes display = new DisplayNotes();
         display.defineGeneralFrameSettings();
         display.addCapture();
