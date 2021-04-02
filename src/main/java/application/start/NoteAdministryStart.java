@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 
 import static application.start.NoteAdministryStartMessagePrinter.printErrorMessage;
 import static application.start.NoteAdministryStartMessagePrinter.printStartingMessage;
+import static application.start.model.help.HelpMode.*;
 import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 import static utility.logger.GlobalLogger.logger;
@@ -73,21 +74,25 @@ public final class NoteAdministryStart {
             }
             final AbstractCommand activeCommand = activeCommandOptional.get();
             if (activeCommand.getCommandName().equals("help")) {
-                listCommands(HelpMode.BASIC);
+                listCommands(BASIC);
                 continue;
             }
             if (activeCommand.getCommandName().equals("help+")) {
-                listCommands(HelpMode.EXTENDED);
+                listCommands(EXTENDED);
                 continue;
             }
             resetCommandActiveFlagFromCommandList();
-            try {
-                activeCommand.execute();
-            } catch (NoFilesInDirectoryException | IOException e) {
-                e.printStackTrace();
-            }
+            executeActiveCommand(activeCommand);
         }
 
+    }
+
+    private static void executeActiveCommand(AbstractCommand activeCommand) {
+        try {
+            activeCommand.execute();
+        } catch (NoFilesInDirectoryException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void makeActiveDecisions(final String commandName) {
@@ -104,7 +109,7 @@ public final class NoteAdministryStart {
 
     protected static void listCommands(final HelpMode helpMode) {
         loggerLineBreak();
-        if (helpMode.equals(HelpMode.EXTENDED)) {
+        if (helpMode.equals(EXTENDED)) {
             logger().info(commandList.stream().map(
                     command -> command.getCommandName() + "   |   " +
                             command.getDescription() + "\n").collect(Collectors.joining())
