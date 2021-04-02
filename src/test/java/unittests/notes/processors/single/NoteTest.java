@@ -11,7 +11,9 @@ public class NoteTest {
     public void removeEmptyLinesTest() {
         String[] lines = {"test", "test", "", "test", "", "", "test"};
         Note note = initializeNote("test");
+
         lines = note.removeEmptyLines(lines);
+
         assertEquals(4, lines.length);
     }
 }

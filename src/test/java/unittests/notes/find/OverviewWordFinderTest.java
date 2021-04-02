@@ -38,7 +38,9 @@ public class OverviewWordFinderTest {
     public void createNoteListTest() {
         final List<Path> pathList = new ArrayList<>();
         pathList.add(Paths.get("testPath"));
+
         final List<String> noteList = overviewWordFinder.createNoteList(pathList);
+
         assertFalse("NoteList not initialized successfully", noteList.isEmpty());
     }
 
@@ -50,10 +52,13 @@ public class OverviewWordFinderTest {
         testMap.put(2, 0);
         testMap.put(3, 0);
         testList.add(testMap);
+
         assertFalse(overviewWordFinder.checkIfKeyWordIsPresent(testList));
+
         testMap.put(1, 1);
         testMap.put(2, 5);
         testMap.put(3, 0);
+
         assertTrue(overviewWordFinder.checkIfKeyWordIsPresent(testList));
     }
 
@@ -70,7 +75,9 @@ public class OverviewWordFinderTest {
         testMap2.put(3,4);
         testList.add(testMap1);
         testList.add(testMap2);
+
         final List<Integer> testRememberRemovedList = overviewWordFinder.createRememberRemovedList(testList);
+
         assertEquals(1, testRememberRemovedList.size());
     }
 
@@ -79,10 +86,12 @@ public class OverviewWordFinderTest {
     public void composeWordOccurrenceSingleNoteTest() throws IOException {
         final Path artificialFilePath = artificialFile.toPath();
         writingTestContentToArtificialFile(artificialFile, testWord + " " + testWord + "\n" + testWord);
+
         final Map<Integer, Integer> wordOccurrence = overviewWordFinder.composeWordOccurrenceSingleNote(artificialFilePath);
         final int occurrenceInFirstLine = wordOccurrence.get(1);
         final int occurrenceInSecondLine = wordOccurrence.get(2);
         final Integer occurrenceInThirdLine = wordOccurrence.get(3);
+
         assertEquals(2, occurrenceInFirstLine);
         assertEquals(1, occurrenceInSecondLine);
         assertNull(occurrenceInThirdLine);

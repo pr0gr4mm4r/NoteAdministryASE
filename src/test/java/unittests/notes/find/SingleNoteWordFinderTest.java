@@ -25,17 +25,24 @@ public class SingleNoteWordFinderTest {
         wordOccurrence.put(3, 0);
         wordOccurrence.put(4, 2);
         wordOccurrence.put(5, 0);
+
         wordOccurrence = singelNoteWordFinder.filterWordOccurrence(wordOccurrence);
+
         assertEquals(wordOccurrence.get(4).intValue(), 2);
+
         wordOccurrence.remove(4);
+
         assertTrue(wordOccurrence.isEmpty());
     }
 
     @Test
     public void countOccurrenceOfWordTest() {
         int occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "test test test test");
+
         assertEquals(4, occurrence);
+
         occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "testtestrgergergerregerr");
+
         assertEquals(2, occurrence);
     }
 }

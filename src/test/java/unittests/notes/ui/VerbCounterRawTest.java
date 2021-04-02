@@ -11,7 +11,9 @@ public class VerbCounterRawTest {
     public void countVerbsTest() {
         String testContent = "test\nwalk run say actress";
         VerbCounterRaw verbCounterRaw = new VerbCounterRaw(testContent);
+
         int verbCount = verbCounterRaw.countVerbs();
+
         assertEquals(4, verbCount);
     }
 }

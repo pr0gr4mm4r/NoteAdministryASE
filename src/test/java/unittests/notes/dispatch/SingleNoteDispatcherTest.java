@@ -39,7 +39,7 @@ public class SingleNoteDispatcherTest {
         final SingleNoteDispatcher singleNoteDispatcher = new SingleNoteDispatcher();
         final FakeSendingInformation fakeSendingInformation = new FakeSendingInformation();
         final SendingInformation sendingInformation = fakeSendingInformation.getSendingInformation();
-        
+
         final Multipart multipart = singleNoteDispatcher.createAttachment(sendingInformation);
 
         assertFalse(multipart.getContentType().isEmpty());
