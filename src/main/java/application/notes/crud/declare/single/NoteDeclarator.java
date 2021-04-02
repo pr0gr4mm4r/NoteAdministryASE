@@ -12,14 +12,23 @@ import java.nio.file.StandardOpenOption;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+import static config.Globals.path_for_notes;
+import static utility.path.PathCreator.createCompletePath;
+
 
 public class NoteDeclarator implements HeaderAdder, FileCreator {
-    private String noteName;
-    private Path pathToNote;
+    String noteName;
+    Path pathToNote;
 
-    public NoteDeclarator(final Path pathToNote, final String noteName) {
-        this.noteName = noteName;
-        this.pathToNote = pathToNote;
+    protected NoteDeclarator() {
+
+    }
+
+    public static NoteDeclarator initializeNoteDeclarator(final String noteName) {
+        NoteDeclarator noteDeclarator = new NoteDeclarator();
+        noteDeclarator.noteName = noteName;
+        noteDeclarator.pathToNote = createCompletePath(noteName, path_for_notes);
+        return noteDeclarator;
     }
 
     public void declareNote(final Path completePath) throws IOException {
@@ -78,10 +87,6 @@ public class NoteDeclarator implements HeaderAdder, FileCreator {
 
     public Path getPathToNote() {
         return pathToNote;
-    }
-
-    public void setPathToNote(final Path pathToNote) {
-        this.pathToNote = pathToNote;
     }
 }
 

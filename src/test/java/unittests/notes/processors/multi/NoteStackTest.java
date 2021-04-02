@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class NoteStackTest {
     @Rule
-    public final TemporaryFolder temporaryFolder = new TemporaryFolder();
+    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
     public void listNoteNamesTest() throws IOException {

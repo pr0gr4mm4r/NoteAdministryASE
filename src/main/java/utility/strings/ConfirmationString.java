@@ -1,4 +1,4 @@
-package utility.confirmationString;
+package utility.strings;
 
 public class ConfirmationString {
     private final String confirmation;

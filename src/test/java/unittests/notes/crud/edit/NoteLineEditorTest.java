@@ -19,7 +19,7 @@ import static testhelper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteLineEditorTest {
     @Rule
-    public final TemporaryFolder temporaryFolder = new TemporaryFolder();
+    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
     public void overwriteLineMethod() throws IOException {

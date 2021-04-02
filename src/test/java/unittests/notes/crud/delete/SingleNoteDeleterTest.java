@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class SingleNoteDeleterTest {
 
     @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
+    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
     public void testSingleFileDeletion() throws IOException {

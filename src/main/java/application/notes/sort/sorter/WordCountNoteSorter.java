@@ -5,7 +5,7 @@ import application.notes.processors.multi.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.NoteSorterFormatter;
-import utility.confirmationString.ConfirmationString;
+import utility.strings.ConfirmationString;
 import utility.formatting.StringRepresentation.Result;
 import application.notes.wordcount.raw.NoteCounterRaw;
 

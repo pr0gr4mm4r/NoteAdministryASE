@@ -84,7 +84,6 @@ public final class NoteAdministryStart {
             resetCommandActiveFlagFromCommandList();
             executeActiveCommand(activeCommand);
         }
-
     }
 
     private static void executeActiveCommand(AbstractCommand activeCommand) {

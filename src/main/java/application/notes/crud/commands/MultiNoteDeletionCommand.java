@@ -1,7 +1,7 @@
 package application.notes.crud.commands;
 
 import application.notes.crud.delete.multi.NoteDeleter;
-import utility.confirmationString.ConfirmationString;
+import utility.strings.ConfirmationString;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

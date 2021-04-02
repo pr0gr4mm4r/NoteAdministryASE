@@ -1,49 +1,43 @@
 package unittests.notes.crud.declare;
 
-import application.notes.crud.declare.single.NoteDeclarator;
-import application.notes.crud.delete.single.SingleNoteDeleter;
-import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.After;
+import application.notes.crud.declare.single.NoteDeclaratorFake;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
-import java.nio.file.Path;
-import java.util.Scanner;
+import java.io.IOException;
 
-import static utility.path.PathCreator.createCompletePath;
-import static config.Globals.*;
 
-import static org.junit.Assert.assertEquals;
+import static application.notes.crud.declare.single.NoteDeclaratorFake.initializeFakeNoteDeclarator;
+import static java.util.Arrays.*;
+import static java.util.Objects.requireNonNull;
+import static org.junit.Assert.*;
+
+import static utility.strings.RandomStringCreator.*;
 
 public class NoteDeclaratorTest {
-    private NoteDeclarator noteDeclarator;
-    private String generatedString;
+    private NoteDeclaratorFake noteDeclaratorFake;
+    private String randomNoteName;
+
+    @Rule
+    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
-    public void createNoteDeclarator() {
-        generatedString = RandomStringUtils.randomAlphabetic(6);
-        final Path path = createCompletePath(generatedString, path_for_notes);
-        noteDeclarator = new NoteDeclarator(path, generatedString);
+    public void createNoteDeclaratorFake() {
+        randomNoteName = createRandomString();
+        noteDeclaratorFake = initializeFakeNoteDeclarator(randomNoteName, temporaryFolder.getRoot().getPath() + "\\");
     }
 
     @Test
-    public void scanner() {
-        assertEquals(scanner.getClass(), Scanner.class);
+    public void checkNoteNameCorrectlySet() {
+        final String noteName = noteDeclaratorFake.getNoteName();
+        assertEquals(noteName, randomNoteName);
     }
 
     @Test
-    public void noteName() {
-        final String noteName = noteDeclarator.getNoteName();
-        assertEquals(noteName, generatedString);
-    }
-
-    @Test
-    public void testPath() {
-        assertEquals(path_for_notes, "src/main/java/base/files/notes/");
-    }
-
-    @After
-    public void deleteDeclaratedNote() {
-        new SingleNoteDeleter();
+    public void declareNoteTest() throws IOException {
+        noteDeclaratorFake.declareNote(noteDeclaratorFake.getPathToNote());
+        assertEquals(1, asList(requireNonNull(temporaryFolder.getRoot().list())).size());
     }
 }

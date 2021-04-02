@@ -14,7 +14,7 @@ import static testhelper.FileWriter.writingTestContentToArtificialFile;
 
 public class NoteReaderTest {
     @Rule
-    public final TemporaryFolder temporaryFolder = new TemporaryFolder();
+    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
     public void testReadNoteMethod() throws IOException {
