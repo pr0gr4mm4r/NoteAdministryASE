@@ -1,7 +1,7 @@
 package application.notes.sort.sorter;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.formatter.NoteSorterFormatter;

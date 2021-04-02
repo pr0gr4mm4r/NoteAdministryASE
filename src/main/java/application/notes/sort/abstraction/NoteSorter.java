@@ -1,6 +1,6 @@
 package application.notes.sort.abstraction;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import utility.formatting.StringRepresentation.Result;
 
 import java.io.IOException;

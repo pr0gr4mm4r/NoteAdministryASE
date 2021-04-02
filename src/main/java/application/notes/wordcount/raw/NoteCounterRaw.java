@@ -1,6 +1,6 @@
 package application.notes.wordcount.raw;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.processors.single.Note;
 

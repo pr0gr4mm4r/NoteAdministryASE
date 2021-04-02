@@ -11,14 +11,14 @@ import static utility.path.PathCreator.createCompletePath;
 
 
 public class Note {
-    private Path completePath;
-    private String noteName;
-    private String[] wordList;
-    private String[] lineList;
-    private String content;
-    private String contentForGraphicalProcessing;
+    protected Path completePath;
+    protected String noteName;
+    protected String[] wordList;
+    protected String[] lineList;
+    protected String content;
+    protected String contentForGraphicalProcessing;
 
-    private Note() {
+    protected Note() {
     }
 
     public static Note initializeNote(final String noteName){
@@ -34,7 +34,7 @@ public class Note {
         return note;
     }
 
-    private String[] createLineList(final String note) {
+    String[] createLineList(final String note) {
         return note.split("\n");
     }
 

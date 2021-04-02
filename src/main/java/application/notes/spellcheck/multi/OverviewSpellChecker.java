@@ -1,7 +1,7 @@
 package application.notes.spellcheck.multi;
 
 import application.logfiles.crud.declare.single.LogFileDeclarator;
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatter;
 import utility.formatting.StringRepresentation.Result;

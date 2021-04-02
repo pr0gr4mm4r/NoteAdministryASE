@@ -41,7 +41,7 @@ public class NoteDeclarator implements HeaderAdder, FileCreator {
         }
     }
 
-    private void printSuccessMessage() {
+    protected void printSuccessMessage() {
         System.out.println("Creation of note was successful");
     }
 

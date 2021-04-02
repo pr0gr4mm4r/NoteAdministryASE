@@ -1,6 +1,6 @@
 package application.notes.wordcount.multi;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
 
 import java.io.IOException;

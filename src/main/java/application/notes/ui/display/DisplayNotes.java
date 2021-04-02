@@ -1,6 +1,6 @@
 package application.notes.ui.display;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.ui.listener.action.NoteButtonActionListener;
 import application.notes.ui.listener.mouse.HoverPointerMouseListener;

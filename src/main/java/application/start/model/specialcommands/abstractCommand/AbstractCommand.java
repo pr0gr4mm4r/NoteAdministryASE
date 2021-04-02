@@ -1,6 +1,6 @@
 package application.start.model.specialcommands.abstractCommand;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 
 import java.io.IOException;
 

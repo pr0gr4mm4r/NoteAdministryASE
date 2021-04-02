@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class RhymesNoteSorterTest {
     @Rule
-    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
+    public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Test
     public void increaseCounterForEachRhymeTest() {

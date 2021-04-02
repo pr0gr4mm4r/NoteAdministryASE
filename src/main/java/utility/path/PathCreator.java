@@ -8,6 +8,6 @@ public class PathCreator {
     }
 
     public static Path createCompletePath(final String noteName, final String path) {
-        return Paths.get(path + noteName);
+        return Paths.get(path + noteName + "\\");
     }
 }

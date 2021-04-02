@@ -12,4 +12,8 @@ public class NoteDeclaratorFake extends NoteDeclarator{
         noteDeclaratorFake.pathToNote = createCompletePath(noteName, path);
         return noteDeclaratorFake;
     }
+
+    public void printSuccessMessage() {
+
+    }
 }

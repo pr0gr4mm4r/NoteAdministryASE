@@ -21,7 +21,7 @@ public class NoteDeclaratorTest {
     private String randomNoteName;
 
     @Rule
-    private final TemporaryFolder temporaryFolder = new TemporaryFolder();
+    public final TemporaryFolder temporaryFolder = new TemporaryFolder();
 
     @Before
     public void createNoteDeclaratorFake() {

@@ -1,6 +1,6 @@
 package application.notes.sort.command;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.sort.abstraction.NoteSorter;
 import application.notes.sort.model.maps.CriteriaMap;
 import utility.formatting.StringRepresentation.Result;

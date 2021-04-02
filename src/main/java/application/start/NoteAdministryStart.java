@@ -7,7 +7,7 @@ import application.notes.crud.commands.NoteReaderCommand;
 import application.notes.dispatch.commands.SingleNoteDispatcherCommand;
 import application.notes.find.commnds.OverviewWordFinderCommand;
 import application.notes.find.commnds.SingleNoteWordFinderCommand;
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.sort.command.NoteSorterCommand;
 import application.notes.spellcheck.commands.OverviewSpellCheckerCommand;
 import application.notes.spellcheck.commands.SingleNoteSpellcheckerCommand;

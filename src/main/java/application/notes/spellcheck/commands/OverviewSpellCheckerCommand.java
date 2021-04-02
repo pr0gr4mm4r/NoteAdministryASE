@@ -1,6 +1,6 @@
 package application.notes.spellcheck.commands;
 
-import application.notes.processors.multi.NoFilesInDirectoryException;
+import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.multi.OverviewSpellChecker;
 import application.start.model.specialcommands.abstractCommand.AbstractCommand;
