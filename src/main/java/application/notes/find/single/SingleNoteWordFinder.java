@@ -6,7 +6,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static application.notes.processors.single.Note.initializeNote;
-import static config.Globals.path_for_notes;
 
 public class SingleNoteWordFinder {
     private Map<Integer, Integer> wordOccurrence;

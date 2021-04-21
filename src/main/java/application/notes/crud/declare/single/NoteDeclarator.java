@@ -55,7 +55,7 @@ public class NoteDeclarator implements HeaderAdder, FileCreator {
         }
         return true;
     }
-
+//Trennnung Persistenz domain
     @Override
     public void addHeader(final HeaderInformation headerInformation) throws IOException {
         final String time = createCurrentTimeString();
