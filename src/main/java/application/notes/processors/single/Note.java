@@ -6,7 +6,7 @@ import java.util.Arrays;
 import static config.Globals.path_for_notes;
 
 
-public class Note {
+public class Note implements WordListHolder{
     public Path completePath;
     public String noteName;
     public String[] wordList;
@@ -43,6 +43,7 @@ public class Note {
         this.noteName = noteName;
     }
 
+    @Override
     public String[] getWords() {
         return wordList;
     }

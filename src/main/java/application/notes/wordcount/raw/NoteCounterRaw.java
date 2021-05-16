@@ -3,6 +3,7 @@ package application.notes.wordcount.raw;
 import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.multi.NoteStack;
 import application.notes.processors.single.Note;
+import application.notes.processors.single.WordListHolder;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -61,8 +62,8 @@ public class NoteCounterRaw {
         }
     }
 
-    public int countWordsOfNote(final Note note) {
-        wordCount = note.getWords().length;
+    public int countWordsOfNote(final WordListHolder wordListHolder) { // Abhängigkeit gebrochen, neue Abstraktionsebene
+        wordCount = wordListHolder.getWords().length;
         return wordCount;
     }
 
