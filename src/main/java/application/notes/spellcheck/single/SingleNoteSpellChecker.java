@@ -25,7 +25,7 @@ public class SingleNoteSpellChecker  {
     public static SingleNoteSpellChecker initializeSingleNoteSpellChecker(final String noteName) {
         final SingleNoteSpellChecker singleNoteSpellChecker = new SingleNoteSpellChecker();
         final Note note = initializeNote(noteName);
-        final String[] wordList = note.getWordList();
+        final String[] wordList = note.getWords();
         singleNoteSpellChecker.spellCheckerRaw = initializeSpellCheckerRaw(wordList);
         final List<String> wordsInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsInLexicon();
         final List<String> wordsNotInLexicon = singleNoteSpellChecker.spellCheckerRaw.getWordsNotInLexicon();

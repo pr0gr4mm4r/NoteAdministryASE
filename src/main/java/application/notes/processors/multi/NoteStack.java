@@ -48,7 +48,7 @@ public class NoteStack implements NoteProcessor {
 
     protected void separateWordsForEachNote(final List<Note> noteContentList, final List<String[]> separatedWordListList) {
         for (final Note noteContent : noteContentList) {
-            final String[] separatedWords = noteContent.getWordList();
+            final String[] separatedWords = noteContent.getWords();
             separatedWordListList.add(separatedWords);
         }
     }

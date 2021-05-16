@@ -43,7 +43,7 @@ public class Note {
         this.noteName = noteName;
     }
 
-    public String[] getWordList() {
+    public String[] getWords() {
         return wordList;
     }
 
