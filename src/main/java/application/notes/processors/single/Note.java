@@ -7,14 +7,14 @@ import static config.Globals.path_for_notes;
 
 
 public class Note {
-    protected Path completePath;
-    protected String noteName;
-    protected String[] wordList;
+    public Path completePath;
+    public String noteName;
+    public String[] wordList;
     protected String[] lineList;
-    protected String content;
+    public String content;
     protected String contentForGraphicalProcessing;
 
-    protected Note() {
+    public Note() {
     }
 
     public static Note initializeNote(final String noteName){ //File -> Note

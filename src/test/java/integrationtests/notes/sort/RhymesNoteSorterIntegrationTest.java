@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
-import static application.notes.processors.multi.NoteStackFake.initializeNoteStackFake;
+import static testhelper.fakes.NoteStackFake.initializeNoteStackFake;
 import static org.junit.Assert.assertEquals;
 import static testhelper.FileWriter.writingTestContentToArtificialFile;
 

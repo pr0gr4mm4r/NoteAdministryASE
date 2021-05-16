@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-import static application.notes.processors.multi.NoteStackFake.initializeNoteStackFake;
+import static testhelper.fakes.NoteStackFake.initializeNoteStackFake;
 import static org.junit.Assert.*;
 import static testhelper.FileWriter.writingTestContentToArtificialFile;
 

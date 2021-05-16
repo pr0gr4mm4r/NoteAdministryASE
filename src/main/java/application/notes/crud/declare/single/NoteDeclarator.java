@@ -17,8 +17,8 @@ import static utility.path.PathCreator.createCompletePath;
 
 
 public class NoteDeclarator implements HeaderAdder, FileCreator {
-    String noteName;
-    Path pathToNote;
+    protected String noteName;
+    protected Path pathToNote;
 
     protected NoteDeclarator() {
 
@@ -46,13 +46,8 @@ public class NoteDeclarator implements HeaderAdder, FileCreator {
     }
 
     @Override
-    public boolean tryToCreateFile(final Path completePath) {
-        try {
-            Files.createFile(completePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+    public boolean tryToCreateFile(final Path completePath) throws IOException {
+        Files.createFile(completePath);
         return true;
     }
 //Trennnung Persistenz domain

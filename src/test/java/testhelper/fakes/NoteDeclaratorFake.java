@@ -1,8 +1,10 @@
-package application.notes.crud.declare.single;
+package testhelper.fakes;
+
+import application.notes.crud.declare.single.NoteDeclarator;
 
 import static utility.path.PathCreator.createCompletePath;
 
-public class NoteDeclaratorFake extends NoteDeclarator{
+public class NoteDeclaratorFake extends NoteDeclarator {
     public NoteDeclaratorFake() {
     }
 

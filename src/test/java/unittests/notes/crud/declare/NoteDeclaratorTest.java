@@ -1,6 +1,6 @@
 package unittests.notes.crud.declare;
 
-import application.notes.crud.declare.single.NoteDeclaratorFake;
+import testhelper.fakes.NoteDeclaratorFake;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.junit.rules.TemporaryFolder;
 import java.io.IOException;
 
 
-import static application.notes.crud.declare.single.NoteDeclaratorFake.initializeFakeNoteDeclarator;
+import static testhelper.fakes.NoteDeclaratorFake.initializeFakeNoteDeclarator;
 import static java.util.Arrays.*;
 import static java.util.Objects.requireNonNull;
 import static org.junit.Assert.*;

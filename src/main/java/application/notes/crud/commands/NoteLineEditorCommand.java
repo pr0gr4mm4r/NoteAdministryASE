@@ -30,11 +30,14 @@ public class NoteLineEditorCommand extends AbstractCommand {
         final long upperManipulationRangeCap = noteLineEditor.countLineLength(fileName);
         final int lowerManipulationRangeCap = 1;
         boolean editingIsPossible = editingPossible(upperManipulationRangeCap, lowerManipulationRangeCap);
+
+
         if (editingIsPossible) {
             System.out.println("Which line do you want to overwrite? The manipulation range is: "
                     + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
             final int lineNumber = scanner.nextInt();
             scanner.nextLine();
+
             if (noteLineEditor.noteHasEnoughLines(completePath, lineNumber)) {
                 noteLineEditor.openChangeDialogue(completePath, lineNumber);
             } else {

@@ -1,5 +1,6 @@
-package application.notes.processors.multi;
+package testhelper.fakes;
 
+import application.notes.processors.multi.NoteStack;
 import application.notes.processors.multi.exceptions.NoFilesInDirectoryException;
 import application.notes.processors.single.Note;
 
@@ -7,10 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static application.notes.processors.single.NoteFake.initializeNoteFake;
+import static testhelper.fakes.NoteFake.initializeNoteFake;
 
-public class NoteStackFake extends NoteStack{
-    private NoteStackFake() {
+public class NoteStackFake extends NoteStack {
+    protected NoteStackFake() {
 
     }
 

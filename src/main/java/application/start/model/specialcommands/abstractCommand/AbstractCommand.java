@@ -23,6 +23,7 @@ public abstract class AbstractCommand {
     }
 
     public abstract void execute() throws NoFilesInDirectoryException, IOException;
+
     public String getCommandName() {
         return commandName;
     }

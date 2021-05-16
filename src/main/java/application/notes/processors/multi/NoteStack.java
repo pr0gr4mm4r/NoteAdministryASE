@@ -18,8 +18,8 @@ public class NoteStack implements NoteProcessor {
     protected List<Path> pathList;
     protected List<String> noteContentList;
     protected final List<String[]> separatedWordListList = new ArrayList<>();
-    protected Set<String> noteNames = new HashSet<>();
-    protected List<Note> notes = new ArrayList<>();
+    public Set<String> noteNames = new HashSet<>();
+    public List<Note> notes = new ArrayList<>();
 
     public NoteStack() {
 
@@ -46,14 +46,14 @@ public class NoteStack implements NoteProcessor {
         return noteStack.notes;
     }
 
-    void separateWordsForEachNote(final List<Note> noteContentList, final List<String[]> separatedWordListList) {
+    protected void separateWordsForEachNote(final List<Note> noteContentList, final List<String[]> separatedWordListList) {
         for (final Note noteContent : noteContentList) {
             final String[] separatedWords = noteContent.getWordList();
             separatedWordListList.add(separatedWords);
         }
     }
 
-    List<String> createNoteContentList(final List<Note> noteList) {
+    protected List<String> createNoteContentList(final List<Note> noteList) {
         final List<String> noteContentList = new ArrayList<>();
         for (final Note note : noteList) {
             final String noteContent = note.getContent();
@@ -62,7 +62,7 @@ public class NoteStack implements NoteProcessor {
         return noteContentList;
     }
 
-    List<Path> createPathList(final List<Note> notes) {
+    protected List<Path> createPathList(final List<Note> notes) {
         final List<Path> pathList = new ArrayList<>();
         for (final Note note : notes) {
             pathList.add(note.getCompletePath());
