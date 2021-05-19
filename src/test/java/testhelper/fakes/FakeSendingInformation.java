@@ -1,4 +1,6 @@
-package application.notes.dispatch.model;
+package testhelper.fakes;
+
+import application.notes.dispatch.model.SendingInformation;
 
 public class FakeSendingInformation {
     private final SendingInformation sendingInformation;

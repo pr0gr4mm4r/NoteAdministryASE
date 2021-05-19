@@ -1,6 +1,6 @@
 package unittests.notes.dispatch;
 
-import application.notes.dispatch.model.FakeSendingInformation;
+import testhelper.fakes.FakeSendingInformation;
 import application.notes.dispatch.model.SendingInformation;
 import application.notes.dispatch.raw.DispatcherRaw;
 import application.notes.dispatch.single.SingleNoteDispatcher;
