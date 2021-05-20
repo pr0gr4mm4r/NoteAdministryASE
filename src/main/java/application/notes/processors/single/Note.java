@@ -1,12 +1,14 @@
 package application.notes.processors.single;
 
+import application.notes.processors.abstraction.NoteProcessor;
+
 import java.nio.file.Path;
 import java.util.Arrays;
 
 import static config.Globals.path_for_notes;
 
 
-public class Note implements WordListHolder{
+public class Note implements WordListHolder, NoteProcessor {
     public Path completePath;
     public String noteName;
     public String[] wordList;
