@@ -1,5 +1,6 @@
 package application.notes.crud.edit.single;
 
+import application.notes.crud.commands.EditingInformation;
 import application.notes.crud.edit.model.LineOverwriterInformation;
 import application.notes.wordcount.raw.NoteCounterRaw;
 
@@ -96,6 +97,24 @@ public class NoteLineEditor {
         } catch (IOException e) {
             e.printStackTrace();
             return ERROR;
+        }
+    }
+
+    public boolean editingPossible(long upperManipulationRangeCap, int lowerManipulationRangeCap) {
+        return upperManipulationRangeCap > lowerManipulationRangeCap;
+    }
+
+    public void edit(EditingInformation editingInformation) throws IOException {
+        System.out.println("Which line do you want to overwrite? The manipulation range is: "
+                + editingInformation.getLowerManipulationRangeCap() + " - " +
+                editingInformation.getUpperManipulationRangeCap());
+        final int lineNumber = scanner.nextInt();
+        scanner.nextLine();
+        final Path path = editingInformation.getCompletePath();
+        if (this.noteHasEnoughLines(path, lineNumber)) {
+            this.openChangeDialogue(path, lineNumber);
+        } else {
+            this.openErrorDialogue(path);
         }
     }
 }

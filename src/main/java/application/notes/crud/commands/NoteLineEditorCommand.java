@@ -13,6 +13,8 @@ import static config.Globals.path_for_notes;
 import static config.Globals.scanner;
 
 public class NoteLineEditorCommand extends AbstractCommand {
+    private final NoteLineEditor noteLineEditor = new NoteLineEditor();
+
     public NoteLineEditorCommand(final String commandName, final String description) {
         super(commandName, description);
     }
@@ -22,32 +24,17 @@ public class NoteLineEditorCommand extends AbstractCommand {
         System.out.println("Which note do you want to change?");
         final String fileName = scanner.nextLine();
         final Path completePath = createCompletePath(fileName, path_for_notes);
-        final NoteLineEditor noteLineEditor = new NoteLineEditor();
         final DisplayState displayState = noteLineEditor.displayLineByLinesOfNote(completePath);
         if (displayState.equals(ERROR)) {
+            System.out.println("error");
             return;
         }
         final long upperManipulationRangeCap = noteLineEditor.countLineLength(fileName);
         final int lowerManipulationRangeCap = 1;
-        boolean editingIsPossible = editingPossible(upperManipulationRangeCap, lowerManipulationRangeCap);
-
-
+        boolean editingIsPossible = noteLineEditor.editingPossible(upperManipulationRangeCap, lowerManipulationRangeCap);
         if (editingIsPossible) {
-            System.out.println("Which line do you want to overwrite? The manipulation range is: "
-                    + lowerManipulationRangeCap + " - " + upperManipulationRangeCap);
-            final int lineNumber = scanner.nextInt();
-            scanner.nextLine();
-
-            if (noteLineEditor.noteHasEnoughLines(completePath, lineNumber)) {
-                noteLineEditor.openChangeDialogue(completePath, lineNumber);
-            } else {
-                noteLineEditor.openErrorDialogue(completePath);
-            }
+            final EditingInformation editingInformation = new EditingInformation(lowerManipulationRangeCap, upperManipulationRangeCap, completePath);
+            noteLineEditor.edit(editingInformation);
         }
-
-    }
-
-    private boolean editingPossible(long upperManipulationRangeCap, int lowerManipulationRangeCap) {
-        return upperManipulationRangeCap > lowerManipulationRangeCap;
     }
 }
