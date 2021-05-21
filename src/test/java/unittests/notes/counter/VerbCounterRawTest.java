@@ -1,4 +1,4 @@
-package unittests.notes.ui;
+package unittests.notes.counter;
 
 import application.notes.ui.raw.VerbCounterRaw;
 import org.junit.Test;

@@ -44,6 +44,10 @@ public class SingleNoteWordFinderTest {
         occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "testtestrgergergerregerr");
 
         assertEquals(2, occurrence);
+
+        occurrence = singelNoteWordFinder.countOccurrenceOfWord("test", "testestrgergetestrregerr");
+
+        assertEquals(2, occurrence);
     }
 }
 

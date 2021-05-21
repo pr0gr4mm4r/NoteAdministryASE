@@ -7,6 +7,7 @@ import application.notes.spellcheck.formatter.OverviewSpellCheckerResultFormatte
 import utility.formatting.StringRepresentation.Result;
 import application.notes.spellcheck.model.WordExistenceMapList;
 import application.notes.spellcheck.raw.SpellCheckerRaw;
+import utility.formatting.StringRepresentation.StringRepresentation;
 
 import java.io.IOException;
 import java.util.*;
@@ -47,13 +48,13 @@ public class OverviewSpellChecker {
         }
     }
 
-    public void openLogFileDialogue(final Result result) throws IOException {
+    public void openLogFileDialogue(final StringRepresentation stringRepresentation) throws IOException {
         System.out.println("Do you want to save the output as a logfile?");
         System.out.println("Type 'yes' without '' to confirm or type anything else to abort:");
         final String confirmation = scanner.nextLine();
         if (confirmation.equals("yes")) {
             final LogFileDeclarator logFileDeclarator = LogFileDeclarator.initializeLogFileDeclarator("Spellcheck All Notes");
-            logFileDeclarator.declareLogFile(result.getStringRepresentation());
+            logFileDeclarator.declareLogFile(stringRepresentation.getStringRepresentation());
         }
     }
 

@@ -1,7 +1,6 @@
-package unittests.notes.ui;
+package unittests.notes.counter;
 
 import application.notes.ui.raw.RhymeCounterRaw;
-import org.junit.Before;
 import org.junit.Test;
 import utility.map.WordExistenceMap;
 
