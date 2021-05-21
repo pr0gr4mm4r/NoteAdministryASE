@@ -1,6 +1,6 @@
 package application.notes.crud.edit.single;
 
-import application.notes.crud.commands.EditingInformation;
+import application.notes.crud.edit.model.EditingInformation;
 import application.notes.crud.edit.model.LineOverwriterInformation;
 import application.notes.wordcount.raw.NoteCounterRaw;
 

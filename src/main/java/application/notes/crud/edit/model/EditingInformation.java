@@ -1,10 +1,10 @@
-package application.notes.crud.commands;
+package application.notes.crud.edit.model;
 
 import java.nio.file.Path;
 
 public class EditingInformation {
-    private int lowerManipulationRangeCap;
-    private long upperManipulationRangeCap;
+    private final int lowerManipulationRangeCap;
+    private final long upperManipulationRangeCap;
     private Path completePath;
 
     public int getLowerManipulationRangeCap() {

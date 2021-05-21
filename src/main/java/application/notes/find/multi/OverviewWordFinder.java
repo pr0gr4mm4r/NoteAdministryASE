@@ -101,10 +101,6 @@ public class OverviewWordFinder {
         return false;
     }
 
-    public String getKeyword() {
-        return keyword;
-    }
-
     public NoteStack getNoteStack() {
         return noteStack;
     }
