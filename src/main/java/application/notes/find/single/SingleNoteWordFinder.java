@@ -11,7 +11,6 @@ public class SingleNoteWordFinder {
     private Map<Integer, Integer> wordOccurrence;
 
     public SingleNoteWordFinder() {
-
     }
 
     public String[] initializeLinelist(final String nameOfNote) {
